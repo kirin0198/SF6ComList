@@ -276,3 +276,101 @@ describe("ラウンドトリップ（parseNotation → serializeNotation）", ()
     });
   });
 });
+
+// ============================================================
+// 追加テストケース: エッジケース
+// ============================================================
+
+describe("parseNotation 追加テストケース", () => {
+  // TC-NC01: 全6ボタン（LP/MP/HP/LK/MK/HK）が単独でパースされる
+  it("TC-NC01: 全6ボタン（LP/MP/HP/LK/MK/HK）が単独でパースされる", () => {
+    const buttons = ["LP", "MP", "HP", "LK", "MK", "HK"] as const;
+    buttons.forEach((btn) => {
+      const result = parseNotation(btn);
+      expect(result.steps).toHaveLength(1);
+      const step = result.steps[0];
+      expect(step.type).toBe("normal");
+      if (step.type === "normal") {
+        expect(step.directions).toEqual([]);
+        expect(step.button).toBe(btn);
+      }
+    });
+  });
+
+  // TC-NC02: 全ドライブアクション（DI/DR/DP/PP/DRev/OD）がパースされる
+  it("TC-NC02: 全ドライブアクション（DI/DR/DP/PP/DRev/OD）がパースされる", () => {
+    const driveActions = ["DI", "DR", "DP", "PP", "DRev", "OD"] as const;
+    driveActions.forEach((action) => {
+      const result = parseNotation(action);
+      expect(result.steps).toHaveLength(1);
+      const step = result.steps[0];
+      expect(step.type).toBe("normal");
+      if (step.type === "normal") {
+        expect(step.button).toBe(action);
+      }
+    });
+  });
+
+  // TC-NC03: Throw がパースされる
+  it("TC-NC03: Throw がパースされる", () => {
+    const result = parseNotation("Throw");
+    expect(result.steps).toHaveLength(1);
+    const step = result.steps[0];
+    expect(step.type).toBe("normal");
+    if (step.type === "normal") {
+      expect(step.button).toBe("Throw");
+    }
+  });
+
+  // TC-NC04: 複数の修飾子（cl./cr./st.）がパースされる
+  it("TC-NC04: 複数の修飾子（cl./cr./st.）がパースされる", () => {
+    const cases = [
+      { token: "cl.HP", modifier: "cl", button: "HP" },
+      { token: "cr.MK", modifier: "cr", button: "MK" },
+      { token: "st.HP", modifier: "st", button: "HP" },
+    ] as const;
+    cases.forEach(({ token, modifier, button }) => {
+      const result = parseNotation(token);
+      expect(result.steps).toHaveLength(1);
+      const step = result.steps[0];
+      expect(step.type).toBe("normal");
+      if (step.type === "normal") {
+        expect(step.modifier).toBe(modifier);
+        expect(step.button).toBe(button);
+      }
+    });
+  });
+
+  // TC-NC05: コンマ区切りコンボのラウンドトリップ
+  it("TC-NC05: コンマ区切りコンボのラウンドトリップ（'5LP, 5MP' → シリアライズ → '5LP , 5MP'）", () => {
+    // パーサーのコンマセパレーターは ", "（スペースは後のみ）
+    // "5LP, 5MP" をパースし、シリアライズすると " , " スペース付きで出力される
+    const notation = "5LP, 5MP";
+    const parsed = parseNotation(notation);
+    // 3ステップ: 5LP, connector(,), 5MP
+    expect(parsed.steps).toHaveLength(3);
+    expect(parsed.steps[1].type).toBe("connector");
+    if (parsed.steps[1].type === "connector") {
+      expect(parsed.steps[1].symbol).toBe(",");
+    }
+    const serialized = serializeNotation(parsed);
+    // シリアライザーは " , " で出力するため前後スペース付き
+    expect(serialized).toBe("5LP , 5MP");
+  });
+
+  // TC-NC06: 長い実戦コンボのパース
+  it("TC-NC06: 長い実戦コンボ 'j.HP > 5HP xx 236HP xx DR > 5MP > 2MK xx 214MK > SA2' をパースする", () => {
+    const notation = "j.HP > 5HP xx 236HP xx DR > 5MP > 2MK xx 214MK > SA2";
+    const result = parseNotation(notation);
+    // 入力: j.HP, 5HP, 236HP, DR, 5MP, 2MK, 214MK, SA2 = 8個
+    // コネクター: >, xx, xx, >, >, xx, > = 7個
+    // 合計 15ステップ
+    expect(result.steps).toHaveLength(15);
+    // 入力のみを抽出
+    const inputs = result.steps.filter((s) => s.type !== "connector");
+    expect(inputs).toHaveLength(8);
+    // コネクターのみを抽出
+    const connectors = result.steps.filter((s) => s.type === "connector");
+    expect(connectors).toHaveLength(7);
+  });
+});

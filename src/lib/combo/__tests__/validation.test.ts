@@ -195,6 +195,63 @@ describe("comboCreateSchema", () => {
 });
 
 // ============================================================
+// comboCreateSchema 追加テストケース: エッジケース
+// ============================================================
+
+describe("comboCreateSchema 追加エッジケース", () => {
+  // TC-V01: ダメージ値 99999（高い値）が受け入れられる
+  it("TC-V01: ダメージ値 99999（高い値）が受け入れられる", () => {
+    const result = comboCreateSchema.safeParse({
+      ...validComboCreate,
+      damage: 99999,
+    });
+    expect(result.success).toBe(true);
+  });
+
+  // TC-V02: tagIds に文字列配列を受け入れる
+  it("TC-V02: tagIds に文字列配列を受け入れる", () => {
+    const result = comboCreateSchema.safeParse({
+      ...validComboCreate,
+      tagIds: ["id1", "id2"],
+    });
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.tagIds).toEqual(["id1", "id2"]);
+    }
+  });
+
+  // TC-V03: 複数ステップを持つ sequence が受け入れられる
+  it("TC-V03: 7ステップのフルコンボシーケンスが受け入れられる", () => {
+    const result = comboCreateSchema.safeParse({
+      sequence: {
+        steps: [
+          { type: "normal" as const, directions: ["5"] as const, button: "MP" as const },
+          { type: "connector" as const, symbol: ">" as const },
+          { type: "normal" as const, directions: ["5"] as const, button: "HP" as const },
+          { type: "connector" as const, symbol: "xx" as const },
+          { type: "normal" as const, directions: ["2", "3", "6"] as const, button: "HP" as const },
+          { type: "connector" as const, symbol: "xx" as const },
+          { type: "normal" as const, directions: [] as const, button: "SA2" as const },
+        ],
+        notation: "5MP > 5HP xx 236HP xx SA2",
+      },
+    });
+    expect(result.success).toBe(true);
+  });
+
+  // TC-V04: 不正な step type を含む sequence は失敗する
+  it("TC-V04: 不正な step type を含む sequence は失敗する", () => {
+    const result = comboCreateSchema.safeParse({
+      sequence: {
+        steps: [{ type: "unknown" }],
+        notation: "unknown",
+      },
+    });
+    expect(result.success).toBe(false);
+  });
+});
+
+// ============================================================
 // comboUpdateSchema テスト
 // ============================================================
 
