@@ -62,9 +62,9 @@
 
 ### Phase 7: 画面実装（登録・編集・詳細）
 - [x] TASK-027: ComboForm 統合コンポーネント | 対象: src/components/combo/ComboForm.tsx
-- [ ] TASK-028: コンボ登録画面 (SCR-005) | 対象: src/app/(authenticated)/characters/[characterId]/combos/new/page.tsx
-- [ ] TASK-029: コンボ詳細画面 (SCR-006) | 対象: src/app/(authenticated)/characters/[characterId]/combos/[comboId]/page.tsx
-- [ ] TASK-030: コンボ編集画面 (SCR-007) | 対象: src/app/(authenticated)/characters/[characterId]/combos/[comboId]/edit/page.tsx
+- [x] TASK-028: コンボ登録画面 (SCR-005) | 対象: src/app/(authenticated)/characters/[characterId]/combos/new/page.tsx
+- [x] TASK-029: コンボ詳細画面 (SCR-006) | 対象: src/app/(authenticated)/characters/[characterId]/combos/[comboId]/page.tsx
+- [x] TASK-030: コンボ編集画面 (SCR-007) | 対象: src/app/(authenticated)/characters/[characterId]/combos/[comboId]/edit/page.tsx
 
 ### Phase 8: テスト + 仕上げ
 - [ ] TASK-031: ユニットテスト | 対象: テストファイル群
@@ -74,9 +74,9 @@
 - [ ] TASK-035: アクセシビリティ対応
 
 ## 直近のコミット
+- ae01a42 feat: ComboForm 統合コンポーネントを実装 (TASK-027)
+- 64f0205 feat: コンボ入力UIコンポーネント群を実装 (TASK-020〜026)
 - cdd5a2e feat: キャラクター一覧画面実装 (TASK-018)
-- 3dfaf1e feat: キャラクター API 実装 (TASK-017)
-- bd5f097 feat: タグ API 実装 (TASK-016)
 
 ## 中断時のメモ
 - 2026-04-09: TASK-006〜011 完了（Phase 2: 共通UI + Phase 3: 認証画面）
