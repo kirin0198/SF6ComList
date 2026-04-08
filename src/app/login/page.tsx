@@ -58,8 +58,7 @@ export default function LoginPage() {
         {/* ロゴ・タイトル */}
         <div className="mb-8 text-center">
           <h1 className="text-2xl font-bold text-white">
-            SF6{" "}
-            <span className="text-cyan-500">COMBO</span>{" "}
+            SF6 <span className="text-cyan-500">COMBO</span>{" "}
             <span className="text-gray-400">NOTE</span>
           </h1>
           <p className="mt-1 text-sm text-gray-500">

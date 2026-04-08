@@ -19,8 +19,7 @@ export default async function AppHeader() {
           href="/"
           className="text-lg font-bold tracking-widest text-white transition-colors hover:text-cyan-400"
         >
-          SF6{" "}
-          <span className="text-cyan-500">COMBO</span>{" "}
+          SF6 <span className="text-cyan-500">COMBO</span>{" "}
           <span className="text-gray-400">NOTE</span>
         </Link>
 
