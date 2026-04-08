@@ -6,7 +6,7 @@
  * ビジュアル入力とテキスト入力の切替に対応する
  */
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -16,8 +16,11 @@ import ComboSequencePreview from "@/components/combo/ComboSequencePreview";
 import TagSelector from "@/components/tag/TagSelector";
 import Button from "@/components/ui/Button";
 import InputField from "@/components/ui/InputField";
-import { serializeNotation } from "@/lib/combo/notation-converter";
-import type { ComboSequence, TagResponse, ComboResponse } from "@/lib/combo/types";
+import type {
+  ComboSequence,
+  TagResponse,
+  ComboResponse,
+} from "@/lib/combo/types";
 
 // ============================================================
 // フォームスキーマ（クライアント側バリデーション）
@@ -32,7 +35,11 @@ const comboFormSchema = z.object({
   damage: z
     .string()
     .refine(
-      (val) => val === "" || (!isNaN(Number(val)) && Number(val) >= 0 && Number.isInteger(Number(val))),
+      (val) =>
+        val === "" ||
+        (!isNaN(Number(val)) &&
+          Number(val) >= 0 &&
+          Number.isInteger(Number(val))),
       { message: "0以上の整数を入力してください" },
     )
     .optional(),
@@ -122,26 +129,10 @@ export default function ComboForm({
     },
   });
 
-  // シーケンスの変更ハンドラー（ビジュアル入力から）
-  const handleVisualChange = useCallback((newSequence: ComboSequence) => {
+  // シーケンスの変更ハンドラー（ビジュアル/テキスト入力共通）
+  const handleSequenceChange = useCallback((newSequence: ComboSequence) => {
     setSequence(newSequence);
   }, []);
-
-  // シーケンスの変更ハンドラー（テキスト入力から）
-  const handleTextChange = useCallback((newSequence: ComboSequence) => {
-    setSequence(newSequence);
-  }, []);
-
-  // inputMode が変わっても sequence を保持して相互変換する
-  useEffect(() => {
-    // モード切替時にシーケンスの notation を更新
-    if (sequence.steps.length > 0) {
-      const updatedNotation = serializeNotation(sequence);
-      if (updatedNotation !== sequence.notation) {
-        setSequence((prev) => ({ ...prev, notation: updatedNotation }));
-      }
-    }
-  }, [inputMode, sequence]);
 
   // フォーム送信ハンドラー
   const onFormSubmit = handleSubmit(async (formValues: ComboFormValues) => {
@@ -236,17 +227,20 @@ export default function ComboForm({
           >
             <ComboInputUI
               initialSequence={sequence.steps.length > 0 ? sequence : undefined}
-              onChange={handleVisualChange}
+              onChange={handleSequenceChange}
             />
           </div>
         )}
 
         {/* テキスト入力モード */}
         {inputMode === "text" && (
-          <div role="tabpanel" className="rounded-lg border border-gray-700 bg-gray-800 p-4">
+          <div
+            role="tabpanel"
+            className="rounded-lg border border-gray-700 bg-gray-800 p-4"
+          >
             <ComboTextInput
               value={sequence.steps.length > 0 ? sequence : undefined}
-              onChange={handleTextChange}
+              onChange={handleSequenceChange}
             />
           </div>
         )}
@@ -337,7 +331,10 @@ export default function ComboForm({
       {/* サーバーエラー表示 */}
       {/* ============================================================ */}
       {submitError && (
-        <div className="rounded border border-red-700 bg-red-900/50 px-3 py-2 text-sm text-red-300" role="alert">
+        <div
+          className="rounded border border-red-700 bg-red-900/50 px-3 py-2 text-sm text-red-300"
+          role="alert"
+        >
           {submitError}
         </div>
       )}

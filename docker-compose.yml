@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    # ホストユーザーのUID/GIDで実行し、ボリューム書き込み権限を確保
+    user: "${UID:-1000}:${GID:-1000}"
     ports:
       - "3000:3000"
     environment:

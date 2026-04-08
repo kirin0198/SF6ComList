@@ -43,7 +43,7 @@ export default function ConnectorSelector({
       role="group"
       aria-label="コネクター選択"
     >
-      <span className="text-xs text-gray-400 shrink-0">接続:</span>
+      <span className="shrink-0 text-xs text-gray-400">接続:</span>
 
       <div className="flex gap-1.5">
         {CONNECTORS.map((connector) => (
@@ -53,7 +53,7 @@ export default function ConnectorSelector({
             onClick={() => onSelect(connector.symbol)}
             aria-label={connector.description}
             title={connector.description}
-            className="flex h-8 min-w-10 items-center justify-center rounded border border-yellow-700 bg-gray-800 px-3 font-mono transition-colors duration-150 hover:border-yellow-500 hover:bg-gray-700 active:bg-gray-600 focus:ring-1 focus:ring-yellow-500 focus:outline-none"
+            className="flex h-8 min-w-10 items-center justify-center rounded border border-yellow-700 bg-gray-800 px-3 font-mono transition-colors duration-150 hover:border-yellow-500 hover:bg-gray-700 focus:ring-1 focus:ring-yellow-500 focus:outline-none active:bg-gray-600"
           >
             <ConnectorIcon symbol={connector.symbol} className="text-sm" />
           </button>

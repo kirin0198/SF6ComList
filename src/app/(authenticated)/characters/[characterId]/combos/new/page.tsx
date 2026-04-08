@@ -40,8 +40,8 @@ export default function NewComboPage({ params }: PageProps) {
       // キャラクター情報を取得
       fetch(`/api/characters`)
         .then((res) => res.json())
-        .then((data: { id: string; displayName: string }[]) => {
-          const character = data.find((c) => c.id === cid);
+        .then((data: { characters: { id: string; displayName: string }[] }) => {
+          const character = data.characters.find((c) => c.id === cid);
           if (character) {
             setCharacterName(character.displayName);
           }
@@ -56,8 +56,8 @@ export default function NewComboPage({ params }: PageProps) {
   useEffect(() => {
     fetch("/api/tags")
       .then((res) => res.json())
-      .then((data: TagResponse[]) => {
-        setAvailableTags(data);
+      .then((data: { tags: TagResponse[] }) => {
+        setAvailableTags(data.tags);
       })
       .catch(() => {
         // タグ取得失敗は無視（TagSelector なしで表示）

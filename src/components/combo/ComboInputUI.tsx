@@ -243,6 +243,7 @@ export default function ComboInputUI({
       {/* アクションボタン */}
       <div className="flex gap-2 border-t border-gray-700 pt-3">
         <Button
+          type="button"
           variant="secondary"
           size="sm"
           leftIcon={<Undo2 size={14} />}
@@ -252,6 +253,7 @@ export default function ComboInputUI({
           元に戻す
         </Button>
         <Button
+          type="button"
           variant="secondary"
           size="sm"
           leftIcon={<RotateCcw size={14} />}

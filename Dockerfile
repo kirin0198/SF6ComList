@@ -56,10 +56,19 @@ COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
 
-# Prisma 関連ファイルをコピー
+# Prisma 関連ファイルをコピー（CLI + Client + スキーマ + シード）
 COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
+COPY --from=builder /app/node_modules/prisma ./node_modules/prisma
+
+# シード実行に必要な依存をコピー
+COPY --from=builder /app/node_modules/tsx ./node_modules/tsx
+COPY --from=builder /app/node_modules/@esbuild ./node_modules/@esbuild
+COPY --from=builder /app/package.json ./package.json
+
+# エントリポイントスクリプトをコピー
+COPY docker-entrypoint.sh ./docker-entrypoint.sh
 
 # SQLite データベースの格納ディレクトリ
 RUN mkdir -p /app/data && chown nextjs:nodejs /app/data
@@ -71,4 +80,4 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-CMD ["node", "server.js"]
+CMD ["sh", "docker-entrypoint.sh"]

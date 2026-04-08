@@ -43,7 +43,13 @@ interface StepViewProps {
 }
 
 /** 溜め入力ステップを表示 */
-function ChargeStepView({ step, size }: { step: ChargeInput; size: "sm" | "md" }) {
+function ChargeStepView({
+  step,
+  size,
+}: {
+  step: ChargeInput;
+  size: "sm" | "md";
+}) {
   return (
     <span className="inline-flex items-center gap-0.5">
       <span className="text-xs text-gray-500">[</span>
@@ -56,7 +62,13 @@ function ChargeStepView({ step, size }: { step: ChargeInput; size: "sm" | "md" }
 }
 
 /** 通常入力ステップを表示 */
-function NormalStepView({ step, size }: { step: NormalInput; size: "sm" | "md" }) {
+function NormalStepView({
+  step,
+  size,
+}: {
+  step: NormalInput;
+  size: "sm" | "md";
+}) {
   return (
     <span className="inline-flex items-center gap-0.5">
       {/* 修飾子 */}
@@ -79,7 +91,7 @@ function NormalStepView({ step, size }: { step: NormalInput; size: "sm" | "md" }
       )}
       {/* PP の場合はテキスト表示 */}
       {step.button === "PP" && (
-        <span className="inline-flex items-center justify-center rounded-full border border-white/20 bg-green-400 px-1.5 py-0.5 text-xs font-bold text-white min-w-6">
+        <span className="inline-flex min-w-6 items-center justify-center rounded-full border border-white/20 bg-green-400 px-1.5 py-0.5 text-xs font-bold text-white">
           PP
         </span>
       )}
@@ -120,7 +132,7 @@ export default function ComboSequencePreview({
       <div
         className={`flex min-h-12 items-center justify-center rounded border border-dashed border-gray-700 px-3 py-2 ${className}`}
       >
-        <p className="text-xs italic text-gray-500">
+        <p className="text-xs text-gray-500 italic">
           方向キーとボタンを選択してコンボを組み立ててください
         </p>
       </div>
@@ -161,7 +173,7 @@ export default function ComboSequencePreview({
                 <button
                   type="button"
                   onClick={() => onRemoveStep(originalIndex)}
-                  className="flex h-4 w-4 items-center justify-center rounded-full text-gray-600 opacity-0 transition-opacity hover:bg-red-900/50 hover:text-red-400 group-hover:opacity-100"
+                  className="flex h-4 w-4 items-center justify-center rounded-full text-gray-600 opacity-0 transition-opacity group-hover:opacity-100 hover:bg-red-900/50 hover:text-red-400"
                   aria-label="このステップを削除"
                 >
                   <X size={10} />
