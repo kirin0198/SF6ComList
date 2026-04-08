@@ -26,7 +26,7 @@
 - [x] TASK-001: プロジェクト初期化 | 対象: package.json, tsconfig.json 等
 - [x] TASK-002: Prisma スキーマ定義 + マイグレーション + シードデータ | 対象: prisma/schema.prisma, prisma/seed.ts
 - [x] TASK-003: Auth.js 設定 + 認証 API | 対象: src/lib/auth.ts, src/app/api/auth/
-- [ ] TASK-004: 認証ミドルウェア + セッション管理 | 対象: src/middleware.ts, src/types/next-auth.d.ts
+- [x] TASK-004: 認証ミドルウェア + セッション管理 | 対象: src/middleware.ts, src/types/next-auth.d.ts
 - [ ] TASK-005: docker-compose + Dockerfile | 対象: docker-compose.yml, Dockerfile
 
 ### Phase 2: 共通UIコンポーネント + 静的データ
