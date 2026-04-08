@@ -41,7 +41,7 @@
 
 ### Phase 4: コアデータモデル + API
 - [x] TASK-012: コンボ型定義の移植 | 対象: src/lib/combo/types.ts
-- [ ] TASK-013: テンキー表記変換ロジックの移植 + テスト | 対象: src/lib/combo/notation-converter.ts
+- [x] TASK-013: テンキー表記変換ロジックの移植 + テスト | 対象: src/lib/combo/notation-converter.ts
 - [ ] TASK-014: バリデーションスキーマ定義 | 対象: src/lib/combo/validation.ts, src/lib/validators/
 - [ ] TASK-015: コンボ CRUD API | 対象: src/app/api/characters/[characterId]/combos/, src/app/api/combos/[comboId]/
 - [ ] TASK-016: タグ API | 対象: src/app/api/tags/route.ts
