@@ -52,13 +52,13 @@
 - [x] TASK-019: コンボ一覧画面 (SCR-004) + タグフィルタ | 対象: src/app/(authenticated)/characters/[characterId]/combos/page.tsx
 
 ### Phase 6: コンボ入力UIコンポーネント
-- [ ] TASK-020: DirectionPad コンポーネント | 対象: src/components/input/DirectionPad.tsx
-- [ ] TASK-021: ButtonPalette コンポーネント | 対象: src/components/input/ButtonPalette.tsx
-- [ ] TASK-022: ConnectorSelector コンポーネント | 対象: src/components/input/ConnectorSelector.tsx
-- [ ] TASK-023: ComboSequencePreview コンポーネント | 対象: src/components/combo/ComboSequencePreview.tsx
-- [ ] TASK-024: ComboInputUI 統合コンポーネント | 対象: src/components/combo/ComboInputUI.tsx
-- [ ] TASK-025: ComboTextInput コンポーネント | 対象: src/components/combo/ComboTextInput.tsx
-- [ ] TASK-026: TagSelector コンポーネント | 対象: src/components/tag/TagSelector.tsx
+- [x] TASK-020: DirectionPad コンポーネント | 対象: src/components/input/DirectionPad.tsx
+- [x] TASK-021: ButtonPalette コンポーネント | 対象: src/components/input/ButtonPalette.tsx
+- [x] TASK-022: ConnectorSelector コンポーネント | 対象: src/components/input/ConnectorSelector.tsx
+- [x] TASK-023: ComboSequencePreview コンポーネント | 対象: src/components/combo/ComboSequencePreview.tsx
+- [x] TASK-024: ComboInputUI 統合コンポーネント | 対象: src/components/combo/ComboInputUI.tsx
+- [x] TASK-025: ComboTextInput コンポーネント | 対象: src/components/combo/ComboTextInput.tsx
+- [x] TASK-026: TagSelector コンポーネント | 対象: src/components/tag/TagSelector.tsx
 
 ### Phase 7: 画面実装（登録・編集・詳細）
 - [ ] TASK-027: ComboForm 統合コンポーネント | 対象: src/components/combo/ComboForm.tsx
