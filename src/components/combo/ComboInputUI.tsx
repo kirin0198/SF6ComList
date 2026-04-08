@@ -4,9 +4,13 @@
  * ComboInputUI 統合コンポーネント
  * DirectionPad + ButtonPalette + ConnectorSelector + ComboSequencePreview を統合した
  * ビジュアルコンボ入力UIのメインコンポーネント
+ *
+ * 設計方針:
+ *   - initialSequence は初回マウント時の初期値として使用する（その後は内部状態で管理）
+ *   - 外部から再初期化する場合は key prop を変更してコンポーネントを再マウントする
  */
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { RotateCcw, Undo2 } from "lucide-react";
 import DirectionPad from "@/components/input/DirectionPad";
 import ButtonPalette from "@/components/input/ButtonPalette";
@@ -46,7 +50,7 @@ const emptyDraft = (): DraftStep => ({
 // ============================================================
 
 interface ComboInputUIProps {
-  /** 初期シーケンス（編集時に使用） */
+  /** 初期シーケンス（マウント時の初期値として使用） */
   initialSequence?: ComboSequence;
   /** シーケンスが変更されたときのコールバック */
   onChange: (sequence: ComboSequence) => void;
@@ -74,22 +78,22 @@ export default function ComboInputUI({
   // 入力中のドラフトステップ
   const [draft, setDraft] = useState<DraftStep>(emptyDraft());
 
-  // initialSequence が変化したときに同期する（外部からのデータ更新）
-  useEffect(() => {
-    if (initialSequence) {
-      setCommittedSteps(initialSequence.steps);
-      setDraft(emptyDraft());
-    }
-  }, [initialSequence]);
+  // onChange の最新版を ref に保持（useEffect の依存配列から除外するため）
+  const onChangeRef = useRef(onChange);
 
-  // シーケンスが変わるたびに onChange を呼び出す
+  // onChange が変わったときに ref を更新する（レンダー中以外で実行）
+  useEffect(() => {
+    onChangeRef.current = onChange;
+  }, [onChange]);
+
+  // committedSteps が変わるたびに onChange を呼び出す
   useEffect(() => {
     const sequence: ComboSequence = {
       steps: committedSteps,
       notation: serializeNotation({ steps: committedSteps, notation: "" }),
     };
-    onChange(sequence);
-  }, [committedSteps, onChange]);
+    onChangeRef.current(sequence);
+  }, [committedSteps]);
 
   // ============================================================
   // ハンドラー
@@ -181,11 +185,16 @@ export default function ComboInputUI({
   const hasContent = committedSteps.length > 0 || draft.directions.length > 0;
 
   return (
-    <div className={`space-y-4 ${className}`}>
+    <div className={`space-y-4 ${className}`} aria-label="コンボ入力エリア">
       {/* ドラフト状態インジケーター */}
       {draft.directions.length > 0 && (
-        <div className="text-xs text-yellow-300" role="status" aria-live="polite">
-          入力中: {draft.directions.join("")}{draft.isOD ? " (OD)" : ""} → ボタンを選択して確定
+        <div
+          className="text-xs text-yellow-300"
+          role="status"
+          aria-live="polite"
+        >
+          入力中: {draft.directions.join("")}
+          {draft.isOD ? " (OD)" : ""} → ボタンを選択して確定
         </div>
       )}
 
@@ -201,7 +210,7 @@ export default function ComboInputUI({
         </div>
 
         {/* ボタンパレット */}
-        <div className="flex-1 min-w-52">
+        <div className="min-w-52 flex-1">
           <p className="mb-2 text-xs text-gray-400">ボタン</p>
           <ButtonPalette onSelect={handleButtonSelect} />
         </div>
