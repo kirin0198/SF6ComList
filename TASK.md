@@ -27,7 +27,7 @@
 - [x] TASK-002: Prisma スキーマ定義 + マイグレーション + シードデータ | 対象: prisma/schema.prisma, prisma/seed.ts
 - [x] TASK-003: Auth.js 設定 + 認証 API | 対象: src/lib/auth.ts, src/app/api/auth/
 - [x] TASK-004: 認証ミドルウェア + セッション管理 | 対象: src/middleware.ts, src/types/next-auth.d.ts
-- [ ] TASK-005: docker-compose + Dockerfile | 対象: docker-compose.yml, Dockerfile
+- [x] TASK-005: docker-compose + Dockerfile | 対象: docker-compose.yml, Dockerfile
 
 ### Phase 2: 共通UIコンポーネント + 静的データ
 - [ ] TASK-006: 共通レイアウト | 対象: src/app/layout.tsx, src/app/(authenticated)/layout.tsx, src/components/layout/
@@ -74,7 +74,9 @@
 - [ ] TASK-035: アクセシビリティ対応
 
 ## 直近のコミット
-（タスク完了のたびに git log --oneline -3 を記録する）
+- 4412cd9 feat: TASK-004 認証ミドルウェア + セッション管理実装
+- 095312a feat: TASK-003 Auth.js設定 + 認証API実装
+- 1b6fbbd feat: TASK-002 Prismaスキーマ + シードデータ実装
 
 ## 中断時のメモ
 - 2026-04-08: developer エージェント起動前に中断

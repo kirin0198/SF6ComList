@@ -1,0 +1,21 @@
+# docker-compose.yml — SF6 コンボ帳 ローカル開発環境
+# `docker compose up` でワンコマンド起動
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      # データベース（ボリュームマウント先）
+      DATABASE_URL: "file:/app/data/sf6combo.db"
+      # Auth.js シークレット（本番環境では必ず変更すること）
+      AUTH_SECRET: "${AUTH_SECRET:-dev-secret-key-change-in-production}"
+      AUTH_URL: "${AUTH_URL:-http://localhost:3000}"
+      NODE_ENV: "production"
+    volumes:
+      # SQLite DB ファイルをホストの ./data に永続化
+      - ./data:/app/data
+    restart: unless-stopped
