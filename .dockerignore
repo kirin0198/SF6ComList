@@ -1,0 +1,46 @@
+# .dockerignore — Docker ビルドから除外するファイル
+
+# 依存関係（ビルド時に再インストール）
+node_modules
+poc/node_modules
+sf6-temp/node_modules
+
+# Next.js ビルド成果物
+.next
+out
+
+# 環境変数ファイル（シークレット漏洩防止）
+.env
+.env.local
+.env.production.local
+.env.test.local
+
+# データベースファイル（ボリュームマウントで管理）
+data/
+*.db
+*.sqlite
+
+# Git 管理ファイル
+.git
+.gitignore
+
+# ドキュメント・設計ファイル
+*.md
+CLAUDE.md
+
+# PoC・一時ディレクトリ
+poc/
+sf6-temp/
+
+# エディタ設定
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# テストカバレッジ
+coverage/
+
+# OS ファイル
+.DS_Store
+Thumbs.db
