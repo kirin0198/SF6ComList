@@ -46,7 +46,11 @@ export function getCharacterInitials(character: Character): string {
   if (/^[A-Za-z0-9.\s]+$/.test(name)) {
     const parts = name.split(" ");
     return parts.length > 1
-      ? parts.map((p) => p[0]).join("").toUpperCase().slice(0, 2)
+      ? parts
+          .map((p) => p[0])
+          .join("")
+          .toUpperCase()
+          .slice(0, 2)
       : name.slice(0, 2).toUpperCase();
   }
   // 日本語の場合は先頭2文字

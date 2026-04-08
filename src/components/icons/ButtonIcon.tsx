@@ -73,10 +73,7 @@ const buttonLabels: Record<ButtonInputType, string> = {
 };
 
 // サイズ定義
-const sizeStyles: Record<
-  IconSize,
-  { container: string; text: string }
-> = {
+const sizeStyles: Record<IconSize, { container: string; text: string }> = {
   sm: {
     container: "h-6 min-w-6 px-1.5",
     text: "text-xs",
