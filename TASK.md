@@ -49,7 +49,7 @@
 
 ### Phase 5: 画面実装（一覧系）
 - [x] TASK-018: キャラクター一覧画面 (SCR-003) | 対象: src/app/(authenticated)/page.tsx
-- [ ] TASK-019: コンボ一覧画面 (SCR-004) + タグフィルタ | 対象: src/app/(authenticated)/characters/[characterId]/combos/page.tsx
+- [x] TASK-019: コンボ一覧画面 (SCR-004) + タグフィルタ | 対象: src/app/(authenticated)/characters/[characterId]/combos/page.tsx
 
 ### Phase 6: コンボ入力UIコンポーネント
 - [ ] TASK-020: DirectionPad コンポーネント | 対象: src/components/input/DirectionPad.tsx
@@ -74,9 +74,9 @@
 - [ ] TASK-035: アクセシビリティ対応
 
 ## 直近のコミット
-- cb0785d feat: ユーザー登録画面実装 + Prettier フォーマット適用 (TASK-011)
-- 9e59113 feat: ログイン画面実装 (TASK-010)
-- 7a1c4ce feat: アイコンコンポーネント実装 (TASK-009)
+- cdd5a2e feat: キャラクター一覧画面実装 (TASK-018)
+- 3dfaf1e feat: キャラクター API 実装 (TASK-017)
+- bd5f097 feat: タグ API 実装 (TASK-016)
 
 ## 中断時のメモ
 - 2026-04-09: TASK-006〜011 完了（Phase 2: 共通UI + Phase 3: 認証画面）
