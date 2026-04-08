@@ -44,7 +44,7 @@
 - [x] TASK-013: テンキー表記変換ロジックの移植 + テスト | 対象: src/lib/combo/notation-converter.ts
 - [x] TASK-014: バリデーションスキーマ定義 | 対象: src/lib/combo/validation.ts, src/lib/validators/
 - [x] TASK-015: コンボ CRUD API | 対象: src/app/api/characters/[characterId]/combos/, src/app/api/combos/[comboId]/
-- [ ] TASK-016: タグ API | 対象: src/app/api/tags/route.ts
+- [x] TASK-016: タグ API | 対象: src/app/api/tags/route.ts
 - [ ] TASK-017: キャラクター API | 対象: src/app/api/characters/route.ts
 
 ### Phase 5: 画面実装（一覧系）
