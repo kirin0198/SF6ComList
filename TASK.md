@@ -3,7 +3,7 @@
 > 参照元: ARCHITECTURE.md (2026-04-08)
 
 ## フェーズ: Delivery — Implementation
-最終更新: 2026-04-09
+最終更新: 2026-04-08
 ステータス: 進行中
 
 ## Delivery トリアージ
@@ -40,7 +40,7 @@
 - [x] TASK-011: ユーザー登録画面 (SCR-002) | 対象: src/app/register/page.tsx
 
 ### Phase 4: コアデータモデル + API
-- [ ] TASK-012: コンボ型定義の移植 | 対象: src/lib/combo/types.ts
+- [x] TASK-012: コンボ型定義の移植 | 対象: src/lib/combo/types.ts
 - [ ] TASK-013: テンキー表記変換ロジックの移植 + テスト | 対象: src/lib/combo/notation-converter.ts
 - [ ] TASK-014: バリデーションスキーマ定義 | 対象: src/lib/combo/validation.ts, src/lib/validators/
 - [ ] TASK-015: コンボ CRUD API | 対象: src/app/api/characters/[characterId]/combos/, src/app/api/combos/[comboId]/
