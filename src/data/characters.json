@@ -1,0 +1,182 @@
+[
+  {
+    "id": "ryu",
+    "name": "Ryu",
+    "displayName": "リュウ",
+    "status": "active"
+  },
+  {
+    "id": "luke",
+    "name": "Luke",
+    "displayName": "ルーク",
+    "status": "active"
+  },
+  {
+    "id": "jamie",
+    "name": "Jamie",
+    "displayName": "ジェイミー",
+    "status": "active"
+  },
+  {
+    "id": "chun-li",
+    "name": "Chun-Li",
+    "displayName": "春麗",
+    "status": "active"
+  },
+  {
+    "id": "guile",
+    "name": "Guile",
+    "displayName": "ガイル",
+    "status": "active"
+  },
+  {
+    "id": "kimberly",
+    "name": "Kimberly",
+    "displayName": "キンバリー",
+    "status": "active"
+  },
+  {
+    "id": "juri",
+    "name": "Juri",
+    "displayName": "ジュリ",
+    "status": "active"
+  },
+  {
+    "id": "ken",
+    "name": "Ken",
+    "displayName": "ケン",
+    "status": "active"
+  },
+  {
+    "id": "e-honda",
+    "name": "E. Honda",
+    "displayName": "エドモンド本田",
+    "status": "active"
+  },
+  {
+    "id": "dhalsim",
+    "name": "Dhalsim",
+    "displayName": "ダルシム",
+    "status": "active"
+  },
+  {
+    "id": "blanka",
+    "name": "Blanka",
+    "displayName": "ブランカ",
+    "status": "active"
+  },
+  {
+    "id": "manon",
+    "name": "Manon",
+    "displayName": "マノン",
+    "status": "active"
+  },
+  {
+    "id": "marisa",
+    "name": "Marisa",
+    "displayName": "マリーザ",
+    "status": "active"
+  },
+  {
+    "id": "lily",
+    "name": "Lily",
+    "displayName": "リリー",
+    "status": "active"
+  },
+  {
+    "id": "jp",
+    "name": "JP",
+    "displayName": "JP",
+    "status": "active"
+  },
+  {
+    "id": "dee-jay",
+    "name": "Dee Jay",
+    "displayName": "ディージェイ",
+    "status": "active"
+  },
+  {
+    "id": "cammy",
+    "name": "Cammy",
+    "displayName": "キャミィ",
+    "status": "active"
+  },
+  {
+    "id": "zangief",
+    "name": "Zangief",
+    "displayName": "ザンギエフ",
+    "status": "active"
+  },
+  {
+    "id": "rashid",
+    "name": "Rashid",
+    "displayName": "ラシード",
+    "status": "active"
+  },
+  {
+    "id": "aki",
+    "name": "A.K.I.",
+    "displayName": "A.K.I.",
+    "status": "active"
+  },
+  {
+    "id": "ed",
+    "name": "Ed",
+    "displayName": "エド",
+    "status": "active"
+  },
+  {
+    "id": "akuma",
+    "name": "Akuma",
+    "displayName": "豪鬼",
+    "status": "active"
+  },
+  {
+    "id": "m-bison",
+    "name": "M. Bison",
+    "displayName": "ベガ",
+    "status": "active"
+  },
+  {
+    "id": "terry",
+    "name": "Terry Bogard",
+    "displayName": "テリー・ボガード",
+    "status": "active"
+  },
+  {
+    "id": "mai",
+    "name": "Mai Shiranui",
+    "displayName": "不知火舞",
+    "status": "active"
+  },
+  {
+    "id": "elena",
+    "name": "Elena",
+    "displayName": "エレナ",
+    "status": "active"
+  },
+  {
+    "id": "sagat",
+    "name": "Sagat",
+    "displayName": "サガット",
+    "status": "active"
+  },
+  {
+    "id": "c-viper",
+    "name": "C. Viper",
+    "displayName": "C.ヴァイパー",
+    "status": "active"
+  },
+  {
+    "id": "alex",
+    "name": "Alex",
+    "displayName": "アレックス",
+    "status": "active"
+  },
+  {
+    "id": "ingrid",
+    "name": "Ingrid",
+    "displayName": "イングリッド",
+    "status": "upcoming"
+  }
+]
