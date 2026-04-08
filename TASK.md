@@ -67,16 +67,16 @@
 - [x] TASK-030: コンボ編集画面 (SCR-007) | 対象: src/app/(authenticated)/characters/[characterId]/combos/[comboId]/edit/page.tsx
 
 ### Phase 8: テスト + 仕上げ
-- [ ] TASK-031: ユニットテスト | 対象: テストファイル群
-- [ ] TASK-032: API 統合テスト | 対象: テストファイル群
-- [ ] TASK-033: コンポーネントテスト | 対象: テストファイル群
+- [x] TASK-031: ユニットテスト | 対象: src/lib/combo/__tests__/, src/lib/validators/__tests__/
+- [x] TASK-032: API 統合テスト | 対象: src/app/api/__tests__/, src/data/__tests__/
+- [x] TASK-033: コンポーネントテスト | 対象: src/components/icons/__tests__/
 - [ ] TASK-034: Tailwind カスタムアニメーション + トースト統合
 - [ ] TASK-035: アクセシビリティ対応
 
 ## 直近のコミット
+- （TASK-031〜033 コミット後に更新）
 - ae01a42 feat: ComboForm 統合コンポーネントを実装 (TASK-027)
 - 64f0205 feat: コンボ入力UIコンポーネント群を実装 (TASK-020〜026)
-- cdd5a2e feat: キャラクター一覧画面実装 (TASK-018)
 
 ## 中断時のメモ
 - 2026-04-09: TASK-006〜011 完了（Phase 2: 共通UI + Phase 3: 認証画面）
