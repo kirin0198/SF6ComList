@@ -78,7 +78,11 @@ export default function LoginPage() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit(onSubmit)} noValidate>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            noValidate
+            aria-label="ログインフォーム"
+          >
             <div className="flex flex-col gap-4">
               {/* メールアドレス */}
               <InputField

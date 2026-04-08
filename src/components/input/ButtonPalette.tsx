@@ -72,7 +72,7 @@ export default function ButtonPalette({
                 key={btn}
                 type="button"
                 onClick={() => onSelect(btn as ButtonInput)}
-                className="rounded border border-transparent transition-opacity duration-150 hover:opacity-80 active:opacity-60 focus:ring-1 focus:ring-white/50 focus:outline-none"
+                className="rounded border border-transparent transition-opacity duration-150 hover:opacity-80 focus:ring-2 focus:ring-cyan-500 focus:outline-none active:opacity-60"
                 aria-label={btn}
               >
                 <ButtonIcon button={btn} size="md" />

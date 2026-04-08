@@ -114,7 +114,11 @@ export default function RegisterPage() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit(onSubmit)} noValidate>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            noValidate
+            aria-label="ユーザー登録フォーム"
+          >
             <div className="flex flex-col gap-4">
               {/* メールアドレス */}
               <InputField
