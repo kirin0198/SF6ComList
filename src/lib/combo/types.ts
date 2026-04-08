@@ -16,16 +16,7 @@
  *   4(後)   5(N)    6(前)
  *   1(下後) 2(下)   3(下前)
  */
-export type Direction =
-  | "1"
-  | "2"
-  | "3"
-  | "4"
-  | "5"
-  | "6"
-  | "7"
-  | "8"
-  | "9";
+export type Direction = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
 
 // ============================================================
 // ボタン入力
@@ -173,7 +164,12 @@ export const BUTTON_INPUT_VALUES: ButtonInput[] = [
 ];
 
 /** コネクター記号の一覧 */
-export const CONNECTOR_SYMBOLS: ConnectorStep["symbol"][] = [">", "xx", "~", ","];
+export const CONNECTOR_SYMBOLS: ConnectorStep["symbol"][] = [
+  ">",
+  "xx",
+  "~",
+  ",",
+];
 
 /** 攻撃修飾子の一覧 */
 export const ATTACK_MODIFIERS: AttackModifier[] = ["j", "cl", "cr", "st"];
