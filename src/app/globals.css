@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/* SF6 コンボ帳 グローバルスタイル */
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family:
+    "Inter",
+    "Helvetica Neue",
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+/* JetBrains Mono フォントをテンキー表記用に設定 */
+.font-mono {
+  font-family:
+    "JetBrains Mono", "Fira Code", "Cascadia Code", "Courier New", monospace;
+}
+
+/* ============================================================ */
+/* カスタムアニメーション                                         */
+/* ============================================================ */
+
+/* トースト通知のスライドイン（右から） */
+@keyframes toast-slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* トースト通知のフェードアウト */
+@keyframes toast-fade-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* コンボステップのフェードイン（下から） */
+@keyframes combo-step-enter {
+  from {
+    transform: translateY(8px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .animate-toast-in {
+    animation: toast-slide-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .animate-toast-out {
+    animation: toast-fade-out 0.3s ease-in both;
+  }
+  .animate-combo-step {
+    animation: combo-step-enter 0.15s ease-out both;
+  }
+}

@@ -70,7 +70,7 @@
 - [x] TASK-031: ユニットテスト | 対象: src/lib/combo/__tests__/, src/lib/validators/__tests__/
 - [x] TASK-032: API 統合テスト | 対象: src/app/api/__tests__/, src/data/__tests__/
 - [x] TASK-033: コンポーネントテスト | 対象: src/components/icons/__tests__/
-- [ ] TASK-034: Tailwind カスタムアニメーション + トースト統合
+- [x] TASK-034: Tailwind カスタムアニメーション + トースト統合
 - [ ] TASK-035: アクセシビリティ対応
 
 ## 直近のコミット

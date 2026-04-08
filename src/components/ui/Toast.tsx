@@ -67,11 +67,11 @@ function ToastItem({ toast, onClose }: ToastItemProps) {
     <div
       className={[
         "flex items-center gap-2 rounded-lg border px-4 py-3 text-sm shadow-lg",
-        "transition-all duration-300",
         styles.bg,
         styles.border,
         styles.text,
-        visible ? "translate-x-0 opacity-100" : "translate-x-full opacity-0",
+        // スライドインアニメーション（表示時）またはフェードアウト（非表示時）
+        visible ? "animate-toast-in" : "animate-toast-out",
       ].join(" ")}
       role="alert"
     >
