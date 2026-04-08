@@ -3,7 +3,7 @@
 > 参照元: ARCHITECTURE.md (2026-04-08)
 
 ## フェーズ: Delivery — Implementation
-最終更新: 2026-04-08
+最終更新: 2026-04-09
 ステータス: 進行中
 
 ## Delivery トリアージ
@@ -30,14 +30,14 @@
 - [x] TASK-005: docker-compose + Dockerfile | 対象: docker-compose.yml, Dockerfile
 
 ### Phase 2: 共通UIコンポーネント + 静的データ
-- [ ] TASK-006: 共通レイアウト | 対象: src/app/layout.tsx, src/app/(authenticated)/layout.tsx, src/components/layout/
-- [ ] TASK-007: 共通UIコンポーネント | 対象: src/components/ui/
-- [ ] TASK-008: キャラクターマスタデータ + プリセットタグ | 対象: src/data/characters.json, src/data/preset-tags.ts
-- [ ] TASK-009: アイコンコンポーネント | 対象: src/components/icons/
+- [x] TASK-006: 共通レイアウト | 対象: src/app/layout.tsx, src/app/(authenticated)/layout.tsx, src/components/layout/
+- [x] TASK-007: 共通UIコンポーネント | 対象: src/components/ui/
+- [x] TASK-008: キャラクターマスタデータ + プリセットタグ | 対象: src/data/characters.json, src/data/preset-tags.ts
+- [x] TASK-009: アイコンコンポーネント | 対象: src/components/icons/
 
 ### Phase 3: 認証画面
-- [ ] TASK-010: ログイン画面 (SCR-001) | 対象: src/app/login/page.tsx
-- [ ] TASK-011: ユーザー登録画面 (SCR-002) | 対象: src/app/register/page.tsx
+- [x] TASK-010: ログイン画面 (SCR-001) | 対象: src/app/login/page.tsx
+- [x] TASK-011: ユーザー登録画面 (SCR-002) | 対象: src/app/register/page.tsx
 
 ### Phase 4: コアデータモデル + API
 - [ ] TASK-012: コンボ型定義の移植 | 対象: src/lib/combo/types.ts
@@ -74,12 +74,11 @@
 - [ ] TASK-035: アクセシビリティ対応
 
 ## 直近のコミット
-- 4412cd9 feat: TASK-004 認証ミドルウェア + セッション管理実装
-- 095312a feat: TASK-003 Auth.js設定 + 認証API実装
-- 1b6fbbd feat: TASK-002 Prismaスキーマ + シードデータ実装
+- cb0785d feat: ユーザー登録画面実装 + Prettier フォーマット適用 (TASK-011)
+- 9e59113 feat: ログイン画面実装 (TASK-010)
+- 7a1c4ce feat: アイコンコンポーネント実装 (TASK-009)
 
 ## 中断時のメモ
-- 2026-04-08: developer エージェント起動前に中断
+- 2026-04-09: TASK-006〜011 完了（Phase 2: 共通UI + Phase 3: 認証画面）
+- 次は TASK-012: コンボ型定義の移植（src/lib/combo/types.ts）から再開
 - 全設計ドキュメント（SPEC.md, UI_SPEC.md, ARCHITECTURE.md）は完成済み
-- 再開時は `/delivery-pm` で Delivery PM を起動するか、developer エージェントを直接起動して TASK-001 から実装開始
-- Discovery 領域も全完了（INTERVIEW_RESULT.md, RESEARCH_RESULT.md, POC_RESULT.md, SCOPE_PLAN.md, DISCOVERY_RESULT.md）
