@@ -61,7 +61,7 @@
 - [x] TASK-026: TagSelector コンポーネント | 対象: src/components/tag/TagSelector.tsx
 
 ### Phase 7: 画面実装（登録・編集・詳細）
-- [ ] TASK-027: ComboForm 統合コンポーネント | 対象: src/components/combo/ComboForm.tsx
+- [x] TASK-027: ComboForm 統合コンポーネント | 対象: src/components/combo/ComboForm.tsx
 - [ ] TASK-028: コンボ登録画面 (SCR-005) | 対象: src/app/(authenticated)/characters/[characterId]/combos/new/page.tsx
 - [ ] TASK-029: コンボ詳細画面 (SCR-006) | 対象: src/app/(authenticated)/characters/[characterId]/combos/[comboId]/page.tsx
 - [ ] TASK-030: コンボ編集画面 (SCR-007) | 対象: src/app/(authenticated)/characters/[characterId]/combos/[comboId]/edit/page.tsx
