@@ -32,3 +32,10 @@ npm-debug.log*
 # Prisma
 prisma/*.db
 prisma/*.db-journal
+
+# Build cache
+tsconfig.tsbuildinfo
+
+# Temporary / PoC
+poc/
+sf6-temp/
