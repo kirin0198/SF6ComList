@@ -45,7 +45,7 @@
 - [x] TASK-014: バリデーションスキーマ定義 | 対象: src/lib/combo/validation.ts, src/lib/validators/
 - [x] TASK-015: コンボ CRUD API | 対象: src/app/api/characters/[characterId]/combos/, src/app/api/combos/[comboId]/
 - [x] TASK-016: タグ API | 対象: src/app/api/tags/route.ts
-- [ ] TASK-017: キャラクター API | 対象: src/app/api/characters/route.ts
+- [x] TASK-017: キャラクター API | 対象: src/app/api/characters/route.ts
 
 ### Phase 5: 画面実装（一覧系）
 - [ ] TASK-018: キャラクター一覧画面 (SCR-003) | 対象: src/app/(authenticated)/page.tsx
