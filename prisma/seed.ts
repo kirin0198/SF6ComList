@@ -41,7 +41,9 @@ async function main() {
     console.log(`タグを投入しました: ${tag.name} (${tag.id})`);
   }
 
-  console.log(`\nシード完了: プリセットタグ ${PRESET_TAGS.length} 件を投入しました`);
+  console.log(
+    `\nシード完了: プリセットタグ ${PRESET_TAGS.length} 件を投入しました`,
+  );
 }
 
 main()
