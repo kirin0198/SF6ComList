@@ -48,7 +48,7 @@
 - [x] TASK-017: キャラクター API | 対象: src/app/api/characters/route.ts
 
 ### Phase 5: 画面実装（一覧系）
-- [ ] TASK-018: キャラクター一覧画面 (SCR-003) | 対象: src/app/(authenticated)/page.tsx
+- [x] TASK-018: キャラクター一覧画面 (SCR-003) | 対象: src/app/(authenticated)/page.tsx
 - [ ] TASK-019: コンボ一覧画面 (SCR-004) + タグフィルタ | 対象: src/app/(authenticated)/characters/[characterId]/combos/page.tsx
 
 ### Phase 6: コンボ入力UIコンポーネント
