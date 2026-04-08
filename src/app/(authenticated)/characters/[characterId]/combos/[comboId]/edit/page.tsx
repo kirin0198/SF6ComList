@@ -60,15 +60,21 @@ export default function EditComboPage({ params }: PageProps) {
         }),
         // タグ一覧取得
         fetch("/api/tags")
-          .then((res) => res.json() as Promise<TagResponse[]>)
+          .then((res) => res.json() as Promise<{ tags: TagResponse[] }>)
+          .then((data) => data.tags)
           .catch(() => [] as TagResponse[]),
         // キャラクター情報取得
         fetch("/api/characters")
           .then(
             (res) =>
-              res.json() as Promise<{ id: string; displayName: string }[]>,
+              res.json() as Promise<{
+                characters: { id: string; displayName: string }[];
+              }>,
           )
-          .then((data) => data.find((c) => c.id === cid)?.displayName ?? null)
+          .then(
+            (data) =>
+              data.characters.find((c) => c.id === cid)?.displayName ?? null,
+          )
           .catch(() => null),
       ])
         .then(([combo, tags, charName]) => {

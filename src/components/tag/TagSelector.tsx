@@ -208,7 +208,7 @@ export default function TagSelector({
               type="button"
               onClick={handleCreateTag}
               disabled={isCreating || newTagName.trim().length === 0}
-              className="flex h-8 w-8 items-center justify-center rounded border border-gray-600 bg-gray-700 text-gray-300 transition-colors duration-150 hover:bg-gray-600 hover:text-white disabled:cursor-not-allowed disabled:opacity-40 focus:ring-1 focus:ring-cyan-500 focus:outline-none"
+              className="flex h-8 w-8 items-center justify-center rounded border border-gray-600 bg-gray-700 text-gray-300 transition-colors duration-150 hover:bg-gray-600 hover:text-white focus:ring-1 focus:ring-cyan-500 focus:outline-none disabled:cursor-not-allowed disabled:opacity-40"
               aria-label="タグを追加"
             >
               <Plus size={14} />
@@ -217,7 +217,11 @@ export default function TagSelector({
 
           {/* エラーメッセージ */}
           {createError && (
-            <p id="tag-create-error" className="text-xs text-red-400" role="alert">
+            <p
+              id="tag-create-error"
+              className="text-xs text-red-400"
+              role="alert"
+            >
               {createError}
             </p>
           )}

@@ -4,14 +4,22 @@
  * ComboTextInput コンポーネント
  * テンキー表記のテキスト入力でコンボシーケンスを入力する
  * notation-converter を使用してテキスト ↔ ComboSequence を変換する
+ *
+ * 設計方針:
+ *   - テキスト入力が主となる制御コンポーネント
+ *   - value は初回マウント時の初期値として使用する
+ *   - 外部から再初期化する場合は key prop を変更してコンポーネントを再マウントする
  */
 
-import { useState, useCallback, useEffect } from "react";
-import { parseNotation, serializeNotation } from "@/lib/combo/notation-converter";
+import { useState, useCallback } from "react";
+import {
+  parseNotation,
+  serializeNotation,
+} from "@/lib/combo/notation-converter";
 import type { ComboSequence } from "@/lib/combo/types";
 
 interface ComboTextInputProps {
-  /** 初期シーケンス（外部から同期されるシーケンスデータ） */
+  /** 初期シーケンス（マウント時の初期値として使用） */
   value?: ComboSequence;
   /** シーケンスが変更されたときのコールバック */
   onChange: (sequence: ComboSequence) => void;
@@ -22,33 +30,18 @@ interface ComboTextInputProps {
  * テンキー表記テキスト入力コンポーネント
  *
  * テキスト入力 → parseNotation → ComboSequence に変換して onChange を呼び出す
- * 外部からの value 変更 → serializeNotation → テキストに同期する
  */
 export default function ComboTextInput({
   value,
   onChange,
   className = "",
 }: ComboTextInputProps) {
-  // テキスト入力値（内部状態）
+  // テキスト入力値（内部状態・初回のみ value から初期化）
   const [text, setText] = useState<string>(
     value ? serializeNotation(value) : "",
   );
   // パースエラーメッセージ
   const [parseError, setParseError] = useState<string | null>(null);
-  // 外部からの value 同期を受け付けるかどうかのフラグ
-  const [isFocused, setIsFocused] = useState(false);
-
-  // value が外部から変更されたときにテキストを同期する（フォーカスしていない場合のみ）
-  useEffect(() => {
-    if (!isFocused && value) {
-      const serialized = serializeNotation(value);
-      // 現在のテキストと異なる場合のみ更新（無限ループ防止）
-      if (serialized !== text) {
-        setText(serialized);
-        setParseError(null);
-      }
-    }
-  }, [value, isFocused, text]);
 
   /** テキスト変更ハンドラー */
   const handleTextChange = useCallback(
@@ -67,15 +60,13 @@ export default function ComboTextInput({
       try {
         const sequence = parseNotation(newText.trim());
 
-        // パース結果が空のステップのみの場合はエラーとして扱う
+        // パース結果が空のステップのみ（コネクターのみ等）の場合はエラーとして扱う
         const hasValidSteps = sequence.steps.some(
           (step) => step.type !== "connector",
         );
 
         if (!hasValidSteps && newText.trim().length > 0) {
-          setParseError(
-            `入力を認識できませんでした: "${newText.trim()}"`,
-          );
+          setParseError(`入力を認識できませんでした: "${newText.trim()}"`);
           // エラーでも部分的な結果を渡す（プレビューを更新するため）
           onChange(sequence);
           return;
@@ -107,8 +98,6 @@ export default function ComboTextInput({
         id="combo-text-input"
         value={text}
         onChange={handleTextChange}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
         placeholder="例: 5MP > 2MK xx 214MK > SA2"
         rows={3}
         className={[
@@ -136,7 +125,8 @@ export default function ComboTextInput({
         </p>
       ) : (
         <p id="combo-text-hint" className="text-xs text-gray-500">
-          テンキー表記: 方向数字（236など）+ ボタン名（HP, MK など）。区切り: &gt;（リンク）xx（キャンセル）~（ディレイ）,（区切り）
+          テンキー表記: 方向数字（236など）+ ボタン名（HP, MK など）。区切り:
+          &gt;（リンク）xx（キャンセル）~（ディレイ）,（区切り）
         </p>
       )}
     </div>

@@ -34,7 +34,7 @@ const BUTTON_GROUPS: ButtonGroup[] = [
   },
   {
     label: "ドライブ",
-    buttons: ["DI", "DR", "OD"] as ButtonIconInput[],
+    buttons: ["DI", "DR", "OD", "DP", "DRev"] as ButtonIconInput[],
   },
   {
     label: "SA",
