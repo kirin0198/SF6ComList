@@ -221,6 +221,7 @@ export default function EditComboPage({ params }: PageProps) {
 
       {/* コンボ編集フォーム（既存データを初期値として渡す） */}
       <ComboForm
+        characterId={characterId ?? ""}
         mode="edit"
         availableTags={availableTags}
         initialData={comboData}

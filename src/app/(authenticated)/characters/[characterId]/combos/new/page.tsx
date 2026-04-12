@@ -160,6 +160,7 @@ export default function NewComboPage({ params }: PageProps) {
 
       {/* コンボ登録フォーム */}
       <ComboForm
+        characterId={characterId ?? ""}
         mode="create"
         availableTags={availableTags}
         onSubmit={handleSubmit}
