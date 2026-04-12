@@ -127,9 +127,30 @@
       "name": "波動拳",
       "nameEn": "Hadoken",
       "category": "special",
-      "notation": "236HP",
-      "steps": [
-        { "type": "normal", "directions": ["2", "3", "6"], "button": "HP" }
+      "notation": "236+P",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "236LP",
+          "steps": [
+            { "type": "normal", "directions": ["2", "3", "6"], "button": "LP" }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "236MP",
+          "steps": [
+            { "type": "normal", "directions": ["2", "3", "6"], "button": "MP" }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "236HP",
+          "steps": [
+            { "type": "normal", "directions": ["2", "3", "6"], "button": "HP" }
+          ]
+        }
       ]
     },
     {
@@ -137,9 +158,30 @@
       "name": "昇龍拳",
       "nameEn": "Shoryuken",
       "category": "special",
-      "notation": "623HP",
-      "steps": [
-        { "type": "normal", "directions": ["6", "2", "3"], "button": "HP" }
+      "notation": "623+P",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "623LP",
+          "steps": [
+            { "type": "normal", "directions": ["6", "2", "3"], "button": "LP" }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "623MP",
+          "steps": [
+            { "type": "normal", "directions": ["6", "2", "3"], "button": "MP" }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "623HP",
+          "steps": [
+            { "type": "normal", "directions": ["6", "2", "3"], "button": "HP" }
+          ]
+        }
       ]
     },
     {
@@ -147,9 +189,30 @@
       "name": "竜巻旋風脚",
       "nameEn": "Tatsumaki Senpukyaku",
       "category": "special",
-      "notation": "214MK",
-      "steps": [
-        { "type": "normal", "directions": ["2", "1", "4"], "button": "MK" }
+      "notation": "214+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "214LK",
+          "steps": [
+            { "type": "normal", "directions": ["2", "1", "4"], "button": "LK" }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "214MK",
+          "steps": [
+            { "type": "normal", "directions": ["2", "1", "4"], "button": "MK" }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "214HK",
+          "steps": [
+            { "type": "normal", "directions": ["2", "1", "4"], "button": "HK" }
+          ]
+        }
       ]
     },
     {
@@ -157,9 +220,30 @@
       "name": "足刀蹴り",
       "nameEn": "Ashita Geri",
       "category": "special",
-      "notation": "236MK",
-      "steps": [
-        { "type": "normal", "directions": ["2", "3", "6"], "button": "MK" }
+      "notation": "236+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "236LK",
+          "steps": [
+            { "type": "normal", "directions": ["2", "3", "6"], "button": "LK" }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "236MK",
+          "steps": [
+            { "type": "normal", "directions": ["2", "3", "6"], "button": "MK" }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "236HK",
+          "steps": [
+            { "type": "normal", "directions": ["2", "3", "6"], "button": "HK" }
+          ]
+        }
       ]
     },
     {
@@ -167,9 +251,30 @@
       "name": "波掌撃",
       "nameEn": "Hashogeki",
       "category": "special",
-      "notation": "214HP",
-      "steps": [
-        { "type": "normal", "directions": ["2", "1", "4"], "button": "HP" }
+      "notation": "214+P",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "214LP",
+          "steps": [
+            { "type": "normal", "directions": ["2", "1", "4"], "button": "LP" }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "214MP",
+          "steps": [
+            { "type": "normal", "directions": ["2", "1", "4"], "button": "MP" }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "214HP",
+          "steps": [
+            { "type": "normal", "directions": ["2", "1", "4"], "button": "HP" }
+          ]
+        }
       ]
     },
     {

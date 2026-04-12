@@ -54,8 +54,30 @@ export const CATEGORY_ORDER: CommandCategory[] = [
 // 型定義
 // ============================================================
 
+/** 強度ラベル（弱/中/強） */
+export type StrengthLevel = "L" | "M" | "H";
+
+/** 強度バリアント（弱/中/強で異なるボタンの技に使用） */
+export interface StrengthVariant {
+  /** 強度ラベル */
+  strength: StrengthLevel;
+  /** テンキー表記（例: "236LP"） */
+  notation: string;
+  /** パース済み ComboStep 配列 */
+  steps: ComboStep[];
+}
+
 /**
  * コマンドリスト上の1つの技を表す型
+ *
+ * 強度バリアントがある技（必殺技等）:
+ *   - variants に弱/中/強を定義
+ *   - notation は表示用の汎用表記（例: "236+P"）
+ *   - steps は未使用（variants 内の steps を使う）
+ *
+ * 強度バリアントがない技（通常技・SA等）:
+ *   - variants は undefined
+ *   - steps をそのまま使用
  */
 export interface CommandMove {
   /** 一意ID（キャラクター内でユニーク。例: "ryu-hadoken"） */
@@ -66,10 +88,12 @@ export interface CommandMove {
   nameEn: string;
   /** カテゴリ */
   category: CommandCategory;
-  /** テンキー表記（表示用。例: "236P", "5MP"） */
+  /** テンキー表記（表示用。例: "236+P", "5MP"） */
   notation: string;
-  /** パース済み ComboStep 配列（技クリック時にそのまま追加される） */
+  /** パース済み ComboStep 配列（バリアントなしの技で使用） */
   steps: ComboStep[];
+  /** 強度バリアント（弱/中/強がある技のみ） */
+  variants?: StrengthVariant[];
 }
 
 /**
