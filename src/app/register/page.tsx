@@ -132,9 +132,9 @@ export default function RegisterPage() {
 
               {/* パスワード */}
               <InputField
-                label="パスワード（8文字以上）"
+                label="パスワード（8文字以上・英大小文字+数字）"
                 type="password"
-                placeholder="8文字以上のパスワード"
+                placeholder="英大文字・小文字・数字を含む8文字以上"
                 autoComplete="new-password"
                 error={errors.password?.message}
                 {...register("password")}

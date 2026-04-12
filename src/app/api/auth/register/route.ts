@@ -7,9 +7,34 @@ import { NextRequest, NextResponse } from "next/server";
 import { hash } from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 import { registerSchema } from "@/lib/validators/auth";
+import {
+  registerRateLimit,
+  getClientIp,
+  rateLimitResponse,
+} from "@/lib/rate-limit";
 
 export async function POST(request: NextRequest) {
   try {
+    // Origin ヘッダー検証（CSRF 対策）
+    const origin = request.headers.get("origin");
+    const host = request.headers.get("host");
+    if (origin && host) {
+      const originHost = new URL(origin).host;
+      if (originHost !== host) {
+        return NextResponse.json(
+          { error: "不正なリクエスト元です" },
+          { status: 403 },
+        );
+      }
+    }
+
+    // レートリミットチェック（IP あたり 3回/分）
+    const ip = getClientIp(request.headers);
+    const rateLimitResult = registerRateLimit.check(ip);
+    if (!rateLimitResult.success) {
+      return rateLimitResponse(rateLimitResult.retryAfterMs);
+    }
+
     const body = await request.json();
 
     // バリデーション
@@ -57,7 +82,10 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(user, { status: 201 });
   } catch (error) {
-    console.error("ユーザー登録エラー:", error);
+    console.error(
+      "ユーザー登録エラー:",
+      error instanceof Error ? error.message : "unknown error",
+    );
     return NextResponse.json(
       { error: "サーバーエラーが発生しました" },
       { status: 500 },
