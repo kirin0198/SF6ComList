@@ -275,49 +275,57 @@
       ]
     },
     {
+      "id": "luke-6mp",
+      "name": "ローハイド",
+      "nameEn": "Rawhide",
+      "category": "unique",
+      "notation": "6MP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": ["6"],
+          "button": "MP"
+        }
+      ]
+    },
+    {
       "id": "luke-6hp",
-      "name": "サプレッサー",
-      "nameEn": "Suppressor",
+      "name": "ダブルインパクト",
+      "nameEn": "Double Impact",
       "category": "unique",
       "notation": "6HP",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "6"
-          ],
+          "directions": ["6"],
           "button": "HP"
         }
       ]
     },
     {
       "id": "luke-4hp",
-      "name": "ダブルインパクト",
-      "nameEn": "Double Impact",
+      "name": "サプレッサー",
+      "nameEn": "Suppressor",
       "category": "unique",
       "notation": "4HP",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "4"
-          ],
+          "directions": ["4"],
           "button": "HP"
         }
       ]
     },
     {
-      "id": "luke-6hk",
+      "id": "luke-4hk",
       "name": "アウトローキック",
       "nameEn": "Outlaw Kick",
       "category": "unique",
-      "notation": "6HK",
+      "notation": "4HK",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "6"
-          ],
+          "directions": ["4"],
           "button": "HK"
         }
       ]
@@ -469,6 +477,61 @@
       "name": "フラッシュナックル",
       "nameEn": "Flash Knuckle",
       "category": "special",
+      "notation": "214+P",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "214LP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "1", "4"],
+              "button": "LP"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "214MP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "1", "4"],
+              "button": "MP"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "214HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "1", "4"],
+              "button": "HP"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD214HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "1", "4"],
+              "button": "HP",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "luke-avenger",
+      "name": "アベンジャー",
+      "nameEn": "Avenger",
+      "category": "special",
       "notation": "236+K",
       "steps": [],
       "variants": [
@@ -478,11 +541,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "LK"
             }
           ]
@@ -493,11 +552,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "MK"
             }
           ]
@@ -508,11 +563,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "HK"
             }
           ]
@@ -523,82 +574,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HK",
-              "isOD": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "luke-avenger",
-      "name": "アヴェンジャー",
-      "nameEn": "Avenger",
-      "category": "special",
-      "notation": "214+K",
-      "steps": [],
-      "variants": [
-        {
-          "strength": "L",
-          "notation": "214LK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "LK"
-            }
-          ]
-        },
-        {
-          "strength": "M",
-          "notation": "214MK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "MK"
-            }
-          ]
-        },
-        {
-          "strength": "H",
-          "notation": "214HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HK"
-            }
-          ]
-        },
-        {
-          "strength": "OD",
-          "notation": "OD214HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "HK",
               "isOD": true
             }
@@ -608,21 +584,14 @@
     },
     {
       "id": "luke-sa1",
-      "name": "ヴァルカンブラスト",
+      "name": "バルカンブラスト",
       "nameEn": "Vulcan Blast (SA1)",
       "category": "super",
-      "notation": "236236LP",
+      "notation": "236236P",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
+          "directions": ["2", "3", "6", "2", "3", "6"],
           "button": "LP"
         }
       ]
@@ -632,19 +601,12 @@
       "name": "イレイザー",
       "nameEn": "Eraser (SA2)",
       "category": "super",
-      "notation": "236236HP",
+      "notation": "214214P",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "HP"
+          "directions": ["2", "1", "4", "2", "1", "4"],
+          "button": "LP"
         }
       ]
     },
@@ -653,19 +615,12 @@
       "name": "ペイルライダー",
       "nameEn": "Pale Rider (SA3)",
       "category": "super",
-      "notation": "236236MK",
+      "notation": "236236K",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "MK"
+          "directions": ["2", "3", "6", "2", "3", "6"],
+          "button": "LK"
         }
       ]
     }
