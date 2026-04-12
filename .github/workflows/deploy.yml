@@ -181,6 +181,7 @@ jobs:
           service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
 
       - name: Deploy to Cloud Run
+        id: deploy
         uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: ${{ env.CLOUD_RUN_SERVICE }}
@@ -204,14 +205,11 @@ jobs:
           env_vars: |
             NODE_ENV=production
             NEXT_TELEMETRY_DISABLED=1
-            AUTH_URL=https://${{ env.CLOUD_RUN_SERVICE }}-${{ env.CLOUD_RUN_REGION }}.run.app
+            AUTH_URL=https://sf6labs.com
             GCS_BUCKET_NAME=${{ secrets.GCS_BUCKET_NAME }}
             DATABASE_URL=file:/app/data/sf6combo.db
           secrets: |
             AUTH_SECRET=AUTH_SECRET:latest
 
       - name: Show deployed URL
-        run: |
-          echo "デプロイ完了: $(gcloud run services describe ${{ env.CLOUD_RUN_SERVICE }} \
-            --region=${{ env.CLOUD_RUN_REGION }} \
-            --format='value(status.url)')"
+        run: echo "デプロイ完了: https://sf6labs.com"
