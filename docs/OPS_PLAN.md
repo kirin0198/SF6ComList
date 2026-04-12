@@ -50,38 +50,51 @@ gcloud artifacts repositories create sf6comlist \
 
 ### Step 3: サービスアカウントの作成と権限付与
 
+2 つのサービスアカウントを使い分ける（最小権限の原則）:
+
+- **sf6comlist-deployer**: GitHub Actions からのデプロイ専用
+- **sf6comlist-runner**: Cloud Run 実行時のランタイム専用
+
 ```bash
 PROJECT_ID=$(gcloud config get-value project)
 
-# デプロイ用サービスアカウント作成
+# --- デプロイ用サービスアカウント ---
 gcloud iam service-accounts create sf6comlist-deployer \
   --display-name="SF6ComList Deployer"
 
-SA_EMAIL="sf6comlist-deployer@${PROJECT_ID}.iam.gserviceaccount.com"
+DEPLOYER_SA="sf6comlist-deployer@${PROJECT_ID}.iam.gserviceaccount.com"
 
 # Artifact Registry への push 権限
 gcloud projects add-iam-policy-binding ${PROJECT_ID} \
-  --member="serviceAccount:${SA_EMAIL}" \
+  --member="serviceAccount:${DEPLOYER_SA}" \
   --role="roles/artifactregistry.writer"
 
 # Cloud Run へのデプロイ権限
 gcloud projects add-iam-policy-binding ${PROJECT_ID} \
-  --member="serviceAccount:${SA_EMAIL}" \
+  --member="serviceAccount:${DEPLOYER_SA}" \
   --role="roles/run.developer"
 
-# サービスアカウント自身の利用権限
-gcloud iam service-accounts add-iam-policy-binding ${SA_EMAIL} \
-  --member="serviceAccount:${SA_EMAIL}" \
-  --role="roles/iam.serviceAccountUser"
+# --- Cloud Run ランタイム用サービスアカウント ---
+gcloud iam service-accounts create sf6comlist-runner \
+  --display-name="SF6ComList Cloud Run Runtime"
+
+RUNNER_SA="sf6comlist-runner@${PROJECT_ID}.iam.gserviceaccount.com"
+
+# Secret Manager へのアクセス権限（AUTH_SECRET の読み取り）
+gcloud secrets add-iam-policy-binding AUTH_SECRET \
+  --member="serviceAccount:${RUNNER_SA}" \
+  --role="roles/secretmanager.secretAccessor"
 
 # GCS へのアクセス権限は Step 5 でバケット作成後にバケットレベルで付与する
 # （プロジェクトレベルでの storage.objectAdmin 付与は過剰権限のため非推奨）
 
-# Secret Manager ���のアクセス権限
-gcloud projects add-iam-policy-binding ${PROJECT_ID} \
-  --member="serviceAccount:${SA_EMAIL}" \
-  --role="roles/secretmanager.secretAccessor"
+# deployer が runner SA として Cloud Run をデプロイできるようにする
+gcloud iam service-accounts add-iam-policy-binding ${RUNNER_SA} \
+  --member="serviceAccount:${DEPLOYER_SA}" \
+  --role="roles/iam.serviceAccountUser"
 ```
+
+> **注意:** デフォルトの Compute Engine SA (`PROJECT_NUMBER-compute@developer.gserviceaccount.com`) は使用しない。Editor ロールを持つため過剰権限となる。
 
 ### Step 4: Workload Identity Federation の設定
 
@@ -129,9 +142,9 @@ gsutil mb -l asia-northeast1 "gs://${BUCKET_NAME}"
 # バケットのバージョニングを有効化（誤上書き防止）
 gsutil versioning set on "gs://${BUCKET_NAME}"
 
-# サー���スアカウントにバケットレベルで���限を付与（最小権限の原則）
-SA_EMAIL="sf6comlist-deployer@$(gcloud config get-value project).iam.gserviceaccount.com"
-gsutil iam ch "serviceAccount:${SA_EMAIL}:roles/storage.objectUser" "gs://${BUCKET_NAME}"
+# ランタイム用サービスアカウントにバケットレベルで権限を付与（最小権限の原則）
+RUNNER_SA="sf6comlist-runner@$(gcloud config get-value project).iam.gserviceaccount.com"
+gsutil iam ch "serviceAccount:${RUNNER_SA}:roles/storage.objectUser" "gs://${BUCKET_NAME}"
 
 echo "バケット名: ${BUCKET_NAME}"
 echo "この値を GitHub Secrets の GCS_BUCKET_NAME に設定すること"
@@ -154,12 +167,13 @@ gcloud secrets add-iam-policy-binding AUTH_SECRET \
 
 GitHub リポジトリの Settings > Secrets and variables > Actions で以下を設定する。
 
-| Secret 名                        | 値                       | 取得方法                                                 |
-| -------------------------------- | ------------------------ | -------------------------------------------------------- |
-| `GCP_PROJECT_ID`                 | GCP プロジェクト ID      | `gcloud config get-value project`                        |
-| `GCP_WORKLOAD_IDENTITY_PROVIDER` | Provider リソース名      | Step 4 の最終コマンド出力                                |
-| `GCP_SERVICE_ACCOUNT`            | サービスアカウント Email | `sf6comlist-deployer@PROJECT_ID.iam.gserviceaccount.com` |
-| `GCS_BUCKET_NAME`                | GCS バケット名           | Step 5 で出力された値                                    |
+| Secret 名                        | 値                    | 取得方法                                                 |
+| -------------------------------- | --------------------- | -------------------------------------------------------- |
+| `GCP_PROJECT_ID`                 | GCP プロジェクト ID   | `gcloud config get-value project`                        |
+| `GCP_WORKLOAD_IDENTITY_PROVIDER` | Provider リソース名   | Step 4 の最終コマンド出力                                |
+| `GCP_SERVICE_ACCOUNT`            | デプロイ用 SA Email   | `sf6comlist-deployer@PROJECT_ID.iam.gserviceaccount.com` |
+| `GCP_CLOUD_RUN_SA`               | ランタイム用 SA Email | `sf6comlist-runner@PROJECT_ID.iam.gserviceaccount.com`   |
+| `GCS_BUCKET_NAME`                | GCS バケット名        | Step 5 で出力された値                                    |
 
 > **ロールバックポイント 3:** GitHub Secrets の設定ミスはデプロイ失敗として検知される。値を修正して再度 push すれば良い。
 

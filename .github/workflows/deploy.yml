@@ -198,6 +198,7 @@ jobs:
             --concurrency=80
             --timeout=60s
             --execution-environment=gen2
+            --service-account=${{ secrets.GCP_CLOUD_RUN_SA }}
           # 環境変数（Secret Manager 参照）
           env_vars: |
             NODE_ENV=production
