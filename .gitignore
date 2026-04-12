@@ -47,3 +47,12 @@ blob-report/
 
 # System library packages (WSL Playwright deps)
 *.deb
+
+# Telescope workflow intermediate documents
+DISCOVERY_RESULT.md
+INTERVIEW_RESULT.md
+RESEARCH_RESULT.md
+POC_RESULT.md
+SCOPE_PLAN.md
+SECURITY_AUDIT.md
+TASK.md
