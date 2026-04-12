@@ -187,9 +187,10 @@ jobs:
           region: ${{ env.CLOUD_RUN_REGION }}
           image: ${{ env.REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
           # Cloud Run の設定
+          # --allow-unauthenticated は初回手動設定済み（IAM ポリシー永続）
+          # deployer SA に run.admin を付与せず最小権限を維持する
           flags: |
             --platform=managed
-            --allow-unauthenticated
             --port=3000
             --memory=512Mi
             --cpu=1

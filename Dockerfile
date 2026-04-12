@@ -76,6 +76,10 @@ COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 COPY --from=builder /app/node_modules/prisma ./node_modules/prisma
 
+# Prisma CLI を npx 経由で実行するためのシンボリックリンク
+RUN mkdir -p node_modules/.bin \
+    && ln -s ../prisma/build/index.js node_modules/.bin/prisma
+
 # シード実行に必要な依存をコピー
 COPY --from=builder /app/node_modules/ts-node ./node_modules/ts-node
 COPY --from=builder /app/node_modules/typescript ./node_modules/typescript
