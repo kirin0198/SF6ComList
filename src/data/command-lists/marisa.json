@@ -8,15 +8,7 @@
       "nameEn": "Standing LP",
       "category": "normal",
       "notation": "5LP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "LP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "LP" }]
     },
     {
       "id": "marisa-5mp",
@@ -24,15 +16,7 @@
       "nameEn": "Standing MP",
       "category": "normal",
       "notation": "5MP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "MP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "MP" }]
     },
     {
       "id": "marisa-5hp",
@@ -40,15 +24,7 @@
       "nameEn": "Standing HP",
       "category": "normal",
       "notation": "5HP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "HP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "HP" }]
     },
     {
       "id": "marisa-5lk",
@@ -56,15 +32,7 @@
       "nameEn": "Standing LK",
       "category": "normal",
       "notation": "5LK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "LK"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "LK" }]
     },
     {
       "id": "marisa-5mk",
@@ -72,15 +40,7 @@
       "nameEn": "Standing MK",
       "category": "normal",
       "notation": "5MK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "MK"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "MK" }]
     },
     {
       "id": "marisa-5hk",
@@ -88,15 +48,7 @@
       "nameEn": "Standing HK",
       "category": "normal",
       "notation": "5HK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "HK"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "HK" }]
     },
     {
       "id": "marisa-2lp",
@@ -104,15 +56,7 @@
       "nameEn": "Crouching LP",
       "category": "normal",
       "notation": "2LP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2"
-          ],
-          "button": "LP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "LP" }]
     },
     {
       "id": "marisa-2mp",
@@ -120,15 +64,7 @@
       "nameEn": "Crouching MP",
       "category": "normal",
       "notation": "2MP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2"
-          ],
-          "button": "MP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "MP" }]
     },
     {
       "id": "marisa-2hp",
@@ -136,15 +72,7 @@
       "nameEn": "Crouching HP",
       "category": "normal",
       "notation": "2HP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2"
-          ],
-          "button": "HP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "HP" }]
     },
     {
       "id": "marisa-2lk",
@@ -152,15 +80,7 @@
       "nameEn": "Crouching LK",
       "category": "normal",
       "notation": "2LK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2"
-          ],
-          "button": "LK"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "LK" }]
     },
     {
       "id": "marisa-2mk",
@@ -168,15 +88,7 @@
       "nameEn": "Crouching MK",
       "category": "normal",
       "notation": "2MK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2"
-          ],
-          "button": "MK"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "MK" }]
     },
     {
       "id": "marisa-2hk",
@@ -184,15 +96,7 @@
       "nameEn": "Crouching HK",
       "category": "normal",
       "notation": "2HK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2"
-          ],
-          "button": "HK"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "HK" }]
     },
     {
       "id": "marisa-throw",
@@ -200,15 +104,7 @@
       "nameEn": "Throw",
       "category": "throw",
       "notation": "Throw",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "Throw"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "Throw" }]
     },
     {
       "id": "marisa-di",
@@ -216,15 +112,7 @@
       "nameEn": "Drive Impact",
       "category": "drive",
       "notation": "DI",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "DI"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "DI" }]
     },
     {
       "id": "marisa-dr",
@@ -232,15 +120,7 @@
       "nameEn": "Drive Rush",
       "category": "drive",
       "notation": "DR",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "DR"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "DR" }]
     },
     {
       "id": "marisa-dp",
@@ -248,15 +128,7 @@
       "nameEn": "Drive Parry",
       "category": "drive",
       "notation": "DP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "DP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "DP" }]
     },
     {
       "id": "marisa-drev",
@@ -264,60 +136,18 @@
       "nameEn": "Drive Reversal",
       "category": "drive",
       "notation": "DRev",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "6"
-          ],
-          "button": "DRev"
-        }
-      ]
-    },
-    {
-      "id": "marisa-6hp",
-      "name": "マグナバスター",
-      "nameEn": "Magna Buster",
-      "category": "unique",
-      "notation": "6HP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "6"
-          ],
-          "button": "HP"
-        }
-      ]
-    },
-    {
-      "id": "marisa-6hk",
-      "name": "カデンツァ",
-      "nameEn": "Cadenza",
-      "category": "unique",
-      "notation": "6HK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "6"
-          ],
-          "button": "HK"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["6"], "button": "DRev" }]
     },
     {
       "id": "marisa-4hp",
-      "name": "ファリングプレス",
-      "nameEn": "Falling Press",
+      "name": "マグナバンカー",
+      "nameEn": "Magna Bunker",
       "category": "unique",
       "notation": "4HP",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "4"
-          ],
+          "directions": ["4"],
           "button": "HP"
         }
       ]
@@ -333,63 +163,22 @@
         {
           "strength": "L",
           "notation": "236LP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "LP"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "LP" }]
         },
         {
           "strength": "M",
           "notation": "236MP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "MP"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "MP" }]
         },
         {
           "strength": "H",
           "notation": "236HP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HP"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "HP" }]
         },
         {
           "strength": "OD",
           "notation": "OD236HP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HP",
-              "isOD": true
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "HP", "isOD": true }]
         }
       ]
     },
@@ -398,69 +187,28 @@
       "name": "ディマカイルス",
       "nameEn": "Dimachaerus",
       "category": "special",
-      "notation": "236+K",
+      "notation": "214+P",
       "steps": [],
       "variants": [
         {
           "strength": "L",
-          "notation": "236LK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "LK"
-            }
-          ]
+          "notation": "214LP",
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "LP" }]
         },
         {
           "strength": "M",
-          "notation": "236MK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "MK"
-            }
-          ]
+          "notation": "214MP",
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "MP" }]
         },
         {
           "strength": "H",
-          "notation": "236HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HK"
-            }
-          ]
+          "notation": "214HP",
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "HP" }]
         },
         {
           "strength": "OD",
-          "notation": "OD236HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HK",
-              "isOD": true
-            }
-          ]
+          "notation": "OD214HP",
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "HP", "isOD": true }]
         }
       ]
     },
@@ -469,69 +217,58 @@
       "name": "ファランクス",
       "nameEn": "Phalanx",
       "category": "special",
-      "notation": "214+P",
+      "notation": "623+P",
       "steps": [],
       "variants": [
         {
           "strength": "L",
-          "notation": "214LP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "LP"
-            }
-          ]
+          "notation": "623LP",
+          "steps": [{ "type": "normal", "directions": ["6", "2", "3"], "button": "LP" }]
         },
         {
           "strength": "M",
-          "notation": "214MP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "MP"
-            }
-          ]
+          "notation": "623MP",
+          "steps": [{ "type": "normal", "directions": ["6", "2", "3"], "button": "MP" }]
         },
         {
           "strength": "H",
-          "notation": "214HP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HP"
-            }
-          ]
+          "notation": "623HP",
+          "steps": [{ "type": "normal", "directions": ["6", "2", "3"], "button": "HP" }]
         },
         {
           "strength": "OD",
-          "notation": "OD214HP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HP",
-              "isOD": true
-            }
-          ]
+          "notation": "OD623HP",
+          "steps": [{ "type": "normal", "directions": ["6", "2", "3"], "button": "HP", "isOD": true }]
+        }
+      ]
+    },
+    {
+      "id": "marisa-quadriga",
+      "name": "クアドリガ",
+      "nameEn": "Quadriga",
+      "category": "special",
+      "notation": "236+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "236LK",
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "LK" }]
+        },
+        {
+          "strength": "M",
+          "notation": "236MK",
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "MK" }]
+        },
+        {
+          "strength": "H",
+          "notation": "236HK",
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "HK" }]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD236HK",
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "HK", "isOD": true }]
         }
       ]
     },
@@ -546,126 +283,64 @@
         {
           "strength": "L",
           "notation": "214LK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "LK"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "LK" }]
         },
         {
           "strength": "M",
           "notation": "214MK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "MK"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "MK" }]
         },
         {
           "strength": "H",
           "notation": "214HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HK"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "HK" }]
         },
         {
           "strength": "OD",
           "notation": "OD214HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HK",
-              "isOD": true
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "HK", "isOD": true }]
         }
       ]
     },
     {
       "id": "marisa-sa1",
-      "name": "メテオリティカ",
-      "nameEn": "Meteorica (SA1)",
+      "name": "マリーザジャベリン",
+      "nameEn": "Marisa Javelin (SA1)",
       "category": "super",
-      "notation": "236236LP",
+      "notation": "236236P",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
+          "directions": ["2", "3", "6", "2", "3", "6"],
           "button": "LP"
         }
       ]
     },
     {
       "id": "marisa-sa2",
-      "name": "ヴァスタレーロ",
-      "nameEn": "Vastatore (SA2)",
+      "name": "メテオリティス",
+      "nameEn": "Meteoritis (SA2)",
       "category": "super",
-      "notation": "236236HP",
+      "notation": "214214P",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "HP"
+          "directions": ["2", "1", "4", "2", "1", "4"],
+          "button": "LP"
         }
       ]
     },
     {
       "id": "marisa-sa3",
-      "name": "ゴッデスオブザハント",
-      "nameEn": "Goddess of the Hunt (SA3)",
+      "name": "アポロウーサ",
+      "nameEn": "Apollo Osa (SA3)",
       "category": "super",
-      "notation": "236236MK",
+      "notation": "236236K",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "MK"
+          "directions": ["2", "3", "6", "2", "3", "6"],
+          "button": "LK"
         }
       ]
     }

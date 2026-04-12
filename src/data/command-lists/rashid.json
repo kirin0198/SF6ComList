@@ -8,15 +8,7 @@
       "nameEn": "Standing LP",
       "category": "normal",
       "notation": "5LP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "LP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "LP" }]
     },
     {
       "id": "rashid-5mp",
@@ -24,15 +16,7 @@
       "nameEn": "Standing MP",
       "category": "normal",
       "notation": "5MP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "MP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "MP" }]
     },
     {
       "id": "rashid-5hp",
@@ -40,15 +24,7 @@
       "nameEn": "Standing HP",
       "category": "normal",
       "notation": "5HP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "HP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "HP" }]
     },
     {
       "id": "rashid-5lk",
@@ -56,15 +32,7 @@
       "nameEn": "Standing LK",
       "category": "normal",
       "notation": "5LK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "LK"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "LK" }]
     },
     {
       "id": "rashid-5mk",
@@ -72,15 +40,7 @@
       "nameEn": "Standing MK",
       "category": "normal",
       "notation": "5MK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "MK"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "MK" }]
     },
     {
       "id": "rashid-5hk",
@@ -88,15 +48,7 @@
       "nameEn": "Standing HK",
       "category": "normal",
       "notation": "5HK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "HK"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "HK" }]
     },
     {
       "id": "rashid-2lp",
@@ -104,15 +56,7 @@
       "nameEn": "Crouching LP",
       "category": "normal",
       "notation": "2LP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2"
-          ],
-          "button": "LP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "LP" }]
     },
     {
       "id": "rashid-2mp",
@@ -120,15 +64,7 @@
       "nameEn": "Crouching MP",
       "category": "normal",
       "notation": "2MP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2"
-          ],
-          "button": "MP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "MP" }]
     },
     {
       "id": "rashid-2hp",
@@ -136,15 +72,7 @@
       "nameEn": "Crouching HP",
       "category": "normal",
       "notation": "2HP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2"
-          ],
-          "button": "HP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "HP" }]
     },
     {
       "id": "rashid-2lk",
@@ -152,15 +80,7 @@
       "nameEn": "Crouching LK",
       "category": "normal",
       "notation": "2LK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2"
-          ],
-          "button": "LK"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "LK" }]
     },
     {
       "id": "rashid-2mk",
@@ -168,15 +88,7 @@
       "nameEn": "Crouching MK",
       "category": "normal",
       "notation": "2MK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2"
-          ],
-          "button": "MK"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "MK" }]
     },
     {
       "id": "rashid-2hk",
@@ -184,15 +96,7 @@
       "nameEn": "Crouching HK",
       "category": "normal",
       "notation": "2HK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2"
-          ],
-          "button": "HK"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "HK" }]
     },
     {
       "id": "rashid-throw",
@@ -200,15 +104,7 @@
       "nameEn": "Throw",
       "category": "throw",
       "notation": "Throw",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "Throw"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "Throw" }]
     },
     {
       "id": "rashid-di",
@@ -216,15 +112,7 @@
       "nameEn": "Drive Impact",
       "category": "drive",
       "notation": "DI",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "DI"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "DI" }]
     },
     {
       "id": "rashid-dr",
@@ -232,15 +120,7 @@
       "nameEn": "Drive Rush",
       "category": "drive",
       "notation": "DR",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "DR"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "DR" }]
     },
     {
       "id": "rashid-dp",
@@ -248,15 +128,7 @@
       "nameEn": "Drive Parry",
       "category": "drive",
       "notation": "DP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "DP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "DP" }]
     },
     {
       "id": "rashid-drev",
@@ -264,47 +136,31 @@
       "nameEn": "Drive Reversal",
       "category": "drive",
       "notation": "DRev",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "6"
-          ],
-          "button": "DRev"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["6"], "button": "DRev" }]
+    },
+    {
+      "id": "rashid-6mp",
+      "name": "フラップスピン",
+      "nameEn": "Flapping Spin",
+      "category": "unique",
+      "notation": "6MP",
+      "steps": [{ "type": "normal", "directions": ["6"], "button": "MP" }]
     },
     {
       "id": "rashid-6hp",
-      "name": "ランニングアーム",
-      "nameEn": "Running Arm",
+      "name": "アサルトビーク",
+      "nameEn": "Beak Assault",
       "category": "unique",
       "notation": "6HP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "6"
-          ],
-          "button": "HP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["6"], "button": "HP" }]
     },
     {
-      "id": "rashid-6mk",
-      "name": "フリップキック",
-      "nameEn": "Flip Kick",
+      "id": "rashid-6hk",
+      "name": "クレセントキック",
+      "nameEn": "Crescent Kick",
       "category": "unique",
-      "notation": "6MK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "6"
-          ],
-          "button": "MK"
-        }
-      ]
+      "notation": "6HK",
+      "steps": [{ "type": "normal", "directions": ["6"], "button": "HK" }]
     },
     {
       "id": "rashid-spinning-mixer",
@@ -317,63 +173,22 @@
         {
           "strength": "L",
           "notation": "236LP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "LP"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "LP" }]
         },
         {
           "strength": "M",
           "notation": "236MP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "MP"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "MP" }]
         },
         {
           "strength": "H",
           "notation": "236HP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HP"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "HP" }]
         },
         {
           "strength": "OD",
           "notation": "OD236HP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HP",
-              "isOD": true
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "HP", "isOD": true }]
         }
       ]
     },
@@ -382,69 +197,28 @@
       "name": "イーグルスパイク",
       "nameEn": "Eagle Spike",
       "category": "special",
-      "notation": "236+K",
+      "notation": "214+K",
       "steps": [],
       "variants": [
         {
           "strength": "L",
-          "notation": "236LK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "LK"
-            }
-          ]
+          "notation": "214LK",
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "LK" }]
         },
         {
           "strength": "M",
-          "notation": "236MK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "MK"
-            }
-          ]
+          "notation": "214MK",
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "MK" }]
         },
         {
           "strength": "H",
-          "notation": "236HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HK"
-            }
-          ]
+          "notation": "214HK",
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "HK" }]
         },
         {
           "strength": "OD",
-          "notation": "OD236HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HK",
-              "isOD": true
-            }
-          ]
+          "notation": "OD214HK",
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "HK", "isOD": true }]
         }
       ]
     },
@@ -453,69 +227,28 @@
       "name": "ワールウインドショット",
       "nameEn": "Whirlwind Shot",
       "category": "special",
-      "notation": "214+P",
+      "notation": "236+K",
       "steps": [],
       "variants": [
         {
           "strength": "L",
-          "notation": "214LP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "LP"
-            }
-          ]
+          "notation": "236LK",
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "LK" }]
         },
         {
           "strength": "M",
-          "notation": "214MP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "MP"
-            }
-          ]
+          "notation": "236MK",
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "MK" }]
         },
         {
           "strength": "H",
-          "notation": "214HP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HP"
-            }
-          ]
+          "notation": "236HK",
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "HK" }]
         },
         {
           "strength": "OD",
-          "notation": "OD214HP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HP",
-              "isOD": true
-            }
-          ]
+          "notation": "OD236HK",
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "HK", "isOD": true }]
         }
       ]
     },
@@ -524,69 +257,58 @@
       "name": "アラビアンサイクロン",
       "nameEn": "Arabian Cyclone",
       "category": "special",
-      "notation": "214+K",
+      "notation": "214+P",
       "steps": [],
       "variants": [
         {
           "strength": "L",
-          "notation": "214LK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "LK"
-            }
-          ]
+          "notation": "214LP",
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "LP" }]
         },
         {
           "strength": "M",
-          "notation": "214MK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "MK"
-            }
-          ]
+          "notation": "214MP",
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "MP" }]
         },
         {
           "strength": "H",
-          "notation": "214HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HK"
-            }
-          ]
+          "notation": "214HP",
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "HP" }]
         },
         {
           "strength": "OD",
-          "notation": "OD214HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HK",
-              "isOD": true
-            }
-          ]
+          "notation": "OD214HP",
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "HP", "isOD": true }]
+        }
+      ]
+    },
+    {
+      "id": "rashid-arabian-skyhigh",
+      "name": "アラビアンスカイハイ",
+      "nameEn": "Arabian Skyhigh",
+      "category": "special",
+      "notation": "j214+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "j214LK",
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "LK" }]
+        },
+        {
+          "strength": "M",
+          "notation": "j214MK",
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "MK" }]
+        },
+        {
+          "strength": "H",
+          "notation": "j214HK",
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "HK" }]
+        },
+        {
+          "strength": "OD",
+          "notation": "ODj214HK",
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "HK", "isOD": true }]
         }
       ]
     },
@@ -595,18 +317,11 @@
       "name": "スーパーラシードキック",
       "nameEn": "Super Rashid Kick (SA1)",
       "category": "super",
-      "notation": "236236LK",
+      "notation": "236236K",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
+          "directions": ["2", "3", "6", "2", "3", "6"],
           "button": "LK"
         }
       ]
@@ -616,19 +331,12 @@
       "name": "イウサール",
       "nameEn": "Ysaar (SA2)",
       "category": "super",
-      "notation": "236236HP",
+      "notation": "214214K",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "HP"
+          "directions": ["2", "1", "4", "2", "1", "4"],
+          "button": "LK"
         }
       ]
     },
@@ -637,19 +345,12 @@
       "name": "アルタイル",
       "nameEn": "Altair (SA3)",
       "category": "super",
-      "notation": "236236MK",
+      "notation": "236236P",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "MK"
+          "directions": ["2", "3", "6", "2", "3", "6"],
+          "button": "LP"
         }
       ]
     }
