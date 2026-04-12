@@ -299,9 +299,21 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "6"
-          ],
+          "directions": ["6"],
+          "button": "MK"
+        }
+      ]
+    },
+    {
+      "id": "alex-oblique-stamp",
+      "name": "オブリークスタンプ",
+      "nameEn": "Oblique Stamp",
+      "category": "unique",
+      "notation": "4MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": ["4"],
           "button": "MK"
         }
       ]
@@ -457,140 +469,53 @@
       ]
     },
     {
-      "id": "alex-air-stampede",
-      "name": "エアスタンピード",
-      "nameEn": "Air Stampede",
+      "id": "alex-air-knee-smash",
+      "name": "エアニースマッシュ",
+      "nameEn": "Air Knee Smash",
       "category": "special",
-      "notation": "214+K",
+      "notation": "623+K",
       "steps": [],
       "variants": [
         {
           "strength": "L",
-          "notation": "214LK",
+          "notation": "623LK",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["6", "2", "3"],
               "button": "LK"
             }
           ]
         },
         {
           "strength": "M",
-          "notation": "214MK",
+          "notation": "623MK",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["6", "2", "3"],
               "button": "MK"
             }
           ]
         },
         {
           "strength": "H",
-          "notation": "214HK",
+          "notation": "623HK",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["6", "2", "3"],
               "button": "HK"
             }
           ]
         },
         {
           "strength": "OD",
-          "notation": "OD214HK",
+          "notation": "OD623HK",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HK",
-              "isOD": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "alex-slash-elbow",
-      "name": "スラッシュエルボー",
-      "nameEn": "Slash Elbow",
-      "category": "special",
-      "notation": "236+K",
-      "steps": [],
-      "variants": [
-        {
-          "strength": "L",
-          "notation": "236LK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "LK"
-            }
-          ]
-        },
-        {
-          "strength": "M",
-          "notation": "236MK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "MK"
-            }
-          ]
-        },
-        {
-          "strength": "H",
-          "notation": "236HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HK"
-            }
-          ]
-        },
-        {
-          "strength": "OD",
-          "notation": "OD236HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["6", "2", "3"],
               "button": "HK",
               "isOD": true
             }
@@ -600,10 +525,10 @@
     },
     {
       "id": "alex-sa1",
-      "name": "ハイパーボム",
-      "nameEn": "Hyper Bomb (SA1)",
+      "name": "レイジングスピアー",
+      "nameEn": "Raging Spear (SA1)",
       "category": "super",
-      "notation": "236236LP",
+      "notation": "236236K",
       "steps": [
         {
           "type": "normal",
@@ -615,16 +540,37 @@
             "3",
             "6"
           ],
-          "button": "LP"
+          "button": "LK"
         }
       ]
     },
     {
       "id": "alex-sa2",
-      "name": "ブーメランレイド",
-      "nameEn": "Boomerang Raid (SA2)",
+      "name": "スレッジクロスハンマー",
+      "nameEn": "Sledge Cross Hammer (SA2)",
       "category": "super",
-      "notation": "236236HP",
+      "notation": "214214P",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2",
+            "1",
+            "4",
+            "2",
+            "1",
+            "4"
+          ],
+          "button": "LP"
+        }
+      ]
+    },
+    {
+      "id": "alex-sa3",
+      "name": "ファイナルキャプチュード",
+      "nameEn": "Final Captitude (SA3)",
+      "category": "super",
+      "notation": "236236P",
       "steps": [
         {
           "type": "normal",
@@ -637,27 +583,6 @@
             "6"
           ],
           "button": "HP"
-        }
-      ]
-    },
-    {
-      "id": "alex-sa3",
-      "name": "スタンガンヘッドバット",
-      "nameEn": "Stun Gun Headbutt (SA3)",
-      "category": "super",
-      "notation": "236236MK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "MK"
         }
       ]
     }
