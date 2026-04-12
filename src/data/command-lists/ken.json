@@ -275,54 +275,6 @@
       ]
     },
     {
-      "id": "ken-6hk",
-      "name": "顎撥ね蹴り",
-      "nameEn": "Chin Buster",
-      "category": "unique",
-      "notation": "6HK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "6"
-          ],
-          "button": "HK"
-        }
-      ]
-    },
-    {
-      "id": "ken-4hk",
-      "name": "稲妻かかと割り",
-      "nameEn": "Thunder Kick",
-      "category": "unique",
-      "notation": "4HK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "4"
-          ],
-          "button": "HK"
-        }
-      ]
-    },
-    {
-      "id": "ken-6hp",
-      "name": "肘打ち",
-      "nameEn": "Quick Elbow",
-      "category": "unique",
-      "notation": "6HP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "6"
-          ],
-          "button": "HP"
-        }
-      ]
-    },
-    {
       "id": "ken-hadoken",
       "name": "波動拳",
       "nameEn": "Hadoken",
@@ -536,9 +488,9 @@
       ]
     },
     {
-      "id": "ken-dragonlash",
-      "name": "龍尾脚",
-      "nameEn": "Dragonlash Kick",
+      "id": "ken-jinraikyaku",
+      "name": "迅雷脚",
+      "nameEn": "Jinraikyaku",
       "category": "special",
       "notation": "236+K",
       "steps": [],
@@ -549,11 +501,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "LK"
             }
           ]
@@ -564,11 +512,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "MK"
             }
           ]
@@ -579,11 +523,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "HK"
             }
           ]
@@ -594,11 +534,62 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
+              "button": "HK",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ken-dragonlash",
+      "name": "龍尾脚",
+      "nameEn": "Dragonlash Kick",
+      "category": "special",
+      "notation": "623+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "623LK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["6", "2", "3"],
+              "button": "LK"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "623MK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["6", "2", "3"],
+              "button": "MK"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "623HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["6", "2", "3"],
+              "button": "HK"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD623HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["6", "2", "3"],
               "button": "HK",
               "isOD": true
             }
@@ -608,64 +599,43 @@
     },
     {
       "id": "ken-sa1",
-      "name": "龍尾裂破",
+      "name": "龍尾烈脚",
       "nameEn": "Dragonlash Flame (SA1)",
       "category": "super",
-      "notation": "236236LK",
+      "notation": "214214K",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
+          "directions": ["2", "1", "4", "2", "1", "4"],
           "button": "LK"
         }
       ]
     },
     {
       "id": "ken-sa2",
-      "name": "神龍拳",
-      "nameEn": "Shinryuken (SA2)",
+      "name": "疾風迅雷脚",
+      "nameEn": "Shippu Jinraikyaku (SA2)",
       "category": "super",
-      "notation": "214214HP",
+      "notation": "236236K",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "1",
-            "4",
-            "2",
-            "1",
-            "4"
-          ],
-          "button": "HP"
+          "directions": ["2", "3", "6", "2", "3", "6"],
+          "button": "LK"
         }
       ]
     },
     {
       "id": "ken-sa3",
-      "name": "疾風迅雷脚",
-      "nameEn": "Shippu Jinraikyaku (SA3)",
+      "name": "神龍烈破",
+      "nameEn": "Shinryu Reppa (SA3)",
       "category": "super",
-      "notation": "236236MK",
+      "notation": "236236P",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "MK"
+          "directions": ["2", "3", "6", "2", "3", "6"],
+          "button": "LP"
         }
       ]
     }
