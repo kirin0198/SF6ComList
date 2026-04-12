@@ -39,3 +39,11 @@ tsconfig.tsbuildinfo
 # Temporary / PoC
 poc/
 sf6-temp/
+
+# Playwright
+playwright-report/
+test-results/
+blob-report/
+
+# System library packages (WSL Playwright deps)
+*.deb
