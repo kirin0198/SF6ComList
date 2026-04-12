@@ -3,68 +3,100 @@
 [![CI](https://github.com/kirin0198/SF6ComList/actions/workflows/ci.yml/badge.svg)](https://github.com/kirin0198/SF6ComList/actions/workflows/ci.yml)
 [![Deploy to Cloud Run](https://github.com/kirin0198/SF6ComList/actions/workflows/deploy.yml/badge.svg)](https://github.com/kirin0198/SF6ComList/actions/workflows/deploy.yml)
 
-SF6（ストリートファイター6）の個人向けコンボ管理 Web アプリケーション。
-ビジュアル UI（方向キーパッド + ボタンパレット）でコンボを組み立て、キャラクター別・タグ別に整理できます。
+ストリートファイター6（SF6）のコンボ管理 Web アプリケーションです。
+ビジュアル UI でコンボを組み立て、キャラクター別・タグ別に整理できます。
 
-## Features
+**https://sf6labs.com**
 
-- **ビジュアルコンボ入力** -- 方向キーパッド + 6ボタンパレット + コネクターでコンボを直感的に組み立て
-- **テンキー表記入力** -- `236P > 236236P` のようなテンキー表記テキストからの入力にも対応
-- **キャラクター別管理** -- SF6 全キャラクターに対応。一覧はグリッド/リスト表示切替・ソート・お気に入り機能つき
-- **タグベース整理** -- プリセットタグ 12 種 + ユーザー定義タグでコンボを分類・フィルタ
-- **ダメージ値・メモ** -- 各コンボにダメージ値やメモを記録
+## 使い方
 
-## Tech Stack
+### 1. アカウント登録
 
-| Layer    | Technology                                        |
-| -------- | ------------------------------------------------- |
-| Frontend | Next.js (App Router) + React 19 + Tailwind CSS v4 |
-| Backend  | Next.js API Routes                                |
-| Database | SQLite (Prisma ORM)                               |
-| Auth     | Auth.js (NextAuth v5) - Credentials Provider      |
-| Testing  | Vitest + Testing Library + Playwright (E2E)       |
+サイトにアクセスし、メールアドレスとパスワードでアカウントを作成してください。
 
-## Getting Started
+### 2. キャラクターを選ぶ
 
-### Prerequisites
+ログイン後、キャラクター一覧から登録したいキャラクターを選択します。
+よく使うキャラクターはお気に入りに登録すると、一覧の上部に表示されます。
+
+### 3. コンボを登録する
+
+2 つの入力方法があります。
+
+- **ビジュアル入力** -- 方向キーパッド + 6 ボタンパレット + コネクターで直感的に組み立て
+- **テンキー表記入力** -- `236P > 236236P` のようなテキスト入力にも対応
+
+各コンボにはダメージ値やメモを記録できます。
+
+### 4. タグで整理する
+
+プリセットタグ 12 種（基本コンボ、画面端、対空など）に加え、自分だけのタグを作成してコンボを分類できます。
+タグでフィルタリングすれば、目的のコンボをすぐに見つけられます。
+
+## 機能一覧
+
+- **ビジュアルコンボ入力** -- 方向キーパッド + 6 ボタンパレット + コネクターで組み立て
+- **テンキー表記入力** -- テキストベースの入力にも対応
+- **キャラクター別管理** -- SF6 全キャラクターに対応、グリッド / リスト表示切替・ソート
+- **お気に入り機能** -- よく使うキャラクターを上部に固定
+- **タグベース整理** -- プリセットタグ + ユーザー定義タグで分類・フィルタ
+- **ダメージ値・メモ** -- 各コンボに補足情報を記録
+
+---
+
+## セルフホスティング
+
+自分の環境でデプロイしたい場合の手順です。
+
+### 必要な環境
 
 - Node.js 20+
 - npm
 
-### Setup
+### ローカル開発
 
 ```bash
-# Install dependencies
+# 依存関係のインストール
 npm install
 
-# Generate Prisma Client
+# Prisma Client の生成
 npx prisma generate
 
-# Create database & apply schema
+# データベースの作成・スキーマ適用
 npx prisma db push
 
-# Seed preset tags
+# プリセットタグの投入
 npx prisma db seed
 
-# Start dev server
+# 開発サーバーの起動
 npm run dev
 ```
 
-Open http://localhost:3000 to access the app.
+http://localhost:3000 でアクセスできます。
 
 ### Docker
 
 ```bash
-# Create .env (AUTH_SECRET is required)
+# 環境変数ファイルの作成
 cp .env.example .env
-# Generate a secret:
-# openssl rand -base64 32
+# AUTH_SECRET を生成して .env に設定:
+#   openssl rand -base64 32
 
-# Build and start
+# ビルド・起動
 docker-compose up --build -d
 ```
 
-## Project Structure
+### 技術スタック
+
+| レイヤー       | 技術                                              |
+| -------------- | ------------------------------------------------- |
+| フロントエンド | Next.js (App Router) + React 19 + Tailwind CSS v4 |
+| バックエンド   | Next.js API Routes                                |
+| データベース   | SQLite (Prisma ORM)                               |
+| 認証           | Auth.js (NextAuth v5) - Credentials Provider      |
+| テスト         | Vitest + Testing Library + Playwright (E2E)       |
+
+### プロジェクト構成
 
 ```
 src/
@@ -85,16 +117,16 @@ tests/                  # E2E tests (Playwright)
 docs/                   # Design documents
 ```
 
-## Scripts
+### スクリプト
 
-| Command               | Description                 |
-| --------------------- | --------------------------- |
-| `npm run dev`         | Start development server    |
-| `npm run build`       | Build for production        |
-| `npm test`            | Run unit tests (Vitest)     |
-| `npm run lint`        | Run ESLint                  |
-| `npx playwright test` | Run E2E tests               |
-| `npx prisma studio`   | Open Prisma Studio (DB GUI) |
+| コマンド              | 説明                    |
+| --------------------- | ----------------------- |
+| `npm run dev`         | 開発サーバーの起動      |
+| `npm run build`       | プロダクションビルド    |
+| `npm test`            | ユニットテスト (Vitest) |
+| `npm run lint`        | ESLint の実行           |
+| `npx playwright test` | E2E テストの実行        |
+| `npx prisma studio`   | Prisma Studio (DB GUI)  |
 
 ## License
 
