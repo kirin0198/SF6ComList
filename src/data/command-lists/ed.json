@@ -276,8 +276,8 @@
     },
     {
       "id": "ed-6hp",
-      "name": "サイコスイング",
-      "nameEn": "Psycho Swing",
+      "name": "コブラパンチ",
+      "nameEn": "Cobra Punch",
       "category": "unique",
       "notation": "6HP",
       "steps": [
@@ -287,22 +287,6 @@
             "6"
           ],
           "button": "HP"
-        }
-      ]
-    },
-    {
-      "id": "ed-6mk",
-      "name": "サイコニー",
-      "nameEn": "Psycho Knee",
-      "category": "unique",
-      "notation": "6MK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "6"
-          ],
-          "button": "MK"
         }
       ]
     },
@@ -378,9 +362,9 @@
       ]
     },
     {
-      "id": "ed-psycho-knuckle",
-      "name": "サイコナックル",
-      "nameEn": "Psycho Knuckle",
+      "id": "ed-psycho-spark",
+      "name": "サイコスパーク",
+      "nameEn": "Psycho Spark",
       "category": "special",
       "notation": "236+P",
       "steps": [],
@@ -520,70 +504,54 @@
       ]
     },
     {
-      "id": "ed-kill-rush",
-      "name": "キルラッシュ",
-      "nameEn": "Kill Rush",
+      "id": "ed-psycho-blitz",
+      "name": "サイコブリッツ",
+      "nameEn": "Psycho Blitz",
       "category": "special",
-      "notation": "214+K",
+      "notation": "214+P",
       "steps": [],
       "variants": [
         {
           "strength": "L",
-          "notation": "214LK",
+          "notation": "214LP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "LK"
+              "directions": ["2", "1", "4"],
+              "button": "LP"
             }
           ]
         },
         {
           "strength": "M",
-          "notation": "214MK",
+          "notation": "214MP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "MK"
+              "directions": ["2", "1", "4"],
+              "button": "MP"
             }
           ]
         },
         {
           "strength": "H",
-          "notation": "214HK",
+          "notation": "214HP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HK"
+              "directions": ["2", "1", "4"],
+              "button": "HP"
             }
           ]
         },
         {
           "strength": "OD",
-          "notation": "OD214HK",
+          "notation": "OD214HP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HK",
+              "directions": ["2", "1", "4"],
+              "button": "HP",
               "isOD": true
             }
           ]
@@ -595,61 +563,40 @@
       "name": "サイコストーム",
       "nameEn": "Psycho Storm (SA1)",
       "category": "super",
-      "notation": "236236LP",
+      "notation": "236236K",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "LP"
+          "directions": ["2", "3", "6", "2", "3", "6"],
+          "button": "LK"
         }
       ]
     },
     {
       "id": "ed-sa2",
-      "name": "サイコチェンバー",
-      "nameEn": "Psycho Chamber (SA2)",
+      "name": "サイコキャノン",
+      "nameEn": "Psycho Cannon (SA2)",
       "category": "super",
-      "notation": "236236HP",
+      "notation": "214214P",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "HP"
+          "directions": ["2", "1", "4", "2", "1", "4"],
+          "button": "LP"
         }
       ]
     },
     {
       "id": "ed-sa3",
-      "name": "サイコキャノン",
-      "nameEn": "Psycho Cannon (SA3)",
+      "name": "サイコチェンバー",
+      "nameEn": "Psycho Chamber (SA3)",
       "category": "super",
-      "notation": "236236MK",
+      "notation": "236236P",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "MK"
+          "directions": ["2", "3", "6", "2", "3", "6"],
+          "button": "LP"
         }
       ]
     }
