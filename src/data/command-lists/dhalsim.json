@@ -275,72 +275,50 @@
       ]
     },
     {
-      "id": "dhalsim-6hp",
-      "name": "ヨガランス",
-      "nameEn": "Yoga Lance",
+      "id": "dhalsim-4mp",
+      "name": "ヨガアッパー",
+      "nameEn": "Yoga Upper",
       "category": "unique",
-      "notation": "6HP",
+      "notation": "4MP",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "6"
-          ],
-          "button": "HP"
+          "directions": ["4"],
+          "button": "MP"
         }
       ]
     },
     {
       "id": "dhalsim-4hp",
-      "name": "ヨガスマッシュ",
-      "nameEn": "Yoga Smash",
+      "name": "ヨガランス",
+      "nameEn": "Yoga Lance",
       "category": "unique",
       "notation": "4HP",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "4"
-          ],
+          "directions": ["4"],
           "button": "HP"
         }
       ]
     },
     {
-      "id": "dhalsim-6mk",
-      "name": "ヨガアッパー",
-      "nameEn": "Yoga Upper",
+      "id": "dhalsim-4hk",
+      "name": "ヨガマウンテン",
+      "nameEn": "Yoga Mountain",
       "category": "unique",
-      "notation": "6MK",
+      "notation": "4HK",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "6"
-          ],
-          "button": "MK"
-        }
-      ]
-    },
-    {
-      "id": "dhalsim-6hk",
-      "name": "ヨガスライド",
-      "nameEn": "Yoga Slide",
-      "category": "unique",
-      "notation": "6HK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "6"
-          ],
+          "directions": ["4"],
           "button": "HK"
         }
       ]
     },
     {
       "id": "dhalsim-yoga-fire",
-      "name": "ヨガファイヤー",
+      "name": "ヨガファイア",
       "nameEn": "Yoga Fire",
       "category": "special",
       "notation": "236+P",
@@ -414,65 +392,49 @@
       "name": "ヨガフレイム",
       "nameEn": "Yoga Flame",
       "category": "special",
-      "notation": "214+P",
+      "notation": "63214+P",
       "steps": [],
       "variants": [
         {
           "strength": "L",
-          "notation": "214LP",
+          "notation": "63214LP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["6", "3", "2", "1", "4"],
               "button": "LP"
             }
           ]
         },
         {
           "strength": "M",
-          "notation": "214MP",
+          "notation": "63214MP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["6", "3", "2", "1", "4"],
               "button": "MP"
             }
           ]
         },
         {
           "strength": "H",
-          "notation": "214HP",
+          "notation": "63214HP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["6", "3", "2", "1", "4"],
               "button": "HP"
             }
           ]
         },
         {
           "strength": "OD",
-          "notation": "OD214HP",
+          "notation": "OD63214HP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["6", "3", "2", "1", "4"],
               "button": "HP",
               "isOD": true
             }
@@ -481,9 +443,9 @@
       ]
     },
     {
-      "id": "dhalsim-yoga-blast",
-      "name": "ヨガブラスト",
-      "nameEn": "Yoga Blast",
+      "id": "dhalsim-yoga-arch",
+      "name": "ヨガアーチ",
+      "nameEn": "Yoga Arch",
       "category": "special",
       "notation": "236+K",
       "steps": [],
@@ -552,140 +514,53 @@
       ]
     },
     {
-      "id": "dhalsim-yoga-comet",
-      "name": "ヨガコメット",
-      "nameEn": "Yoga Comet",
+      "id": "dhalsim-yoga-blast",
+      "name": "ヨガブラスト",
+      "nameEn": "Yoga Blast",
       "category": "special",
-      "notation": "214+K",
+      "notation": "63214+K",
       "steps": [],
       "variants": [
         {
           "strength": "L",
-          "notation": "214LK",
+          "notation": "63214LK",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["6", "3", "2", "1", "4"],
               "button": "LK"
             }
           ]
         },
         {
           "strength": "M",
-          "notation": "214MK",
+          "notation": "63214MK",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["6", "3", "2", "1", "4"],
               "button": "MK"
             }
           ]
         },
         {
           "strength": "H",
-          "notation": "214HK",
+          "notation": "63214HK",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["6", "3", "2", "1", "4"],
               "button": "HK"
             }
           ]
         },
         {
           "strength": "OD",
-          "notation": "OD214HK",
+          "notation": "OD63214HK",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HK",
-              "isOD": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "dhalsim-yoga-teleport",
-      "name": "ヨガテレポート",
-      "nameEn": "Yoga Teleport",
-      "category": "special",
-      "notation": "623+K",
-      "steps": [],
-      "variants": [
-        {
-          "strength": "L",
-          "notation": "623LK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "6",
-                "2",
-                "3"
-              ],
-              "button": "LK"
-            }
-          ]
-        },
-        {
-          "strength": "M",
-          "notation": "623MK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "6",
-                "2",
-                "3"
-              ],
-              "button": "MK"
-            }
-          ]
-        },
-        {
-          "strength": "H",
-          "notation": "623HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "6",
-                "2",
-                "3"
-              ],
-              "button": "HK"
-            }
-          ]
-        },
-        {
-          "strength": "OD",
-          "notation": "OD623HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "6",
-                "2",
-                "3"
-              ],
+              "directions": ["6", "3", "2", "1", "4"],
               "button": "HK",
               "isOD": true
             }
@@ -719,40 +594,26 @@
       "name": "ヨガサンバースト",
       "nameEn": "Yoga Sunburst (SA2)",
       "category": "super",
-      "notation": "236236HP",
+      "notation": "214214K",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "HP"
+          "directions": ["2", "1", "4", "2", "1", "4"],
+          "button": "LK"
         }
       ]
     },
     {
       "id": "dhalsim-sa3",
-      "name": "ヨガレジェンド",
-      "nameEn": "Yoga Legend (SA3)",
+      "name": "ヨガマーシレス",
+      "nameEn": "Yoga Merciless (SA3)",
       "category": "super",
-      "notation": "236236MK",
+      "notation": "236236K",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "MK"
+          "directions": ["2", "3", "6", "2", "3", "6"],
+          "button": "LK"
         }
       ]
     }
