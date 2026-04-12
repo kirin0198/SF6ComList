@@ -41,12 +41,21 @@ gcs_download() {
 gcs_upload() {
   local token
   token=$(get_token) || return 1
-  curl -sf \
+  local response
+  response=$(curl -s -w "\n%{http_code}" \
     -H "Authorization: Bearer ${token}" \
     -H "Content-Type: application/octet-stream" \
-    -X PUT \
+    -X POST \
     --data-binary "@${DB_PATH}" \
-    "https://storage.googleapis.com/upload/storage/v1/b/${GCS_BUCKET_NAME}/o?uploadType=media&name=${GCS_OBJECT}"
+    "https://storage.googleapis.com/upload/storage/v1/b/${GCS_BUCKET_NAME}/o?uploadType=media&name=${GCS_OBJECT}")
+  local http_code
+  http_code=$(echo "${response}" | tail -1)
+  if [ "${http_code}" -ge 200 ] && [ "${http_code}" -lt 300 ]; then
+    return 0
+  else
+    echo "GCS upload error (HTTP ${http_code}): $(echo "${response}" | head -1)" >&2
+    return 1
+  fi
 }
 
 # GCS 上のオブジェクト存在確認
