@@ -275,49 +275,43 @@
       ]
     },
     {
-      "id": "akuma-6hp",
+      "id": "akuma-zugaihasatsu",
       "name": "頭蓋破殺",
       "nameEn": "Zugaihasatsu",
       "category": "unique",
-      "notation": "6HP",
+      "notation": "6MP",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "6"
-          ],
-          "button": "HP"
+          "directions": ["6"],
+          "button": "MP"
         }
       ]
     },
     {
-      "id": "akuma-4hp",
-      "name": "閃空",
-      "nameEn": "Flash Step",
+      "id": "akuma-ragokyaku",
+      "name": "羅豪脚",
+      "nameEn": "Ragokyaku",
       "category": "unique",
-      "notation": "4HP",
+      "notation": "4HK",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "4"
-          ],
-          "button": "HP"
+          "directions": ["4"],
+          "button": "HK"
         }
       ]
     },
     {
-      "id": "akuma-6mk",
-      "name": "回し蹴り",
-      "nameEn": "Roundhouse",
+      "id": "akuma-retsokyaku",
+      "name": "裂槍脚",
+      "nameEn": "Retsokyaku",
       "category": "unique",
       "notation": "6MK",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "6"
-          ],
+          "directions": ["6"],
           "button": "MK"
         }
       ]
@@ -536,9 +530,9 @@
       ]
     },
     {
-      "id": "akuma-hyakkishu",
-      "name": "百鬼襲",
-      "nameEn": "Hyakkishu",
+      "id": "akuma-kongo-shakka",
+      "name": "金剛灼火",
+      "nameEn": "Kongo Shakka",
       "category": "special",
       "notation": "214+P",
       "steps": [],
@@ -607,9 +601,9 @@
       ]
     },
     {
-      "id": "akuma-sekia-goshoha",
-      "name": "赤鴉豪焦破",
-      "nameEn": "Sekia Goshoha",
+      "id": "akuma-hyakkishu",
+      "name": "百鬼襲",
+      "nameEn": "Hyakkishu",
       "category": "special",
       "notation": "236+K",
       "steps": [],
@@ -700,31 +694,31 @@
     },
     {
       "id": "akuma-sa2",
-      "name": "天魔豪斬空",
-      "nameEn": "Tenma Gozanku (SA2)",
+      "name": "崩天劫火",
+      "nameEn": "Empyrean's End (SA2)",
       "category": "super",
-      "notation": "236236HP",
+      "notation": "214214P",
       "steps": [
         {
           "type": "normal",
           "directions": [
             "2",
-            "3",
-            "6",
+            "1",
+            "4",
             "2",
-            "3",
-            "6"
+            "1",
+            "4"
           ],
-          "button": "HP"
+          "button": "LP"
         }
       ]
     },
     {
       "id": "akuma-sa3",
-      "name": "瞬獄殺",
-      "nameEn": "Shun Goku Satsu (SA3)",
+      "name": "禍坏",
+      "nameEn": "Sip of Calamity (SA3)",
       "category": "super",
-      "notation": "236236MK",
+      "notation": "236236K",
       "steps": [
         {
           "type": "normal",
@@ -736,7 +730,7 @@
             "3",
             "6"
           ],
-          "button": "MK"
+          "button": "LK"
         }
       ]
     }

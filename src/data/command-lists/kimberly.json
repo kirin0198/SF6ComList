@@ -276,40 +276,50 @@
     },
     {
       "id": "kimberly-6hk",
-      "name": "ハードルキック",
-      "nameEn": "Hurdle Kick",
+      "name": "飛箭蹴",
+      "nameEn": "Hisen Shuu",
       "category": "unique",
       "notation": "6HK",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "6"
-          ],
+          "directions": ["6"],
           "button": "HK"
         }
       ]
     },
     {
-      "id": "kimberly-6mk",
-      "name": "エルボードロップ",
-      "nameEn": "Elbow Drop",
+      "id": "kimberly-3mk",
+      "name": "水切り蹴り",
+      "nameEn": "Mizukiri Geri",
       "category": "unique",
-      "notation": "6MK",
+      "notation": "3MK",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "6"
-          ],
+          "directions": ["3"],
           "button": "MK"
         }
       ]
     },
     {
-      "id": "kimberly-vagabond-edge",
-      "name": "バガボンドエッジ",
-      "nameEn": "Vagabond Edge",
+      "id": "kimberly-4hk",
+      "name": "風車",
+      "nameEn": "Kazaguruma",
+      "category": "unique",
+      "notation": "4HK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": ["4"],
+          "button": "HK"
+        }
+      ]
+    },
+    {
+      "id": "kimberly-ruten-ichimonji",
+      "name": "流転一文字",
+      "nameEn": "Ruten Ichimonji",
       "category": "special",
       "notation": "236+P",
       "steps": [],
@@ -378,9 +388,9 @@
       ]
     },
     {
-      "id": "kimberly-sprint",
-      "name": "スプリント",
-      "nameEn": "Sprint",
+      "id": "kimberly-shikkuke",
+      "name": "疾駆け",
+      "nameEn": "Shikkuke",
       "category": "special",
       "notation": "236+K",
       "steps": [],
@@ -520,9 +530,9 @@
       ]
     },
     {
-      "id": "kimberly-hidden-variable",
-      "name": "ヒドゥンバリアブル",
-      "nameEn": "Hidden Variable",
+      "id": "kimberly-sai-inkei",
+      "name": "彩隠形",
+      "nameEn": "Sai Inkei",
       "category": "special",
       "notation": "214+P",
       "steps": [],
@@ -591,70 +601,66 @@
       ]
     },
     {
-      "id": "kimberly-genius-at-play",
-      "name": "ジーニアスアットプレイ",
-      "nameEn": "Genius at Play",
+      "id": "kimberly-shourai-zaiku",
+      "name": "召雷細工",
+      "nameEn": "Shourai Zaiku",
       "category": "special",
-      "notation": "623+K",
+      "notation": "22+P",
       "steps": [],
       "variants": [
         {
           "strength": "L",
-          "notation": "623LK",
+          "notation": "22LP",
           "steps": [
             {
               "type": "normal",
               "directions": [
-                "6",
                 "2",
-                "3"
+                "2"
               ],
-              "button": "LK"
+              "button": "LP"
             }
           ]
         },
         {
           "strength": "M",
-          "notation": "623MK",
+          "notation": "22MP",
           "steps": [
             {
               "type": "normal",
               "directions": [
-                "6",
                 "2",
-                "3"
+                "2"
               ],
-              "button": "MK"
+              "button": "MP"
             }
           ]
         },
         {
           "strength": "H",
-          "notation": "623HK",
+          "notation": "22HP",
           "steps": [
             {
               "type": "normal",
               "directions": [
-                "6",
                 "2",
-                "3"
+                "2"
               ],
-              "button": "HK"
+              "button": "HP"
             }
           ]
         },
         {
           "strength": "OD",
-          "notation": "OD623HK",
+          "notation": "OD22HP",
           "steps": [
             {
               "type": "normal",
               "directions": [
-                "6",
                 "2",
-                "3"
+                "2"
               ],
-              "button": "HK",
+              "button": "HP",
               "isOD": true
             }
           ]
@@ -663,10 +669,10 @@
     },
     {
       "id": "kimberly-sa1",
-      "name": "武神流疾風連脚",
-      "nameEn": "Bushin Beats (SA1)",
+      "name": "武神乱拍子",
+      "nameEn": "Bushin Ranbyoshi (SA1)",
       "category": "super",
-      "notation": "236236LK",
+      "notation": "236236K",
       "steps": [
         {
           "type": "normal",
@@ -684,10 +690,31 @@
     },
     {
       "id": "kimberly-sa2",
-      "name": "武神流忍法・紅蓮",
-      "nameEn": "Bushin Scramble (SA2)",
+      "name": "武神天翔亢竜",
+      "nameEn": "Bushin Tensho Koryu (SA2)",
       "category": "super",
-      "notation": "236236HP",
+      "notation": "214214P",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2",
+            "1",
+            "4",
+            "2",
+            "1",
+            "4"
+          ],
+          "button": "MP"
+        }
+      ]
+    },
+    {
+      "id": "kimberly-sa3",
+      "name": "武神顕現神楽",
+      "nameEn": "Bushin Kengen Kagura (SA3)",
+      "category": "super",
+      "notation": "236236P",
       "steps": [
         {
           "type": "normal",
@@ -700,27 +727,6 @@
             "6"
           ],
           "button": "HP"
-        }
-      ]
-    },
-    {
-      "id": "kimberly-sa3",
-      "name": "武神流忍法・疾走",
-      "nameEn": "Bushin Ninpo: Soaring Guren (SA3)",
-      "category": "super",
-      "notation": "236236MK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "MK"
         }
       ]
     }

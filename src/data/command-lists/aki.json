@@ -275,40 +275,50 @@
       ]
     },
     {
-      "id": "aki-6hp",
-      "name": "蛇頭鞭",
-      "nameEn": "Snake Lash",
+      "id": "aki-chifun",
+      "name": "螭吻",
+      "nameEn": "Chifun",
       "category": "unique",
       "notation": "6HP",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "6"
-          ],
+          "directions": ["6"],
           "button": "HP"
         }
       ]
     },
     {
-      "id": "aki-6mk",
-      "name": "蛇歩き",
-      "nameEn": "Snake Walk",
+      "id": "aki-shugyu",
+      "name": "囚牛",
+      "nameEn": "Shugyu",
       "category": "unique",
-      "notation": "6MK",
+      "notation": "6HK",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "6"
-          ],
-          "button": "MK"
+          "directions": ["6"],
+          "button": "HK"
         }
       ]
     },
     {
-      "id": "aki-nightshade-pulse",
-      "name": "ナイトシェイドパルス",
+      "id": "aki-horo",
+      "name": "蒲牢",
+      "nameEn": "Horo",
+      "category": "unique",
+      "notation": "3MP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": ["3"],
+          "button": "MP"
+        }
+      ]
+    },
+    {
+      "id": "aki-jatouben",
+      "name": "蛇頭鞭",
       "nameEn": "Nightshade Pulse",
       "category": "special",
       "notation": "236+P",
@@ -378,9 +388,9 @@
       ]
     },
     {
-      "id": "aki-cruel-fang",
-      "name": "クルエルファング",
-      "nameEn": "Cruel Fang",
+      "id": "aki-ja-keiko",
+      "name": "蛇軽功",
+      "nameEn": "Toxic Crawl",
       "category": "special",
       "notation": "236+K",
       "steps": [],
@@ -449,8 +459,8 @@
       ]
     },
     {
-      "id": "aki-orchid-spring",
-      "name": "オーキッドスプリング",
+      "id": "aki-shienpo",
+      "name": "紫煙砲",
       "nameEn": "Orchid Spring",
       "category": "special",
       "notation": "214+P",
@@ -520,9 +530,9 @@
       ]
     },
     {
-      "id": "aki-snake-step",
-      "name": "スネークステップ",
-      "nameEn": "Snake Step",
+      "id": "aki-kyoshutotsu",
+      "name": "凶襲突",
+      "nameEn": "Cruel Fang",
       "category": "special",
       "notation": "214+K",
       "steps": [],
@@ -592,10 +602,10 @@
     },
     {
       "id": "aki-sa1",
-      "name": "ナイトシェイドチェイサー",
-      "nameEn": "Nightshade Chaser (SA1)",
+      "name": "死屍累々",
+      "nameEn": "Deadly Venoms (SA1)",
       "category": "super",
-      "notation": "236236LK",
+      "notation": "236236K",
       "steps": [
         {
           "type": "normal",
@@ -613,10 +623,31 @@
     },
     {
       "id": "aki-sa2",
-      "name": "トキシックブロッサム",
-      "nameEn": "Toxic Blossom (SA2)",
+      "name": "紫煙裂爪",
+      "nameEn": "Tainted Thorns (SA2)",
       "category": "super",
-      "notation": "236236HP",
+      "notation": "214214P",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2",
+            "1",
+            "4",
+            "2",
+            "1",
+            "4"
+          ],
+          "button": "MP"
+        }
+      ]
+    },
+    {
+      "id": "aki-sa3",
+      "name": "睚眦",
+      "nameEn": "Claws of Ya Zi (SA3)",
+      "category": "super",
+      "notation": "236236P",
       "steps": [
         {
           "type": "normal",
@@ -629,27 +660,6 @@
             "6"
           ],
           "button": "HP"
-        }
-      ]
-    },
-    {
-      "id": "aki-sa3",
-      "name": "シシアンサーマ",
-      "nameEn": "Shi-Cian-Sha-Ma (SA3)",
-      "category": "super",
-      "notation": "236236MK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "MK"
         }
       ]
     }
