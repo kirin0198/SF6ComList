@@ -18,10 +18,10 @@
 
 ```bash
 # プロジェクト作成（既存プロジェクトを使う場合はスキップ）
-gcloud projects create sf6comlist --name="SF6 ComboList"
+gcloud projects create YOUR_PROJECT_ID --name="SF6 ComboList"
 
 # プロジェクトをデフォルトに設定
-gcloud config set project sf6comlist
+gcloud config set project YOUR_PROJECT_ID
 
 # 必要な API を有効化
 gcloud services enable \
