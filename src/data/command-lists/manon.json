@@ -1,0 +1,665 @@
+{
+  "characterId": "manon",
+  "characterName": "マノン",
+  "moves": [
+    {
+      "id": "manon-5lp",
+      "name": "立ち弱P",
+      "nameEn": "Standing LP",
+      "category": "normal",
+      "notation": "5LP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "LP"
+        }
+      ]
+    },
+    {
+      "id": "manon-5mp",
+      "name": "立ち中P",
+      "nameEn": "Standing MP",
+      "category": "normal",
+      "notation": "5MP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "MP"
+        }
+      ]
+    },
+    {
+      "id": "manon-5hp",
+      "name": "立ち強P",
+      "nameEn": "Standing HP",
+      "category": "normal",
+      "notation": "5HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "manon-5lk",
+      "name": "立ち弱K",
+      "nameEn": "Standing LK",
+      "category": "normal",
+      "notation": "5LK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "LK"
+        }
+      ]
+    },
+    {
+      "id": "manon-5mk",
+      "name": "立ち中K",
+      "nameEn": "Standing MK",
+      "category": "normal",
+      "notation": "5MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "MK"
+        }
+      ]
+    },
+    {
+      "id": "manon-5hk",
+      "name": "立ち強K",
+      "nameEn": "Standing HK",
+      "category": "normal",
+      "notation": "5HK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "HK"
+        }
+      ]
+    },
+    {
+      "id": "manon-2lp",
+      "name": "しゃがみ弱P",
+      "nameEn": "Crouching LP",
+      "category": "normal",
+      "notation": "2LP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "LP"
+        }
+      ]
+    },
+    {
+      "id": "manon-2mp",
+      "name": "しゃがみ中P",
+      "nameEn": "Crouching MP",
+      "category": "normal",
+      "notation": "2MP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "MP"
+        }
+      ]
+    },
+    {
+      "id": "manon-2hp",
+      "name": "しゃがみ強P",
+      "nameEn": "Crouching HP",
+      "category": "normal",
+      "notation": "2HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "manon-2lk",
+      "name": "しゃがみ弱K",
+      "nameEn": "Crouching LK",
+      "category": "normal",
+      "notation": "2LK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "LK"
+        }
+      ]
+    },
+    {
+      "id": "manon-2mk",
+      "name": "しゃがみ中K",
+      "nameEn": "Crouching MK",
+      "category": "normal",
+      "notation": "2MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "MK"
+        }
+      ]
+    },
+    {
+      "id": "manon-2hk",
+      "name": "しゃがみ強K",
+      "nameEn": "Crouching HK",
+      "category": "normal",
+      "notation": "2HK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "HK"
+        }
+      ]
+    },
+    {
+      "id": "manon-throw",
+      "name": "投げ",
+      "nameEn": "Throw",
+      "category": "throw",
+      "notation": "Throw",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "Throw"
+        }
+      ]
+    },
+    {
+      "id": "manon-di",
+      "name": "ドライブインパクト",
+      "nameEn": "Drive Impact",
+      "category": "drive",
+      "notation": "DI",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "DI"
+        }
+      ]
+    },
+    {
+      "id": "manon-dr",
+      "name": "ドライブラッシュ",
+      "nameEn": "Drive Rush",
+      "category": "drive",
+      "notation": "DR",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "DR"
+        }
+      ]
+    },
+    {
+      "id": "manon-dp",
+      "name": "ドライブパリィ",
+      "nameEn": "Drive Parry",
+      "category": "drive",
+      "notation": "DP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "DP"
+        }
+      ]
+    },
+    {
+      "id": "manon-drev",
+      "name": "ドライブリバーサル",
+      "nameEn": "Drive Reversal",
+      "category": "drive",
+      "notation": "DRev",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "6"
+          ],
+          "button": "DRev"
+        }
+      ]
+    },
+    {
+      "id": "manon-6mk",
+      "name": "ルヴェ",
+      "nameEn": "Relevé",
+      "category": "unique",
+      "notation": "6MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "6"
+          ],
+          "button": "MK"
+        }
+      ]
+    },
+    {
+      "id": "manon-6hk",
+      "name": "シャッセ",
+      "nameEn": "Chassé",
+      "category": "unique",
+      "notation": "6HK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "6"
+          ],
+          "button": "HK"
+        }
+      ]
+    },
+    {
+      "id": "manon-manege-dore",
+      "name": "マネージュ・ドレ",
+      "nameEn": "Manège Doré",
+      "category": "special",
+      "notation": "63214+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "63214LK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "6",
+                "3",
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "LK"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "63214MK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "6",
+                "3",
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "MK"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "63214HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "6",
+                "3",
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "HK"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD63214HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "6",
+                "3",
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "HK",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "manon-renverse",
+      "name": "ランヴェルセ",
+      "nameEn": "Renversé",
+      "category": "special",
+      "notation": "214+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "214LK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "LK"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "214MK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "MK"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "214HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "HK"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD214HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "HK",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "manon-degage",
+      "name": "デガジェ",
+      "nameEn": "Dégagé",
+      "category": "special",
+      "notation": "236+P",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "236LP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "LP"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "236MP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "MP"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "236HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "HP"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD236HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "HP",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "manon-rond-point",
+      "name": "ロン・ドゥ・ジャンブ",
+      "nameEn": "Rond-point",
+      "category": "special",
+      "notation": "236+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "236LK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "LK"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "236MK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "MK"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "236HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "HK"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD236HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "HK",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "manon-sa1",
+      "name": "アラベスク",
+      "nameEn": "Arabesque (SA1)",
+      "category": "super",
+      "notation": "236236LK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2",
+            "3",
+            "6",
+            "2",
+            "3",
+            "6"
+          ],
+          "button": "LK"
+        }
+      ]
+    },
+    {
+      "id": "manon-sa2",
+      "name": "メダイユ・ドレ",
+      "nameEn": "Medal d'Or (SA2)",
+      "category": "super",
+      "notation": "236236HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2",
+            "3",
+            "6",
+            "2",
+            "3",
+            "6"
+          ],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "manon-sa3",
+      "name": "パ・ドゥ・ドゥ",
+      "nameEn": "Pas de Deux (SA3)",
+      "category": "super",
+      "notation": "236236MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2",
+            "3",
+            "6",
+            "2",
+            "3",
+            "6"
+          ],
+          "button": "MK"
+        }
+      ]
+    }
+  ]
+}

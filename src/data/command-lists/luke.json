@@ -1,0 +1,673 @@
+{
+  "characterId": "luke",
+  "characterName": "ルーク",
+  "moves": [
+    {
+      "id": "luke-5lp",
+      "name": "立ち弱P",
+      "nameEn": "Standing LP",
+      "category": "normal",
+      "notation": "5LP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "LP"
+        }
+      ]
+    },
+    {
+      "id": "luke-5mp",
+      "name": "立ち中P",
+      "nameEn": "Standing MP",
+      "category": "normal",
+      "notation": "5MP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "MP"
+        }
+      ]
+    },
+    {
+      "id": "luke-5hp",
+      "name": "立ち強P",
+      "nameEn": "Standing HP",
+      "category": "normal",
+      "notation": "5HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "luke-5lk",
+      "name": "立ち弱K",
+      "nameEn": "Standing LK",
+      "category": "normal",
+      "notation": "5LK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "LK"
+        }
+      ]
+    },
+    {
+      "id": "luke-5mk",
+      "name": "立ち中K",
+      "nameEn": "Standing MK",
+      "category": "normal",
+      "notation": "5MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "MK"
+        }
+      ]
+    },
+    {
+      "id": "luke-5hk",
+      "name": "立ち強K",
+      "nameEn": "Standing HK",
+      "category": "normal",
+      "notation": "5HK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "HK"
+        }
+      ]
+    },
+    {
+      "id": "luke-2lp",
+      "name": "しゃがみ弱P",
+      "nameEn": "Crouching LP",
+      "category": "normal",
+      "notation": "2LP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "LP"
+        }
+      ]
+    },
+    {
+      "id": "luke-2mp",
+      "name": "しゃがみ中P",
+      "nameEn": "Crouching MP",
+      "category": "normal",
+      "notation": "2MP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "MP"
+        }
+      ]
+    },
+    {
+      "id": "luke-2hp",
+      "name": "しゃがみ強P",
+      "nameEn": "Crouching HP",
+      "category": "normal",
+      "notation": "2HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "luke-2lk",
+      "name": "しゃがみ弱K",
+      "nameEn": "Crouching LK",
+      "category": "normal",
+      "notation": "2LK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "LK"
+        }
+      ]
+    },
+    {
+      "id": "luke-2mk",
+      "name": "しゃがみ中K",
+      "nameEn": "Crouching MK",
+      "category": "normal",
+      "notation": "2MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "MK"
+        }
+      ]
+    },
+    {
+      "id": "luke-2hk",
+      "name": "しゃがみ強K",
+      "nameEn": "Crouching HK",
+      "category": "normal",
+      "notation": "2HK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "HK"
+        }
+      ]
+    },
+    {
+      "id": "luke-throw",
+      "name": "投げ",
+      "nameEn": "Throw",
+      "category": "throw",
+      "notation": "Throw",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "Throw"
+        }
+      ]
+    },
+    {
+      "id": "luke-di",
+      "name": "ドライブインパクト",
+      "nameEn": "Drive Impact",
+      "category": "drive",
+      "notation": "DI",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "DI"
+        }
+      ]
+    },
+    {
+      "id": "luke-dr",
+      "name": "ドライブラッシュ",
+      "nameEn": "Drive Rush",
+      "category": "drive",
+      "notation": "DR",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "DR"
+        }
+      ]
+    },
+    {
+      "id": "luke-dp",
+      "name": "ドライブパリィ",
+      "nameEn": "Drive Parry",
+      "category": "drive",
+      "notation": "DP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "DP"
+        }
+      ]
+    },
+    {
+      "id": "luke-drev",
+      "name": "ドライブリバーサル",
+      "nameEn": "Drive Reversal",
+      "category": "drive",
+      "notation": "DRev",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "6"
+          ],
+          "button": "DRev"
+        }
+      ]
+    },
+    {
+      "id": "luke-6hp",
+      "name": "サプレッサー",
+      "nameEn": "Suppressor",
+      "category": "unique",
+      "notation": "6HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "6"
+          ],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "luke-4hp",
+      "name": "ダブルインパクト",
+      "nameEn": "Double Impact",
+      "category": "unique",
+      "notation": "4HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "4"
+          ],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "luke-6hk",
+      "name": "アウトローキック",
+      "nameEn": "Outlaw Kick",
+      "category": "unique",
+      "notation": "6HK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "6"
+          ],
+          "button": "HK"
+        }
+      ]
+    },
+    {
+      "id": "luke-sand-blast",
+      "name": "サンドブラスト",
+      "nameEn": "Sand Blast",
+      "category": "special",
+      "notation": "236+P",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "236LP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "LP"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "236MP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "MP"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "236HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "HP"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD236HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "HP",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "luke-rising-uppercut",
+      "name": "ライジングアッパー",
+      "nameEn": "Rising Uppercut",
+      "category": "special",
+      "notation": "623+P",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "623LP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "6",
+                "2",
+                "3"
+              ],
+              "button": "LP"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "623MP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "6",
+                "2",
+                "3"
+              ],
+              "button": "MP"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "623HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "6",
+                "2",
+                "3"
+              ],
+              "button": "HP"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD623HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "6",
+                "2",
+                "3"
+              ],
+              "button": "HP",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "luke-flash-knuckle",
+      "name": "フラッシュナックル",
+      "nameEn": "Flash Knuckle",
+      "category": "special",
+      "notation": "236+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "236LK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "LK"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "236MK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "MK"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "236HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "HK"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD236HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "HK",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "luke-avenger",
+      "name": "アヴェンジャー",
+      "nameEn": "Avenger",
+      "category": "special",
+      "notation": "214+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "214LK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "LK"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "214MK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "MK"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "214HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "HK"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD214HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "HK",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "luke-sa1",
+      "name": "ヴァルカンブラスト",
+      "nameEn": "Vulcan Blast (SA1)",
+      "category": "super",
+      "notation": "236236LP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2",
+            "3",
+            "6",
+            "2",
+            "3",
+            "6"
+          ],
+          "button": "LP"
+        }
+      ]
+    },
+    {
+      "id": "luke-sa2",
+      "name": "イレイザー",
+      "nameEn": "Eraser (SA2)",
+      "category": "super",
+      "notation": "236236HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2",
+            "3",
+            "6",
+            "2",
+            "3",
+            "6"
+          ],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "luke-sa3",
+      "name": "ペイルライダー",
+      "nameEn": "Pale Rider (SA3)",
+      "category": "super",
+      "notation": "236236MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2",
+            "3",
+            "6",
+            "2",
+            "3",
+            "6"
+          ],
+          "button": "MK"
+        }
+      ]
+    }
+  ]
+}

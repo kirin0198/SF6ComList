@@ -1,0 +1,673 @@
+{
+  "characterId": "chun-li",
+  "characterName": "春麗",
+  "moves": [
+    {
+      "id": "chun-li-5lp",
+      "name": "立ち弱P",
+      "nameEn": "Standing LP",
+      "category": "normal",
+      "notation": "5LP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "LP"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-5mp",
+      "name": "立ち中P",
+      "nameEn": "Standing MP",
+      "category": "normal",
+      "notation": "5MP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "MP"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-5hp",
+      "name": "立ち強P",
+      "nameEn": "Standing HP",
+      "category": "normal",
+      "notation": "5HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-5lk",
+      "name": "立ち弱K",
+      "nameEn": "Standing LK",
+      "category": "normal",
+      "notation": "5LK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "LK"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-5mk",
+      "name": "立ち中K",
+      "nameEn": "Standing MK",
+      "category": "normal",
+      "notation": "5MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "MK"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-5hk",
+      "name": "立ち強K",
+      "nameEn": "Standing HK",
+      "category": "normal",
+      "notation": "5HK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "HK"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-2lp",
+      "name": "しゃがみ弱P",
+      "nameEn": "Crouching LP",
+      "category": "normal",
+      "notation": "2LP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "LP"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-2mp",
+      "name": "しゃがみ中P",
+      "nameEn": "Crouching MP",
+      "category": "normal",
+      "notation": "2MP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "MP"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-2hp",
+      "name": "しゃがみ強P",
+      "nameEn": "Crouching HP",
+      "category": "normal",
+      "notation": "2HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-2lk",
+      "name": "しゃがみ弱K",
+      "nameEn": "Crouching LK",
+      "category": "normal",
+      "notation": "2LK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "LK"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-2mk",
+      "name": "しゃがみ中K",
+      "nameEn": "Crouching MK",
+      "category": "normal",
+      "notation": "2MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "MK"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-2hk",
+      "name": "しゃがみ強K",
+      "nameEn": "Crouching HK",
+      "category": "normal",
+      "notation": "2HK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "HK"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-throw",
+      "name": "投げ",
+      "nameEn": "Throw",
+      "category": "throw",
+      "notation": "Throw",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "Throw"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-di",
+      "name": "ドライブインパクト",
+      "nameEn": "Drive Impact",
+      "category": "drive",
+      "notation": "DI",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "DI"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-dr",
+      "name": "ドライブラッシュ",
+      "nameEn": "Drive Rush",
+      "category": "drive",
+      "notation": "DR",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "DR"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-dp",
+      "name": "ドライブパリィ",
+      "nameEn": "Drive Parry",
+      "category": "drive",
+      "notation": "DP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "DP"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-drev",
+      "name": "ドライブリバーサル",
+      "nameEn": "Drive Reversal",
+      "category": "drive",
+      "notation": "DRev",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "6"
+          ],
+          "button": "DRev"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-3hk",
+      "name": "後旋脚",
+      "nameEn": "Yokusen Kick",
+      "category": "unique",
+      "notation": "3HK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "3"
+          ],
+          "button": "HK"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-6mk",
+      "name": "鶴脚落",
+      "nameEn": "Water Lotus Kick",
+      "category": "unique",
+      "notation": "6MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "6"
+          ],
+          "button": "MK"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-6hp",
+      "name": "衝天掌",
+      "nameEn": "Rising Fist",
+      "category": "unique",
+      "notation": "6HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "6"
+          ],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-kikoken",
+      "name": "気功拳",
+      "nameEn": "Kikoken",
+      "category": "special",
+      "notation": "236+P",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "236LP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "LP"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "236MP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "MP"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "236HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "HP"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD236HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "HP",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chun-li-hyakuretsukyaku",
+      "name": "百裂脚",
+      "nameEn": "Hyakuretsukyaku",
+      "category": "special",
+      "notation": "236+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "236LK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "LK"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "236MK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "MK"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "236HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "HK"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD236HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "HK",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chun-li-spinning-bird-kick",
+      "name": "スピニングバードキック",
+      "nameEn": "Spinning Bird Kick",
+      "category": "special",
+      "notation": "214+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "214LK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "LK"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "214MK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "MK"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "214HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "HK"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD214HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "HK",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chun-li-tenshokyaku",
+      "name": "天昇脚",
+      "nameEn": "Tenshokyaku",
+      "category": "special",
+      "notation": "623+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "623LK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "6",
+                "2",
+                "3"
+              ],
+              "button": "LK"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "623MK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "6",
+                "2",
+                "3"
+              ],
+              "button": "MK"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "623HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "6",
+                "2",
+                "3"
+              ],
+              "button": "HK"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD623HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "6",
+                "2",
+                "3"
+              ],
+              "button": "HK",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chun-li-sa1",
+      "name": "気功掌",
+      "nameEn": "Kikosho (SA1)",
+      "category": "super",
+      "notation": "236236LP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2",
+            "3",
+            "6",
+            "2",
+            "3",
+            "6"
+          ],
+          "button": "LP"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-sa2",
+      "name": "蒼天乱華",
+      "nameEn": "Aerial Hyakuretsukyaku (SA2)",
+      "category": "super",
+      "notation": "236236HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2",
+            "3",
+            "6",
+            "2",
+            "3",
+            "6"
+          ],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "chun-li-sa3",
+      "name": "鳳翼扇",
+      "nameEn": "Hoyokusen (SA3)",
+      "category": "super",
+      "notation": "236236MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2",
+            "3",
+            "6",
+            "2",
+            "3",
+            "6"
+          ],
+          "button": "MK"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,665 @@
+{
+  "characterId": "alex",
+  "characterName": "アレックス",
+  "moves": [
+    {
+      "id": "alex-5lp",
+      "name": "立ち弱P",
+      "nameEn": "Standing LP",
+      "category": "normal",
+      "notation": "5LP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "LP"
+        }
+      ]
+    },
+    {
+      "id": "alex-5mp",
+      "name": "立ち中P",
+      "nameEn": "Standing MP",
+      "category": "normal",
+      "notation": "5MP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "MP"
+        }
+      ]
+    },
+    {
+      "id": "alex-5hp",
+      "name": "立ち強P",
+      "nameEn": "Standing HP",
+      "category": "normal",
+      "notation": "5HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "alex-5lk",
+      "name": "立ち弱K",
+      "nameEn": "Standing LK",
+      "category": "normal",
+      "notation": "5LK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "LK"
+        }
+      ]
+    },
+    {
+      "id": "alex-5mk",
+      "name": "立ち中K",
+      "nameEn": "Standing MK",
+      "category": "normal",
+      "notation": "5MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "MK"
+        }
+      ]
+    },
+    {
+      "id": "alex-5hk",
+      "name": "立ち強K",
+      "nameEn": "Standing HK",
+      "category": "normal",
+      "notation": "5HK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "HK"
+        }
+      ]
+    },
+    {
+      "id": "alex-2lp",
+      "name": "しゃがみ弱P",
+      "nameEn": "Crouching LP",
+      "category": "normal",
+      "notation": "2LP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "LP"
+        }
+      ]
+    },
+    {
+      "id": "alex-2mp",
+      "name": "しゃがみ中P",
+      "nameEn": "Crouching MP",
+      "category": "normal",
+      "notation": "2MP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "MP"
+        }
+      ]
+    },
+    {
+      "id": "alex-2hp",
+      "name": "しゃがみ強P",
+      "nameEn": "Crouching HP",
+      "category": "normal",
+      "notation": "2HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "alex-2lk",
+      "name": "しゃがみ弱K",
+      "nameEn": "Crouching LK",
+      "category": "normal",
+      "notation": "2LK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "LK"
+        }
+      ]
+    },
+    {
+      "id": "alex-2mk",
+      "name": "しゃがみ中K",
+      "nameEn": "Crouching MK",
+      "category": "normal",
+      "notation": "2MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "MK"
+        }
+      ]
+    },
+    {
+      "id": "alex-2hk",
+      "name": "しゃがみ強K",
+      "nameEn": "Crouching HK",
+      "category": "normal",
+      "notation": "2HK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "HK"
+        }
+      ]
+    },
+    {
+      "id": "alex-throw",
+      "name": "投げ",
+      "nameEn": "Throw",
+      "category": "throw",
+      "notation": "Throw",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "Throw"
+        }
+      ]
+    },
+    {
+      "id": "alex-di",
+      "name": "ドライブインパクト",
+      "nameEn": "Drive Impact",
+      "category": "drive",
+      "notation": "DI",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "DI"
+        }
+      ]
+    },
+    {
+      "id": "alex-dr",
+      "name": "ドライブラッシュ",
+      "nameEn": "Drive Rush",
+      "category": "drive",
+      "notation": "DR",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "DR"
+        }
+      ]
+    },
+    {
+      "id": "alex-dp",
+      "name": "ドライブパリィ",
+      "nameEn": "Drive Parry",
+      "category": "drive",
+      "notation": "DP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "DP"
+        }
+      ]
+    },
+    {
+      "id": "alex-drev",
+      "name": "ドライブリバーサル",
+      "nameEn": "Drive Reversal",
+      "category": "drive",
+      "notation": "DRev",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "6"
+          ],
+          "button": "DRev"
+        }
+      ]
+    },
+    {
+      "id": "alex-6hp",
+      "name": "ラリアット",
+      "nameEn": "Lariat",
+      "category": "unique",
+      "notation": "6HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "6"
+          ],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "alex-6mk",
+      "name": "ヘッドバット",
+      "nameEn": "Headbutt",
+      "category": "unique",
+      "notation": "6MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "6"
+          ],
+          "button": "MK"
+        }
+      ]
+    },
+    {
+      "id": "alex-flash-chop",
+      "name": "フラッシュチョップ",
+      "nameEn": "Flash Chop",
+      "category": "special",
+      "notation": "236+P",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "236LP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "LP"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "236MP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "MP"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "236HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "HP"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD236HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "HP",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alex-power-bomb",
+      "name": "パワーボム",
+      "nameEn": "Power Bomb",
+      "category": "special",
+      "notation": "63214+P",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "63214LP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "6",
+                "3",
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "LP"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "63214MP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "6",
+                "3",
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "MP"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "63214HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "6",
+                "3",
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "HP"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD63214HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "6",
+                "3",
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "HP",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alex-air-stampede",
+      "name": "エアスタンピード",
+      "nameEn": "Air Stampede",
+      "category": "special",
+      "notation": "214+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "214LK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "LK"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "214MK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "MK"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "214HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "HK"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD214HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "HK",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alex-slash-elbow",
+      "name": "スラッシュエルボー",
+      "nameEn": "Slash Elbow",
+      "category": "special",
+      "notation": "236+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "236LK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "LK"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "236MK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "MK"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "236HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "HK"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD236HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "HK",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alex-sa1",
+      "name": "ハイパーボム",
+      "nameEn": "Hyper Bomb (SA1)",
+      "category": "super",
+      "notation": "236236LP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2",
+            "3",
+            "6",
+            "2",
+            "3",
+            "6"
+          ],
+          "button": "LP"
+        }
+      ]
+    },
+    {
+      "id": "alex-sa2",
+      "name": "ブーメランレイド",
+      "nameEn": "Boomerang Raid (SA2)",
+      "category": "super",
+      "notation": "236236HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2",
+            "3",
+            "6",
+            "2",
+            "3",
+            "6"
+          ],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "alex-sa3",
+      "name": "スタンガンヘッドバット",
+      "nameEn": "Stun Gun Headbutt (SA3)",
+      "category": "super",
+      "notation": "236236MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2",
+            "3",
+            "6",
+            "2",
+            "3",
+            "6"
+          ],
+          "button": "MK"
+        }
+      ]
+    }
+  ]
+}

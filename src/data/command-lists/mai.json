@@ -1,0 +1,657 @@
+{
+  "characterId": "mai",
+  "characterName": "不知火舞",
+  "moves": [
+    {
+      "id": "mai-5lp",
+      "name": "立ち弱P",
+      "nameEn": "Standing LP",
+      "category": "normal",
+      "notation": "5LP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "LP"
+        }
+      ]
+    },
+    {
+      "id": "mai-5mp",
+      "name": "立ち中P",
+      "nameEn": "Standing MP",
+      "category": "normal",
+      "notation": "5MP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "MP"
+        }
+      ]
+    },
+    {
+      "id": "mai-5hp",
+      "name": "立ち強P",
+      "nameEn": "Standing HP",
+      "category": "normal",
+      "notation": "5HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "mai-5lk",
+      "name": "立ち弱K",
+      "nameEn": "Standing LK",
+      "category": "normal",
+      "notation": "5LK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "LK"
+        }
+      ]
+    },
+    {
+      "id": "mai-5mk",
+      "name": "立ち中K",
+      "nameEn": "Standing MK",
+      "category": "normal",
+      "notation": "5MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "MK"
+        }
+      ]
+    },
+    {
+      "id": "mai-5hk",
+      "name": "立ち強K",
+      "nameEn": "Standing HK",
+      "category": "normal",
+      "notation": "5HK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "HK"
+        }
+      ]
+    },
+    {
+      "id": "mai-2lp",
+      "name": "しゃがみ弱P",
+      "nameEn": "Crouching LP",
+      "category": "normal",
+      "notation": "2LP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "LP"
+        }
+      ]
+    },
+    {
+      "id": "mai-2mp",
+      "name": "しゃがみ中P",
+      "nameEn": "Crouching MP",
+      "category": "normal",
+      "notation": "2MP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "MP"
+        }
+      ]
+    },
+    {
+      "id": "mai-2hp",
+      "name": "しゃがみ強P",
+      "nameEn": "Crouching HP",
+      "category": "normal",
+      "notation": "2HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "mai-2lk",
+      "name": "しゃがみ弱K",
+      "nameEn": "Crouching LK",
+      "category": "normal",
+      "notation": "2LK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "LK"
+        }
+      ]
+    },
+    {
+      "id": "mai-2mk",
+      "name": "しゃがみ中K",
+      "nameEn": "Crouching MK",
+      "category": "normal",
+      "notation": "2MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "MK"
+        }
+      ]
+    },
+    {
+      "id": "mai-2hk",
+      "name": "しゃがみ強K",
+      "nameEn": "Crouching HK",
+      "category": "normal",
+      "notation": "2HK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2"
+          ],
+          "button": "HK"
+        }
+      ]
+    },
+    {
+      "id": "mai-throw",
+      "name": "投げ",
+      "nameEn": "Throw",
+      "category": "throw",
+      "notation": "Throw",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "Throw"
+        }
+      ]
+    },
+    {
+      "id": "mai-di",
+      "name": "ドライブインパクト",
+      "nameEn": "Drive Impact",
+      "category": "drive",
+      "notation": "DI",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "DI"
+        }
+      ]
+    },
+    {
+      "id": "mai-dr",
+      "name": "ドライブラッシュ",
+      "nameEn": "Drive Rush",
+      "category": "drive",
+      "notation": "DR",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "DR"
+        }
+      ]
+    },
+    {
+      "id": "mai-dp",
+      "name": "ドライブパリィ",
+      "nameEn": "Drive Parry",
+      "category": "drive",
+      "notation": "DP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "5"
+          ],
+          "button": "DP"
+        }
+      ]
+    },
+    {
+      "id": "mai-drev",
+      "name": "ドライブリバーサル",
+      "nameEn": "Drive Reversal",
+      "category": "drive",
+      "notation": "DRev",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "6"
+          ],
+          "button": "DRev"
+        }
+      ]
+    },
+    {
+      "id": "mai-6hp",
+      "name": "浮嵐",
+      "nameEn": "Ukiarashi",
+      "category": "unique",
+      "notation": "6HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "6"
+          ],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "mai-6mk",
+      "name": "紅鶴の舞",
+      "nameEn": "Crimson Crane Dance",
+      "category": "unique",
+      "notation": "6MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "6"
+          ],
+          "button": "MK"
+        }
+      ]
+    },
+    {
+      "id": "mai-kachosen",
+      "name": "花蝶扇",
+      "nameEn": "Kachosen",
+      "category": "special",
+      "notation": "236+P",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "236LP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "LP"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "236MP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "MP"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "236HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "HP"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD236HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "HP",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mai-ryuenbu",
+      "name": "龍炎舞",
+      "nameEn": "Ryuenbu",
+      "category": "special",
+      "notation": "214+P",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "214LP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "LP"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "214MP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "MP"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "214HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "HP"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD214HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "HP",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mai-hissatsu-shinobibachi",
+      "name": "必殺忍蜂",
+      "nameEn": "Hissatsu Shinobi Bachi",
+      "category": "special",
+      "notation": "236+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "236LK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "LK"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "236MK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "MK"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "236HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "HK"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD236HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "3",
+                "6"
+              ],
+              "button": "HK",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mai-musasabi-no-mai",
+      "name": "ムササビの舞",
+      "nameEn": "Musasabi no Mai",
+      "category": "special",
+      "notation": "214+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "214LK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "LK"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "214MK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "MK"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "214HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "HK"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD214HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": [
+                "2",
+                "1",
+                "4"
+              ],
+              "button": "HK",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mai-sa1",
+      "name": "超必殺忍蜂",
+      "nameEn": "Cho Hissatsu Shinobibachi (SA1)",
+      "category": "super",
+      "notation": "236236LK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2",
+            "3",
+            "6",
+            "2",
+            "3",
+            "6"
+          ],
+          "button": "LK"
+        }
+      ]
+    },
+    {
+      "id": "mai-sa2",
+      "name": "不知火流・紅鶴乱舞",
+      "nameEn": "Shiranui-ryu: Crimson Lotus (SA2)",
+      "category": "super",
+      "notation": "236236HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2",
+            "3",
+            "6",
+            "2",
+            "3",
+            "6"
+          ],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "mai-sa3",
+      "name": "不知火流奥義・炎の舞",
+      "nameEn": "Shiranui-ryu Ougi: Flame Dance (SA3)",
+      "category": "super",
+      "notation": "236236MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2",
+            "3",
+            "6",
+            "2",
+            "3",
+            "6"
+          ],
+          "button": "MK"
+        }
+      ]
+    }
+  ]
+}
