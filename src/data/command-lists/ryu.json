@@ -1,0 +1,258 @@
+{
+  "characterId": "ryu",
+  "characterName": "リュウ",
+  "moves": [
+    {
+      "id": "ryu-5lp",
+      "name": "立ち弱P",
+      "nameEn": "Standing LP",
+      "category": "normal",
+      "notation": "5LP",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "LP" }]
+    },
+    {
+      "id": "ryu-5mp",
+      "name": "立ち中P",
+      "nameEn": "Standing MP",
+      "category": "normal",
+      "notation": "5MP",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "MP" }]
+    },
+    {
+      "id": "ryu-5hp",
+      "name": "立ち強P",
+      "nameEn": "Standing HP",
+      "category": "normal",
+      "notation": "5HP",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "HP" }]
+    },
+    {
+      "id": "ryu-5lk",
+      "name": "立ち弱K",
+      "nameEn": "Standing LK",
+      "category": "normal",
+      "notation": "5LK",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "LK" }]
+    },
+    {
+      "id": "ryu-5mk",
+      "name": "立ち中K",
+      "nameEn": "Standing MK",
+      "category": "normal",
+      "notation": "5MK",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "MK" }]
+    },
+    {
+      "id": "ryu-5hk",
+      "name": "立ち強K",
+      "nameEn": "Standing HK",
+      "category": "normal",
+      "notation": "5HK",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "HK" }]
+    },
+    {
+      "id": "ryu-2lp",
+      "name": "しゃがみ弱P",
+      "nameEn": "Crouching LP",
+      "category": "normal",
+      "notation": "2LP",
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "LP" }]
+    },
+    {
+      "id": "ryu-2mp",
+      "name": "しゃがみ中P",
+      "nameEn": "Crouching MP",
+      "category": "normal",
+      "notation": "2MP",
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "MP" }]
+    },
+    {
+      "id": "ryu-2hp",
+      "name": "しゃがみ強P",
+      "nameEn": "Crouching HP",
+      "category": "normal",
+      "notation": "2HP",
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "HP" }]
+    },
+    {
+      "id": "ryu-2lk",
+      "name": "しゃがみ弱K",
+      "nameEn": "Crouching LK",
+      "category": "normal",
+      "notation": "2LK",
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "LK" }]
+    },
+    {
+      "id": "ryu-2mk",
+      "name": "しゃがみ中K",
+      "nameEn": "Crouching MK",
+      "category": "normal",
+      "notation": "2MK",
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "MK" }]
+    },
+    {
+      "id": "ryu-2hk",
+      "name": "しゃがみ強K",
+      "nameEn": "Crouching HK",
+      "category": "normal",
+      "notation": "2HK",
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "HK" }]
+    },
+    {
+      "id": "ryu-6hp",
+      "name": "鎖骨割り",
+      "nameEn": "Collarbone Breaker",
+      "category": "unique",
+      "notation": "6HP",
+      "steps": [{ "type": "normal", "directions": ["6"], "button": "HP" }]
+    },
+    {
+      "id": "ryu-4hp",
+      "name": "鳩尾砕き",
+      "nameEn": "Solar Plexus Strike",
+      "category": "unique",
+      "notation": "4HP",
+      "steps": [{ "type": "normal", "directions": ["4"], "button": "HP" }]
+    },
+    {
+      "id": "ryu-6mk",
+      "name": "旋風キック",
+      "nameEn": "Whirlwind Kick",
+      "category": "unique",
+      "notation": "6MK",
+      "steps": [{ "type": "normal", "directions": ["6"], "button": "MK" }]
+    },
+    {
+      "id": "ryu-hadoken",
+      "name": "波動拳",
+      "nameEn": "Hadoken",
+      "category": "special",
+      "notation": "236HP",
+      "steps": [
+        { "type": "normal", "directions": ["2", "3", "6"], "button": "HP" }
+      ]
+    },
+    {
+      "id": "ryu-shoryuken",
+      "name": "昇龍拳",
+      "nameEn": "Shoryuken",
+      "category": "special",
+      "notation": "623HP",
+      "steps": [
+        { "type": "normal", "directions": ["6", "2", "3"], "button": "HP" }
+      ]
+    },
+    {
+      "id": "ryu-tatsumaki",
+      "name": "竜巻旋風脚",
+      "nameEn": "Tatsumaki Senpukyaku",
+      "category": "special",
+      "notation": "214MK",
+      "steps": [
+        { "type": "normal", "directions": ["2", "1", "4"], "button": "MK" }
+      ]
+    },
+    {
+      "id": "ryu-ashita-geri",
+      "name": "足刀蹴り",
+      "nameEn": "Ashita Geri",
+      "category": "special",
+      "notation": "236MK",
+      "steps": [
+        { "type": "normal", "directions": ["2", "3", "6"], "button": "MK" }
+      ]
+    },
+    {
+      "id": "ryu-hasho-geki",
+      "name": "波掌撃",
+      "nameEn": "Hashogeki",
+      "category": "special",
+      "notation": "214HP",
+      "steps": [
+        { "type": "normal", "directions": ["2", "1", "4"], "button": "HP" }
+      ]
+    },
+    {
+      "id": "ryu-sa1",
+      "name": "真空波動拳",
+      "nameEn": "Shinku Hadoken (SA1)",
+      "category": "super",
+      "notation": "236236LP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": ["2", "3", "6", "2", "3", "6"],
+          "button": "LP"
+        }
+      ]
+    },
+    {
+      "id": "ryu-sa2",
+      "name": "真・昇龍拳",
+      "nameEn": "Shin Shoryuken (SA2)",
+      "category": "super",
+      "notation": "236236HP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": ["2", "3", "6", "2", "3", "6"],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "ryu-sa3",
+      "name": "真・波動拳",
+      "nameEn": "Shin Hadoken (SA3)",
+      "category": "super",
+      "notation": "236236MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": ["2", "3", "6", "2", "3", "6"],
+          "button": "MK"
+        }
+      ]
+    },
+    {
+      "id": "ryu-throw",
+      "name": "投げ",
+      "nameEn": "Throw",
+      "category": "throw",
+      "notation": "Throw",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "Throw" }]
+    },
+    {
+      "id": "ryu-di",
+      "name": "ドライブインパクト",
+      "nameEn": "Drive Impact",
+      "category": "drive",
+      "notation": "DI",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "DI" }]
+    },
+    {
+      "id": "ryu-dr",
+      "name": "ドライブラッシュ",
+      "nameEn": "Drive Rush",
+      "category": "drive",
+      "notation": "DR",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "DR" }]
+    },
+    {
+      "id": "ryu-dp",
+      "name": "ドライブパリィ",
+      "nameEn": "Drive Parry",
+      "category": "drive",
+      "notation": "DP",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "DP" }]
+    },
+    {
+      "id": "ryu-drev",
+      "name": "ドライブリバーサル",
+      "nameEn": "Drive Reversal",
+      "category": "drive",
+      "notation": "DRev",
+      "steps": [{ "type": "normal", "directions": ["6"], "button": "DRev" }]
+    }
+  ]
+}
