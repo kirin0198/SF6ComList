@@ -99,6 +99,7 @@ gcloud iam workload-identity-pools providers create-oidc github-provider \
   --workload-identity-pool=github-pool \
   --display-name="GitHub Actions Provider" \
   --attribute-mapping="google.subject=assertion.sub,attribute.repository=assertion.repository" \
+  --attribute-condition="assertion.repository == 'kirin0198/SF6ComList'" \
   --issuer-uri="https://token.actions.githubusercontent.com"
 
 # Pool ID を取得
