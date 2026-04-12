@@ -48,22 +48,22 @@
 
 ```typescript
 interface CommandMove {
-  id: string;                    // 一意ID
-  name: string;                  // 技名（日本語）
-  nameEn: string;                // 技名（英語）
-  category: CommandCategory;     // カテゴリ
-  notation: string;              // テンキー表記（例: "236HP"）
-  steps: ComboStep[];            // パース済みステップ
+  id: string; // 一意ID
+  name: string; // 技名（日本語）
+  nameEn: string; // 技名（英語）
+  category: CommandCategory; // カテゴリ
+  notation: string; // テンキー表記（例: "236HP"）
+  steps: ComboStep[]; // パース済みステップ
 }
 
 type CommandCategory =
-  | "normal"          // 通常技（立ち/しゃがみ）
-  | "unique"          // 特殊技（固有技）
-  | "special"         // 必殺技
-  | "super"           // スーパーアーツ
-  | "target-combo"    // ターゲットコンボ
-  | "throw"           // 投げ
-  | "drive";          // ドライブ系システム技
+  | "normal" // 通常技（立ち/しゃがみ）
+  | "unique" // 特殊技（固有技）
+  | "special" // 必殺技
+  | "super" // スーパーアーツ
+  | "target-combo" // ターゲットコンボ
+  | "throw" // 投げ
+  | "drive"; // ドライブ系システム技
 ```
 
 ### コマンドリストデータ格納

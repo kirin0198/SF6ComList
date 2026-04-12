@@ -1006,12 +1006,12 @@ declare module "next-auth" {
 
 ### クライアントサイド
 
-| エラー種別                   | 処理方法                           | UI表現                                 |
-| ---------------------------- | ---------------------------------- | -------------------------------------- |
-| バリデーションエラー         | react-hook-form + Zod で即時検出   | フィールド下の赤文字エラーメッセージ   |
-| API レスポンスエラー (4xx)   | fetch のレスポンスステータスで判定 | フォーム上部のエラーバナー             |
-| ネットワークエラー           | try-catch で捕捉                   | トーストで「通信エラーが発生しました」 |
-| パースエラー（テンキー表記） | parseNotation の結果チェック       | テキスト入力下の黄色警告メッセージ     |
+| エラー種別                   | 処理方法                           | UI表現                                         |
+| ---------------------------- | ---------------------------------- | ---------------------------------------------- |
+| バリデーションエラー         | react-hook-form + Zod で即時検出   | フィールド下の赤文字エラーメッセージ           |
+| API レスポンスエラー (4xx)   | fetch のレスポンスステータスで判定 | フォーム上部のエラーバナー                     |
+| ネットワークエラー           | try-catch で捕捉                   | トーストで「通信エラーが発生しました」         |
+| パースエラー（テンキー表記） | parseNotation の結果チェック       | テキスト入力下の黄色警告メッセージ             |
 | コマンドリスト読み込み失敗   | dynamic import の catch で捕捉     | パネル内に「読み込みに失敗しました」メッセージ |
 
 ### サーバーサイド
@@ -1406,12 +1406,12 @@ import type { ComboStep, Direction, ButtonInput } from "./types";
  * UI_SPEC.md のカテゴリ見出し順に定義
  */
 export type CommandCategory =
-  | "normal"        // 通常技（立ち/しゃがみ）
-  | "unique"        // 特殊技（固有技）
-  | "special"       // 必殺技
-  | "super"         // スーパーアーツ
-  | "throw"         // 投げ
-  | "drive"         // ドライブ系システム技
+  | "normal" // 通常技（立ち/しゃがみ）
+  | "unique" // 特殊技（固有技）
+  | "special" // 必殺技
+  | "super" // スーパーアーツ
+  | "throw" // 投げ
+  | "drive" // ドライブ系システム技
   | "target-combo"; // ターゲットコンボ
 
 /**
@@ -1485,9 +1485,7 @@ export interface CharacterCommandList {
       "nameEn": "Standing LP",
       "category": "normal",
       "notation": "5LP",
-      "steps": [
-        { "type": "normal", "directions": ["5"], "button": "LP" }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "LP" }]
     },
     {
       "id": "ryu-hadoken",
@@ -1513,14 +1511,14 @@ export interface CharacterCommandList {
 
 リファレンス実装として `src/data/command-lists/ryu.json` を作成する。含める技の一覧:
 
-| カテゴリ | 技 |
-|---------|-----|
-| normal | 5LP, 5MP, 5HP, 5LK, 5MK, 5HK, 2LP, 2MP, 2HP, 2LK, 2MK, 2HK |
-| unique | 6HP (鎖骨割り), 4HP (鳩尾砕き), 6MK (旋風キック) |
-| special | 236P (波動拳), 623P (昇龍拳), 214K (竜巻旋風脚), 236K (足刀蹴り), 214P (波掌撃) |
-| super | 236236K (SA1 真空波動拳), 236236P (SA2 真・昇龍拳), 236236K (SA3 真・波動拳) |
-| throw | Throw (投げ) |
-| drive | DI (ドライブインパクト), DR (ドライブラッシュ), DP (ドライブパリィ), DRev (ドライブリバーサル) |
+| カテゴリ | 技                                                                                             |
+| -------- | ---------------------------------------------------------------------------------------------- |
+| normal   | 5LP, 5MP, 5HP, 5LK, 5MK, 5HK, 2LP, 2MP, 2HP, 2LK, 2MK, 2HK                                     |
+| unique   | 6HP (鎖骨割り), 4HP (鳩尾砕き), 6MK (旋風キック)                                               |
+| special  | 236P (波動拳), 623P (昇龍拳), 214K (竜巻旋風脚), 236K (足刀蹴り), 214P (波掌撃)                |
+| super    | 236236K (SA1 真空波動拳), 236236P (SA2 真・昇龍拳), 236236K (SA3 真・波動拳)                   |
+| throw    | Throw (投げ)                                                                                   |
+| drive    | DI (ドライブインパクト), DR (ドライブラッシュ), DP (ドライブパリィ), DRev (ドライブリバーサル) |
 
 注: ターゲットコンボはリュウには存在しないため空。
 
@@ -1537,9 +1535,7 @@ export async function loadCommandList(
   characterId: string,
 ): Promise<CharacterCommandList | null> {
   try {
-    const data = await import(
-      `@/data/command-lists/${characterId}.json`
-    );
+    const data = await import(`@/data/command-lists/${characterId}.json`);
     return data.default as CharacterCommandList;
   } catch {
     // JSON ファイルが存在しない場合（コマンドリスト未登録キャラクター）
@@ -1608,10 +1604,7 @@ function handleMoveClick(move: CommandMove) {
     onMoveSelect(move.steps);
   } else {
     // 最後のステップが NormalInput または ChargeInput の場合: > コネクターを自動挿入
-    onMoveSelect([
-      { type: "connector", symbol: ">" },
-      ...move.steps,
-    ]);
+    onMoveSelect([{ type: "connector", symbol: ">" }, ...move.steps]);
   }
 }
 ```
@@ -1729,6 +1722,7 @@ const handleMoveSelect = useCallback((steps: ComboStep[]) => {
 ### 15.6 ページコンポーネントの変更
 
 **変更対象:**
+
 - `src/app/(authenticated)/characters/[characterId]/combos/new/page.tsx` (SCR-005)
 - `src/app/(authenticated)/characters/[characterId]/combos/[comboId]/edit/page.tsx` (SCR-007)
 
@@ -1754,10 +1748,12 @@ const handleMoveSelect = useCallback((steps: ComboStep[]) => {
 ### TASK-036: コマンドリスト型定義 + リュウのデータ作成
 
 **対象ファイル:**
+
 - `src/lib/combo/command-list-types.ts` (新規)
 - `src/data/command-lists/ryu.json` (新規)
 
 **作業内容:**
+
 1. `CommandMove`, `CommandCategory`, `CharacterCommandList` 型の定義
 2. `CATEGORY_LABELS`, `CATEGORY_ORDER` 定数の定義
 3. `loadCommandList()` 遅延読み込み関数の実装
@@ -1769,9 +1765,11 @@ const handleMoveSelect = useCallback((steps: ComboStep[]) => {
 ### TASK-037: CommandListPanel コンポーネント
 
 **対象ファイル:**
+
 - `src/components/input/CommandListPanel.tsx` (新規)
 
 **作業内容:**
+
 1. CommandListPanel コンポーネントの実装（Props インターフェースはセクション 15.4 参照）
 2. `loadCommandList()` による遅延読み込みと状態管理（ローディング / エラー / 未登録 / 表示）
 3. カテゴリ別セクション表示（CATEGORY_ORDER 順）
@@ -1785,11 +1783,13 @@ const handleMoveSelect = useCallback((steps: ComboStep[]) => {
 ### TASK-038: ComboForm 3タブ化 + CommandListPanel 統合
 
 **対象ファイル:**
+
 - `src/components/combo/ComboForm.tsx` (変更)
 - `src/app/(authenticated)/characters/[characterId]/combos/new/page.tsx` (変更)
 - `src/app/(authenticated)/characters/[characterId]/combos/[comboId]/edit/page.tsx` (変更)
 
 **作業内容:**
+
 1. `InputMode` 型に `"commandList"` を追加
 2. デフォルト入力モードを `"commandList"` に変更
 3. タブ UI を3タブ構成に変更（コマンドリスト / ビジュアル入力 / テキスト入力）
@@ -1804,10 +1804,12 @@ const handleMoveSelect = useCallback((steps: ComboStep[]) => {
 ### TASK-039: コマンドリスト入力のテスト
 
 **対象ファイル:**
+
 - `src/components/input/__tests__/CommandListPanel.test.tsx` (新規)
 - `src/lib/combo/__tests__/command-list-types.test.ts` (新規)
 
 **作業内容:**
+
 1. `loadCommandList()` のユニットテスト（正常読み込み / 未登録キャラクター / エラーハンドリング）
 2. CommandListPanel のコンポーネントテスト:
    - 技リストのカテゴリ別表示
