@@ -307,77 +307,6 @@
       ]
     },
     {
-      "id": "c-viper-thunder-knuckle",
-      "name": "サンダーナックル",
-      "nameEn": "Thunder Knuckle",
-      "category": "special",
-      "notation": "236+P",
-      "steps": [],
-      "variants": [
-        {
-          "strength": "L",
-          "notation": "236LP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "LP"
-            }
-          ]
-        },
-        {
-          "strength": "M",
-          "notation": "236MP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "MP"
-            }
-          ]
-        },
-        {
-          "strength": "H",
-          "notation": "236HP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HP"
-            }
-          ]
-        },
-        {
-          "strength": "OD",
-          "notation": "OD236HP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HP",
-              "isOD": true
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "c-viper-burning-kick",
       "name": "バーニングキック",
       "nameEn": "Burning Kick",
@@ -449,9 +378,9 @@
       ]
     },
     {
-      "id": "c-viper-seismic-hammer",
-      "name": "セイスモハンマー",
-      "nameEn": "Seismic Hammer",
+      "id": "c-viper-thunder-clap",
+      "name": "サンダークラップ",
+      "nameEn": "Thunder Clap",
       "category": "special",
       "notation": "214+P",
       "steps": [],
@@ -520,9 +449,9 @@
       ]
     },
     {
-      "id": "c-viper-viper-elbow",
-      "name": "ヴァイパーエルボー",
-      "nameEn": "Viper Elbow",
+      "id": "c-viper-seismic-hammer",
+      "name": "セイスモハンマー",
+      "nameEn": "Seismic Hammer",
       "category": "special",
       "notation": "623+P",
       "steps": [],
@@ -591,65 +520,99 @@
       ]
     },
     {
+      "id": "c-viper-saving-force",
+      "name": "セービングフォース",
+      "nameEn": "Saving Force",
+      "category": "special",
+      "notation": "214+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "214LK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "1", "4"],
+              "button": "LK"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "214MK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "1", "4"],
+              "button": "MK"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "214HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "1", "4"],
+              "button": "HK"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD214HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "1", "4"],
+              "button": "HK",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "c-viper-sa1",
-      "name": "エマージェンシーコンビネーション",
-      "nameEn": "Emergency Combination (SA1)",
+      "name": "バウンサーステップ",
+      "nameEn": "Bouncer Step (SA1)",
       "category": "super",
-      "notation": "236236LP",
+      "notation": "236236K",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "LP"
+          "directions": ["2", "3", "6", "2", "3", "6"],
+          "button": "LK"
         }
       ]
     },
     {
       "id": "c-viper-sa2",
-      "name": "バーストタイム",
-      "nameEn": "Burst Time (SA2)",
+      "name": "ミッションオーバー",
+      "nameEn": "Mission Over (SA2)",
       "category": "super",
-      "notation": "236236HP",
+      "notation": "214214P",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "HP"
+          "directions": ["2", "1", "4", "2", "1", "4"],
+          "button": "LP"
         }
       ]
     },
     {
       "id": "c-viper-sa3",
-      "name": "ヴァイパースラッシュ",
-      "nameEn": "Viper Slash (SA3)",
+      "name": "アンラックリジェクター",
+      "nameEn": "Unlucky Rejecter (SA3)",
       "category": "super",
-      "notation": "236236MK",
+      "notation": "214214K",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "MK"
+          "directions": ["2", "1", "4", "2", "1", "4"],
+          "button": "LK"
         }
       ]
     }

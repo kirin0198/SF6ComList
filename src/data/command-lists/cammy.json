@@ -449,70 +449,54 @@
       ]
     },
     {
-      "id": "cammy-cannon-strike",
-      "name": "キャノンストライク",
-      "nameEn": "Cannon Strike",
+      "id": "cammy-axel-spin-knuckle",
+      "name": "アクセルスピンナックル",
+      "nameEn": "Axel Spin Knuckle",
       "category": "special",
-      "notation": "214+K",
+      "notation": "214+P",
       "steps": [],
       "variants": [
         {
           "strength": "L",
-          "notation": "214LK",
+          "notation": "214LP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "LK"
+              "directions": ["2", "1", "4"],
+              "button": "LP"
             }
           ]
         },
         {
           "strength": "M",
-          "notation": "214MK",
+          "notation": "214MP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "MK"
+              "directions": ["2", "1", "4"],
+              "button": "MP"
             }
           ]
         },
         {
           "strength": "H",
-          "notation": "214HK",
+          "notation": "214HP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HK"
+              "directions": ["2", "1", "4"],
+              "button": "HP"
             }
           ]
         },
         {
           "strength": "OD",
-          "notation": "OD214HK",
+          "notation": "OD214HP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HK",
+              "directions": ["2", "1", "4"],
+              "button": "HP",
               "isOD": true
             }
           ]
@@ -595,7 +579,28 @@
       "name": "スピンドライブスマッシャー",
       "nameEn": "Spin Drive Smasher (SA1)",
       "category": "super",
-      "notation": "236236LK",
+      "notation": "214214K",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": [
+            "2",
+            "1",
+            "4",
+            "2",
+            "1",
+            "4"
+          ],
+          "button": "LK"
+        }
+      ]
+    },
+    {
+      "id": "cammy-sa2",
+      "name": "キラービースピン",
+      "nameEn": "Killer Bee Spin (SA2)",
+      "category": "super",
+      "notation": "236236K",
       "steps": [
         {
           "type": "normal",
@@ -612,11 +617,11 @@
       ]
     },
     {
-      "id": "cammy-sa2",
-      "name": "キラービースピン",
-      "nameEn": "Killer Bee Spin (SA2)",
+      "id": "cammy-sa3",
+      "name": "デルタレッドアサルト",
+      "nameEn": "Delta Red Assault (SA3)",
       "category": "super",
-      "notation": "236236HP",
+      "notation": "236236P",
       "steps": [
         {
           "type": "normal",
@@ -629,27 +634,6 @@
             "6"
           ],
           "button": "HP"
-        }
-      ]
-    },
-    {
-      "id": "cammy-sa3",
-      "name": "デルタレッドアサルト",
-      "nameEn": "Delta Red Assault (SA3)",
-      "category": "super",
-      "notation": "236236MK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "MK"
         }
       ]
     }
