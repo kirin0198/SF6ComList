@@ -36,7 +36,8 @@ RUN npx prisma generate
 
 # Next.js をビルド（standalone モード）
 ENV NEXT_TELEMETRY_DISABLED=1
-RUN npm run build
+RUN npm run build \
+    && mkdir -p /app/public
 
 # ============================================================
 # Stage 3: runner — 実行
