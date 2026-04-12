@@ -32,17 +32,17 @@ export class ComboDetailPage {
   }
 
   async getComboName(): Promise<string> {
-    return await this.heading.textContent() ?? "";
+    return (await this.heading.textContent()) ?? "";
   }
 
   async getNotation(): Promise<string> {
-    return await this.notationText.textContent() ?? "";
+    return (await this.notationText.textContent()) ?? "";
   }
 
   async getDamage(): Promise<string> {
     // ダメージ値は大きいテキスト
     const damageEl = this.page.locator(".text-xl.font-bold.text-white").first();
-    return await damageEl.textContent() ?? "";
+    return (await damageEl.textContent()) ?? "";
   }
 
   async getTags(): Promise<string[]> {
@@ -58,7 +58,7 @@ export class ComboDetailPage {
 
   async getMemo(): Promise<string> {
     const memoEl = this.page.locator(".whitespace-pre-wrap");
-    return await memoEl.textContent() ?? "";
+    return (await memoEl.textContent()) ?? "";
   }
 
   async clickEdit() {

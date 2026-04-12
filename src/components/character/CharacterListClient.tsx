@@ -21,7 +21,11 @@ interface CharacterListClientProps {
 const VIEW_MODE_KEY = "sf6combo-view-mode";
 const SORT_KEY_KEY = "sf6combo-sort-key";
 
-function useLocalStorage<T extends string>(key: string, fallback: T, validate: (v: string) => v is T): T {
+function useLocalStorage<T extends string>(
+  key: string,
+  fallback: T,
+  validate: (v: string) => v is T,
+): T {
   const subscribe = useCallback(
     (cb: () => void) => {
       const handler = (e: StorageEvent) => {
@@ -41,7 +45,8 @@ function useLocalStorage<T extends string>(key: string, fallback: T, validate: (
 }
 
 const isViewMode = (v: string): v is ViewMode => v === "grid" || v === "list";
-const isSortKey = (v: string): v is SortKey => v === "default" || v === "name" || v === "comboCount";
+const isSortKey = (v: string): v is SortKey =>
+  v === "default" || v === "name" || v === "comboCount";
 
 export default function CharacterListClient({
   characters,

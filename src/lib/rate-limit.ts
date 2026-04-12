@@ -33,7 +33,9 @@ export function createRateLimit(name: string, config: RateLimitConfig) {
      * リクエストがレートリミット内かチェックする
      * @returns { success: true } または { success: false, retryAfterMs }
      */
-    check(key: string): { success: true } | { success: false; retryAfterMs: number } {
+    check(
+      key: string,
+    ): { success: true } | { success: false; retryAfterMs: number } {
       const now = Date.now();
       const entry = store.get(key);
 
@@ -93,7 +95,9 @@ export function getClientIp(headers: Headers): string {
 export function rateLimitResponse(retryAfterMs: number) {
   const retryAfterSec = Math.ceil(retryAfterMs / 1000);
   return new Response(
-    JSON.stringify({ error: "リクエストが多すぎます。しばらく待ってから再試行してください。" }),
+    JSON.stringify({
+      error: "リクエストが多すぎます。しばらく待ってから再試行してください。",
+    }),
     {
       status: 429,
       headers: {

@@ -12,8 +12,7 @@ import { getAlert, loginUser, tryLogin } from "./fixtures/helpers";
 
 test.describe("認証フロー", () => {
   // テストユニークID（並列実行対策）
-  const uniqueEmail = (base: string) =>
-    `${base}-${Date.now()}@test.local`;
+  const uniqueEmail = (base: string) => `${base}-${Date.now()}@test.local`;
 
   // ============================================================
   // ユーザー登録テスト

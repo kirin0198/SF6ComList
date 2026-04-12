@@ -3,7 +3,8 @@
 > 参照元: SPEC.md (2026-04-08), UI_SPEC.md (2026-04-08), DISCOVERY_RESULT.md (2026-04-08), POC_RESULT.md (2026-04-08)
 > 作成日: 2026-04-08
 > 更新履歴:
->   - 2026-04-08: 初版作成
+>
+> - 2026-04-08: 初版作成
 
 ---
 
@@ -80,42 +81,42 @@
 
 ### 技術スタック
 
-| 層 | 技術 | バージョン | 選定理由 |
-|----|------|-----------|---------|
-| ランタイム | Node.js | 20 LTS | 安定版 LTS。Next.js の推奨ランタイム |
-| フレームワーク | Next.js (App Router) | 15.x | PoCでReactコンポーネント実装パターンが確立済み。APIルートとSSRの統合によりモノリス構成が可能 |
-| UIライブラリ | React | 19.x | Next.js 15 のデフォルト。Server Components 対応 |
-| 言語 | TypeScript | 5.x | PoCの複雑な型定義（Direction Union型、ComboStep Discriminated Union等）を型安全に管理するために必須 |
-| スタイリング | Tailwind CSS | 4.x | PoCでボタン色分けの型安全な管理パターン（colorClass）が実証済み。ダークテーマのカスタマイズが容易 |
-| 認証 | Auth.js (NextAuth.js v5) | 5.x (beta) | Next.js App Router との統合が最も成熟。Credentials Provider でメール/パスワード認証を実装。将来のOAuth追加も容易 |
-| ORM | Prisma | 6.x | TypeScript 対応のスキーマ駆動 ORM。Json 型フィールドでコンボシーケンスを格納可能。マイグレーション機能内蔵 |
-| DB | SQLite | 3.x | ローカル環境前提で Docker 不要の軽量DB。Prisma の抽象化により将来 PostgreSQL へ移行可能 |
-| パスワードハッシュ | bcrypt (bcryptjs) | 2.x | 純 JavaScript 実装で native addon 不要。Auth.js の Credentials Provider と組み合わせて使用 |
-| UIアイコン | Lucide React | latest | MIT ライセンス。軽量な SVG アイコンライブラリ。UI_SPEC.md で指定済み |
-| フォーム | React Hook Form + Zod | latest | バリデーションスキーマの型安全な定義。サーバー/クライアント両方で共有可能 |
-| パッケージ管理 | npm | 10.x | Next.js エコシステムの標準。lock ファイルによる再現性確保 |
-| コンテナ | Docker + docker-compose | latest | ローカル環境のワンコマンド起動 |
-| Lint / Format | ESLint + Prettier | latest | Next.js 標準の lint 構成 + コードフォーマット統一 |
+| 層                 | 技術                     | バージョン | 選定理由                                                                                                         |
+| ------------------ | ------------------------ | ---------- | ---------------------------------------------------------------------------------------------------------------- |
+| ランタイム         | Node.js                  | 20 LTS     | 安定版 LTS。Next.js の推奨ランタイム                                                                             |
+| フレームワーク     | Next.js (App Router)     | 15.x       | PoCでReactコンポーネント実装パターンが確立済み。APIルートとSSRの統合によりモノリス構成が可能                     |
+| UIライブラリ       | React                    | 19.x       | Next.js 15 のデフォルト。Server Components 対応                                                                  |
+| 言語               | TypeScript               | 5.x        | PoCの複雑な型定義（Direction Union型、ComboStep Discriminated Union等）を型安全に管理するために必須              |
+| スタイリング       | Tailwind CSS             | 4.x        | PoCでボタン色分けの型安全な管理パターン（colorClass）が実証済み。ダークテーマのカスタマイズが容易                |
+| 認証               | Auth.js (NextAuth.js v5) | 5.x (beta) | Next.js App Router との統合が最も成熟。Credentials Provider でメール/パスワード認証を実装。将来のOAuth追加も容易 |
+| ORM                | Prisma                   | 6.x        | TypeScript 対応のスキーマ駆動 ORM。Json 型フィールドでコンボシーケンスを格納可能。マイグレーション機能内蔵       |
+| DB                 | SQLite                   | 3.x        | ローカル環境前提で Docker 不要の軽量DB。Prisma の抽象化により将来 PostgreSQL へ移行可能                          |
+| パスワードハッシュ | bcrypt (bcryptjs)        | 2.x        | 純 JavaScript 実装で native addon 不要。Auth.js の Credentials Provider と組み合わせて使用                       |
+| UIアイコン         | Lucide React             | latest     | MIT ライセンス。軽量な SVG アイコンライブラリ。UI_SPEC.md で指定済み                                             |
+| フォーム           | React Hook Form + Zod    | latest     | バリデーションスキーマの型安全な定義。サーバー/クライアント両方で共有可能                                        |
+| パッケージ管理     | npm                      | 10.x       | Next.js エコシステムの標準。lock ファイルによる再現性確保                                                        |
+| コンテナ           | Docker + docker-compose  | latest     | ローカル環境のワンコマンド起動                                                                                   |
+| Lint / Format      | ESLint + Prettier        | latest     | Next.js 標準の lint 構成 + コードフォーマット統一                                                                |
 
 ### 主要ライブラリ一覧
 
-| ライブラリ | 用途 | 採用理由 |
-|-----------|------|---------|
-| next | フレームワーク | App Router による SSR/RSC + API 統合 |
-| react / react-dom | UI ライブラリ | Next.js のデフォルト |
-| typescript | 型チェック | PoCの複雑な型定義に必須 |
-| tailwindcss | スタイリング | UI_SPEC.md で全コンポーネントのスタイルが Tailwind クラスで定義済み |
-| next-auth (@auth/core) | 認証 | Credentials Provider + Prisma Adapter |
-| @auth/prisma-adapter | Auth.js の Prisma 統合 | セッション・アカウントの DB 永続化 |
-| prisma / @prisma/client | ORM | スキーマ駆動。Json 型でコンボシーケンスを格納 |
-| bcryptjs | パスワードハッシュ | 純 JS 実装。Docker 環境での native build 不要 |
-| zod | バリデーション | API リクエスト・フォーム入力の型安全なバリデーション。サーバー/クライアント共有 |
-| react-hook-form | フォーム管理 | 非制御コンポーネントベースで高パフォーマンス。Zod との統合（@hookform/resolvers） |
-| @hookform/resolvers | Zod 統合 | react-hook-form と Zod の接続 |
-| lucide-react | UIアイコン | UI_SPEC.md で指定。Pencil, Trash2, Plus, Search, LogOut 等 |
-| eslint | Lint | Next.js 標準構成（eslint-config-next） |
-| prettier | Format | コードフォーマット統一 |
-| prettier-plugin-tailwindcss | Tailwind クラスの並び順整理 | クラスの一貫した並び順を自動化 |
+| ライブラリ                  | 用途                        | 採用理由                                                                          |
+| --------------------------- | --------------------------- | --------------------------------------------------------------------------------- |
+| next                        | フレームワーク              | App Router による SSR/RSC + API 統合                                              |
+| react / react-dom           | UI ライブラリ               | Next.js のデフォルト                                                              |
+| typescript                  | 型チェック                  | PoCの複雑な型定義に必須                                                           |
+| tailwindcss                 | スタイリング                | UI_SPEC.md で全コンポーネントのスタイルが Tailwind クラスで定義済み               |
+| next-auth (@auth/core)      | 認証                        | Credentials Provider + Prisma Adapter                                             |
+| @auth/prisma-adapter        | Auth.js の Prisma 統合      | セッション・アカウントの DB 永続化                                                |
+| prisma / @prisma/client     | ORM                         | スキーマ駆動。Json 型でコンボシーケンスを格納                                     |
+| bcryptjs                    | パスワードハッシュ          | 純 JS 実装。Docker 環境での native build 不要                                     |
+| zod                         | バリデーション              | API リクエスト・フォーム入力の型安全なバリデーション。サーバー/クライアント共有   |
+| react-hook-form             | フォーム管理                | 非制御コンポーネントベースで高パフォーマンス。Zod との統合（@hookform/resolvers） |
+| @hookform/resolvers         | Zod 統合                    | react-hook-form と Zod の接続                                                     |
+| lucide-react                | UIアイコン                  | UI_SPEC.md で指定。Pencil, Trash2, Plus, Search, LogOut 等                        |
+| eslint                      | Lint                        | Next.js 標準構成（eslint-config-next）                                            |
+| prettier                    | Format                      | コードフォーマット統一                                                            |
+| prettier-plugin-tailwindcss | Tailwind クラスの並び順整理 | クラスの一貫した並び順を自動化                                                    |
 
 ---
 
@@ -229,12 +230,12 @@ SF6ComList/
 
 ### PoCコードの再配置先
 
-| PoCファイル | 移植先 | 変更内容 |
-|------------|--------|---------|
-| poc/combo-data-model.ts | src/lib/combo/types.ts | 型定義を維持。Combo エンティティ型は Prisma 生成型に置換。アイコンマッピングは src/components/icons/ に分離 |
-| poc/notation-converter.ts | src/lib/combo/notation-converter.ts | ロジックをそのまま移植。import パスを変更 |
-| poc/ComboInputUI.tsx | src/components/combo/ComboInputUI.tsx + src/components/input/*.tsx | メインコンポーネントを分割。DirectionPad, ButtonPalette, ConnectorSelector を個別ファイルに分離 |
-| poc/ComboDisplay.tsx | src/components/combo/ComboCard.tsx + ComboStepView.tsx + src/components/icons/*.tsx | 表示コンポーネントを分割。アイコンコンポーネントを独立化 |
+| PoCファイル               | 移植先                                                                               | 変更内容                                                                                                    |
+| ------------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| poc/combo-data-model.ts   | src/lib/combo/types.ts                                                               | 型定義を維持。Combo エンティティ型は Prisma 生成型に置換。アイコンマッピングは src/components/icons/ に分離 |
+| poc/notation-converter.ts | src/lib/combo/notation-converter.ts                                                  | ロジックをそのまま移植。import パスを変更                                                                   |
+| poc/ComboInputUI.tsx      | src/components/combo/ComboInputUI.tsx + src/components/input/\*.tsx                  | メインコンポーネントを分割。DirectionPad, ButtonPalette, ConnectorSelector を個別ファイルに分離             |
+| poc/ComboDisplay.tsx      | src/components/combo/ComboCard.tsx + ComboStepView.tsx + src/components/icons/\*.tsx | 表示コンポーネントを分割。アイコンコンポーネントを独立化                                                    |
 
 ---
 
@@ -413,12 +414,12 @@ model ComboTag {
 
 ### インデックス
 
-| テーブル | インデックス | 用途 |
-|---------|------------|------|
-| combos | `[userId, characterId]` | キャラクター別コンボ一覧取得の高速化 |
-| combos | `[userId]` | ユーザーの全コンボ取得 |
-| tags | `[name, userId]` (UNIQUE) | タグ名の重複防止 |
-| users | `[email]` (UNIQUE) | ログイン時のメール検索 |
+| テーブル | インデックス              | 用途                                 |
+| -------- | ------------------------- | ------------------------------------ |
+| combos   | `[userId, characterId]`   | キャラクター別コンボ一覧取得の高速化 |
+| combos   | `[userId]`                | ユーザーの全コンボ取得               |
+| tags     | `[name, userId]` (UNIQUE) | タグ名の重複防止                     |
+| users    | `[email]` (UNIQUE)        | ログイン時のメール検索               |
 
 ### キャラクターマスタデータ (`src/data/characters.json`)
 
@@ -426,23 +427,63 @@ model ComboTag {
 [
   { "id": "ryu", "name": "リュウ", "nameEn": "Ryu", "status": "active" },
   { "id": "luke", "name": "ルーク", "nameEn": "Luke", "status": "active" },
-  { "id": "jamie", "name": "ジェイミー", "nameEn": "Jamie", "status": "active" },
+  {
+    "id": "jamie",
+    "name": "ジェイミー",
+    "nameEn": "Jamie",
+    "status": "active"
+  },
   { "id": "chun-li", "name": "春麗", "nameEn": "Chun-Li", "status": "active" },
   { "id": "guile", "name": "ガイル", "nameEn": "Guile", "status": "active" },
-  { "id": "kimberly", "name": "キンバリー", "nameEn": "Kimberly", "status": "active" },
+  {
+    "id": "kimberly",
+    "name": "キンバリー",
+    "nameEn": "Kimberly",
+    "status": "active"
+  },
   { "id": "juri", "name": "ジュリ", "nameEn": "Juri", "status": "active" },
   { "id": "ken", "name": "ケン", "nameEn": "Ken", "status": "active" },
-  { "id": "blanka", "name": "ブランカ", "nameEn": "Blanka", "status": "active" },
-  { "id": "dhalsim", "name": "ダルシム", "nameEn": "Dhalsim", "status": "active" },
+  {
+    "id": "blanka",
+    "name": "ブランカ",
+    "nameEn": "Blanka",
+    "status": "active"
+  },
+  {
+    "id": "dhalsim",
+    "name": "ダルシム",
+    "nameEn": "Dhalsim",
+    "status": "active"
+  },
   { "id": "honda", "name": "E.本田", "nameEn": "E. Honda", "status": "active" },
-  { "id": "dee-jay", "name": "ディージェイ", "nameEn": "Dee Jay", "status": "active" },
+  {
+    "id": "dee-jay",
+    "name": "ディージェイ",
+    "nameEn": "Dee Jay",
+    "status": "active"
+  },
   { "id": "manon", "name": "マノン", "nameEn": "Manon", "status": "active" },
-  { "id": "marisa", "name": "マリーザ", "nameEn": "Marisa", "status": "active" },
+  {
+    "id": "marisa",
+    "name": "マリーザ",
+    "nameEn": "Marisa",
+    "status": "active"
+  },
   { "id": "jp", "name": "JP", "nameEn": "JP", "status": "active" },
-  { "id": "zangief", "name": "ザンギエフ", "nameEn": "Zangief", "status": "active" },
+  {
+    "id": "zangief",
+    "name": "ザンギエフ",
+    "nameEn": "Zangief",
+    "status": "active"
+  },
   { "id": "lily", "name": "リリー", "nameEn": "Lily", "status": "active" },
   { "id": "cammy", "name": "キャミィ", "nameEn": "Cammy", "status": "active" },
-  { "id": "rashid", "name": "ラシード", "nameEn": "Rashid", "status": "active" },
+  {
+    "id": "rashid",
+    "name": "ラシード",
+    "nameEn": "Rashid",
+    "status": "active"
+  },
   { "id": "aki", "name": "A.K.I.", "nameEn": "A.K.I.", "status": "active" },
   { "id": "ed", "name": "エド", "nameEn": "Ed", "status": "active" },
   { "id": "akuma", "name": "豪鬼", "nameEn": "Akuma", "status": "active" },
@@ -450,10 +491,20 @@ model ComboTag {
   { "id": "terry", "name": "テリー", "nameEn": "Terry", "status": "active" },
   { "id": "mai", "name": "不知火舞", "nameEn": "Mai", "status": "active" },
   { "id": "elena", "name": "エレナ", "nameEn": "Elena", "status": "active" },
-  { "id": "gouki", "name": "豪鬼（真）", "nameEn": "Gouki", "status": "active" },
+  {
+    "id": "gouki",
+    "name": "豪鬼（真）",
+    "nameEn": "Gouki",
+    "status": "active"
+  },
   { "id": "yun", "name": "ユン", "nameEn": "Yun", "status": "active" },
   { "id": "yang", "name": "ヤン", "nameEn": "Yang", "status": "active" },
-  { "id": "ingrid", "name": "イングリッド", "nameEn": "Ingrid", "status": "upcoming" }
+  {
+    "id": "ingrid",
+    "name": "イングリッド",
+    "nameEn": "Ingrid",
+    "status": "upcoming"
+  }
 ]
 ```
 
@@ -537,7 +588,7 @@ Auth.js が自動生成するエンドポイント群。
       name: string;
       nameEn: string;
       status: "active" | "upcoming";
-      comboCount: number;    // ログインユーザーの登録コンボ数
+      comboCount: number; // ログインユーザーの登録コンボ数
     }>;
   }
   ```
@@ -558,12 +609,12 @@ Auth.js が自動生成するエンドポイント群。
       id: string;
       characterId: string;
       name: string | null;
-      sequence: ComboSequence;  // JSON パース済み
+      sequence: ComboSequence; // JSON パース済み
       notation: string;
       damage: number | null;
       memo: string | null;
       tags: Array<{ id: string; name: string; isPreset: boolean }>;
-      createdAt: string;        // ISO 8601
+      createdAt: string; // ISO 8601
       updatedAt: string;
     }>;
   }
@@ -661,7 +712,7 @@ Auth.js が自動生成するエンドポイント群。
 - **リクエスト:**
   ```typescript
   {
-    name: string;   // 必須、1〜30文字
+    name: string; // 必須、1〜30文字
   }
   ```
 - **レスポンス (201 Created):**
@@ -687,8 +738,9 @@ import { NextResponse } from "next/server";
 
 export default auth((req) => {
   const isLoggedIn = !!req.auth;
-  const isAuthPage = req.nextUrl.pathname.startsWith("/login") ||
-                     req.nextUrl.pathname.startsWith("/register");
+  const isAuthPage =
+    req.nextUrl.pathname.startsWith("/login") ||
+    req.nextUrl.pathname.startsWith("/register");
   const isApiAuth = req.nextUrl.pathname.startsWith("/api/auth");
 
   // 未認証で認証必須ページにアクセス → ログインへリダイレクト
@@ -743,25 +795,25 @@ if (!combo || combo.userId !== session.user.id) {
 
 ### Server Components vs Client Components の使い分け
 
-| コンポーネント | 種別 | 理由 |
-|---------------|------|------|
-| RootLayout, AuthenticatedLayout | Server | 静的レイアウト。認証状態はサーバーで判定 |
-| AppHeader | Server | セッション情報をサーバーで取得。ログアウトボタンのみ Client |
-| AppFooter | Server | 静的コンテンツ |
-| キャラクター一覧ページ | Server | キャラクターデータの読み込みとコンボ数集計をサーバーで実行 |
-| CharacterCard | Server | 静的表示。クリックは `<Link>` で実現 |
-| コンボ一覧ページ | Server | コンボデータ取得をサーバーで実行 |
-| ComboCard | Server | コンボデータの静的表示 |
-| TagFilterBar | Client | タグフィルタのインタラクティブな切り替え。URLクエリパラメータで状態管理 |
-| コンボ登録/編集ページ | Server (外枠) + Client (フォーム) | 外枠は Server Component。フォーム全体は Client Component |
-| ComboInputUI | Client | 複雑なインタラクティブ状態（ドラフト・ステップ管理） |
-| ComboTextInput | Client | リアルタイムパース・プレビュー連携 |
-| ComboSequencePreview | Client | ドラフト状態のリアルタイム反映 |
-| ComboForm | Client | react-hook-form によるフォーム管理 |
-| DirectionPad, ButtonPalette, ConnectorSelector | Client | クリックイベントハンドリング |
-| TagSelector | Client | タグのトグル・新規作成インタラクション |
-| ConfirmDialog | Client | モーダルの表示/非表示状態管理 |
-| Toast | Client | 表示/非表示のタイマー管理 |
+| コンポーネント                                 | 種別                              | 理由                                                                    |
+| ---------------------------------------------- | --------------------------------- | ----------------------------------------------------------------------- |
+| RootLayout, AuthenticatedLayout                | Server                            | 静的レイアウト。認証状態はサーバーで判定                                |
+| AppHeader                                      | Server                            | セッション情報をサーバーで取得。ログアウトボタンのみ Client             |
+| AppFooter                                      | Server                            | 静的コンテンツ                                                          |
+| キャラクター一覧ページ                         | Server                            | キャラクターデータの読み込みとコンボ数集計をサーバーで実行              |
+| CharacterCard                                  | Server                            | 静的表示。クリックは `<Link>` で実現                                    |
+| コンボ一覧ページ                               | Server                            | コンボデータ取得をサーバーで実行                                        |
+| ComboCard                                      | Server                            | コンボデータの静的表示                                                  |
+| TagFilterBar                                   | Client                            | タグフィルタのインタラクティブな切り替え。URLクエリパラメータで状態管理 |
+| コンボ登録/編集ページ                          | Server (外枠) + Client (フォーム) | 外枠は Server Component。フォーム全体は Client Component                |
+| ComboInputUI                                   | Client                            | 複雑なインタラクティブ状態（ドラフト・ステップ管理）                    |
+| ComboTextInput                                 | Client                            | リアルタイムパース・プレビュー連携                                      |
+| ComboSequencePreview                           | Client                            | ドラフト状態のリアルタイム反映                                          |
+| ComboForm                                      | Client                            | react-hook-form によるフォーム管理                                      |
+| DirectionPad, ButtonPalette, ConnectorSelector | Client                            | クリックイベントハンドリング                                            |
+| TagSelector                                    | Client                            | タグのトグル・新規作成インタラクション                                  |
+| ConfirmDialog                                  | Client                            | モーダルの表示/非表示状態管理                                           |
+| Toast                                          | Client                            | 表示/非表示のタイマー管理                                               |
 
 ### コンボ入力UIの状態管理
 
@@ -835,8 +887,8 @@ import { prisma } from "@/lib/prisma";
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
   session: {
-    strategy: "jwt",  // Credentials Provider は JWT セッション必須
-    maxAge: 30 * 24 * 60 * 60,  // 30日
+    strategy: "jwt", // Credentials Provider は JWT セッション必須
+    maxAge: 30 * 24 * 60 * 60, // 30日
   },
   pages: {
     signIn: "/login",
@@ -858,7 +910,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
         const isValid = await compare(
           credentials.password as string,
-          user.passwordHash
+          user.passwordHash,
         );
 
         if (!isValid) return null;
@@ -927,23 +979,23 @@ declare module "next-auth" {
 
 ### クライアントサイド
 
-| エラー種別 | 処理方法 | UI表現 |
-|-----------|---------|--------|
-| バリデーションエラー | react-hook-form + Zod で即時検出 | フィールド下の赤文字エラーメッセージ |
-| API レスポンスエラー (4xx) | fetch のレスポンスステータスで判定 | フォーム上部のエラーバナー |
-| ネットワークエラー | try-catch で捕捉 | トーストで「通信エラーが発生しました」 |
-| パースエラー（テンキー表記） | parseNotation の結果チェック | テキスト入力下の黄色警告メッセージ |
+| エラー種別                   | 処理方法                           | UI表現                                 |
+| ---------------------------- | ---------------------------------- | -------------------------------------- |
+| バリデーションエラー         | react-hook-form + Zod で即時検出   | フィールド下の赤文字エラーメッセージ   |
+| API レスポンスエラー (4xx)   | fetch のレスポンスステータスで判定 | フォーム上部のエラーバナー             |
+| ネットワークエラー           | try-catch で捕捉                   | トーストで「通信エラーが発生しました」 |
+| パースエラー（テンキー表記） | parseNotation の結果チェック       | テキスト入力下の黄色警告メッセージ     |
 
 ### サーバーサイド
 
-| エラー種別 | HTTPステータス | レスポンス |
-|-----------|---------------|-----------|
-| バリデーションエラー | 400 | `{ error: "Validation Error", details: [...] }` |
-| 認証エラー | 401 | `{ error: "Unauthorized" }` |
-| 認可エラー（所有者不一致） | 403 or 404 | `{ error: "Not Found" }`（情報漏洩防止のため 404 を返す） |
-| リソース不存在 | 404 | `{ error: "Not Found" }` |
-| 重複エラー（メール・タグ名） | 409 | `{ error: "Conflict", message: "..." }` |
-| サーバー内部エラー | 500 | `{ error: "Internal Server Error" }`（詳細はサーバーログ） |
+| エラー種別                   | HTTPステータス | レスポンス                                                 |
+| ---------------------------- | -------------- | ---------------------------------------------------------- |
+| バリデーションエラー         | 400            | `{ error: "Validation Error", details: [...] }`            |
+| 認証エラー                   | 401            | `{ error: "Unauthorized" }`                                |
+| 認可エラー（所有者不一致）   | 403 or 404     | `{ error: "Not Found" }`（情報漏洩防止のため 404 を返す）  |
+| リソース不存在               | 404            | `{ error: "Not Found" }`                                   |
+| 重複エラー（メール・タグ名） | 409            | `{ error: "Conflict", message: "..." }`                    |
+| サーバー内部エラー           | 500            | `{ error: "Internal Server Error" }`（詳細はサーバーログ） |
 
 ### 認可エラーの方針
 
@@ -953,12 +1005,12 @@ declare module "next-auth" {
 
 ## 9. テスト戦略
 
-| テスト種別 | ツール | カバレッジ目標 | 対象 |
-|-----------|--------|-------------|------|
-| ユニットテスト | Vitest | 90%以上 | notation-converter (parseNotation, serializeNotation)、バリデーションスキーマ (Zod) |
-| 統合テスト | Vitest + Prisma (テスト用DB) | 主要パス | Route Handlers (API)、認証フロー、コンボCRUD |
+| テスト種別           | ツール                         | カバレッジ目標     | 対象                                                                                    |
+| -------------------- | ------------------------------ | ------------------ | --------------------------------------------------------------------------------------- |
+| ユニットテスト       | Vitest                         | 90%以上            | notation-converter (parseNotation, serializeNotation)、バリデーションスキーマ (Zod)     |
+| 統合テスト           | Vitest + Prisma (テスト用DB)   | 主要パス           | Route Handlers (API)、認証フロー、コンボCRUD                                            |
 | コンポーネントテスト | Vitest + React Testing Library | 主要コンポーネント | ComboInputUI (ドラフト状態管理)、DirectionPad, ButtonPalette、TagSelector, TagFilterBar |
-| E2Eテスト | 対象外（MVP） | - | MVP ではコストに見合わないため省略 |
+| E2Eテスト            | 対象外（MVP）                  | -                  | MVP ではコストに見合わないため省略                                                      |
 
 ### テスト方針
 
@@ -1066,10 +1118,10 @@ TASK-001 (初期化)
 
 ### 環境変数一覧
 
-| 変数名 | 説明 | 例 |
-|--------|------|-----|
-| `DATABASE_URL` | Prisma 接続文字列 | `file:../data/sf6combo.db` |
-| `NEXTAUTH_URL` | Auth.js のベース URL | `http://localhost:3000` |
+| 変数名            | 説明                           | 例                               |
+| ----------------- | ------------------------------ | -------------------------------- |
+| `DATABASE_URL`    | Prisma 接続文字列              | `file:../data/sf6combo.db`       |
+| `NEXTAUTH_URL`    | Auth.js のベース URL           | `http://localhost:3000`          |
 | `NEXTAUTH_SECRET` | Auth.js のセッション暗号化キー | `openssl rand -base64 32` で生成 |
 
 ### .env.example
@@ -1085,16 +1137,16 @@ NEXTAUTH_SECRET="your-secret-key-here"
 
 ### 設定ファイル一覧
 
-| ファイル | 用途 |
-|---------|------|
-| `next.config.ts` | Next.js 設定（output: standalone for Docker） |
-| `tailwind.config.ts` | Tailwind CSS 設定（カスタムカラー・アニメーション） |
-| `tsconfig.json` | TypeScript 設定（strict: true, paths: @/*） |
-| `prisma/schema.prisma` | データベーススキーマ |
-| `.eslintrc.json` | ESLint 設定（next/core-web-vitals） |
-| `.prettierrc` | Prettier 設定 |
-| `docker-compose.yml` | ローカル開発環境 |
-| `Dockerfile` | コンテナイメージ |
+| ファイル               | 用途                                                |
+| ---------------------- | --------------------------------------------------- |
+| `next.config.ts`       | Next.js 設定（output: standalone for Docker）       |
+| `tailwind.config.ts`   | Tailwind CSS 設定（カスタムカラー・アニメーション） |
+| `tsconfig.json`        | TypeScript 設定（strict: true, paths: @/\*）        |
+| `prisma/schema.prisma` | データベーススキーマ                                |
+| `.eslintrc.json`       | ESLint 設定（next/core-web-vitals）                 |
+| `.prettierrc`          | Prettier 設定                                       |
+| `docker-compose.yml`   | ローカル開発環境                                    |
+| `Dockerfile`           | コンテナイメージ                                    |
 
 ### docker-compose.yml 構成
 
@@ -1109,7 +1161,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./data:/app/data          # SQLite DB の永続化
+      - ./data:/app/data # SQLite DB の永続化
     environment:
       - DATABASE_URL=file:/app/data/sf6combo.db
       - NEXTAUTH_URL=http://localhost:3000
@@ -1147,14 +1199,14 @@ CMD ["sh", "-c", "npx prisma migrate deploy && npx prisma db seed && node server
 
 ## 12. 既知のリスクと対策
 
-| リスク | 影響度 | 対策 |
-|--------|--------|------|
-| Auth.js v5 がベータ版 | 中 | API が安定しているバージョンを固定する。Breaking Change 時は `package-lock.json` で固定して回避 |
-| SQLite の JSON クエリ制限 | 低 | コンボの検索は `notation` カラム（テキスト）で行い、`sequence` JSON の直接クエリは避ける。PostgreSQL 移行時に JSONB クエリを活用 |
-| Prisma の SQLite における Json 型の非サポート | 低 | `String` 型で格納し、アプリケーション層で JSON.parse/stringify する。移行時は schema.prisma の型を `Json` に変更するだけで済む |
-| コンボ入力UIの複雑な状態管理 | 中 | PoC で操作フローが検証済み。状態を ComboForm に集約し、子コンポーネントは純粋な表示/イベント発火に限定する |
-| SVGアイコンの制作 | 低 | MVPでは Unicode 矢印文字をフォールバックとして使用。SVG アイコンは後から差し替え可能な設計（DirectionIcon / ButtonIcon コンポーネントの中身を変えるだけ） |
-| キャラクターデータの手動更新 | 低 | JSON マスタファイルの手動編集で対応。active/upcoming ステータスフラグで新キャラのリリースタイミングを管理 |
+| リスク                                        | 影響度 | 対策                                                                                                                                                      |
+| --------------------------------------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Auth.js v5 がベータ版                         | 中     | API が安定しているバージョンを固定する。Breaking Change 時は `package-lock.json` で固定して回避                                                           |
+| SQLite の JSON クエリ制限                     | 低     | コンボの検索は `notation` カラム（テキスト）で行い、`sequence` JSON の直接クエリは避ける。PostgreSQL 移行時に JSONB クエリを活用                          |
+| Prisma の SQLite における Json 型の非サポート | 低     | `String` 型で格納し、アプリケーション層で JSON.parse/stringify する。移行時は schema.prisma の型を `Json` に変更するだけで済む                            |
+| コンボ入力UIの複雑な状態管理                  | 中     | PoC で操作フローが検証済み。状態を ComboForm に集約し、子コンポーネントは純粋な表示/イベント発火に限定する                                                |
+| SVGアイコンの制作                             | 低     | MVPでは Unicode 矢印文字をフォールバックとして使用。SVG アイコンは後から差し替え可能な設計（DirectionIcon / ButtonIcon コンポーネントの中身を変えるだけ） |
+| キャラクターデータの手動更新                  | 低     | JSON マスタファイルの手動編集で対応。active/upcoming ステータスフラグで新キャラのリリースタイミングを管理                                                 |
 
 ---
 

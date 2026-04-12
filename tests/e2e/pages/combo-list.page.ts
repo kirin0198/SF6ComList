@@ -21,11 +21,13 @@ export class ComboListPage {
     this.page = page;
     this.characterId = characterId;
     this.breadcrumbLink = page.getByRole("link", { name: "キャラクター一覧" });
-    this.newComboButton = page.getByRole("link", { name: "新しいコンボを登録" });
+    this.newComboButton = page.getByRole("link", {
+      name: "新しいコンボを登録",
+    });
     // コンボカードは combo の詳細へのリンク
-    this.comboCards = page.locator(
-      `a[href*="/characters/${characterId}/combos/"]`,
-    ).filter({ hasNot: page.locator('[href$="/new"]') });
+    this.comboCards = page
+      .locator(`a[href*="/characters/${characterId}/combos/"]`)
+      .filter({ hasNot: page.locator('[href$="/new"]') });
     this.emptyMessage = page.locator("text=コンボが登録されていません");
     this.tagFilterClearButton = page.getByRole("button", { name: "クリア" });
   }
@@ -58,7 +60,9 @@ export class ComboListPage {
   }
 
   async getEmptyMessage(): Promise<string> {
-    return await this.page.locator(".border-dashed p").first().textContent() ?? "";
+    return (
+      (await this.page.locator(".border-dashed p").first().textContent()) ?? ""
+    );
   }
 
   async goBackToCharacterList() {

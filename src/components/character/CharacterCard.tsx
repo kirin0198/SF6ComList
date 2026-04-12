@@ -57,7 +57,7 @@ export default function CharacterCard({
       href={`/characters/${character.id}/combos`}
       className="group relative flex flex-col items-center rounded-lg border border-gray-700 bg-gray-900 p-4 transition-colors duration-150 hover:border-cyan-600 hover:bg-gray-800"
     >
-      <div className="absolute right-2 top-2">
+      <div className="absolute top-2 right-2">
         <FavoriteButton
           characterId={character.id}
           initialFavorited={favorited}

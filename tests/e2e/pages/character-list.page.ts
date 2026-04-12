@@ -48,7 +48,7 @@ export class CharacterListPage {
   async getComboCount(name: string): Promise<string> {
     const card = await this.getCharacterCardByName(name);
     const countText = card.locator("p").last();
-    return await countText.textContent() ?? "";
+    return (await countText.textContent()) ?? "";
   }
 
   async logout() {

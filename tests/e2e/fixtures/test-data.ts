@@ -36,7 +36,7 @@ export const PRESET_TAG_NAMES = [
   "画面中央",
   "DR",
   "パニカン始動", // seed.ts では "パニカン始動"
-  "CH始動",       // seed.ts では "CH始動"
+  "CH始動", // seed.ts では "CH始動"
   "対空",
   "SA1",
   "SA2",

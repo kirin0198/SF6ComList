@@ -28,9 +28,7 @@ test.describe("コンボ CRUD", () => {
     await page.goto(`/characters/ken/combos`);
 
     // 空状態メッセージが表示される
-    await expect(
-      page.locator("text=コンボが登録されていません"),
-    ).toBeVisible();
+    await expect(page.locator("text=コンボが登録されていません")).toBeVisible();
 
     // 新規登録リンクが表示される
     await expect(
@@ -61,12 +59,8 @@ test.describe("コンボ CRUD", () => {
     await comboNewPage.clickSave();
 
     // コンボ一覧に遷移してコンボが表示される
-    await expect(page).toHaveURL(
-      `/characters/${CHARACTER_ID}/combos`,
-    );
-    await expect(
-      page.getByText("テスト BnB (TC-023)").first(),
-    ).toBeVisible();
+    await expect(page).toHaveURL(`/characters/${CHARACTER_ID}/combos`);
+    await expect(page.getByText("テスト BnB (TC-023)").first()).toBeVisible();
   });
 
   /** TC-E2E-024: テキスト入力でコンボを新規登録する */
@@ -89,7 +83,9 @@ test.describe("コンボ CRUD", () => {
 
     // コンボ一覧に遷移
     await expect(page).toHaveURL(`/characters/${CHARACTER_ID}/combos`);
-    await expect(page.getByText("テキスト入力テスト (TC-024)").first()).toBeVisible();
+    await expect(
+      page.getByText("テキスト入力テスト (TC-024)").first(),
+    ).toBeVisible();
   });
 
   /** TC-E2E-025: リアルタイムプレビューが更新される（ビジュアル入力） */
@@ -121,7 +117,9 @@ test.describe("コンボ CRUD", () => {
     // プレビューが更新される（コンボプレビューエリア内に内容が表示される）
     // テキスト入力後にプレビューが表示されること
     await expect(
-      page.locator('[class*="combo"], .rounded-lg').filter({ hasText: "コンボプレビュー" }),
+      page
+        .locator('[class*="combo"], .rounded-lg')
+        .filter({ hasText: "コンボプレビュー" }),
     ).toBeVisible();
   });
 
@@ -139,7 +137,9 @@ test.describe("コンボ CRUD", () => {
     await page.goto(`/characters/${CHARACTER_ID}/combos`);
 
     // コンボカードが表示される（複数マッチする場合は first() を使用）
-    await expect(page.getByText("表示確認コンボ (TC-027)").first()).toBeVisible();
+    await expect(
+      page.getByText("表示確認コンボ (TC-027)").first(),
+    ).toBeVisible();
     // ダメージ値が表示される
     await expect(page.getByText("1,500").first()).toBeVisible();
   });
@@ -221,7 +221,9 @@ test.describe("コンボ CRUD", () => {
     await page.goto(`/characters/${CHARACTER_ID}/combos/${comboId}/edit`);
 
     // ローディング完了待機
-    await page.waitForSelector(".animate-spin", { state: "detached" }).catch(() => {});
+    await page
+      .waitForSelector(".animate-spin", { state: "detached" })
+      .catch(() => {});
 
     const editPage = new ComboEditPage(page);
     await editPage.heading.waitFor();
@@ -247,7 +249,9 @@ test.describe("コンボ CRUD", () => {
     await page.goto(`/characters/${CHARACTER_ID}/combos/${comboId}/edit`);
 
     // ローディング完了待機
-    await page.waitForSelector(".animate-spin", { state: "detached" }).catch(() => {});
+    await page
+      .waitForSelector(".animate-spin", { state: "detached" })
+      .catch(() => {});
 
     const editPage = new ComboEditPage(page);
     await editPage.heading.waitFor();
@@ -274,9 +278,7 @@ test.describe("コンボ CRUD", () => {
 
     // 確認ダイアログが表示される
     await expect(detailPage.confirmDialog).toBeVisible();
-    await expect(
-      page.getByText("コンボを削除しますか？"),
-    ).toBeVisible();
+    await expect(page.getByText("コンボを削除しますか？")).toBeVisible();
 
     // 「削除する」ボタンと「キャンセル」ボタンが表示される
     await expect(detailPage.confirmDeleteButton).toBeVisible();

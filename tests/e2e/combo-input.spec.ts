@@ -208,7 +208,9 @@ test.describe("コンボ入力 UI 詳細", () => {
     // 評価: ブラウザのネイティブバリデーションは role="alert" を使用しないため、
     // input の validity プロパティを確認する
     const isInvalid = await page.evaluate(() => {
-      const input = document.querySelector('input[type="number"]') as HTMLInputElement | null;
+      const input = document.querySelector(
+        'input[type="number"]',
+      ) as HTMLInputElement | null;
       return input ? !input.validity.valid : false;
     });
     expect(isInvalid).toBeTruthy();

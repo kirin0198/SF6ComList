@@ -9,9 +9,7 @@ import { type Page } from "@playwright/test";
  * Next.js が内部で使用する role="alert" のアナウンサーを除外する
  */
 export function getAlert(page: Page) {
-  return page.locator(
-    '[role="alert"]:not([id="__next-route-announcer__"])',
-  );
+  return page.locator('[role="alert"]:not([id="__next-route-announcer__"])');
 }
 
 /**

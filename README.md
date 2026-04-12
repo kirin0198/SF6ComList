@@ -13,13 +13,13 @@ SF6（ストリートファイター6）の個人向けコンボ管理 Web ア�
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
+| Layer    | Technology                                        |
+| -------- | ------------------------------------------------- |
 | Frontend | Next.js (App Router) + React 19 + Tailwind CSS v4 |
-| Backend | Next.js API Routes |
-| Database | SQLite (Prisma ORM) |
-| Auth | Auth.js (NextAuth v5) - Credentials Provider |
-| Testing | Vitest + Testing Library + Playwright (E2E) |
+| Backend  | Next.js API Routes                                |
+| Database | SQLite (Prisma ORM)                               |
+| Auth     | Auth.js (NextAuth v5) - Credentials Provider      |
+| Testing  | Vitest + Testing Library + Playwright (E2E)       |
 
 ## Getting Started
 
@@ -84,14 +84,14 @@ docs/                   # Design documents
 
 ## Scripts
 
-| Command | Description |
-|---------|------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm test` | Run unit tests (Vitest) |
-| `npm run lint` | Run ESLint |
-| `npx playwright test` | Run E2E tests |
-| `npx prisma studio` | Open Prisma Studio (DB GUI) |
+| Command               | Description                 |
+| --------------------- | --------------------------- |
+| `npm run dev`         | Start development server    |
+| `npm run build`       | Build for production        |
+| `npm test`            | Run unit tests (Vitest)     |
+| `npm run lint`        | Run ESLint                  |
+| `npx playwright test` | Run E2E tests               |
+| `npx prisma studio`   | Open Prisma Studio (DB GUI) |
 
 ## License
 

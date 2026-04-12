@@ -36,7 +36,9 @@ test.describe("タグフィルタ + ユーザータグ作成", () => {
     page,
   }) => {
     // コンボを1件作成してフィルタバーを表示させる
-    await createComboViaAPI(page, CHARACTER_ID, { name: "フィルタ確認用コンボ" });
+    await createComboViaAPI(page, CHARACTER_ID, {
+      name: "フィルタ確認用コンボ",
+    });
     await page.goto(`/characters/${CHARACTER_ID}/combos`);
 
     // タグフィルタバーが表示される
@@ -58,8 +60,14 @@ test.describe("タグフィルタ + ユーザータグ作成", () => {
     const bnbTagId = await getTagId(page, "BnB");
     const cornerTagId = await getTagId(page, "画面端");
 
-    await createComboViaAPI(page, CHARACTER_ID, { name: "BnBコンボ (TC-052)", tagIds: [bnbTagId] });
-    await createComboViaAPI(page, CHARACTER_ID, { name: "画面端コンボ (TC-052)", tagIds: [cornerTagId] });
+    await createComboViaAPI(page, CHARACTER_ID, {
+      name: "BnBコンボ (TC-052)",
+      tagIds: [bnbTagId],
+    });
+    await createComboViaAPI(page, CHARACTER_ID, {
+      name: "画面端コンボ (TC-052)",
+      tagIds: [cornerTagId],
+    });
 
     await page.goto(`/characters/${CHARACTER_ID}/combos`);
 
@@ -81,9 +89,17 @@ test.describe("タグフィルタ + ユーザータグ作成", () => {
     const bnbTagId = await getTagId(page, "BnB");
     const cornerTagId = await getTagId(page, "画面端");
 
-    await createComboViaAPI(page, CHARACTER_ID, { name: "BnBコンボ (TC-053)", tagIds: [bnbTagId] });
-    await createComboViaAPI(page, CHARACTER_ID, { name: "画面端コンボ (TC-053)", tagIds: [cornerTagId] });
-    await createComboViaAPI(page, CHARACTER_ID, { name: "タグなしコンボ (TC-053)" });
+    await createComboViaAPI(page, CHARACTER_ID, {
+      name: "BnBコンボ (TC-053)",
+      tagIds: [bnbTagId],
+    });
+    await createComboViaAPI(page, CHARACTER_ID, {
+      name: "画面端コンボ (TC-053)",
+      tagIds: [cornerTagId],
+    });
+    await createComboViaAPI(page, CHARACTER_ID, {
+      name: "タグなしコンボ (TC-053)",
+    });
 
     await page.goto(`/characters/${CHARACTER_ID}/combos`);
 
@@ -96,15 +112,22 @@ test.describe("タグフィルタ + ユーザータグ作成", () => {
     await expect(page.getByText("画面端コンボ (TC-053)").first()).toBeVisible();
 
     // タグなしコンボは非表示
-    await expect(page.getByText("タグなしコンボ (TC-053)").first()).not.toBeVisible();
+    await expect(
+      page.getByText("タグなしコンボ (TC-053)").first(),
+    ).not.toBeVisible();
   });
 
   /** TC-E2E-054: フィルタクリアで全コンボが表示される */
   test("TC-E2E-054: フィルタクリアで全コンボが表示される", async ({ page }) => {
     const bnbTagId = await getTagId(page, "BnB");
 
-    await createComboViaAPI(page, CHARACTER_ID, { name: "BnBコンボ (TC-054)", tagIds: [bnbTagId] });
-    await createComboViaAPI(page, CHARACTER_ID, { name: "タグなしコンボ (TC-054)" });
+    await createComboViaAPI(page, CHARACTER_ID, {
+      name: "BnBコンボ (TC-054)",
+      tagIds: [bnbTagId],
+    });
+    await createComboViaAPI(page, CHARACTER_ID, {
+      name: "タグなしコンボ (TC-054)",
+    });
 
     await page.goto(`/characters/${CHARACTER_ID}/combos`);
 
@@ -116,7 +139,9 @@ test.describe("タグフィルタ + ユーザータグ作成", () => {
 
     // 全コンボが表示される
     await expect(page.getByText("BnBコンボ (TC-054)").first()).toBeVisible();
-    await expect(page.getByText("タグなしコンボ (TC-054)").first()).toBeVisible();
+    await expect(
+      page.getByText("タグなしコンボ (TC-054)").first(),
+    ).toBeVisible();
   });
 
   /** TC-E2E-055: フィルタ結果が0件の場合にメッセージが表示される */
@@ -124,7 +149,9 @@ test.describe("タグフィルタ + ユーザータグ作成", () => {
     page,
   }) => {
     // タグなしコンボのみ作成
-    await createComboViaAPI(page, CHARACTER_ID, { name: "タグなしコンボ (TC-055)" });
+    await createComboViaAPI(page, CHARACTER_ID, {
+      name: "タグなしコンボ (TC-055)",
+    });
 
     await page.goto(`/characters/${CHARACTER_ID}/combos`);
 
@@ -187,7 +214,10 @@ test.describe("タグフィルタ + ユーザータグ作成", () => {
     await page.goto(`/characters/${CHARACTER_ID}/combos`);
 
     // コンボカードが表示される（コンボ名を持つリンク要素）
-    const comboCard = page.getByRole("link").filter({ hasText: "タグ表示確認 (TC-058)" }).first();
+    const comboCard = page
+      .getByRole("link")
+      .filter({ hasText: "タグ表示確認 (TC-058)" })
+      .first();
     await expect(comboCard).toBeVisible();
 
     // タグバッジ「BnB」「SA2」がコンボカード内に表示される

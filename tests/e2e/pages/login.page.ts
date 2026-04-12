@@ -26,8 +26,12 @@ export class LoginPage {
     this.passwordInput = page.locator('input[type="password"]').first();
     this.submitButton = page.getByRole("button", { name: "ログイン" });
     this.registerLink = page.getByRole("link", { name: "新規登録はこちら" });
-    this.errorAlert = page.getByRole("alert").filter({ hasNot: page.locator('[id="__next-route-announcer__"]') });
-    this.passwordToggle = page.getByRole("button", { name: "パスワードを表示" });
+    this.errorAlert = page
+      .getByRole("alert")
+      .filter({ hasNot: page.locator('[id="__next-route-announcer__"]') });
+    this.passwordToggle = page.getByRole("button", {
+      name: "パスワードを表示",
+    });
   }
 
   async goto() {
@@ -45,13 +49,13 @@ export class LoginPage {
   }
 
   async getErrorMessage(): Promise<string> {
-    return await this.errorAlert.textContent() ?? "";
+    return (await this.errorAlert.textContent()) ?? "";
   }
 
   async getFieldError(fieldLabel: string): Promise<string> {
     const field = this.page.getByLabel(fieldLabel);
     const container = field.locator("../..");
     const error = container.getByRole("alert");
-    return await error.textContent() ?? "";
+    return (await error.textContent()) ?? "";
   }
 }

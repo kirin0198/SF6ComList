@@ -225,13 +225,29 @@ describe("comboCreateSchema 追加エッジケース", () => {
     const result = comboCreateSchema.safeParse({
       sequence: {
         steps: [
-          { type: "normal" as const, directions: ["5"] as const, button: "MP" as const },
+          {
+            type: "normal" as const,
+            directions: ["5"] as const,
+            button: "MP" as const,
+          },
           { type: "connector" as const, symbol: ">" as const },
-          { type: "normal" as const, directions: ["5"] as const, button: "HP" as const },
+          {
+            type: "normal" as const,
+            directions: ["5"] as const,
+            button: "HP" as const,
+          },
           { type: "connector" as const, symbol: "xx" as const },
-          { type: "normal" as const, directions: ["2", "3", "6"] as const, button: "HP" as const },
+          {
+            type: "normal" as const,
+            directions: ["2", "3", "6"] as const,
+            button: "HP" as const,
+          },
           { type: "connector" as const, symbol: "xx" as const },
-          { type: "normal" as const, directions: [] as const, button: "SA2" as const },
+          {
+            type: "normal" as const,
+            directions: [] as const,
+            button: "SA2" as const,
+          },
         ],
         notation: "5MP > 5HP xx 236HP xx SA2",
       },

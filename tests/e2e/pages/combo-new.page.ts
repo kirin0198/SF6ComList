@@ -39,8 +39,12 @@ export class ComboNewPage {
     this.visualModeTab = page.getByRole("tab", { name: "ビジュアル入力" });
     this.textModeTab = page.getByRole("tab", { name: "テキスト入力" });
     this.directionPad = page.getByRole("grid", { name: "方向入力パッド" });
-    this.buttonPalette = page.getByRole("group", { name: "ボタン選択パレット" });
-    this.connectorSelector = page.getByRole("group", { name: "コネクター選択" });
+    this.buttonPalette = page.getByRole("group", {
+      name: "ボタン選択パレット",
+    });
+    this.connectorSelector = page.getByRole("group", {
+      name: "コネクター選択",
+    });
     this.previewArea = page.locator("text=コンボプレビュー").locator("..");
     this.nameInput = page.getByLabel("コンボ名（任意）");
     this.damageInput = page.getByLabel("ダメージ値（任意）");
@@ -49,7 +53,9 @@ export class ComboNewPage {
     this.cancelButton = page.getByRole("button", { name: "キャンセル" });
     this.undoButton = page.getByRole("button", { name: "元に戻す" });
     this.resetButton = page.getByRole("button", { name: "リセット" });
-    this.odToggle = page.getByRole("button", { name: "オーバードライブ修飾子" });
+    this.odToggle = page.getByRole("button", {
+      name: "オーバードライブ修飾子",
+    });
     this.textInput = page.locator("#combo-text-input");
     this.newTagInput = page.getByLabel("新しいタグ名");
     this.addTagButton = page.getByLabel("タグを追加");
@@ -58,9 +64,11 @@ export class ComboNewPage {
   async goto() {
     await this.page.goto(`/characters/${this.characterId}/combos/new`);
     // ローディング完了を待つ（スピナーが消えるまで）
-    await this.page.waitForSelector(".animate-spin", { state: "detached", timeout: 10000 }).catch(() => {
-      // スピナーがない場合も継続
-    });
+    await this.page
+      .waitForSelector(".animate-spin", { state: "detached", timeout: 10000 })
+      .catch(() => {
+        // スピナーがない場合も継続
+      });
   }
 
   async switchToTextMode() {
@@ -75,21 +83,23 @@ export class ComboNewPage {
   async clickDirection(direction: string) {
     const label = this._getDirectionLabel(direction);
     // aria-label の完全一致で検索（partial match で複数要素にマッチするのを防ぐ）
-    await this.directionPad
-      .locator(`button[aria-label="${label}"]`)
-      .click();
+    await this.directionPad.locator(`button[aria-label="${label}"]`).click();
   }
 
   /** ボタンパレットで指定したボタンをクリック */
   async clickButton(buttonName: string) {
     // ButtonPalette 内の <button aria-label="..."> を直接選択する（内部の span も aria-label を持つため button に限定）
-    await this.buttonPalette.locator(`button[aria-label="${buttonName}"]`).click();
+    await this.buttonPalette
+      .locator(`button[aria-label="${buttonName}"]`)
+      .click();
   }
 
   /** コネクターをクリック */
   async clickConnector(connectorDescription: string) {
     // ConnectorSelector 内の <button aria-label="..."> を直接選択（内部 span も aria-label を持つため button に限定）
-    await this.connectorSelector.locator(`button[aria-label="${connectorDescription}"]`).click();
+    await this.connectorSelector
+      .locator(`button[aria-label="${connectorDescription}"]`)
+      .click();
   }
 
   /** メタデータを入力 */
@@ -130,7 +140,7 @@ export class ComboNewPage {
 
   async getPreviewNotation(): Promise<string> {
     const notation = this.page.locator(".font-mono").first();
-    return await notation.textContent() ?? "";
+    return (await notation.textContent()) ?? "";
   }
 
   /** 方向ラベルを取得（aria-label 用） */

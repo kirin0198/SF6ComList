@@ -45,13 +45,13 @@ export class RegisterPage {
   }
 
   async getErrorMessage(): Promise<string> {
-    return await this.errorAlert.first().textContent() ?? "";
+    return (await this.errorAlert.first().textContent()) ?? "";
   }
 
   async getFieldError(fieldLabel: string): Promise<string> {
     const field = this.page.getByLabel(fieldLabel);
     const container = field.locator("../..");
     const error = container.getByRole("alert");
-    return await error.textContent() ?? "";
+    return (await error.textContent()) ?? "";
   }
 }

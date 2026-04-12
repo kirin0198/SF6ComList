@@ -125,7 +125,7 @@ jobs:
 
     permissions:
       contents: read
-      id-token: write  # Workload Identity Federation に必須
+      id-token: write # Workload Identity Federation に必須
 
     steps:
       - name: Checkout

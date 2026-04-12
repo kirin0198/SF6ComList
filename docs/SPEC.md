@@ -3,8 +3,9 @@
 > 作成日: 2026-04-08
 > 最終更新: 2026-04-08
 > 更新履歴:
->   - 2026-04-08: 初版作成
-> 参照元: DISCOVERY_RESULT.md, INTERVIEW_RESULT.md, RESEARCH_RESULT.md, POC_RESULT.md, SCOPE_PLAN.md
+>
+> - 2026-04-08: 初版作成
+>   参照元: DISCOVERY_RESULT.md, INTERVIEW_RESULT.md, RESEARCH_RESULT.md, POC_RESULT.md, SCOPE_PLAN.md
 
 ## 1. プロジェクト概要
 
@@ -53,34 +54,38 @@ service
 
 ## 2. 推奨技術スタック
 
-| 層 | 技術 | 選定理由 |
-|----|------|---------|
-| フロントエンド | Next.js (App Router) + React | PoCでReactコンポーネントの実装パターンが確立済み。APIルートによるバックエンド統合でモノリス構成が可能 |
-| スタイリング | Tailwind CSS | PoCでボタン色分けの型安全な管理パターン（colorClass）が実証済み。ユーティリティファーストでカスタムUI構築に適合 |
-| 言語 | TypeScript | PoCの複雑な型定義（Direction Union型、ComboStep Discriminated Union等）を型安全に管理するために必須 |
-| 認証 | Auth.js (NextAuth.js v5) | メール/パスワード認証を統一的に管理。将来のOAuth追加にも対応。ローカル環境でのlocalhost対応も問題なし |
-| ORM | Prisma | TypeScript対応のスキーマ駆動ORM。ComboのsequenceフィールドをJson型で格納可能 |
-| DB（ローカル） | SQLite | Docker不要で起動できる軽量DB。Prismaの抽象化により将来PostgreSQLへの移行が容易 |
-| アイコン素材 | 自作SVG + Fighting Game Input Icons Pack (CC-BY-4.0) | PoCで確認したアイコンマッピング構造に基づく。著作権リスクを回避 |
+| 層             | 技術                                                 | 選定理由                                                                                                        |
+| -------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| フロントエンド | Next.js (App Router) + React                         | PoCでReactコンポーネントの実装パターンが確立済み。APIルートによるバックエンド統合でモノリス構成が可能           |
+| スタイリング   | Tailwind CSS                                         | PoCでボタン色分けの型安全な管理パターン（colorClass）が実証済み。ユーティリティファーストでカスタムUI構築に適合 |
+| 言語           | TypeScript                                           | PoCの複雑な型定義（Direction Union型、ComboStep Discriminated Union等）を型安全に管理するために必須             |
+| 認証           | Auth.js (NextAuth.js v5)                             | メール/パスワード認証を統一的に管理。将来のOAuth追加にも対応。ローカル環境でのlocalhost対応も問題なし           |
+| ORM            | Prisma                                               | TypeScript対応のスキーマ駆動ORM。ComboのsequenceフィールドをJson型で格納可能                                    |
+| DB（ローカル） | SQLite                                               | Docker不要で起動できる軽量DB。Prismaの抽象化により将来PostgreSQLへの移行が容易                                  |
+| アイコン素材   | 自作SVG + Fighting Game Input Icons Pack (CC-BY-4.0) | PoCで確認したアイコンマッピング構造に基づく。著作権リスクを回避                                                 |
 
 ### 技術スタック選定の思考過程
 
 **Step 1. 要件のドメインと特性:**
+
 - Webアプリケーション（SPA + API）であり、ビジュアルコンボ入力UIという複雑なインタラクティブUIを含む
 - 個人利用のためスループット要件は低い。型安全性と開発効率を優先すべき
 - コンボデータの複雑なJSON構造（Union型、ネスト構造）を扱うため、型安全性が重要
 
 **Step 2. ベストプラクティスの適用:**
+
 - 複雑なインタラクティブUIを持つSPA → React がベストプラクティス
 - フルスタックTypeScript → Next.js (App Router) がAPIルートとSSRを統合できる
 - PoCで React + TypeScript の実装パターンが確立済みであり、技術的リスクが解消されている
 
 **Step 3. プロジェクト固有の制約:**
+
 - ユーザーは技術スタックの指定なし（「おまかせ」）
 - PoCコード（combo-data-model.ts, notation-converter.ts, ComboInputUI.tsx, ComboDisplay.tsx）がTypeScript + Reactで実装済みであり、再利用可能
 - ローカル環境前提のため、外部サービスへの依存を最小化すべき
 
 **Step 4. 却下した代替案:**
+
 - **FastAPI + React SPA（分離型）:** フロント/バック分離はデプロイ構成が複雑になる。Next.jsのモノリス構成の方がローカル環境で簡潔
 - **Vue.js / Svelte:** PoCがReactで実装済みのため、移植コストが発生する。Reactのエコシステム（dnd-kit等）も活用可能
 - **PostgreSQL（初期から）:** ローカル開発ではDocker依存が増える。SQLiteの方が起動が軽量で、Prisma経由で後からPostgreSQLに移行可能
@@ -93,30 +98,30 @@ service
 
 ### ペルソナ定義
 
-| 属性 | 内容 |
-|------|------|
-| 名前 | SF6プレイヤー（開発者自身） |
-| 役割 | エンドユーザー兼管理者 |
-| 目的 | 自分のSF6コンボを視覚的に記録・管理し、練習時に素早く参照したい |
-| 利用環境 | デスクトップブラウザ（ローカル環境） |
-| 技術レベル | SF6プレイヤーとして中〜上級。テンキー表記に精通 |
+| 属性       | 内容                                                            |
+| ---------- | --------------------------------------------------------------- |
+| 名前       | SF6プレイヤー（開発者自身）                                     |
+| 役割       | エンドユーザー兼管理者                                          |
+| 目的       | 自分のSF6コンボを視覚的に記録・管理し、練習時に素早く参照したい |
+| 利用環境   | デスクトップブラウザ（ローカル環境）                            |
+| 技術レベル | SF6プレイヤーとして中〜上級。テンキー表記に精通                 |
 
 ### ユースケース一覧
 
-| UC | ユースケース名 | 優先度 |
-|----|--------------|--------|
-| UC-001 | ユーザー登録 | Must |
-| UC-002 | ログイン | Must |
-| UC-003 | ログアウト | Must |
-| UC-004 | キャラクター一覧表示 | Must |
-| UC-005 | コンボ登録（ビジュアル入力） | Must |
-| UC-006 | コンボ登録（テンキー表記テキスト入力） | Must |
-| UC-007 | キャラクター別コンボ一覧表示 | Must |
-| UC-008 | コンボ詳細表示 | Must |
-| UC-009 | コンボ編集 | Must |
-| UC-010 | コンボ削除 | Must |
-| UC-011 | タグフィルタ | Must |
-| UC-012 | ユーザー定義タグ作成 | Must |
+| UC     | ユースケース名                         | 優先度 |
+| ------ | -------------------------------------- | ------ |
+| UC-001 | ユーザー登録                           | Must   |
+| UC-002 | ログイン                               | Must   |
+| UC-003 | ログアウト                             | Must   |
+| UC-004 | キャラクター一覧表示                   | Must   |
+| UC-005 | コンボ登録（ビジュアル入力）           | Must   |
+| UC-006 | コンボ登録（テンキー表記テキスト入力） | Must   |
+| UC-007 | キャラクター別コンボ一覧表示           | Must   |
+| UC-008 | コンボ詳細表示                         | Must   |
+| UC-009 | コンボ編集                             | Must   |
+| UC-010 | コンボ削除                             | Must   |
+| UC-011 | タグフィルタ                           | Must   |
+| UC-012 | ユーザー定義タグ作成                   | Must   |
 
 ---
 
@@ -377,15 +382,15 @@ service
 
 ## 6. 画面一覧
 
-| # | 画面名 | パス（案） | 概要 |
-|---|--------|-----------|------|
-| S-001 | ログイン画面 | /login | メール/パスワード入力、登録画面へのリンク |
-| S-002 | ユーザー登録画面 | /register | メール/パスワード/確認入力、ログイン画面へのリンク |
-| S-003 | キャラクター一覧画面 | / (トップ) | 全30キャラクターのグリッド表示 + 各キャラの登録コンボ数 |
-| S-004 | キャラクター別コンボ一覧画面 | /characters/[characterId]/combos | キャラクターのコンボ一覧 + タグフィルタ + 新規登録ボタン |
-| S-005 | コンボ登録画面 | /characters/[characterId]/combos/new | ビジュアル入力 / テキスト入力の切り替え + コンボメタデータ入力 + 保存 |
-| S-006 | コンボ詳細画面 | /characters/[characterId]/combos/[comboId] | コンボの全属性表示 + 編集・削除ボタン |
-| S-007 | コンボ編集画面 | /characters/[characterId]/combos/[comboId]/edit | 既存コンボの編集（登録画面と同構造だが既存データがプリセットされる） |
+| #     | 画面名                       | パス（案）                                      | 概要                                                                  |
+| ----- | ---------------------------- | ----------------------------------------------- | --------------------------------------------------------------------- |
+| S-001 | ログイン画面                 | /login                                          | メール/パスワード入力、登録画面へのリンク                             |
+| S-002 | ユーザー登録画面             | /register                                       | メール/パスワード/確認入力、ログイン画面へのリンク                    |
+| S-003 | キャラクター一覧画面         | / (トップ)                                      | 全30キャラクターのグリッド表示 + 各キャラの登録コンボ数               |
+| S-004 | キャラクター別コンボ一覧画面 | /characters/[characterId]/combos                | キャラクターのコンボ一覧 + タグフィルタ + 新規登録ボタン              |
+| S-005 | コンボ登録画面               | /characters/[characterId]/combos/new            | ビジュアル入力 / テキスト入力の切り替え + コンボメタデータ入力 + 保存 |
+| S-006 | コンボ詳細画面               | /characters/[characterId]/combos/[comboId]      | コンボの全属性表示 + 編集・削除ボタン                                 |
+| S-007 | コンボ編集画面               | /characters/[characterId]/combos/[comboId]/edit | 既存コンボの編集（登録画面と同構造だが既存データがプリセットされる）  |
 
 > ※ 画面の詳細レイアウト・ワイヤーフレームは ux-designer にて設計する
 
@@ -397,58 +402,58 @@ service
 
 #### User（ユーザー）
 
-| 属性 | 型 | 必須 | 説明 |
-|------|------|------|------|
-| id | string (UUID) | Yes | プライマリキー |
-| email | string | Yes | メールアドレス（ユニーク） |
-| name | string | No | 表示名 |
-| passwordHash | string | Yes | bcryptハッシュ化パスワード |
-| createdAt | datetime | Yes | 作成日時 |
-| updatedAt | datetime | Yes | 更新日時 |
+| 属性         | 型            | 必須 | 説明                       |
+| ------------ | ------------- | ---- | -------------------------- |
+| id           | string (UUID) | Yes  | プライマリキー             |
+| email        | string        | Yes  | メールアドレス（ユニーク） |
+| name         | string        | No   | 表示名                     |
+| passwordHash | string        | Yes  | bcryptハッシュ化パスワード |
+| createdAt    | datetime      | Yes  | 作成日時                   |
+| updatedAt    | datetime      | Yes  | 更新日時                   |
 
 #### Character（キャラクター）
 
 JSONマスタデータとして管理する。DBテーブルではなくアプリケーション内の静的データ。
 
-| 属性 | 型 | 必須 | 説明 |
-|------|------|------|------|
-| id | string | Yes | キャラクター識別子（例: "ryu", "ken"） |
-| name | string | Yes | 日本語名（例: "リュウ"） |
-| nameEn | string | Yes | 英語名（例: "Ryu"） |
-| status | "active" / "upcoming" | Yes | リリース状態。upcomingは一覧に非表示 |
+| 属性   | 型                    | 必須 | 説明                                   |
+| ------ | --------------------- | ---- | -------------------------------------- |
+| id     | string                | Yes  | キャラクター識別子（例: "ryu", "ken"） |
+| name   | string                | Yes  | 日本語名（例: "リュウ"）               |
+| nameEn | string                | Yes  | 英語名（例: "Ryu"）                    |
+| status | "active" / "upcoming" | Yes  | リリース状態。upcomingは一覧に非表示   |
 
 全30キャラクターの一覧は RESEARCH_RESULT.md を参照。イングリッド（#30）は2026年春リリース予定のため、initialデータでは `upcoming` ステータスとする。
 
 #### Combo（コンボ）
 
-| 属性 | 型 | 必須 | 説明 |
-|------|------|------|------|
-| id | string (UUID) | Yes | プライマリキー |
-| userId | string (UUID) | Yes | 所有者ユーザーのID（FK -> User） |
-| characterId | string | Yes | キャラクター識別子 |
-| name | string | No | コンボ名（例: "BnB コンボ1"） |
-| sequence | JSON (ComboSequence) | Yes | コンボのシーケンスデータ（後述） |
-| notation | string | Yes | テンキー表記文字列（検索・表示用） |
-| damage | integer | No | 推定ダメージ値 |
-| memo | text | No | 自由記述メモ |
-| createdAt | datetime | Yes | 作成日時 |
-| updatedAt | datetime | Yes | 更新日時 |
+| 属性        | 型                   | 必須 | 説明                               |
+| ----------- | -------------------- | ---- | ---------------------------------- |
+| id          | string (UUID)        | Yes  | プライマリキー                     |
+| userId      | string (UUID)        | Yes  | 所有者ユーザーのID（FK -> User）   |
+| characterId | string               | Yes  | キャラクター識別子                 |
+| name        | string               | No   | コンボ名（例: "BnB コンボ1"）      |
+| sequence    | JSON (ComboSequence) | Yes  | コンボのシーケンスデータ（後述）   |
+| notation    | string               | Yes  | テンキー表記文字列（検索・表示用） |
+| damage      | integer              | No   | 推定ダメージ値                     |
+| memo        | text                 | No   | 自由記述メモ                       |
+| createdAt   | datetime             | Yes  | 作成日時                           |
+| updatedAt   | datetime             | Yes  | 更新日時                           |
 
 #### Tag（タグ）
 
-| 属性 | 型 | 必須 | 説明 |
-|------|------|------|------|
-| id | string (UUID) | Yes | プライマリキー |
-| name | string | Yes | タグ名（1〜30文字） |
-| isPreset | boolean | Yes | プリセットタグか否か |
-| userId | string (UUID) | No | ユーザー定義タグの場合、所有者ユーザーのID。プリセットタグの場合はnull |
+| 属性     | 型            | 必須 | 説明                                                                   |
+| -------- | ------------- | ---- | ---------------------------------------------------------------------- |
+| id       | string (UUID) | Yes  | プライマリキー                                                         |
+| name     | string        | Yes  | タグ名（1〜30文字）                                                    |
+| isPreset | boolean       | Yes  | プリセットタグか否か                                                   |
+| userId   | string (UUID) | No   | ユーザー定義タグの場合、所有者ユーザーのID。プリセットタグの場合はnull |
 
 #### ComboTag（コンボ-タグ中間テーブル）
 
-| 属性 | 型 | 必須 | 説明 |
-|------|------|------|------|
-| comboId | string (UUID) | Yes | FK -> Combo |
-| tagId | string (UUID) | Yes | FK -> Tag |
+| 属性    | 型            | 必須 | 説明        |
+| ------- | ------------- | ---- | ----------- |
+| comboId | string (UUID) | Yes  | FK -> Combo |
+| tagId   | string (UUID) | Yes  | FK -> Tag   |
 
 ### 主要な関係性
 
@@ -467,7 +472,7 @@ PoCで検証済みの型定義（`poc/combo-data-model.ts`）に基づく。DB�
 // コンボシーケンス全体
 interface ComboSequence {
   steps: ComboStep[];
-  notation: string;  // テンキー表記文字列（表示・検索用）
+  notation: string; // テンキー表記文字列（表示・検索用）
 }
 
 // 1ステップ = 通常入力 | 溜め入力 | コネクター
@@ -476,24 +481,24 @@ type ComboStep = NormalInput | ChargeInput | ConnectorStep;
 // 通常の方向+ボタン入力
 interface NormalInput {
   type: "normal";
-  directions: Direction[];   // テンキー方向: "1"〜"9"
-  button: ButtonInput;       // LP/MP/HP/LK/MK/HK/DI/DR/DP/PP/DRev/OD/SA1/SA2/SA3/Throw
+  directions: Direction[]; // テンキー方向: "1"〜"9"
+  button: ButtonInput; // LP/MP/HP/LK/MK/HK/DI/DR/DP/PP/DRev/OD/SA1/SA2/SA3/Throw
   modifier?: AttackModifier; // j/cl/cr/st
-  isOD?: boolean;            // OD技の場合 true
+  isOD?: boolean; // OD技の場合 true
 }
 
 // 溜め入力
 interface ChargeInput {
   type: "charge";
-  chargeDir: Direction;     // 溜め方向 例: "4"
-  releaseDir: Direction;    // 離す方向 例: "6"
-  button: BasicButton;      // LP/MP/HP/LK/MK/HK
+  chargeDir: Direction; // 溜め方向 例: "4"
+  releaseDir: Direction; // 離す方向 例: "6"
+  button: BasicButton; // LP/MP/HP/LK/MK/HK
 }
 
 // コネクター
 interface ConnectorStep {
   type: "connector";
-  symbol: ">" | "xx" | "~" | ",";  // リンク | キャンセル | ディレイ | 区切り
+  symbol: ">" | "xx" | "~" | ","; // リンク | キャンセル | ディレイ | 区切り
 }
 ```
 
@@ -509,31 +514,31 @@ interface ConnectorStep {
 
 ### ボタン入力（ButtonInput）
 
-| カテゴリ | ボタン | 説明 |
-|---------|--------|------|
-| パンチ | LP, MP, HP | 弱・中・強パンチ |
-| キック | LK, MK, HK | 弱・中・強キック |
-| ドライブ | DI, DR, DP, PP, DRev, OD | ドライブインパクト、ドライブラッシュ、ドライブパリィ、パーフェクトパリィ、ドライブリバーサル、オーバードライブ |
-| スーパーアーツ | SA1, SA2, SA3 | スーパーアーツ1〜3（SA3 = Critical Art） |
-| その他 | Throw | 投げ（LP+LK） |
+| カテゴリ       | ボタン                   | 説明                                                                                                           |
+| -------------- | ------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| パンチ         | LP, MP, HP               | 弱・中・強パンチ                                                                                               |
+| キック         | LK, MK, HK               | 弱・中・強キック                                                                                               |
+| ドライブ       | DI, DR, DP, PP, DRev, OD | ドライブインパクト、ドライブラッシュ、ドライブパリィ、パーフェクトパリィ、ドライブリバーサル、オーバードライブ |
+| スーパーアーツ | SA1, SA2, SA3            | スーパーアーツ1〜3（SA3 = Critical Art）                                                                       |
+| その他         | Throw                    | 投げ（LP+LK）                                                                                                  |
 
 ### コネクター記号
 
-| 記号 | 意味 | 使用例 |
-|------|------|--------|
-| > | リンク（つなぎ） | 5MP > 5HP |
-| xx | キャンセル | 5HP xx 236HP |
-| ~ | ディレイ / 派生 | 236HK ~ delay |
-| , | コマンドの区切り | 2MK, 236LP |
+| 記号 | 意味             | 使用例        |
+| ---- | ---------------- | ------------- |
+| >    | リンク（つなぎ） | 5MP > 5HP     |
+| xx   | キャンセル       | 5HP xx 236HP  |
+| ~    | ディレイ / 派生  | 236HK ~ delay |
+| ,    | コマンドの区切り | 2MK, 236LP    |
 
 ### 攻撃修飾子（AttackModifier）
 
-| 修飾子 | 表記 | 意味 |
-|--------|------|------|
-| j | j. | ジャンプ攻撃 |
-| cl | cl. | 近距離 |
-| cr | cr. | しゃがみ（2と同義） |
-| st | st. | 立ち（5と同義） |
+| 修飾子 | 表記 | 意味                |
+| ------ | ---- | ------------------- |
+| j      | j.   | ジャンプ攻撃        |
+| cl     | cl.  | 近距離              |
+| cr     | cr.  | しゃがみ（2と同義） |
+| st     | st.  | 立ち（5と同義）     |
 
 ---
 
@@ -541,20 +546,20 @@ interface ConnectorStep {
 
 DISCOVERY_RESULT.md およびRESEARCH_RESULT.md の推奨事項に基づき、以下の12種をプリセットタグとして確定する。
 
-| # | タグID | タグ名（日本語） | タグ名（英語/略称） | 説明 |
-|---|--------|--------------|-------------------|------|
-| 1 | preset-bnb | BnB | BnB | 基本コンボ（Bread and Butter）。最も頻繁に使う実用的な連続技 |
-| 2 | preset-corner | 画面端 | Corner | 画面端（コーナー）限定または画面端で高効率なコンボ |
-| 3 | preset-midscreen | 画面中央 | Midscreen | 画面中央で使用するコンボ |
-| 4 | preset-drive-rush | DR | Drive Rush | ドライブラッシュを使用するコンボ（ドライブゲージ消費） |
-| 5 | preset-punish-counter | パニカン始動 | Punish Counter | パニッシュカウンター始動のコンボ |
-| 6 | preset-counter-hit | CH始動 | Counter Hit | カウンターヒット始動のコンボ |
-| 7 | preset-anti-air | 対空 | Anti-Air | 対空技から始動するコンボ |
-| 8 | preset-sa1 | SA1 | SA1 | スーパーアーツ1を使用する（始動または締め）コンボ |
-| 9 | preset-sa2 | SA2 | SA2 | スーパーアーツ2を使用する（始動または締め）コンボ |
-| 10 | preset-sa3 | SA3 | SA3 | スーパーアーツ3（Critical Art）を使用する（始動または締め）コンボ |
-| 11 | preset-throw | 投げ | Throw | 投げ始動のコンボ |
-| 12 | preset-od | OD使用 | Overdrive | オーバードライブ技を使用するコンボ |
+| #   | タグID                | タグ名（日本語） | タグ名（英語/略称） | 説明                                                              |
+| --- | --------------------- | ---------------- | ------------------- | ----------------------------------------------------------------- |
+| 1   | preset-bnb            | BnB              | BnB                 | 基本コンボ（Bread and Butter）。最も頻繁に使う実用的な連続技      |
+| 2   | preset-corner         | 画面端           | Corner              | 画面端（コーナー）限定または画面端で高効率なコンボ                |
+| 3   | preset-midscreen      | 画面中央         | Midscreen           | 画面中央で使用するコンボ                                          |
+| 4   | preset-drive-rush     | DR               | Drive Rush          | ドライブラッシュを使用するコンボ（ドライブゲージ消費）            |
+| 5   | preset-punish-counter | パニカン始動     | Punish Counter      | パニッシュカウンター始動のコンボ                                  |
+| 6   | preset-counter-hit    | CH始動           | Counter Hit         | カウンターヒット始動のコンボ                                      |
+| 7   | preset-anti-air       | 対空             | Anti-Air            | 対空技から始動するコンボ                                          |
+| 8   | preset-sa1            | SA1              | SA1                 | スーパーアーツ1を使用する（始動または締め）コンボ                 |
+| 9   | preset-sa2            | SA2              | SA2                 | スーパーアーツ2を使用する（始動または締め）コンボ                 |
+| 10  | preset-sa3            | SA3              | SA3                 | スーパーアーツ3（Critical Art）を使用する（始動または締め）コンボ |
+| 11  | preset-throw          | 投げ             | Throw               | 投げ始動のコンボ                                                  |
+| 12  | preset-od             | OD使用           | Overdrive           | オーバードライブ技を使用するコンボ                                |
 
 ### タグの設計方針
 
@@ -600,25 +605,25 @@ ComboInputUI（メインコンテナ）
 
 5つのグループに分類して表示する。
 
-| グループ | ボタン | 配色 |
-|---------|--------|------|
-| パンチ | LP, MP, HP | 青系（bg-blue-400, bg-blue-600, bg-blue-800） |
-| キック | LK, MK, HK | 赤系（bg-red-400, bg-red-600, bg-red-800） |
-| ドライブ | DI, DR, DP, OD, DRev | 黄・緑・橙・紫系 |
-| スーパーアーツ | SA1, SA2, SA3 | シアン系（bg-cyan-500, bg-cyan-600, bg-cyan-800） |
-| その他 | Throw | グレー系（bg-gray-500） |
+| グループ       | ボタン               | 配色                                              |
+| -------------- | -------------------- | ------------------------------------------------- |
+| パンチ         | LP, MP, HP           | 青系（bg-blue-400, bg-blue-600, bg-blue-800）     |
+| キック         | LK, MK, HK           | 赤系（bg-red-400, bg-red-600, bg-red-800）        |
+| ドライブ       | DI, DR, DP, OD, DRev | 黄・緑・橙・紫系                                  |
+| スーパーアーツ | SA1, SA2, SA3        | シアン系（bg-cyan-500, bg-cyan-600, bg-cyan-800） |
+| その他         | Throw                | グレー系（bg-gray-500）                           |
 
 - ボタンをクリックすると、ドラフトの方向 + このボタンで1ステップが確定する
 - ドライブアクション（DI, DR等）やSA、Throwは方向なしでも単独で1ステップとなる
 
 ### コネクターセレクター（ConnectorSelector）
 
-| ボタン | 記号 | 意味 |
-|--------|------|------|
-| > | > | リンク（つなぎ） |
-| xx | xx | キャンセル |
-| ~ | ~ | ディレイ / 派生 |
-| , | , | コマンドの区切り |
+| ボタン | 記号 | 意味             |
+| ------ | ---- | ---------------- |
+| >      | >    | リンク（つなぎ） |
+| xx     | xx   | キャンセル       |
+| ~      | ~    | ディレイ / 派生  |
+| ,      | ,    | コマンドの区切り |
 
 - ステップ確定後にコネクターを選択して次のステップとの接続方法を指定する
 - コネクターはステップ間に挿入される
@@ -652,34 +657,35 @@ Next.js App Router の Server Actions または Route Handlers を前提とす�
 
 ### 認証API
 
-| メソッド | エンドポイント | 概要 |
-|---------|--------------|------|
-| POST | /api/auth/register | ユーザー登録 |
-| POST | /api/auth/[...nextauth] | Auth.js の認証エンドポイント（ログイン・ログアウト・セッション） |
+| メソッド | エンドポイント          | 概要                                                             |
+| -------- | ----------------------- | ---------------------------------------------------------------- |
+| POST     | /api/auth/register      | ユーザー登録                                                     |
+| POST     | /api/auth/[...nextauth] | Auth.js の認証エンドポイント（ログイン・ログアウト・セッション） |
 
 ### コンボAPI
 
-| メソッド | エンドポイント | 概要 |
-|---------|--------------|------|
-| GET | /api/characters | キャラクター一覧取得（JSONマスタデータ） |
-| GET | /api/characters/[characterId]/combos | キャラクター別コンボ一覧取得（タグフィルタ対応） |
-| POST | /api/characters/[characterId]/combos | コンボ登録 |
-| GET | /api/combos/[comboId] | コンボ詳細取得 |
-| PUT | /api/combos/[comboId] | コンボ更新 |
-| DELETE | /api/combos/[comboId] | コンボ削除 |
+| メソッド | エンドポイント                       | 概要                                             |
+| -------- | ------------------------------------ | ------------------------------------------------ |
+| GET      | /api/characters                      | キャラクター一覧取得（JSONマスタデータ）         |
+| GET      | /api/characters/[characterId]/combos | キャラクター別コンボ一覧取得（タグフィルタ対応） |
+| POST     | /api/characters/[characterId]/combos | コンボ登録                                       |
+| GET      | /api/combos/[comboId]                | コンボ詳細取得                                   |
+| PUT      | /api/combos/[comboId]                | コンボ更新                                       |
+| DELETE   | /api/combos/[comboId]                | コンボ削除                                       |
 
 ### タグAPI
 
-| メソッド | エンドポイント | 概要 |
-|---------|--------------|------|
-| GET | /api/tags | タグ一覧取得（プリセット + ユーザー定義） |
-| POST | /api/tags | ユーザー定義タグ作成 |
+| メソッド | エンドポイント | 概要                                      |
+| -------- | -------------- | ----------------------------------------- |
+| GET      | /api/tags      | タグ一覧取得（プリセット + ユーザー定義） |
+| POST     | /api/tags      | ユーザー定義タグ作成                      |
 
 ### 主要なリクエスト/レスポンス形式
 
 #### コンボ登録 (POST /api/characters/[characterId]/combos)
 
 リクエスト:
+
 ```json
 {
   "name": "BnB コンボ (SA2)",
@@ -689,7 +695,7 @@ Next.js App Router の Server Actions または Route Handlers を前提とす�
       { "type": "connector", "symbol": ">" },
       { "type": "normal", "directions": ["2"], "button": "MK" },
       { "type": "connector", "symbol": "xx" },
-      { "type": "normal", "directions": ["2","1","4"], "button": "MK" },
+      { "type": "normal", "directions": ["2", "1", "4"], "button": "MK" },
       { "type": "connector", "symbol": ">" },
       { "type": "normal", "directions": [], "button": "SA2" }
     ],
@@ -702,6 +708,7 @@ Next.js App Router の Server Actions または Route Handlers を前提とす�
 ```
 
 レスポンス (201 Created):
+
 ```json
 {
   "id": "combo-uuid-xxx",
@@ -738,39 +745,39 @@ Next.js App Router の Server Actions または Route Handlers を前提とす�
 
 ## 12. 用語集
 
-| 用語 | 定義 | 備考 |
-|------|------|------|
-| コンボ (Combo) | 連続技。相手が反撃できない一連の攻撃入力のシーケンス | 本プロジェクトの主要管理対象 |
-| テンキー表記 (Numpad Notation) | 方向入力をPCテンキーの数字で表記する国際標準記法 | 本プロジェクトの基本表記法。FGCで広く採用 |
-| BnB (Bread and Butter) | 基本コンボ。最も頻繁に使う実用的な連続技 | プリセットタグの1つ |
-| ドライブシステム (Drive System) | SF6固有のリソース管理システム。6本のドライブゲージを消費して各種アクションを実行 | DI, DR, DP, DRev, OD の5種のアクション |
-| ドライブインパクト (DI) | HP+HK同時押しで発動するアーマー付き攻撃。ドライブゲージ1本消費 | |
-| ドライブラッシュ (DR) | パリィまたは通常技からキャンセルして前方にダッシュする行動 | パリィから1本、キャンセルから3本消費 |
-| ドライブパリィ (DP) | MP+MK長押しで発動する防御行動 | |
-| パーフェクトパリィ (PP) | 被弾2F以内にMP+MKで発動する精密な防御行動 | |
-| ドライブリバーサル (DRev) | ガード中に6+HP+HKで発動する反撃行動。ドライブゲージ2本消費 | |
-| オーバードライブ (OD) | 必殺技の強化版。同種ボタン2つ同時押しで発動。ドライブゲージ2本消費 | 旧作のEX技に相当 |
-| スーパーアーツ (SA) | スーパーアーツゲージを消費して発動する超必殺技。SA1, SA2, SA3の3段階 | SA3はCritical Artとも呼ばれる |
-| リンク (Link) | フレーム有利を利用して技をつなげること | コネクター記号: > |
-| キャンセル (Cancel) | 技のモーション中に別の技で割り込むこと | コネクター記号: xx |
-| パニッシュカウンター (Punish Counter) | 相手の技の隙に反撃でヒットさせた場合の特殊状態（+4F有利） | プリセットタグの1つ |
-| カウンターヒット (Counter Hit / CH) | 相手の攻撃動作中にヒットさせた場合の特殊状態（+2F有利） | プリセットタグの1つ |
-| クラシック操作 (Classic) | 従来のSFシリーズ準拠の6ボタン（LP/MP/HP/LK/MK/HK）操作体系 | 本プロジェクトの基本対応操作 |
-| モダン操作 (Modern) | 簡易入力の操作体系。ボタン数が少なくアシスト機能あり | 将来対応検討（Phase 3） |
-| フレームデータ (Frame Data) | 技の発生・持続・硬直等のフレーム（1/60秒）単位の数値情報 | MVPスコープ外（Phase 3） |
-| バーンアウト (Burnout) | ドライブゲージが0になった状態。ドライブ関連アクションが使用不能になる | |
-| FGC | Fighting Game Community。格闘ゲームコミュニティ | |
+| 用語                                  | 定義                                                                             | 備考                                      |
+| ------------------------------------- | -------------------------------------------------------------------------------- | ----------------------------------------- |
+| コンボ (Combo)                        | 連続技。相手が反撃できない一連の攻撃入力のシーケンス                             | 本プロジェクトの主要管理対象              |
+| テンキー表記 (Numpad Notation)        | 方向入力をPCテンキーの数字で表記する国際標準記法                                 | 本プロジェクトの基本表記法。FGCで広く採用 |
+| BnB (Bread and Butter)                | 基本コンボ。最も頻繁に使う実用的な連続技                                         | プリセットタグの1つ                       |
+| ドライブシステム (Drive System)       | SF6固有のリソース管理システム。6本のドライブゲージを消費して各種アクションを実行 | DI, DR, DP, DRev, OD の5種のアクション    |
+| ドライブインパクト (DI)               | HP+HK同時押しで発動するアーマー付き攻撃。ドライブゲージ1本消費                   |                                           |
+| ドライブラッシュ (DR)                 | パリィまたは通常技からキャンセルして前方にダッシュする行動                       | パリィから1本、キャンセルから3本消費      |
+| ドライブパリィ (DP)                   | MP+MK長押しで発動する防御行動                                                    |                                           |
+| パーフェクトパリィ (PP)               | 被弾2F以内にMP+MKで発動する精密な防御行動                                        |                                           |
+| ドライブリバーサル (DRev)             | ガード中に6+HP+HKで発動する反撃行動。ドライブゲージ2本消費                       |                                           |
+| オーバードライブ (OD)                 | 必殺技の強化版。同種ボタン2つ同時押しで発動。ドライブゲージ2本消費               | 旧作のEX技に相当                          |
+| スーパーアーツ (SA)                   | スーパーアーツゲージを消費して発動する超必殺技。SA1, SA2, SA3の3段階             | SA3はCritical Artとも呼ばれる             |
+| リンク (Link)                         | フレーム有利を利用して技をつなげること                                           | コネクター記号: >                         |
+| キャンセル (Cancel)                   | 技のモーション中に別の技で割り込むこと                                           | コネクター記号: xx                        |
+| パニッシュカウンター (Punish Counter) | 相手の技の隙に反撃でヒットさせた場合の特殊状態（+4F有利）                        | プリセットタグの1つ                       |
+| カウンターヒット (Counter Hit / CH)   | 相手の攻撃動作中にヒットさせた場合の特殊状態（+2F有利）                          | プリセットタグの1つ                       |
+| クラシック操作 (Classic)              | 従来のSFシリーズ準拠の6ボタン（LP/MP/HP/LK/MK/HK）操作体系                       | 本プロジェクトの基本対応操作              |
+| モダン操作 (Modern)                   | 簡易入力の操作体系。ボタン数が少なくアシスト機能あり                             | 将来対応検討（Phase 3）                   |
+| フレームデータ (Frame Data)           | 技の発生・持続・硬直等のフレーム（1/60秒）単位の数値情報                         | MVPスコープ外（Phase 3）                  |
+| バーンアウト (Burnout)                | ドライブゲージが0になった状態。ドライブ関連アクションが使用不能になる            |                                           |
+| FGC                                   | Fighting Game Community。格闘ゲームコミュニティ                                  |                                           |
 
 ---
 
 ## 13. 未解決事項（TBD）
 
-| # | 事項 | 仮の想定 | 対処担当 |
-|---|------|---------|---------|
-| 1 | [TBD] SVGアイコンの具体的なデザイン（方向キー・ボタン・ドライブアクション） | PoCのUnicode矢印文字をフォールバックとして使用。SVGアイコンは ux-designer / developer で具体化 | ux-designer / developer |
-| 2 | [TBD] 認証のセッション有効期限・リフレッシュ戦略 | Auth.jsのデフォルト設定（30日セッション）を仮定 | architect |
-| 3 | [TBD] docker-composeの構成詳細（ポート番号、ボリュームマウント等） | Next.js: port 3000、SQLiteファイル: ./data/db.sqlite としてボリュームマウント | architect / scaffolder |
-| 4 | [TBD] コンボ入力UIのモバイル向けレイアウト | MVPではデスクトップ優先。Phase 2で対応 | ux-designer（Phase 2） |
-| 5 | [TBD] 頻出モーションショートカットの対応範囲 | MVPでは個別方向キーのみ。QCF/DP等のショートカットは Phase 2 | ux-designer / developer（Phase 2） |
-| 6 | [TBD] コンボ名の自動生成ルール | コンボ名は任意入力。未入力時は「無題のコンボ」とする | developer |
-| 7 | [TBD] タグフィルタの詳細UIデザイン（チップ型、ドロップダウン型等） | チップ型（トグルバッジ）を仮定 | ux-designer |
+| #   | 事項                                                                        | 仮の想定                                                                                       | 対処担当                           |
+| --- | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------- |
+| 1   | [TBD] SVGアイコンの具体的なデザイン（方向キー・ボタン・ドライブアクション） | PoCのUnicode矢印文字をフォールバックとして使用。SVGアイコンは ux-designer / developer で具体化 | ux-designer / developer            |
+| 2   | [TBD] 認証のセッション有効期限・リフレッシュ戦略                            | Auth.jsのデフォルト設定（30日セッション）を仮定                                                | architect                          |
+| 3   | [TBD] docker-composeの構成詳細（ポート番号、ボリュームマウント等）          | Next.js: port 3000、SQLiteファイル: ./data/db.sqlite としてボリュームマウント                  | architect / scaffolder             |
+| 4   | [TBD] コンボ入力UIのモバイル向けレイアウト                                  | MVPではデスクトップ優先。Phase 2で対応                                                         | ux-designer（Phase 2）             |
+| 5   | [TBD] 頻出モーションショートカットの対応範囲                                | MVPでは個別方向キーのみ。QCF/DP等のショートカットは Phase 2                                    | ux-designer / developer（Phase 2） |
+| 6   | [TBD] コンボ名の自動生成ルール                                              | コンボ名は任意入力。未入力時は「無題のコンボ」とする                                           | developer                          |
+| 7   | [TBD] タグフィルタの詳細UIデザイン（チップ型、ドロップダウン型等）          | チップ型（トグルバッジ）を仮定                                                                 | ux-designer                        |

@@ -21,7 +21,10 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
 
   // レポーター設定
-  reporter: [["list"], ["html", { outputFolder: "playwright-report", open: "never" }]],
+  reporter: [
+    ["list"],
+    ["html", { outputFolder: "playwright-report", open: "never" }],
+  ],
 
   use: {
     // ベース URL

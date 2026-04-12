@@ -154,12 +154,12 @@ gcloud secrets add-iam-policy-binding AUTH_SECRET \
 
 GitHub リポジトリの Settings > Secrets and variables > Actions で以下を設定する。
 
-| Secret 名 | 値 | 取得方法 |
-|---|---|---|
-| `GCP_PROJECT_ID` | GCP プロジェクト ID | `gcloud config get-value project` |
-| `GCP_WORKLOAD_IDENTITY_PROVIDER` | Provider リソース名 | Step 4 の最終コマンド出力 |
-| `GCP_SERVICE_ACCOUNT` | サービスアカウント Email | `sf6comlist-deployer@PROJECT_ID.iam.gserviceaccount.com` |
-| `GCS_BUCKET_NAME` | GCS バケット名 | Step 5 で出力された値 |
+| Secret 名                        | 値                       | 取得方法                                                 |
+| -------------------------------- | ------------------------ | -------------------------------------------------------- |
+| `GCP_PROJECT_ID`                 | GCP プロジェクト ID      | `gcloud config get-value project`                        |
+| `GCP_WORKLOAD_IDENTITY_PROVIDER` | Provider リソース名      | Step 4 の最終コマンド出力                                |
+| `GCP_SERVICE_ACCOUNT`            | サービスアカウント Email | `sf6comlist-deployer@PROJECT_ID.iam.gserviceaccount.com` |
+| `GCS_BUCKET_NAME`                | GCS バケット名           | Step 5 で出力された値                                    |
 
 > **ロールバックポイント 3:** GitHub Secrets の設定ミスはデプロイ失敗として検知される。値を修正して再度 push すれば良い。
 
@@ -372,10 +372,10 @@ gcloud run services update sf6comlist \
 
 ### バックアップ戦略
 
-| 種類 | タイミング | 方法 | 保持期間 |
-|------|-----------|------|---------|
+| 種類             | タイミング                              | 方法                              | 保持期間                 |
+| ---------------- | --------------------------------------- | --------------------------------- | ------------------------ |
 | 自動バックアップ | Cloud Run インスタンス停止時（SIGTERM） | docker-entrypoint.sh の cleanup() | GCS バージョニングで保持 |
-| 手動バックアップ | スキーマ変更前 / 重要データ変更前 | gsutil cp で手動取得 | 任意 |
+| 手動バックアップ | スキーマ変更前 / 重要データ変更前       | gsutil cp で手動取得              | 任意                     |
 
 ### 手動バックアップの実行
 
@@ -448,12 +448,12 @@ sqlite3 /tmp/sf6combo_check.db "SELECT 'users:', COUNT(*) FROM users UNION ALL S
 
 ### 重篤度定義
 
-| レベル | 定義 | 対応時間目標 | 備考 |
-|--------|------|------------|------|
-| P1 | サービス全面停止 | 1時間以内 | 個人プロジェクトのため目安 |
-| P2 | 主要機能の障害（コンボ登録不可など） | 当日中 | |
-| P3 | 一部機能の障害（表示崩れなど） | 1週間以内 | |
-| P4 | 軽微な問題 | 次回リリースまで | |
+| レベル | 定義                                 | 対応時間目標     | 備考                       |
+| ------ | ------------------------------------ | ---------------- | -------------------------- |
+| P1     | サービス全面停止                     | 1時間以内        | 個人プロジェクトのため目安 |
+| P2     | 主要機能の障害（コンボ登録不可など） | 当日中           |                            |
+| P3     | 一部機能の障害（表示崩れなど）       | 1週間以内        |                            |
+| P4     | 軽微な問題                           | 次回リリースまで |                            |
 
 ### シナリオ 1: アプリケーションが起動しない
 
@@ -480,12 +480,12 @@ gcloud run services update-traffic sf6comlist \
 
 **想定される原因と対処:**
 
-| 原因 | ログの特徴 | 対処 |
-|------|-----------|------|
-| Node.js アプリのクラッシュ | `Error: ...` + スタックトレース | コードの修正とホットフィックスデプロイ |
-| 環境変数の設定ミス | `AUTH_SECRET is not set` など | Cloud Run の環境変数を修正 |
-| Docker イメージのビルド不良 | コンテナ起動直後にクラッシュ | Dockerfile を修正して再ビルド |
-| メモリ不足 | `OOMKilled` | `--memory` を 1Gi に増量 |
+| 原因                        | ログの特徴                      | 対処                                   |
+| --------------------------- | ------------------------------- | -------------------------------------- |
+| Node.js アプリのクラッシュ  | `Error: ...` + スタックトレース | コードの修正とホットフィックスデプロイ |
+| 環境変数の設定ミス          | `AUTH_SECRET is not set` など   | Cloud Run の環境変数を修正             |
+| Docker イメージのビルド不良 | コンテナ起動直後にクラッシュ    | Dockerfile を修正して再ビルド          |
+| メモリ不足                  | `OOMKilled`                     | `--memory` を 1Gi に増量               |
 
 ### シナリオ 2: DB 接続障害 / データ破損
 
@@ -513,12 +513,12 @@ gcloud run services update sf6comlist \
 
 **想定される原因と対処:**
 
-| 原因 | 対処 |
-|------|------|
-| GCS からの DB ダウンロード失敗 | GCS バケットの権限とサービスアカウントを確認 |
-| 複数インスタンスによる同時書き込み | `max-instances=1` に設定変更 |
-| SIGTERM 中の DB アップロード失敗 | GCS のバージョン一覧から最新の正常版を復元 |
-| スキーマ変更のマイグレーション失敗 | 前バージョンの DB に戻してロールバック |
+| 原因                               | 対処                                         |
+| ---------------------------------- | -------------------------------------------- |
+| GCS からの DB ダウンロード失敗     | GCS バケットの権限とサービスアカウントを確認 |
+| 複数インスタンスによる同時書き込み | `max-instances=1` に設定変更                 |
+| SIGTERM 中の DB アップロード失敗   | GCS のバージョン一覧から最新の正常版を復元   |
+| スキーマ変更のマイグレーション失敗 | 前バージョンの DB に戻してロールバック       |
 
 ### シナリオ 3: 認証障害
 
@@ -543,11 +543,11 @@ gcloud run services describe sf6comlist \
 
 **想定される原因と対処:**
 
-| 原因 | 対処 |
-|------|------|
-| AUTH_SECRET が変更された | Secret Manager で新しいバージョンを作成し、Cloud Run を再デプロイ |
-| AUTH_URL がサービス URL と不一致 | deploy.yml の AUTH_URL 環境変数を修正 |
-| Cookie の SameSite/Secure 設定の問題 | HTTPS が強制されているか確認（Cloud Run はデフォルトで HTTPS） |
+| 原因                                 | 対処                                                              |
+| ------------------------------------ | ----------------------------------------------------------------- |
+| AUTH_SECRET が変更された             | Secret Manager で新しいバージョンを作成し、Cloud Run を再デプロイ |
+| AUTH_URL がサービス URL と不一致     | deploy.yml の AUTH_URL 環境変数を修正                             |
+| Cookie の SameSite/Secure 設定の問題 | HTTPS が強制されているか確認（Cloud Run はデフォルトで HTTPS）    |
 
 ### シナリオ 4: デプロイパイプラインの障害
 
@@ -573,12 +573,12 @@ gcloud projects get-iam-policy $(gcloud config get-value project) \
 
 **想定される原因と対処:**
 
-| 原因 | 対処 |
-|------|------|
-| GitHub Secrets の設定ミス | リポジトリの Settings > Secrets を確認・修正 |
-| Workload Identity Federation のトークン取得失敗 | Pool/Provider の設定とリポジトリ名のマッピングを確認 |
-| Artifact Registry への push 失敗 | サービスアカウントの `artifactregistry.writer` 権限を確認 |
-| Cloud Run へのデプロイ失敗 | サービスアカウントの `run.developer` + `iam.serviceAccountUser` 権限を確認 |
+| 原因                                            | 対処                                                                       |
+| ----------------------------------------------- | -------------------------------------------------------------------------- |
+| GitHub Secrets の設定ミス                       | リポジトリの Settings > Secrets を確認・修正                               |
+| Workload Identity Federation のトークン取得失敗 | Pool/Provider の設定とリポジトリ名のマッピングを確認                       |
+| Artifact Registry への push 失敗                | サービスアカウントの `artifactregistry.writer` 権限を確認                  |
+| Cloud Run へのデプロイ失敗                      | サービスアカウントの `run.developer` + `iam.serviceAccountUser` 権限を確認 |
 
 ---
 
@@ -650,24 +650,24 @@ gcloud projects get-iam-policy $(gcloud config get-value project) \
 
 ### Cloud Run 無料枠（月次）
 
-| リソース | 無料枠 | 超過時の料金 |
-|---------|--------|------------|
-| CPU | 180,000 vCPU 秒 | $0.00002400/vCPU 秒 |
-| メモリ | 360,000 GiB 秒 | $0.00000250/GiB 秒 |
-| リクエスト | 200 万回 | $0.40/100 万回 |
+| リソース   | 無料枠          | 超過時の料金        |
+| ---------- | --------------- | ------------------- |
+| CPU        | 180,000 vCPU 秒 | $0.00002400/vCPU 秒 |
+| メモリ     | 360,000 GiB 秒  | $0.00000250/GiB 秒  |
+| リクエスト | 200 万回        | $0.40/100 万回      |
 
 ### 個人利用での月額コスト見込み
 
 前提: 1日あたり 10-50 リクエスト、月間 300-1,500 リクエスト程度
 
-| 項目 | 見込み | 月額コスト |
-|------|--------|-----------|
-| Cloud Run | 無料枠内 | $0 |
-| Artifact Registry | ストレージ 0.5GB 以下 | $0（0.5GB まで無料） |
-| Cloud Storage | 数 MB（SQLite DB） | $0（5GB まで無料） |
-| Secret Manager | 1 シークレット | $0（6 バージョンまで無料） |
-| ネットワーク | 外向き 1GB 以下 | $0 |
-| **合計** | | **$0（無料枠内で収まる見込み）** |
+| 項目              | 見込み                | 月額コスト                       |
+| ----------------- | --------------------- | -------------------------------- |
+| Cloud Run         | 無料枠内              | $0                               |
+| Artifact Registry | ストレージ 0.5GB 以下 | $0（0.5GB まで無料）             |
+| Cloud Storage     | 数 MB（SQLite DB）    | $0（5GB まで無料）               |
+| Secret Manager    | 1 シークレット        | $0（6 バージョンまで無料）       |
+| ネットワーク      | 外向き 1GB 以下       | $0                               |
+| **合計**          |                       | **$0（無料枠内で収まる見込み）** |
 
 ### コストが増加するケース
 
@@ -685,24 +685,24 @@ gcloud projects get-iam-policy $(gcloud config get-value project) \
 
 ## 8. 環境変数一覧
 
-| 変数名 | 用途 | 設定場所 | 値の例 |
-|--------|------|---------|--------|
-| `DATABASE_URL` | Prisma の DB 接続先 | Cloud Run 環境変数 | `file:/app/data/sf6combo.db` |
-| `AUTH_SECRET` | JWT 署名・暗号化キー | Secret Manager | (ランダム文字列) |
-| `AUTH_URL` | Auth.js のベース URL | Cloud Run 環境変数 | `https://sf6comlist-xxx.run.app` |
-| `GCS_BUCKET_NAME` | SQLite 永続化用バケット | Cloud Run 環境変数 | `sf6comlist-db-abc123` |
-| `NODE_ENV` | 実行環境 | Cloud Run 環境変数 | `production` |
-| `NEXT_TELEMETRY_DISABLED` | Next.js テレメトリ無効化 | Cloud Run 環境変数 | `1` |
+| 変数名                    | 用途                     | 設定場所           | 値の例                           |
+| ------------------------- | ------------------------ | ------------------ | -------------------------------- |
+| `DATABASE_URL`            | Prisma の DB 接続先      | Cloud Run 環境変数 | `file:/app/data/sf6combo.db`     |
+| `AUTH_SECRET`             | JWT 署名・暗号化キー     | Secret Manager     | (ランダム文字列)                 |
+| `AUTH_URL`                | Auth.js のベース URL     | Cloud Run 環境変数 | `https://sf6comlist-xxx.run.app` |
+| `GCS_BUCKET_NAME`         | SQLite 永続化用バケット  | Cloud Run 環境変数 | `sf6comlist-db-abc123`           |
+| `NODE_ENV`                | 実行環境                 | Cloud Run 環境変数 | `production`                     |
+| `NEXT_TELEMETRY_DISABLED` | Next.js テレメトリ無効化 | Cloud Run 環境変数 | `1`                              |
 
 ---
 
 ## 9. 連絡先・エスカレーション
 
-| 役割 | 連絡先 | 備考 |
-|------|--------|------|
-| 開発・運用 | kirin0198 (GitHub) | 個人プロジェクトのため単独管理 |
-| GCP サポート | GCP コンソール | 無料枠の場合はコミュニティサポートのみ |
-| GitHub Actions | GitHub Status Page | https://www.githubstatus.com/ |
+| 役割           | 連絡先             | 備考                                   |
+| -------------- | ------------------ | -------------------------------------- |
+| 開発・運用     | kirin0198 (GitHub) | 個人プロジェクトのため単独管理         |
+| GCP サポート   | GCP コンソール     | 無料枠の場合はコミュニティサポートのみ |
+| GitHub Actions | GitHub Status Page | https://www.githubstatus.com/          |
 
 ---
 

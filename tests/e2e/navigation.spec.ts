@@ -5,7 +5,12 @@
 
 import { test, expect } from "@playwright/test";
 import { TEST_USER_A, TEST_USER_B } from "./fixtures/test-data";
-import { setupAuthenticatedPage, loginUser, registerUser, createComboViaAPI } from "./fixtures/helpers";
+import {
+  setupAuthenticatedPage,
+  loginUser,
+  registerUser,
+  createComboViaAPI,
+} from "./fixtures/helpers";
 
 const CHARACTER_ID = "ryu";
 
@@ -39,7 +44,11 @@ test.describe("画面遷移・ナビゲーション", () => {
 
   test.describe("認証済みナビゲーション", () => {
     test.beforeEach(async ({ page }) => {
-      await setupAuthenticatedPage(page, TEST_USER_A.email, TEST_USER_A.password);
+      await setupAuthenticatedPage(
+        page,
+        TEST_USER_A.email,
+        TEST_USER_A.password,
+      );
     });
 
     /** TC-E2E-062: コンボ一覧のパンくずリストでキャラクター一覧に戻れる */
@@ -61,30 +70,30 @@ test.describe("画面遷移・ナビゲーション", () => {
       await page.goto(`/characters/${CHARACTER_ID}/combos/new`);
 
       // ローディング完了待機
-      await page.waitForSelector(".animate-spin", { state: "detached" }).catch(() => {});
+      await page
+        .waitForSelector(".animate-spin", { state: "detached" })
+        .catch(() => {});
 
       // パンくずリンクをクリック（コンボ一覧へ）
       await page.locator(".mb-4 a").first().click();
 
-      await expect(page).toHaveURL(
-        `/characters/${CHARACTER_ID}/combos`,
-      );
+      await expect(page).toHaveURL(`/characters/${CHARACTER_ID}/combos`);
     });
 
     /** TC-E2E-064: コンボ詳細画面のパンくずリストでコンボ一覧に戻れる */
     test("TC-E2E-064: コンボ詳細画面のパンくずリストでコンボ一覧に戻れる", async ({
       page,
     }) => {
-      const comboId = await createComboViaAPI(page, CHARACTER_ID, { name: "パンくずテスト (TC-064)" });
+      const comboId = await createComboViaAPI(page, CHARACTER_ID, {
+        name: "パンくずテスト (TC-064)",
+      });
 
       await page.goto(`/characters/${CHARACTER_ID}/combos/${comboId}`);
 
       // パンくずリンクをクリック（コンボ一覧へ）
       await page.locator(".mb-4 a").first().click();
 
-      await expect(page).toHaveURL(
-        `/characters/${CHARACTER_ID}/combos`,
-      );
+      await expect(page).toHaveURL(`/characters/${CHARACTER_ID}/combos`);
     });
 
     /** TC-E2E-065: ヘッダーロゴクリックでキャラクター一覧に遷移する */
@@ -106,14 +115,14 @@ test.describe("画面遷移・ナビゲーション", () => {
       await page.goto(`/characters/${CHARACTER_ID}/combos/new`);
 
       // ローディング完了待機
-      await page.waitForSelector(".animate-spin", { state: "detached" }).catch(() => {});
+      await page
+        .waitForSelector(".animate-spin", { state: "detached" })
+        .catch(() => {});
 
       // キャンセルボタンをクリック（フォームのキャンセルボタンを選択。コネクターの「xx」ボタンと区別するため last() を使用）
       await page.getByRole("button", { name: "キャンセル" }).last().click();
 
-      await expect(page).toHaveURL(
-        `/characters/${CHARACTER_ID}/combos`,
-      );
+      await expect(page).toHaveURL(`/characters/${CHARACTER_ID}/combos`);
     });
 
     /** TC-E2E-067: コンボ保存成功後にコンボ一覧に遷移する */
@@ -123,11 +132,19 @@ test.describe("画面遷移・ナビゲーション", () => {
       await page.goto(`/characters/${CHARACTER_ID}/combos/new`);
 
       // ローディング完了待機
-      await page.waitForSelector(".animate-spin", { state: "detached" }).catch(() => {});
+      await page
+        .waitForSelector(".animate-spin", { state: "detached" })
+        .catch(() => {});
 
       // ステップを入力
-      await page.getByRole("grid", { name: "方向入力パッド" }).locator('button[aria-label="下"]').click();
-      await page.getByRole("group", { name: "ボタン選択パレット" }).locator('button[aria-label="MK"]').click();
+      await page
+        .getByRole("grid", { name: "方向入力パッド" })
+        .locator('button[aria-label="下"]')
+        .click();
+      await page
+        .getByRole("group", { name: "ボタン選択パレット" })
+        .locator('button[aria-label="MK"]')
+        .click();
 
       // 保存
       await page.getByRole("button", { name: "このコンボを保存" }).click();
@@ -147,10 +164,16 @@ test.describe("画面遷移・ナビゲーション", () => {
       page,
     }) => {
       // USER_A でログインしてコンボを作成
-      await setupAuthenticatedPage(page, TEST_USER_A.email, TEST_USER_A.password);
+      await setupAuthenticatedPage(
+        page,
+        TEST_USER_A.email,
+        TEST_USER_A.password,
+      );
 
       // USER_A のコンボを作成
-      await createComboViaAPI(page, CHARACTER_ID, { name: "USER_A のコンボ (TC-068)" });
+      await createComboViaAPI(page, CHARACTER_ID, {
+        name: "USER_A のコンボ (TC-068)",
+      });
 
       // USER_A をログアウト
       await page.getByRole("button", { name: "ログアウト" }).click();
@@ -164,7 +187,9 @@ test.describe("画面遷移・ナビゲーション", () => {
       await page.goto(`/characters/${CHARACTER_ID}/combos`);
 
       // USER_A のコンボは表示されない
-      await expect(page.getByText("USER_A のコンボ (TC-068)")).not.toBeVisible();
+      await expect(
+        page.getByText("USER_A のコンボ (TC-068)"),
+      ).not.toBeVisible();
 
       // 空状態メッセージが表示される
       await expect(

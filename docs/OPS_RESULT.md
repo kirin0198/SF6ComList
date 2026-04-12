@@ -5,17 +5,17 @@
 
 ## 成果物一覧
 
-| ファイル | 内容 | 状態 |
-|---------|------|------|
-| Dockerfile | マルチステージビルド (node:20-alpine/slim, GCS SDK 込み) | あり |
-| docker-compose.yml | ローカル開発用コンテナ構成 | あり |
-| docker-entrypoint.sh | GCS 連携 DB 初期化 + SIGTERM ハンドラー | あり |
-| .github/workflows/ci.yml | PR 時: ESLint + Prettier + tsc + Vitest + Docker ビルド確認 | あり |
-| .github/workflows/deploy.yml | main マージ時: Lint/Test → Artifact Registry → Cloud Run デプロイ | あり |
-| .env.example | 環境変数テンプレート (DATABASE_URL, AUTH_SECRET, GCS_BUCKET_NAME 等) | あり |
-| DB_OPS.md | DB 運用ガイド（独立ドキュメント） | なし (OPS_PLAN.md セクション4に統合) |
-| OBSERVABILITY.md | 可観測性設計 | なし (個人利用のため Cloud Run 標準ログで十分) |
-| OPS_PLAN.md | 運用計画書 (デプロイ手順/ロールバック/インシデント対応/メンテナンス/コスト) | あり |
+| ファイル                     | 内容                                                                        | 状態                                           |
+| ---------------------------- | --------------------------------------------------------------------------- | ---------------------------------------------- |
+| Dockerfile                   | マルチステージビルド (node:20-alpine/slim, GCS SDK 込み)                    | あり                                           |
+| docker-compose.yml           | ローカル開発用コンテナ構成                                                  | あり                                           |
+| docker-entrypoint.sh         | GCS 連携 DB 初期化 + SIGTERM ハンドラー                                     | あり                                           |
+| .github/workflows/ci.yml     | PR 時: ESLint + Prettier + tsc + Vitest + Docker ビルド確認                 | あり                                           |
+| .github/workflows/deploy.yml | main マージ時: Lint/Test → Artifact Registry → Cloud Run デプロイ           | あり                                           |
+| .env.example                 | 環境変数テンプレート (DATABASE_URL, AUTH_SECRET, GCS_BUCKET_NAME 等)        | あり                                           |
+| DB_OPS.md                    | DB 運用ガイド（独立ドキュメント）                                           | なし (OPS_PLAN.md セクション4に統合)           |
+| OBSERVABILITY.md             | 可観測性設計                                                                | なし (個人利用のため Cloud Run 標準ログで十分) |
+| OPS_PLAN.md                  | 運用計画書 (デプロイ手順/ロールバック/インシデント対応/メンテナンス/コスト) | あり                                           |
 
 ## デプロイ準備状態
 
