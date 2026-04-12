@@ -212,4 +212,5 @@ jobs:
             AUTH_SECRET=AUTH_SECRET:latest
 
       - name: Show deployed URL
-        run: echo "デプロイ完了: https://sf6labs.com"
+        run: |
+          echo "デプロイ完了: https://sf6labs.com"
