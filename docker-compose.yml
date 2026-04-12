@@ -13,8 +13,8 @@ services:
     environment:
       # データベース（ボリュームマウント先）
       DATABASE_URL: "file:/app/data/sf6combo.db"
-      # Auth.js シークレット（本番環境では必ず変更すること）
-      AUTH_SECRET: "${AUTH_SECRET:-dev-secret-key-change-in-production}"
+      # Auth.js シークレット（必須: .env に設定すること。生成: openssl rand -base64 32）
+      AUTH_SECRET: "${AUTH_SECRET:?AUTH_SECRET is required. Run: openssl rand -base64 32}"
       AUTH_URL: "${AUTH_URL:-http://localhost:3000}"
       NODE_ENV: "production"
     volumes:

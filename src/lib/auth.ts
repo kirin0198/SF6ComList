@@ -13,7 +13,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
   session: {
     strategy: "jwt", // Credentials Provider は JWT セッション必須
-    maxAge: 30 * 24 * 60 * 60, // 30日
+    maxAge: 7 * 24 * 60 * 60, // 7日
   },
   pages: {
     signIn: "/login",

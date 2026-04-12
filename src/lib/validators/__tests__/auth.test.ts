@@ -81,7 +81,7 @@ describe("registerSchema", () => {
   it("有効なユーザー登録入力を受け入れる（name あり）", () => {
     const result = registerSchema.safeParse({
       email: "user@example.com",
-      password: "securepassword",
+      password: "Secure1pass",
       name: "テストユーザー",
     });
     expect(result.success).toBe(true);
@@ -90,7 +90,7 @@ describe("registerSchema", () => {
   it("有効な入力を受け入れる（name なし）", () => {
     const result = registerSchema.safeParse({
       email: "user@example.com",
-      password: "securepassword",
+      password: "Secure1pass",
     });
     expect(result.success).toBe(true);
     if (result.success) {
@@ -101,7 +101,7 @@ describe("registerSchema", () => {
   it("メールアドレスが空の場合は失敗する", () => {
     const result = registerSchema.safeParse({
       email: "",
-      password: "securepassword",
+      password: "Secure1pass",
     });
     expect(result.success).toBe(false);
     if (!result.success) {
@@ -113,7 +113,7 @@ describe("registerSchema", () => {
   it("無効なメールアドレス形式の場合は失敗する", () => {
     const result = registerSchema.safeParse({
       email: "invalid-email",
-      password: "securepassword",
+      password: "Secure1pass",
     });
     expect(result.success).toBe(false);
     if (!result.success) {
@@ -134,10 +134,46 @@ describe("registerSchema", () => {
     }
   });
 
+  it("英小文字のみのパスワードは失敗する", () => {
+    const result = registerSchema.safeParse({
+      email: "user@example.com",
+      password: "alllowercase",
+    });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      const messages = result.error.issues.map((i) => i.message);
+      expect(messages).toContain("英大文字を1文字以上含めてください");
+    }
+  });
+
+  it("英大文字のみのパスワードは失敗する", () => {
+    const result = registerSchema.safeParse({
+      email: "user@example.com",
+      password: "ALLUPPERCASE1",
+    });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      const messages = result.error.issues.map((i) => i.message);
+      expect(messages).toContain("英小文字を1文字以上含めてください");
+    }
+  });
+
+  it("数字なしのパスワードは失敗する", () => {
+    const result = registerSchema.safeParse({
+      email: "user@example.com",
+      password: "NoDigitsHere",
+    });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      const messages = result.error.issues.map((i) => i.message);
+      expect(messages).toContain("数字を1文字以上含めてください");
+    }
+  });
+
   it("パスワードが8文字なら成功する", () => {
     const result = registerSchema.safeParse({
       email: "user@example.com",
-      password: "password",
+      password: "Abcdef1x",
     });
     expect(result.success).toBe(true);
   });
@@ -145,7 +181,7 @@ describe("registerSchema", () => {
   it("パスワードが101文字以上の場合は失敗する", () => {
     const result = registerSchema.safeParse({
       email: "user@example.com",
-      password: "a".repeat(101),
+      password: "A1" + "a".repeat(99),
     });
     expect(result.success).toBe(false);
     if (!result.success) {
@@ -157,7 +193,7 @@ describe("registerSchema", () => {
   it("パスワードが100文字なら成功する", () => {
     const result = registerSchema.safeParse({
       email: "user@example.com",
-      password: "a".repeat(100),
+      password: "A1" + "a".repeat(98),
     });
     expect(result.success).toBe(true);
   });
@@ -165,7 +201,7 @@ describe("registerSchema", () => {
   it("名前が51文字以上の場合は失敗する", () => {
     const result = registerSchema.safeParse({
       email: "user@example.com",
-      password: "securepassword",
+      password: "Secure1pass",
       name: "あ".repeat(51),
     });
     expect(result.success).toBe(false);
@@ -178,7 +214,7 @@ describe("registerSchema", () => {
   it("名前が50文字なら成功する", () => {
     const result = registerSchema.safeParse({
       email: "user@example.com",
-      password: "securepassword",
+      password: "Secure1pass",
       name: "a".repeat(50),
     });
     expect(result.success).toBe(true);

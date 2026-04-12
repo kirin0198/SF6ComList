@@ -4,14 +4,31 @@
  *
  * 認証不要パス: /login, /register, /api/auth
  * 認証必須パス: それ以外全て
+ *
+ * レートリミット: /api/auth/callback/credentials (POST) に適用
  */
 
 import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
+import { loginRateLimit, getClientIp, rateLimitResponse } from "@/lib/rate-limit";
 
 export default auth((req) => {
-  const isLoggedIn = !!req.auth;
   const { pathname } = req.nextUrl;
+  const method = req.method;
+
+  // ログイン POST にレートリミットを適用（IP あたり 5回/分）
+  if (
+    method === "POST" &&
+    pathname === "/api/auth/callback/credentials"
+  ) {
+    const ip = getClientIp(req.headers);
+    const result = loginRateLimit.check(ip);
+    if (!result.success) {
+      return rateLimitResponse(result.retryAfterMs);
+    }
+  }
+
+  const isLoggedIn = !!req.auth;
 
   const isAuthPage =
     pathname.startsWith("/login") || pathname.startsWith("/register");
