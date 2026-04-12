@@ -8,8 +8,8 @@ export default defineConfig({
     environment: "jsdom",
     globals: true,
     setupFiles: ["./src/test/setup.ts"],
-    // poc/ フォルダは Vitest 管理外のため除外する
-    exclude: ["**/node_modules/**", "**/poc/**"],
+    // poc/ フォルダと Playwright E2E テストは Vitest 管理外のため除外する
+    exclude: ["**/node_modules/**", "**/poc/**", "tests/e2e/**"],
   },
   resolve: {
     alias: {
