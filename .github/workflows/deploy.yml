@@ -198,7 +198,6 @@ jobs:
             --concurrency=80
             --timeout=60s
             --execution-environment=gen2
-            --termination-grace-period=30s
           # 環境変数（Secret Manager 参照）
           env_vars: |
             NODE_ENV=production
