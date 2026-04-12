@@ -5,10 +5,15 @@
 #   - 環境変数 GCS_BUCKET_NAME が設定されている場合、GCS から DB ファイルを取得する
 #   - SIGTERM シグナル受信時（Cloud Run シャットダウン）に GCS へ DB をアップロードする
 #   - ローカル開発時（GCS_BUCKET_NAME 未設定）は従来通りボリュームマウントを使用する
+#
+# DB 初期化戦略:
+#   - 初期 DB はビルド時に Prisma CLI で作成済み（/app/data/sf6combo.db.init）
+#   - ランタイムでの Prisma CLI 実行は不要（依存関係を最小化）
 
 set -e
 
 DB_PATH="/app/data/sf6combo.db"
+DB_INIT_PATH="/app/data/sf6combo.db.init"
 GCS_DB_PATH="gs://${GCS_BUCKET_NAME}/sf6combo.db"
 
 # ─────────────────────────────────────
@@ -60,14 +65,17 @@ cleanup() {
 trap cleanup TERM INT
 
 # ─────────────────────────────────────
-# DB 初期化 / マイグレーション
+# DB 初期化（ビルド時に作成した初期 DB をコピー）
 # ─────────────────────────────────────
 if [ ! -f "${DB_PATH}" ]; then
-  echo "データベースを初期化しています..."
-  npx prisma db push --skip-generate
-  echo "シードデータを投入しています..."
-  npx prisma db seed || echo "シード実行をスキップしました"
-  echo "データベース初期化完了"
+  if [ -f "${DB_INIT_PATH}" ]; then
+    echo "ビルド時に作成した初期 DB をコピーしています..."
+    cp "${DB_INIT_PATH}" "${DB_PATH}"
+    echo "データベース初期化完了"
+  else
+    echo "エラー: 初期 DB ファイルが見つかりません"
+    exit 1
+  fi
 
   # 初回作成した DB を GCS に即時バックアップ
   if [ -n "${GCS_BUCKET_NAME}" ]; then
@@ -78,8 +86,6 @@ if [ ! -f "${DB_PATH}" ]; then
   fi
 else
   echo "既存データベースを使用します"
-  # スキーマ変更があれば適用
-  npx prisma db push --skip-generate 2>/dev/null || true
 fi
 
 # ─────────────────────────────────────

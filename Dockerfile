@@ -3,20 +3,7 @@
 # Cloud Run (gen2) 対応: GCS を使った SQLite 永続化
 
 # ============================================================
-# Stage 1: deps — 依存関係インストール
-# ============================================================
-FROM node:20-alpine AS deps
-
-WORKDIR /app
-
-# package.json と lock ファイルをコピー
-COPY package.json package-lock.json ./
-
-# 依存関係をインストール（本番依存のみ）
-RUN npm ci --omit=dev
-
-# ============================================================
-# Stage 2: builder — ビルド
+# Stage 1: builder — ビルド + 初期 DB 作成
 # ============================================================
 FROM node:20-alpine AS builder
 
@@ -39,8 +26,14 @@ ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build \
     && mkdir -p /app/public
 
+# 初期 DB をビルド時に作成（ランタイムでの Prisma CLI 実行を不要にする）
+ENV DATABASE_URL="file:/app/data/sf6combo.db"
+RUN mkdir -p /app/data \
+    && npx prisma db push --skip-generate \
+    && npx prisma db seed || echo "シード実行をスキップしました"
+
 # ============================================================
-# Stage 3: runner — 実行
+# Stage 2: runner — 実行
 # Google Cloud SDK (gsutil) を含む Debian ベースイメージを使用
 # ※ alpine では gcloud SDK のインストールが複雑なため debian-slim を使用
 # ============================================================
@@ -70,20 +63,12 @@ COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
 
-# Prisma 関連ファイルをコピー（CLI + Client + スキーマ + シード）
-COPY --from=builder /app/prisma ./prisma
+# Prisma Client をコピー（ランタイムの ORM クエリに必要）
 COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
-COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
-COPY --from=builder /app/node_modules/prisma ./node_modules/prisma
+COPY --from=builder /app/node_modules/@prisma/client ./node_modules/@prisma/client
 
-# Prisma CLI を npx 経由で実行するためのシンボリックリンク
-RUN mkdir -p node_modules/.bin \
-    && ln -s ../prisma/build/index.js node_modules/.bin/prisma
-
-# シード実行に必要な依存をコピー
-COPY --from=builder /app/node_modules/ts-node ./node_modules/ts-node
-COPY --from=builder /app/node_modules/typescript ./node_modules/typescript
-COPY --from=builder /app/package.json ./package.json
+# ビルド時に作成した初期 DB をフォールバック用にコピー
+COPY --from=builder /app/data/sf6combo.db /app/data/sf6combo.db.init
 
 # エントリポイントスクリプトをコピー
 COPY docker-entrypoint.sh ./docker-entrypoint.sh
@@ -98,8 +83,8 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-# ヘルスチェック（Cloud Run は /health エンドポイント不要だが、ローカル確認用）
+# ヘルスチェック（Cloud Run は独自のヘルスチェックを使用、ローカル確認用）
 HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
-    CMD curl -f http://localhost:3000/ || exit 1
+    CMD node -e "fetch('http://localhost:3000/').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"
 
 CMD ["sh", "docker-entrypoint.sh"]
