@@ -276,16 +276,14 @@
     },
     {
       "id": "guile-6hp",
-      "name": "ニーバズーカ",
-      "nameEn": "Knee Bazooka",
+      "name": "スピンバックナックル",
+      "nameEn": "Spin Back Knuckle",
       "category": "unique",
       "notation": "6HP",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "6"
-          ],
+          "directions": ["6"],
           "button": "HP"
         }
       ]
@@ -307,18 +305,30 @@
       ]
     },
     {
-      "id": "guile-4hp",
-      "name": "バックナックル",
-      "nameEn": "Back Knuckle",
+      "id": "guile-4lk",
+      "name": "ニーバズーカ",
+      "nameEn": "Knee Bazooka",
       "category": "unique",
-      "notation": "4HP",
+      "notation": "4LK",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "4"
-          ],
-          "button": "HP"
+          "directions": ["4"],
+          "button": "LK"
+        }
+      ]
+    },
+    {
+      "id": "guile-6mk",
+      "name": "ソバット",
+      "nameEn": "Sobat",
+      "category": "unique",
+      "notation": "6MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": ["6"],
+          "button": "MK"
         }
       ]
     },
@@ -387,77 +397,6 @@
                 "4"
               ],
               "button": "HP",
-              "isOD": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "guile-sonic-cross",
-      "name": "ソニッククロス",
-      "nameEn": "Sonic Cross",
-      "category": "special",
-      "notation": "236+K",
-      "steps": [],
-      "variants": [
-        {
-          "strength": "L",
-          "notation": "236LK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "LK"
-            }
-          ]
-        },
-        {
-          "strength": "M",
-          "notation": "236MK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "MK"
-            }
-          ]
-        },
-        {
-          "strength": "H",
-          "notation": "236HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HK"
-            }
-          ]
-        },
-        {
-          "strength": "OD",
-          "notation": "OD236HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HK",
               "isOD": true
             }
           ]
@@ -585,18 +524,12 @@
       "name": "ソニックハリケーン",
       "nameEn": "Sonic Hurricane (SA1)",
       "category": "super",
-      "notation": "236236LP",
+      "notation": "[4]646P",
       "steps": [
         {
-          "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
+          "type": "charge",
+          "chargeDir": "4",
+          "releaseDir": "6",
           "button": "LP"
         }
       ]
@@ -606,40 +539,27 @@
       "name": "ソリッドパンチャー",
       "nameEn": "Solid Puncher (SA2)",
       "category": "super",
-      "notation": "236236HP",
+      "notation": "214214P",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "HP"
+          "directions": ["2", "1", "4", "2", "1", "4"],
+          "button": "LP"
         }
       ]
     },
     {
       "id": "guile-sa3",
-      "name": "クロスファイアブリッツ",
-      "nameEn": "Crossfire Blitz (SA3)",
+      "name": "クロスファイアサマーソルト",
+      "nameEn": "Crossfire Somersault (SA3)",
       "category": "super",
-      "notation": "236236MK",
+      "notation": "[4]646K",
       "steps": [
         {
-          "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "MK"
+          "type": "charge",
+          "chargeDir": "4",
+          "releaseDir": "6",
+          "button": "LK"
         }
       ]
     }

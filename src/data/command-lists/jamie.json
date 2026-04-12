@@ -323,9 +323,9 @@
       ]
     },
     {
-      "id": "jamie-the-devil-inside",
-      "name": "酔仙の酒",
-      "nameEn": "The Devil Inside",
+      "id": "jamie-suishitsuho",
+      "name": "酔疾歩",
+      "nameEn": "Swagger Step",
       "category": "special",
       "notation": "214+P",
       "steps": [],
@@ -394,8 +394,8 @@
       ]
     },
     {
-      "id": "jamie-freeflow-strikes",
-      "name": "点穴",
+      "id": "jamie-ryusuiken",
+      "name": "流酔拳",
       "nameEn": "Freeflow Strikes",
       "category": "special",
       "notation": "236+P",
@@ -465,9 +465,9 @@
       ]
     },
     {
-      "id": "jamie-freeflow-kicks",
-      "name": "酔夢脚",
-      "nameEn": "Freeflow Kicks",
+      "id": "jamie-bakkai",
+      "name": "爆廻",
+      "nameEn": "Bakkai",
       "category": "special",
       "notation": "236+K",
       "steps": [],
@@ -536,69 +536,108 @@
       ]
     },
     {
-      "id": "jamie-bakkai",
-      "name": "爆砕",
-      "nameEn": "Bakkai",
+      "id": "jamie-mashin",
+      "name": "魔身",
+      "nameEn": "The Devil Inside",
       "category": "special",
-      "notation": "214+K",
+      "notation": "22+P",
       "steps": [],
       "variants": [
         {
           "strength": "L",
-          "notation": "214LK",
+          "notation": "22LP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["2", "2"],
+              "button": "LP"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "22MP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "2"],
+              "button": "MP"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "22HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "2"],
+              "button": "HP"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD22HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "2"],
+              "button": "HP",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jamie-tenshin",
+      "name": "点辰",
+      "nameEn": "Tenshin",
+      "category": "special",
+      "notation": "63214+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "63214LK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["6", "3", "2", "1", "4"],
               "button": "LK"
             }
           ]
         },
         {
           "strength": "M",
-          "notation": "214MK",
+          "notation": "63214MK",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["6", "3", "2", "1", "4"],
               "button": "MK"
             }
           ]
         },
         {
           "strength": "H",
-          "notation": "214HK",
+          "notation": "63214HK",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["6", "3", "2", "1", "4"],
               "button": "HK"
             }
           ]
         },
         {
           "strength": "OD",
-          "notation": "OD214HK",
+          "notation": "OD63214HK",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["6", "3", "2", "1", "4"],
               "button": "HK",
               "isOD": true
             }
@@ -607,9 +646,9 @@
       ]
     },
     {
-      "id": "jamie-tensho-kick",
-      "name": "天昇脚",
-      "nameEn": "Tensho Kick",
+      "id": "jamie-choukyoutai",
+      "name": "張弓腿",
+      "nameEn": "Bow Kick",
       "category": "special",
       "notation": "623+K",
       "steps": [],
@@ -679,64 +718,43 @@
     },
     {
       "id": "jamie-sa1",
-      "name": "覇王翔酔拳",
-      "nameEn": "The Devil's Song (SA1)",
+      "name": "武麗禽",
+      "nameEn": "Breakin' (SA1)",
       "category": "super",
-      "notation": "236236LK",
+      "notation": "236236K",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
+          "directions": ["2", "3", "6", "2", "3", "6"],
           "button": "LK"
         }
       ]
     },
     {
       "id": "jamie-sa2",
-      "name": "仙酔連華",
-      "nameEn": "Getsuga Saiho (SA2)",
+      "name": "絶唱魔身",
+      "nameEn": "The Devil's Awakening (SA2)",
       "category": "super",
-      "notation": "236236HP",
+      "notation": "214214P",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "HP"
+          "directions": ["2", "1", "4", "2", "1", "4"],
+          "button": "LP"
         }
       ]
     },
     {
       "id": "jamie-sa3",
-      "name": "五徳酔拳",
-      "nameEn": "Drunken Demolisher (SA3)",
+      "name": "月牙叉炮",
+      "nameEn": "Getsuga Saiho (SA3)",
       "category": "super",
-      "notation": "236236MK",
+      "notation": "236236P",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "MK"
+          "directions": ["2", "3", "6", "2", "3", "6"],
+          "button": "LP"
         }
       ]
     }
