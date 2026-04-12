@@ -34,9 +34,20 @@ cleanup() {
   echo "シャットダウンシグナルを受信しました"
   if [ -n "${GCS_BUCKET_NAME}" ] && [ -f "${DB_PATH}" ]; then
     echo "DB ファイルを GCS にアップロードしています..."
-    gsutil cp "${DB_PATH}" "${GCS_DB_PATH}" && \
-      echo "DB アップロード完了: ${GCS_DB_PATH}" || \
-      echo "警告: DB アップロードに失敗しました"
+    # リトライ付きアップロード（Cloud Run の猶予時間内に完了を試みる）
+    RETRY=0
+    while [ $RETRY -lt 3 ]; do
+      if gsutil cp "${DB_PATH}" "${GCS_DB_PATH}"; then
+        echo "DB アップロード完了: ${GCS_DB_PATH}"
+        break
+      fi
+      RETRY=$((RETRY + 1))
+      echo "警告: DB アップロード失敗 (試行 ${RETRY}/3)。リトライ..."
+      sleep 1
+    done
+    if [ $RETRY -eq 3 ]; then
+      echo "エラー: DB アップロードに 3 回失敗しました。データロストの可能性があります"
+    fi
   fi
   # Node.js サーバープロセスに SIGTERM を転送
   if [ -n "$SERVER_PID" ]; then

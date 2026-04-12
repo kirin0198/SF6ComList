@@ -51,9 +51,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: lint
     env:
-      # テスト用のダミー値（DB は vitest のモックを使用）
+      # テスト専用のダミー値。本番では Secret Manager を使用する
+      # この値は CI 環境でのみ使用され、認証の動作検証には関与しない
       DATABASE_URL: "file:/tmp/test.db"
-      AUTH_SECRET: "test-secret-for-ci-only-do-not-use-in-production"
+      AUTH_SECRET: "ci-test-dummy-value-not-used-in-production"
       AUTH_URL: "http://localhost:3000"
     steps:
       - name: Checkout

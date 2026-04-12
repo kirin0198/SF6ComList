@@ -74,12 +74,10 @@ gcloud iam service-accounts add-iam-policy-binding ${SA_EMAIL} \
   --member="serviceAccount:${SA_EMAIL}" \
   --role="roles/iam.serviceAccountUser"
 
-# GCS へのアクセス権限（SQLite 永続化用）
-gcloud projects add-iam-policy-binding ${PROJECT_ID} \
-  --member="serviceAccount:${SA_EMAIL}" \
-  --role="roles/storage.objectAdmin"
+# GCS へのアクセス権限は Step 5 でバケット作成後にバケットレベルで付与する
+# （プロジェクトレベルでの storage.objectAdmin 付与は過剰権限のため非推奨）
 
-# Secret Manager へのアクセス権限
+# Secret Manager ���のアクセス権限
 gcloud projects add-iam-policy-binding ${PROJECT_ID} \
   --member="serviceAccount:${SA_EMAIL}" \
   --role="roles/secretmanager.secretAccessor"
@@ -130,6 +128,10 @@ gsutil mb -l asia-northeast1 "gs://${BUCKET_NAME}"
 
 # バケットのバージョニングを有効化（誤上書き防止）
 gsutil versioning set on "gs://${BUCKET_NAME}"
+
+# サー���スアカウントにバケットレベルで���限を付与（最小権限の原則）
+SA_EMAIL="sf6comlist-deployer@$(gcloud config get-value project).iam.gserviceaccount.com"
+gsutil iam ch "serviceAccount:${SA_EMAIL}:roles/storage.objectUser" "gs://${BUCKET_NAME}"
 
 echo "バケット名: ${BUCKET_NAME}"
 echo "この値を GitHub Secrets の GCS_BUCKET_NAME に設定すること"

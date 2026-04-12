@@ -39,13 +39,12 @@ const nextConfig: NextConfig = {
             value: "1; mode=block",
           },
           // CSP: 個人利用ツールのため比較的緩めの設定
-          // 本番運用で問題があれば段階的に絞り込む
+          // unsafe-inline は Next.js のインラインスクリプト・スタイルに必要
           {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              // Next.js の Turbopack / Hot Reload に必要（開発時のみ）
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+              "script-src 'self' 'unsafe-inline'",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: blob:",
               "font-src 'self'",

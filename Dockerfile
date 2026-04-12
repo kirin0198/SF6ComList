@@ -50,18 +50,15 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
-# Google Cloud SDK のインストール（gsutil で GCS と SQLite を同期するため）
+# gsutil のみインストール（GCS と SQLite を同期するため）
+# google-cloud-sdk 全体（約 400MB）ではなく gsutil のみで軽量化
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl \
-    gnupg \
+    python3 \
+    python3-pip \
     ca-certificates \
-    && curl -sSL https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-linux-x86_64.tar.gz \
-    | tar -xz -C /opt \
-    && /opt/google-cloud-sdk/install.sh --quiet --usage-reporting=false \
+    && pip3 install --no-cache-dir --break-system-packages gsutil \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-
-ENV PATH="/opt/google-cloud-sdk/bin:${PATH}"
 
 # セキュリティ: 非 root ユーザーで実行
 RUN groupadd --system --gid 1001 nodejs \
