@@ -150,6 +150,18 @@
           "steps": [
             { "type": "normal", "directions": ["2", "3", "6"], "button": "HP" }
           ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD236HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "3", "6"],
+              "button": "HP",
+              "isOD": true
+            }
+          ]
         }
       ]
     },
@@ -180,6 +192,18 @@
           "notation": "623HP",
           "steps": [
             { "type": "normal", "directions": ["6", "2", "3"], "button": "HP" }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD623HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["6", "2", "3"],
+              "button": "HP",
+              "isOD": true
+            }
           ]
         }
       ]
@@ -212,6 +236,18 @@
           "steps": [
             { "type": "normal", "directions": ["2", "1", "4"], "button": "HK" }
           ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD214HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "1", "4"],
+              "button": "HK",
+              "isOD": true
+            }
+          ]
         }
       ]
     },
@@ -243,6 +279,18 @@
           "steps": [
             { "type": "normal", "directions": ["2", "3", "6"], "button": "HK" }
           ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD236HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "3", "6"],
+              "button": "HK",
+              "isOD": true
+            }
+          ]
         }
       ]
     },
@@ -273,6 +321,18 @@
           "notation": "214HP",
           "steps": [
             { "type": "normal", "directions": ["2", "1", "4"], "button": "HP" }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD214HP",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "1", "4"],
+              "button": "HP",
+              "isOD": true
+            }
           ]
         }
       ]

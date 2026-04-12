@@ -309,15 +309,19 @@ export default function CommandListPanel({
                                   ? "border-blue-600 bg-blue-900/40 text-blue-300 hover:bg-blue-800/60"
                                   : variant.strength === "M"
                                     ? "border-yellow-600 bg-yellow-900/40 text-yellow-300 hover:bg-yellow-800/60"
-                                    : "border-red-600 bg-red-900/40 text-red-300 hover:bg-red-800/60",
+                                    : variant.strength === "H"
+                                      ? "border-red-600 bg-red-900/40 text-red-300 hover:bg-red-800/60"
+                                      : "border-green-600 bg-green-900/40 text-green-300 hover:bg-green-800/60",
                               ].join(" ")}
-                              aria-label={`${move.name} ${variant.strength === "L" ? "弱" : variant.strength === "M" ? "中" : "強"}（${variant.notation}）`}
+                              aria-label={`${move.name} ${variant.strength === "L" ? "弱" : variant.strength === "M" ? "中" : variant.strength === "H" ? "強" : "OD"}（${variant.notation}）`}
                             >
                               {variant.strength === "L"
                                 ? "弱"
                                 : variant.strength === "M"
                                   ? "中"
-                                  : "強"}
+                                  : variant.strength === "H"
+                                    ? "強"
+                                    : "OD"}
                             </button>
                           ))}
                         </div>

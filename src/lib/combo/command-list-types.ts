@@ -54,8 +54,8 @@ export const CATEGORY_ORDER: CommandCategory[] = [
 // 型定義
 // ============================================================
 
-/** 強度ラベル（弱/中/強） */
-export type StrengthLevel = "L" | "M" | "H";
+/** 強度ラベル（弱/中/強/OD） */
+export type StrengthLevel = "L" | "M" | "H" | "OD";
 
 /** 強度バリアント（弱/中/強で異なるボタンの技に使用） */
 export interface StrengthVariant {
