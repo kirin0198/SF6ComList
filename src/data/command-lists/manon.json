@@ -11,9 +11,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "5"
-          ],
+          "directions": ["5"],
           "button": "LP"
         }
       ]
@@ -27,9 +25,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "5"
-          ],
+          "directions": ["5"],
           "button": "MP"
         }
       ]
@@ -43,9 +39,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "5"
-          ],
+          "directions": ["5"],
           "button": "HP"
         }
       ]
@@ -59,9 +53,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "5"
-          ],
+          "directions": ["5"],
           "button": "LK"
         }
       ]
@@ -75,9 +67,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "5"
-          ],
+          "directions": ["5"],
           "button": "MK"
         }
       ]
@@ -91,9 +81,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "5"
-          ],
+          "directions": ["5"],
           "button": "HK"
         }
       ]
@@ -107,9 +95,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2"
-          ],
+          "directions": ["2"],
           "button": "LP"
         }
       ]
@@ -123,9 +109,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2"
-          ],
+          "directions": ["2"],
           "button": "MP"
         }
       ]
@@ -139,9 +123,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2"
-          ],
+          "directions": ["2"],
           "button": "HP"
         }
       ]
@@ -155,9 +137,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2"
-          ],
+          "directions": ["2"],
           "button": "LK"
         }
       ]
@@ -171,9 +151,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2"
-          ],
+          "directions": ["2"],
           "button": "MK"
         }
       ]
@@ -187,9 +165,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2"
-          ],
+          "directions": ["2"],
           "button": "HK"
         }
       ]
@@ -203,9 +179,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "5"
-          ],
+          "directions": ["5"],
           "button": "Throw"
         }
       ]
@@ -219,9 +193,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "5"
-          ],
+          "directions": ["5"],
           "button": "DI"
         }
       ]
@@ -235,9 +207,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "5"
-          ],
+          "directions": ["5"],
           "button": "DR"
         }
       ]
@@ -251,9 +221,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "5"
-          ],
+          "directions": ["5"],
           "button": "DP"
         }
       ]
@@ -267,41 +235,35 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "6"
-          ],
+          "directions": ["6"],
           "button": "DRev"
         }
       ]
     },
     {
-      "id": "manon-6mk",
-      "name": "ルヴェ",
-      "nameEn": "Relevé",
+      "id": "manon-4hp",
+      "name": "レベランス",
+      "nameEn": "Reverence",
       "category": "unique",
-      "notation": "6MK",
+      "notation": "4HP",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "6"
-          ],
-          "button": "MK"
+          "directions": ["4"],
+          "button": "HP"
         }
       ]
     },
     {
-      "id": "manon-6hk",
-      "name": "シャッセ",
-      "nameEn": "Chassé",
+      "id": "manon-3hk",
+      "name": "トモエ・デリエール",
+      "nameEn": "Tomoe Derriere",
       "category": "unique",
-      "notation": "6HK",
+      "notation": "3HK",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "6"
-          ],
+          "directions": ["3"],
           "button": "HK"
         }
       ]
@@ -309,76 +271,52 @@
     {
       "id": "manon-manege-dore",
       "name": "マネージュ・ドレ",
-      "nameEn": "Manège Doré",
+      "nameEn": "Manege Dore",
       "category": "special",
-      "notation": "63214+K",
+      "notation": "63214+P",
       "steps": [],
       "variants": [
         {
           "strength": "L",
-          "notation": "63214LK",
+          "notation": "63214LP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "6",
-                "3",
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "LK"
+              "directions": ["6", "3", "2", "1", "4"],
+              "button": "LP"
             }
           ]
         },
         {
           "strength": "M",
-          "notation": "63214MK",
+          "notation": "63214MP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "6",
-                "3",
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "MK"
+              "directions": ["6", "3", "2", "1", "4"],
+              "button": "MP"
             }
           ]
         },
         {
           "strength": "H",
-          "notation": "63214HK",
+          "notation": "63214HP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "6",
-                "3",
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HK"
+              "directions": ["6", "3", "2", "1", "4"],
+              "button": "HP"
             }
           ]
         },
         {
           "strength": "OD",
-          "notation": "OD63214HK",
+          "notation": "OD63214HP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "6",
-                "3",
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HK",
+              "directions": ["6", "3", "2", "1", "4"],
+              "button": "HP",
               "isOD": true
             }
           ]
@@ -388,78 +326,7 @@
     {
       "id": "manon-renverse",
       "name": "ランヴェルセ",
-      "nameEn": "Renversé",
-      "category": "special",
-      "notation": "214+K",
-      "steps": [],
-      "variants": [
-        {
-          "strength": "L",
-          "notation": "214LK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "LK"
-            }
-          ]
-        },
-        {
-          "strength": "M",
-          "notation": "214MK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "MK"
-            }
-          ]
-        },
-        {
-          "strength": "H",
-          "notation": "214HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HK"
-            }
-          ]
-        },
-        {
-          "strength": "OD",
-          "notation": "OD214HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HK",
-              "isOD": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "manon-degage",
-      "name": "デガジェ",
-      "nameEn": "Dégagé",
+      "nameEn": "Renverse",
       "category": "special",
       "notation": "236+P",
       "steps": [],
@@ -470,11 +337,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "LP"
             }
           ]
@@ -485,11 +348,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "MP"
             }
           ]
@@ -500,11 +359,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "HP"
             }
           ]
@@ -515,11 +370,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "HP",
               "isOD": true
             }
@@ -528,8 +379,63 @@
       ]
     },
     {
+      "id": "manon-degage",
+      "name": "デガジェ",
+      "nameEn": "Degage",
+      "category": "special",
+      "notation": "214+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "214LK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "1", "4"],
+              "button": "LK"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "214MK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "1", "4"],
+              "button": "MK"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "214HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "1", "4"],
+              "button": "HK"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD214HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "1", "4"],
+              "button": "HK",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "manon-rond-point",
-      "name": "ロン・ドゥ・ジャンブ",
+      "name": "ロン・ポワン",
       "nameEn": "Rond-point",
       "category": "special",
       "notation": "236+K",
@@ -541,11 +447,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "LK"
             }
           ]
@@ -556,11 +458,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "MK"
             }
           ]
@@ -571,11 +469,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "HK"
             }
           ]
@@ -586,11 +480,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "HK",
               "isOD": true
             }
@@ -603,61 +493,40 @@
       "name": "アラベスク",
       "nameEn": "Arabesque (SA1)",
       "category": "super",
-      "notation": "236236LK",
+      "notation": "236236K",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
+          "directions": ["2", "3", "6", "2", "3", "6"],
           "button": "LK"
         }
       ]
     },
     {
       "id": "manon-sa2",
-      "name": "メダイユ・ドレ",
-      "nameEn": "Medal d'Or (SA2)",
+      "name": "エトワール",
+      "nameEn": "Etoile (SA2)",
       "category": "super",
-      "notation": "236236HP",
+      "notation": "214214K",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "HP"
+          "directions": ["2", "1", "4", "2", "1", "4"],
+          "button": "LK"
         }
       ]
     },
     {
       "id": "manon-sa3",
-      "name": "パ・ドゥ・ドゥ",
+      "name": "パ・ド・ドゥ",
       "nameEn": "Pas de Deux (SA3)",
       "category": "super",
-      "notation": "236236MK",
+      "notation": "236236P",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "MK"
+          "directions": ["2", "3", "6", "2", "3", "6"],
+          "button": "LP"
         }
       ]
     }

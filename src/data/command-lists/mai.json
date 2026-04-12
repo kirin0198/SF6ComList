@@ -1,6 +1,6 @@
 {
   "characterId": "mai",
-  "characterName": "不知火舞",
+  "characterName": "不���火舞",
   "moves": [
     {
       "id": "mai-5lp",
@@ -11,9 +11,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "5"
-          ],
+          "directions": ["5"],
           "button": "LP"
         }
       ]
@@ -27,9 +25,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "5"
-          ],
+          "directions": ["5"],
           "button": "MP"
         }
       ]
@@ -43,9 +39,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "5"
-          ],
+          "directions": ["5"],
           "button": "HP"
         }
       ]
@@ -59,9 +53,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "5"
-          ],
+          "directions": ["5"],
           "button": "LK"
         }
       ]
@@ -75,9 +67,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "5"
-          ],
+          "directions": ["5"],
           "button": "MK"
         }
       ]
@@ -91,9 +81,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "5"
-          ],
+          "directions": ["5"],
           "button": "HK"
         }
       ]
@@ -107,9 +95,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2"
-          ],
+          "directions": ["2"],
           "button": "LP"
         }
       ]
@@ -123,9 +109,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2"
-          ],
+          "directions": ["2"],
           "button": "MP"
         }
       ]
@@ -139,9 +123,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2"
-          ],
+          "directions": ["2"],
           "button": "HP"
         }
       ]
@@ -155,9 +137,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2"
-          ],
+          "directions": ["2"],
           "button": "LK"
         }
       ]
@@ -171,25 +151,21 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2"
-          ],
+          "directions": ["2"],
           "button": "MK"
         }
       ]
     },
     {
       "id": "mai-2hk",
-      "name": "しゃがみ強K",
+      "name": "し���がみ強K",
       "nameEn": "Crouching HK",
       "category": "normal",
       "notation": "2HK",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2"
-          ],
+          "directions": ["2"],
           "button": "HK"
         }
       ]
@@ -203,9 +179,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "5"
-          ],
+          "directions": ["5"],
           "button": "Throw"
         }
       ]
@@ -219,9 +193,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "5"
-          ],
+          "directions": ["5"],
           "button": "DI"
         }
       ]
@@ -235,9 +207,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "5"
-          ],
+          "directions": ["5"],
           "button": "DR"
         }
       ]
@@ -251,9 +221,7 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "5"
-          ],
+          "directions": ["5"],
           "button": "DP"
         }
       ]
@@ -267,42 +235,22 @@
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "6"
-          ],
+          "directions": ["6"],
           "button": "DRev"
         }
       ]
     },
     {
-      "id": "mai-6hp",
-      "name": "浮嵐",
-      "nameEn": "Ukiarashi",
+      "id": "mai-6mp",
+      "name": "扇骨打ち",
+      "nameEn": "Senkotsu Uchi",
       "category": "unique",
-      "notation": "6HP",
+      "notation": "6MP",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "6"
-          ],
-          "button": "HP"
-        }
-      ]
-    },
-    {
-      "id": "mai-6mk",
-      "name": "紅鶴の舞",
-      "nameEn": "Crimson Crane Dance",
-      "category": "unique",
-      "notation": "6MK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "6"
-          ],
-          "button": "MK"
+          "directions": ["6"],
+          "button": "MP"
         }
       ]
     },
@@ -320,11 +268,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "LP"
             }
           ]
@@ -335,11 +279,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "MP"
             }
           ]
@@ -350,11 +290,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "HP"
             }
           ]
@@ -365,11 +301,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "HP",
               "isOD": true
             }
@@ -391,11 +323,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["2", "1", "4"],
               "button": "LP"
             }
           ]
@@ -406,11 +334,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["2", "1", "4"],
               "button": "MP"
             }
           ]
@@ -421,11 +345,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["2", "1", "4"],
               "button": "HP"
             }
           ]
@@ -436,11 +356,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["2", "1", "4"],
               "button": "HP",
               "isOD": true
             }
@@ -462,11 +378,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "LK"
             }
           ]
@@ -477,11 +389,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "MK"
             }
           ]
@@ -492,11 +400,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
               "button": "HK"
             }
           ]
@@ -507,11 +411,62 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "3", "6"],
+              "button": "HK",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mai-hishou-ryuuenjin",
+      "name": "���翔龍炎陣",
+      "nameEn": "Hishou Ryuuenjin",
+      "category": "special",
+      "notation": "623+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "623LK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["6", "2", "3"],
+              "button": "LK"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "623MK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["6", "2", "3"],
+              "button": "MK"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "623HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["6", "2", "3"],
+              "button": "HK"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD623HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["6", "2", "3"],
               "button": "HK",
               "isOD": true
             }
@@ -521,69 +476,53 @@
     },
     {
       "id": "mai-musasabi-no-mai",
-      "name": "ムササビの舞",
+      "name": "ム���サビの舞",
       "nameEn": "Musasabi no Mai",
       "category": "special",
-      "notation": "214+K",
+      "notation": "j214+P",
       "steps": [],
       "variants": [
         {
           "strength": "L",
-          "notation": "214LK",
+          "notation": "j214LP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "LK"
+              "directions": ["2", "1", "4"],
+              "button": "LP"
             }
           ]
         },
         {
           "strength": "M",
-          "notation": "214MK",
+          "notation": "j214MP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "MK"
+              "directions": ["2", "1", "4"],
+              "button": "MP"
             }
           ]
         },
         {
           "strength": "H",
-          "notation": "214HK",
+          "notation": "j214HP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HK"
+              "directions": ["2", "1", "4"],
+              "button": "HP"
             }
           ]
         },
         {
           "strength": "OD",
-          "notation": "OD214HK",
+          "notation": "ODj214HP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HK",
+              "directions": ["2", "1", "4"],
+              "button": "HP",
               "isOD": true
             }
           ]
@@ -592,64 +531,43 @@
     },
     {
       "id": "mai-sa1",
-      "name": "超必殺忍蜂",
-      "nameEn": "Cho Hissatsu Shinobibachi (SA1)",
+      "name": "陽炎の舞",
+      "nameEn": "Kagerou no Mai (SA1)",
       "category": "super",
-      "notation": "236236LK",
+      "notation": "236236P",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "LK"
+          "directions": ["2", "3", "6", "2", "3", "6"],
+          "button": "LP"
         }
       ]
     },
     {
       "id": "mai-sa2",
-      "name": "不知火流・紅鶴乱舞",
-      "nameEn": "Shiranui-ryu: Crimson Lotus (SA2)",
+      "name": "超必殺忍蜂",
+      "nameEn": "Chou Hissatsu Shinobibachi (SA2)",
       "category": "super",
-      "notation": "236236HP",
+      "notation": "236236K",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "HP"
+          "directions": ["2", "3", "6", "2", "3", "6"],
+          "button": "LK"
         }
       ]
     },
     {
       "id": "mai-sa3",
-      "name": "不知火流奥義・炎の舞",
-      "nameEn": "Shiranui-ryu Ougi: Flame Dance (SA3)",
+      "name": "不知火流・炎舞仇桜",
+      "nameEn": "Shiranui-ryu: Enbu Ada Zakura (SA3)",
       "category": "super",
-      "notation": "236236MK",
+      "notation": "214214P",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "MK"
+          "directions": ["2", "1", "4", "2", "1", "4"],
+          "button": "LP"
         }
       ]
     }
