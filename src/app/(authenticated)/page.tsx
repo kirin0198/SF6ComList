@@ -1,47 +1,49 @@
 /**
  * SCR-003: キャラクター一覧画面（トップ）
- * 全キャラクターをグリッド表示する Server Component
+ * Server Component でデータを取得し、Client Component に渡す
  */
 
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { getActiveCharacters } from "@/lib/characters";
-import CharacterCard from "@/components/character/CharacterCard";
+import CharacterListClient from "@/components/character/CharacterListClient";
 
 export default async function CharacterListPage() {
   const session = await auth();
+  const userId = session?.user?.id;
 
   // active キャラクター一覧取得
   const activeCharacters = getActiveCharacters();
 
   // ユーザーのキャラクター別コンボ数を一括取得
-  let comboCountMap = new Map<string, number>();
-  if (session?.user?.id) {
-    const comboCounts = await prisma.combo.groupBy({
-      by: ["characterId"],
-      where: { userId: session.user.id },
-      _count: { id: true },
-    });
-    comboCountMap = new Map(
+  let comboCountMap: Record<string, number> = {};
+  let favoriteIds: string[] = [];
+
+  if (userId) {
+    const [comboCounts, favorites] = await Promise.all([
+      prisma.combo.groupBy({
+        by: ["characterId"],
+        where: { userId },
+        _count: { id: true },
+      }),
+      prisma.favoriteCharacter.findMany({
+        where: { userId },
+        select: { characterId: true },
+      }),
+    ]);
+
+    comboCountMap = Object.fromEntries(
       comboCounts.map((c) => [c.characterId, c._count.id]),
     );
+    favoriteIds = favorites.map((f) => f.characterId);
   }
 
   return (
-    <div>
-      {/* ページタイトル */}
-      <h1 className="mb-6 text-2xl font-bold text-white">キャラクター一覧</h1>
-
-      {/* キャラクターグリッド */}
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-        {activeCharacters.map((character) => (
-          <CharacterCard
-            key={character.id}
-            character={character}
-            comboCount={comboCountMap.get(character.id) ?? 0}
-          />
-        ))}
-      </div>
-    </div>
+    <CharacterListClient
+      characters={activeCharacters}
+      comboCountMap={comboCountMap}
+      initialFavoriteIds={favoriteIds}
+      isLoggedIn={!!userId}
+    />
   );
 }

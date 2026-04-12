@@ -15,10 +15,11 @@ model User {
   createdAt    DateTime @default(now()) @map("created_at")
   updatedAt    DateTime @updatedAt @map("updated_at")
 
-  combos   Combo[]
-  tags     Tag[]
-  sessions Session[]
-  accounts Account[]
+  combos             Combo[]
+  tags               Tag[]
+  sessions           Session[]
+  accounts           Account[]
+  favoriteCharacters FavoriteCharacter[]
 
   @@map("users")
 }
@@ -106,4 +107,15 @@ model ComboTag {
 
   @@id([comboId, tagId])
   @@map("combo_tags")
+}
+
+model FavoriteCharacter {
+  userId      String   @map("user_id")
+  characterId String   @map("character_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, characterId])
+  @@map("favorite_characters")
 }
