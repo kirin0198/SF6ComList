@@ -8,15 +8,7 @@
       "nameEn": "Standing LP",
       "category": "normal",
       "notation": "5LP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "LP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "LP" }]
     },
     {
       "id": "terry-5mp",
@@ -24,15 +16,7 @@
       "nameEn": "Standing MP",
       "category": "normal",
       "notation": "5MP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "MP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "MP" }]
     },
     {
       "id": "terry-5hp",
@@ -40,15 +24,7 @@
       "nameEn": "Standing HP",
       "category": "normal",
       "notation": "5HP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "HP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "HP" }]
     },
     {
       "id": "terry-5lk",
@@ -56,15 +32,7 @@
       "nameEn": "Standing LK",
       "category": "normal",
       "notation": "5LK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "LK"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "LK" }]
     },
     {
       "id": "terry-5mk",
@@ -72,15 +40,7 @@
       "nameEn": "Standing MK",
       "category": "normal",
       "notation": "5MK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "MK"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "MK" }]
     },
     {
       "id": "terry-5hk",
@@ -88,15 +48,7 @@
       "nameEn": "Standing HK",
       "category": "normal",
       "notation": "5HK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "HK"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "HK" }]
     },
     {
       "id": "terry-2lp",
@@ -104,15 +56,7 @@
       "nameEn": "Crouching LP",
       "category": "normal",
       "notation": "2LP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2"
-          ],
-          "button": "LP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "LP" }]
     },
     {
       "id": "terry-2mp",
@@ -120,15 +64,7 @@
       "nameEn": "Crouching MP",
       "category": "normal",
       "notation": "2MP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2"
-          ],
-          "button": "MP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "MP" }]
     },
     {
       "id": "terry-2hp",
@@ -136,15 +72,7 @@
       "nameEn": "Crouching HP",
       "category": "normal",
       "notation": "2HP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2"
-          ],
-          "button": "HP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "HP" }]
     },
     {
       "id": "terry-2lk",
@@ -152,15 +80,7 @@
       "nameEn": "Crouching LK",
       "category": "normal",
       "notation": "2LK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2"
-          ],
-          "button": "LK"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "LK" }]
     },
     {
       "id": "terry-2mk",
@@ -168,15 +88,7 @@
       "nameEn": "Crouching MK",
       "category": "normal",
       "notation": "2MK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2"
-          ],
-          "button": "MK"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "MK" }]
     },
     {
       "id": "terry-2hk",
@@ -184,15 +96,7 @@
       "nameEn": "Crouching HK",
       "category": "normal",
       "notation": "2HK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2"
-          ],
-          "button": "HK"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "HK" }]
     },
     {
       "id": "terry-throw",
@@ -200,15 +104,7 @@
       "nameEn": "Throw",
       "category": "throw",
       "notation": "Throw",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "Throw"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "Throw" }]
     },
     {
       "id": "terry-di",
@@ -216,15 +112,7 @@
       "nameEn": "Drive Impact",
       "category": "drive",
       "notation": "DI",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "DI"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "DI" }]
     },
     {
       "id": "terry-dr",
@@ -232,15 +120,7 @@
       "nameEn": "Drive Rush",
       "category": "drive",
       "notation": "DR",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "DR"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "DR" }]
     },
     {
       "id": "terry-dp",
@@ -248,15 +128,7 @@
       "nameEn": "Drive Parry",
       "category": "drive",
       "notation": "DP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "5"
-          ],
-          "button": "DP"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "DP" }]
     },
     {
       "id": "terry-drev",
@@ -264,47 +136,15 @@
       "nameEn": "Drive Reversal",
       "category": "drive",
       "notation": "DRev",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "6"
-          ],
-          "button": "DRev"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["6"], "button": "DRev" }]
     },
     {
       "id": "terry-6hp",
-      "name": "バックスピンキック",
-      "nameEn": "Back Spin Kick",
+      "name": "ハマーパンチ",
+      "nameEn": "Hammer Punch",
       "category": "unique",
       "notation": "6HP",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "6"
-          ],
-          "button": "HP"
-        }
-      ]
-    },
-    {
-      "id": "terry-6mk",
-      "name": "ライジングアッパー",
-      "nameEn": "Rising Upper",
-      "category": "unique",
-      "notation": "6MK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "6"
-          ],
-          "button": "MK"
-        }
-      ]
+      "steps": [{ "type": "normal", "directions": ["6"], "button": "HP" }]
     },
     {
       "id": "terry-power-wave",
@@ -317,63 +157,22 @@
         {
           "strength": "L",
           "notation": "236LP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "LP"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "LP" }]
         },
         {
           "strength": "M",
           "notation": "236MP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "MP"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "MP" }]
         },
         {
           "strength": "H",
           "notation": "236HP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HP"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "HP" }]
         },
         {
           "strength": "OD",
           "notation": "OD236HP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HP",
-              "isOD": true
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "HP", "isOD": true }]
         }
       ]
     },
@@ -388,63 +187,52 @@
         {
           "strength": "L",
           "notation": "214LP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "LP"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "LP" }]
         },
         {
           "strength": "M",
           "notation": "214MP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "MP"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "MP" }]
         },
         {
           "strength": "H",
           "notation": "214HP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HP"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "HP" }]
         },
         {
           "strength": "OD",
           "notation": "OD214HP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HP",
-              "isOD": true
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "HP", "isOD": true }]
+        }
+      ]
+    },
+    {
+      "id": "terry-power-charge",
+      "name": "パワーチャージ",
+      "nameEn": "Power Charge",
+      "category": "special",
+      "notation": "236+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "236LK",
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "LK" }]
+        },
+        {
+          "strength": "M",
+          "notation": "236MK",
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "MK" }]
+        },
+        {
+          "strength": "H",
+          "notation": "236HK",
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "HK" }]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD236HK",
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "HK", "isOD": true }]
         }
       ]
     },
@@ -459,63 +247,22 @@
         {
           "strength": "L",
           "notation": "214LK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "LK"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "LK" }]
         },
         {
           "strength": "M",
           "notation": "214MK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "MK"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "MK" }]
         },
         {
           "strength": "H",
           "notation": "214HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HK"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "HK" }]
         },
         {
           "strength": "OD",
           "notation": "OD214HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
-              "button": "HK",
-              "isOD": true
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "HK", "isOD": true }]
         }
       ]
     },
@@ -524,183 +271,49 @@
       "name": "ライジングタックル",
       "nameEn": "Rising Tackle",
       "category": "special",
-      "notation": "623+K",
-      "steps": [],
-      "variants": [
-        {
-          "strength": "L",
-          "notation": "623LK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "6",
-                "2",
-                "3"
-              ],
-              "button": "LK"
-            }
-          ]
-        },
-        {
-          "strength": "M",
-          "notation": "623MK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "6",
-                "2",
-                "3"
-              ],
-              "button": "MK"
-            }
-          ]
-        },
-        {
-          "strength": "H",
-          "notation": "623HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "6",
-                "2",
-                "3"
-              ],
-              "button": "HK"
-            }
-          ]
-        },
-        {
-          "strength": "OD",
-          "notation": "OD623HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "6",
-                "2",
-                "3"
-              ],
-              "button": "HK",
-              "isOD": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "terry-power-dunk",
-      "name": "パワーダンク",
-      "nameEn": "Power Dunk",
-      "category": "special",
       "notation": "623+P",
       "steps": [],
       "variants": [
         {
           "strength": "L",
           "notation": "623LP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "6",
-                "2",
-                "3"
-              ],
-              "button": "LP"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["6", "2", "3"], "button": "LP" }]
         },
         {
           "strength": "M",
           "notation": "623MP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "6",
-                "2",
-                "3"
-              ],
-              "button": "MP"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["6", "2", "3"], "button": "MP" }]
         },
         {
           "strength": "H",
           "notation": "623HP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "6",
-                "2",
-                "3"
-              ],
-              "button": "HP"
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["6", "2", "3"], "button": "HP" }]
         },
         {
           "strength": "OD",
           "notation": "OD623HP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "6",
-                "2",
-                "3"
-              ],
-              "button": "HP",
-              "isOD": true
-            }
-          ]
+          "steps": [{ "type": "normal", "directions": ["6", "2", "3"], "button": "HP", "isOD": true }]
         }
       ]
     },
     {
       "id": "terry-sa1",
-      "name": "パワーゲイザー",
-      "nameEn": "Power Geyser (SA1)",
+      "name": "バスターウルフ",
+      "nameEn": "Buster Wolf (SA1)",
       "category": "super",
-      "notation": "236236LP",
+      "notation": "236236K",
       "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "LP"
-        }
+        { "type": "normal", "directions": ["2", "3", "6", "2", "3", "6"], "button": "LK" }
       ]
     },
     {
       "id": "terry-sa2",
-      "name": "バスターウルフ",
-      "nameEn": "Buster Wolf (SA2)",
+      "name": "パワーゲイザー",
+      "nameEn": "Power Geyser (SA2)",
       "category": "super",
-      "notation": "236236HP",
+      "notation": "214214P",
       "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "HP"
-        }
+        { "type": "normal", "directions": ["2", "1", "4", "2", "1", "4"], "button": "LP" }
       ]
     },
     {
@@ -708,20 +321,9 @@
       "name": "ライジングファング",
       "nameEn": "Rising Fang (SA3)",
       "category": "super",
-      "notation": "236236MK",
+      "notation": "236236P",
       "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "MK"
-        }
+        { "type": "normal", "directions": ["2", "3", "6", "2", "3", "6"], "button": "LP" }
       ]
     }
   ]
