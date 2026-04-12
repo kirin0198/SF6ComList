@@ -39,8 +39,6 @@ RUN mkdir -p /app/data \
 
 # ============================================================
 # Stage 2: runner — 実行
-# Google Cloud SDK (gsutil) を含む Debian ベースイメージを使用
-# ※ alpine では gcloud SDK のインストールが複雑なため debian-slim を使用
 # ============================================================
 FROM node:20-slim AS runner
 
@@ -49,13 +47,10 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
-# gsutil のみインストール（GCS と SQLite を同期するため）
-# google-cloud-sdk 全体（約 400MB）ではなく gsutil のみで軽量化
+# GCS API アクセスに必要な curl のみインストール（軽量化）
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3 \
-    python3-pip \
     ca-certificates \
-    && pip3 install --no-cache-dir --break-system-packages gsutil \
+    curl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
