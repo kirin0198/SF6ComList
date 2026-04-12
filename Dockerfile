@@ -5,9 +5,14 @@
 # ============================================================
 # Stage 1: builder — ビルド + 初期 DB 作成
 # ============================================================
-FROM node:20-alpine AS builder
+# runner と同じ debian-slim を使用（Prisma バイナリターゲットを一致させる）
+FROM node:20-slim AS builder
 
 WORKDIR /app
+
+# Prisma に必要な OpenSSL をインストール
+RUN apt-get update && apt-get install -y --no-install-recommends openssl \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # package.json と lock ファイルをコピー
 COPY package.json package-lock.json ./
