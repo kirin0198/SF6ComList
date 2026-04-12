@@ -177,6 +177,12 @@ git push origin main
 PROJECT_ID=$(gcloud config get-value project)
 REGION="asia-northeast1"
 
+# Artifact Registry リポジトリを作成（初回のみ）
+gcloud artifacts repositories create sf6comlist \
+  --repository-format=docker \
+  --location=${REGION} \
+  --description="SF6 ComboList Docker images"
+
 # Docker イメージをビルド
 docker build -t ${REGION}-docker.pkg.dev/${PROJECT_ID}/sf6comlist/sf6comlist:latest .
 
@@ -265,6 +271,12 @@ gsutil ls gs://${BUCKET_NAME}/
 ```bash
 PROJECT_ID=$(gcloud config get-value project)
 REGION="asia-northeast1"
+
+# Artifact Registry リポジトリが未作成の場合は先に作成する
+# gcloud artifacts repositories create sf6comlist \
+#   --repository-format=docker \
+#   --location=${REGION} \
+#   --description="SF6 ComboList Docker images"
 
 # 最新コードで Docker イメージをビルド & プッシュ
 docker build -t ${REGION}-docker.pkg.dev/${PROJECT_ID}/sf6comlist/sf6comlist:hotfix .
