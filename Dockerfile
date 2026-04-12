@@ -1,5 +1,6 @@
 # Dockerfile — SF6 コンボ帳
 # Node.js 20 LTS マルチステージビルド
+# Cloud Run (gen2) 対応: GCS を使った SQLite 永続化
 
 # ============================================================
 # Stage 1: deps — 依存関係インストール
@@ -39,17 +40,32 @@ RUN npm run build
 
 # ============================================================
 # Stage 3: runner — 実行
+# Google Cloud SDK (gsutil) を含む Debian ベースイメージを使用
+# ※ alpine では gcloud SDK のインストールが複雑なため debian-slim を使用
 # ============================================================
-FROM node:20-alpine AS runner
+FROM node:20-slim AS runner
 
 WORKDIR /app
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# Google Cloud SDK のインストール（gsutil で GCS と SQLite を同期するため）
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    gnupg \
+    ca-certificates \
+    && curl -sSL https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-linux-x86_64.tar.gz \
+    | tar -xz -C /opt \
+    && /opt/google-cloud-sdk/install.sh --quiet --usage-reporting=false \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV PATH="/opt/google-cloud-sdk/bin:${PATH}"
+
 # セキュリティ: 非 root ユーザーで実行
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+RUN groupadd --system --gid 1001 nodejs \
+    && useradd --system --uid 1001 --gid nodejs nextjs
 
 # standalone ビルドの成果物をコピー
 COPY --from=builder /app/.next/standalone ./
@@ -79,5 +95,9 @@ EXPOSE 3000
 
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
+
+# ヘルスチェック（Cloud Run は /health エンドポイント不要だが、ローカル確認用）
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+    CMD curl -f http://localhost:3000/ || exit 1
 
 CMD ["sh", "docker-entrypoint.sh"]

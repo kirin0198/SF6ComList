@@ -41,6 +41,15 @@ sf6-temp/
 # テストカバレッジ
 coverage/
 
+# Playwright テスト成果物
+playwright-report/
+test-results/
+playwright.config.ts
+tests/
+
 # OS ファイル
 .DS_Store
 Thumbs.db
+
+# CI 設定（コンテナ内不要）
+.github/

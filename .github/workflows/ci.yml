@@ -1,0 +1,103 @@
+# CI ワークフロー — PR 時に lint / type check / test を実行
+# トリガー: pull_request (main ブランチへの PR)
+
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  # ─────────────────────────────────────
+  # Job 1: Lint + Type Check
+  # ─────────────────────────────────────
+  lint:
+    name: Lint & Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
+      - name: ESLint
+        run: npx eslint .
+
+      - name: Prettier check
+        run: npx prettier --check .
+
+      - name: TypeScript type check
+        run: npx tsc --noEmit
+
+  # ─────────────────────────────────────
+  # Job 2: Unit / Component Test
+  # ─────────────────────────────────────
+  test:
+    name: Unit & Component Tests
+    runs-on: ubuntu-latest
+    needs: lint
+    env:
+      # テスト用のダミー値（DB は vitest のモックを使用）
+      DATABASE_URL: "file:/tmp/test.db"
+      AUTH_SECRET: "test-secret-for-ci-only-do-not-use-in-production"
+      AUTH_URL: "http://localhost:3000"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
+      - name: Run unit tests
+        run: npm test
+
+  # ─────────────────────────────────────
+  # Job 3: Docker build check (PR のみ)
+  # ─────────────────────────────────────
+  build-check:
+    name: Docker Build Check
+    runs-on: ubuntu-latest
+    needs: test
+    # main への push の場合は deploy.yml 側でビルドするためスキップ
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Docker build (no push)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
+          # キャッシュを活用してビルド時間を短縮
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          # ビルド引数: Prisma スキーマの生成に DATABASE_URL が必要
+          build-args: |
+            NEXT_TELEMETRY_DISABLED=1
