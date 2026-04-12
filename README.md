@@ -1,5 +1,8 @@
 # SF6 ComboList
 
+[![CI](https://github.com/kirin0198/SF6ComList/actions/workflows/ci.yml/badge.svg)](https://github.com/kirin0198/SF6ComList/actions/workflows/ci.yml)
+[![Deploy to Cloud Run](https://github.com/kirin0198/SF6ComList/actions/workflows/deploy.yml/badge.svg)](https://github.com/kirin0198/SF6ComList/actions/workflows/deploy.yml)
+
 SF6（ストリートファイター6）の個人向けコンボ管理 Web アプリケーション。
 ビジュアル UI（方向キーパッド + ボタンパレット）でコンボを組み立て、キャラクター別・タグ別に整理できます。
 
