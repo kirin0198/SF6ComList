@@ -275,254 +275,65 @@
       ]
     },
     {
+      "id": "juri-6mp",
+      "name": "狂背掌",
+      "nameEn": "Kyosesho",
+      "category": "unique",
+      "notation": "6MP",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": ["6"],
+          "button": "MP"
+        }
+      ]
+    },
+    {
       "id": "juri-6mk",
-      "name": "穿翔脚",
-      "nameEn": "Senshokaku",
+      "name": "殲廻脚",
+      "nameEn": "Senkakyaku",
       "category": "unique",
       "notation": "6MK",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "6"
-          ],
+          "directions": ["6"],
           "button": "MK"
         }
       ]
     },
     {
-      "id": "juri-6hk",
-      "name": "落穿脚",
-      "nameEn": "Falling Thrust",
+      "id": "juri-6hp",
+      "name": "連剋脚",
+      "nameEn": "Renkokukyaku",
       "category": "unique",
-      "notation": "6HK",
+      "notation": "6HP",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "6"
-          ],
+          "directions": ["6"],
+          "button": "HP"
+        }
+      ]
+    },
+    {
+      "id": "juri-4hk",
+      "name": "鉤鎌斬",
+      "nameEn": "Korenzan",
+      "category": "unique",
+      "notation": "4HK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": ["4"],
           "button": "HK"
         }
       ]
     },
     {
-      "id": "juri-fuharenkyaku",
-      "name": "風破連脚",
-      "nameEn": "Fuharenkyaku",
-      "category": "special",
-      "notation": "236+K",
-      "steps": [],
-      "variants": [
-        {
-          "strength": "L",
-          "notation": "236LK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "LK"
-            }
-          ]
-        },
-        {
-          "strength": "M",
-          "notation": "236MK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "MK"
-            }
-          ]
-        },
-        {
-          "strength": "H",
-          "notation": "236HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HK"
-            }
-          ]
-        },
-        {
-          "strength": "OD",
-          "notation": "OD236HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HK",
-              "isOD": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "juri-saihasho",
-      "name": "砕破",
-      "nameEn": "Saihasho",
-      "category": "special",
-      "notation": "236+P",
-      "steps": [],
-      "variants": [
-        {
-          "strength": "L",
-          "notation": "236LP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "LP"
-            }
-          ]
-        },
-        {
-          "strength": "M",
-          "notation": "236MP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "MP"
-            }
-          ]
-        },
-        {
-          "strength": "H",
-          "notation": "236HP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HP"
-            }
-          ]
-        },
-        {
-          "strength": "OD",
-          "notation": "OD236HP",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HP",
-              "isOD": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "juri-tensenrin",
-      "name": "天穿輪",
-      "nameEn": "Tensenrin",
-      "category": "special",
-      "notation": "623+K",
-      "steps": [],
-      "variants": [
-        {
-          "strength": "L",
-          "notation": "623LK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "6",
-                "2",
-                "3"
-              ],
-              "button": "LK"
-            }
-          ]
-        },
-        {
-          "strength": "M",
-          "notation": "623MK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "6",
-                "2",
-                "3"
-              ],
-              "button": "MK"
-            }
-          ]
-        },
-        {
-          "strength": "H",
-          "notation": "623HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "6",
-                "2",
-                "3"
-              ],
-              "button": "HK"
-            }
-          ]
-        },
-        {
-          "strength": "OD",
-          "notation": "OD623HK",
-          "steps": [
-            {
-              "type": "normal",
-              "directions": [
-                "6",
-                "2",
-                "3"
-              ],
-              "button": "HK",
-              "isOD": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "juri-go-ohsatsu",
-      "name": "五黄殺",
-      "nameEn": "Go Ohsatsu",
+      "id": "juri-fuhajin",
+      "name": "風破刃",
+      "nameEn": "Fuhajin",
       "category": "special",
       "notation": "214+K",
       "steps": [],
@@ -533,11 +344,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["2", "1", "4"],
               "button": "LK"
             }
           ]
@@ -548,11 +355,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["2", "1", "4"],
               "button": "MK"
             }
           ]
@@ -563,11 +366,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["2", "1", "4"],
               "button": "HK"
             }
           ]
@@ -578,11 +377,7 @@
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["2", "1", "4"],
               "button": "HK",
               "isOD": true
             }
@@ -591,69 +386,95 @@
       ]
     },
     {
+      "id": "juri-saihasho",
+      "name": "歳破衝",
+      "nameEn": "Saihasho",
+      "category": "special",
+      "notation": "236LK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": ["2", "3", "6"],
+          "button": "LK"
+        }
+      ]
+    },
+    {
       "id": "juri-ankensatsu",
       "name": "暗剣殺",
       "nameEn": "Ankensatsu",
       "category": "special",
-      "notation": "214+P",
+      "notation": "236MK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": ["2", "3", "6"],
+          "button": "MK"
+        }
+      ]
+    },
+    {
+      "id": "juri-go-ohsatsu",
+      "name": "五黄殺",
+      "nameEn": "Go Ohsatsu",
+      "category": "special",
+      "notation": "236HK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": ["2", "3", "6"],
+          "button": "HK"
+        }
+      ]
+    },
+    {
+      "id": "juri-tensenrin",
+      "name": "天穿輪",
+      "nameEn": "Tensenrin",
+      "category": "special",
+      "notation": "623+P",
       "steps": [],
       "variants": [
         {
           "strength": "L",
-          "notation": "214LP",
+          "notation": "623LP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["6", "2", "3"],
               "button": "LP"
             }
           ]
         },
         {
           "strength": "M",
-          "notation": "214MP",
+          "notation": "623MP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["6", "2", "3"],
               "button": "MP"
             }
           ]
         },
         {
           "strength": "H",
-          "notation": "214HP",
+          "notation": "623HP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["6", "2", "3"],
               "button": "HP"
             }
           ]
         },
         {
           "strength": "OD",
-          "notation": "OD214HP",
+          "notation": "OD623HP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "1",
-                "4"
-              ],
+              "directions": ["6", "2", "3"],
               "button": "HP",
               "isOD": true
             }
@@ -666,18 +487,11 @@
       "name": "殺界風破斬",
       "nameEn": "Sakkai Fuhazan (SA1)",
       "category": "super",
-      "notation": "236236LK",
+      "notation": "236236K",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
+          "directions": ["2", "3", "6", "2", "3", "6"],
           "button": "LK"
         }
       ]
@@ -687,40 +501,26 @@
       "name": "風水エンジン",
       "nameEn": "Feng Shui Engine (SA2)",
       "category": "super",
-      "notation": "236236HP",
+      "notation": "214214P",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "HP"
+          "directions": ["2", "1", "4", "2", "1", "4"],
+          "button": "LP"
         }
       ]
     },
     {
       "id": "juri-sa3",
       "name": "回旋断界落",
-      "nameEn": "Kaisen Dankaiirakuu (SA3)",
+      "nameEn": "Kaisen Dankairaku (SA3)",
       "category": "super",
-      "notation": "236236MK",
+      "notation": "214214K",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "MK"
+          "directions": ["2", "1", "4", "2", "1", "4"],
+          "button": "LK"
         }
       ]
     }

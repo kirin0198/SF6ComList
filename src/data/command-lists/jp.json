@@ -311,65 +311,49 @@
       "name": "トリグラフ",
       "nameEn": "Triglav",
       "category": "special",
-      "notation": "236+P",
+      "notation": "22+P",
       "steps": [],
       "variants": [
         {
           "strength": "L",
-          "notation": "236LP",
+          "notation": "22LP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "2"],
               "button": "LP"
             }
           ]
         },
         {
           "strength": "M",
-          "notation": "236MP",
+          "notation": "22MP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "2"],
               "button": "MP"
             }
           ]
         },
         {
           "strength": "H",
-          "notation": "236HP",
+          "notation": "22HP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "2"],
               "button": "HP"
             }
           ]
         },
         {
           "strength": "OD",
-          "notation": "OD236HP",
+          "notation": "OD22HP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "2"],
               "button": "HP",
               "isOD": true
             }
@@ -382,66 +366,50 @@
       "name": "ストリボーグ",
       "nameEn": "Stribog",
       "category": "special",
-      "notation": "236+K",
+      "notation": "236+P",
       "steps": [],
       "variants": [
         {
           "strength": "L",
-          "notation": "236LK",
+          "notation": "236LP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "LK"
+              "directions": ["2", "3", "6"],
+              "button": "LP"
             }
           ]
         },
         {
           "strength": "M",
-          "notation": "236MK",
+          "notation": "236MP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "MK"
+              "directions": ["2", "3", "6"],
+              "button": "MP"
             }
           ]
         },
         {
           "strength": "H",
-          "notation": "236HK",
+          "notation": "236HP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HK"
+              "directions": ["2", "3", "6"],
+              "button": "HP"
             }
           ]
         },
         {
           "strength": "OD",
-          "notation": "OD236HK",
+          "notation": "OD236HP",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HK",
+              "directions": ["2", "3", "6"],
+              "button": "HP",
               "isOD": true
             }
           ]
@@ -449,9 +417,9 @@
       ]
     },
     {
-      "id": "jp-departure",
-      "name": "デパーチャー",
-      "nameEn": "Departure",
+      "id": "jp-vikhar",
+      "name": "ヴィーハト",
+      "nameEn": "Vikhar",
       "category": "special",
       "notation": "214+P",
       "steps": [],
@@ -520,9 +488,9 @@
       ]
     },
     {
-      "id": "jp-amnesia",
-      "name": "アムネジア",
-      "nameEn": "Amnesia",
+      "id": "jp-abnimarch",
+      "name": "アブニマーチ",
+      "nameEn": "Abn'imarch",
       "category": "special",
       "notation": "214+K",
       "steps": [],
@@ -591,65 +559,154 @@
       ]
     },
     {
+      "id": "jp-torbalan",
+      "name": "トルバラン",
+      "nameEn": "Torbalan",
+      "category": "special",
+      "notation": "623+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "623LK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["6", "2", "3"],
+              "button": "LK"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "623MK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["6", "2", "3"],
+              "button": "MK"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "623HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["6", "2", "3"],
+              "button": "HK"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD623HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["6", "2", "3"],
+              "button": "HK",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jp-amnesia",
+      "name": "アムネジア",
+      "nameEn": "Amnesia",
+      "category": "special",
+      "notation": "22+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "22LK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "2"],
+              "button": "LK"
+            }
+          ]
+        },
+        {
+          "strength": "M",
+          "notation": "22MK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "2"],
+              "button": "MK"
+            }
+          ]
+        },
+        {
+          "strength": "H",
+          "notation": "22HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "2"],
+              "button": "HK"
+            }
+          ]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD22HK",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["2", "2"],
+              "button": "HK",
+              "isOD": true
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "jp-sa1",
       "name": "チェルノボーグ",
       "nameEn": "Chernobog (SA1)",
       "category": "super",
-      "notation": "236236LP",
+      "notation": "236236P",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
+          "directions": ["2", "3", "6", "2", "3", "6"],
           "button": "LP"
         }
       ]
     },
     {
       "id": "jp-sa2",
-      "name": "ロヴィーナ",
+      "name": "ラヴーシュカ",
       "nameEn": "Lovushka (SA2)",
       "category": "super",
-      "notation": "236236HP",
+      "notation": "214214P",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "HP"
+          "directions": ["2", "1", "4", "2", "1", "4"],
+          "button": "LP"
         }
       ]
     },
     {
       "id": "jp-sa3",
-      "name": "ツァラトゥストラ",
-      "nameEn": "Tsar Collector (SA3)",
+      "name": "ザプリェット",
+      "nameEn": "Zapret (SA3)",
       "category": "super",
-      "notation": "236236MK",
+      "notation": "236236K",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "MK"
+          "directions": ["2", "3", "6", "2", "3", "6"],
+          "button": "LK"
         }
       ]
     }
