@@ -275,34 +275,30 @@
       ]
     },
     {
-      "id": "dee-jay-6hk",
-      "name": "ニーショット",
-      "nameEn": "Knee Shot",
-      "category": "unique",
-      "notation": "6HK",
-      "steps": [
-        {
-          "type": "normal",
-          "directions": [
-            "6"
-          ],
-          "button": "HK"
-        }
-      ]
-    },
-    {
       "id": "dee-jay-6mk",
-      "name": "ダブルスライド",
-      "nameEn": "Double Slide",
+      "name": "サンライズヒール",
+      "nameEn": "Sunrise Heel",
       "category": "unique",
       "notation": "6MK",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "6"
-          ],
+          "directions": ["6"],
           "button": "MK"
+        }
+      ]
+    },
+    {
+      "id": "dee-jay-4hk",
+      "name": "フェイスブレイカー",
+      "nameEn": "Face Breaker",
+      "category": "unique",
+      "notation": "4HK",
+      "steps": [
+        {
+          "type": "normal",
+          "directions": ["4"],
+          "button": "HK"
         }
       ]
     },
@@ -311,67 +307,54 @@
       "name": "エアスラッシャー",
       "nameEn": "Air Slasher",
       "category": "special",
-      "notation": "236+P",
+      "notation": "[4]6+P",
       "steps": [],
       "variants": [
         {
           "strength": "L",
-          "notation": "236LP",
+          "notation": "[4]6LP",
           "steps": [
             {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "type": "charge",
+              "chargeDir": "4",
+              "releaseDir": "6",
               "button": "LP"
             }
           ]
         },
         {
           "strength": "M",
-          "notation": "236MP",
+          "notation": "[4]6MP",
           "steps": [
             {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "type": "charge",
+              "chargeDir": "4",
+              "releaseDir": "6",
               "button": "MP"
             }
           ]
         },
         {
           "strength": "H",
-          "notation": "236HP",
+          "notation": "[4]6HP",
           "steps": [
             {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "type": "charge",
+              "chargeDir": "4",
+              "releaseDir": "6",
               "button": "HP"
             }
           ]
         },
         {
           "strength": "OD",
-          "notation": "OD236HP",
+          "notation": "OD[4]6HP",
           "steps": [
             {
-              "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
-              "button": "HP",
-              "isOD": true
+              "type": "charge",
+              "chargeDir": "4",
+              "releaseDir": "6",
+              "button": "HP"
             }
           ]
         }
@@ -382,67 +365,54 @@
       "name": "ジャックナイフマキシマム",
       "nameEn": "Jackknife Maximum",
       "category": "special",
-      "notation": "623+K",
+      "notation": "[2]8+K",
       "steps": [],
       "variants": [
         {
           "strength": "L",
-          "notation": "623LK",
+          "notation": "[2]8LK",
           "steps": [
             {
-              "type": "normal",
-              "directions": [
-                "6",
-                "2",
-                "3"
-              ],
+              "type": "charge",
+              "chargeDir": "2",
+              "releaseDir": "8",
               "button": "LK"
             }
           ]
         },
         {
           "strength": "M",
-          "notation": "623MK",
+          "notation": "[2]8MK",
           "steps": [
             {
-              "type": "normal",
-              "directions": [
-                "6",
-                "2",
-                "3"
-              ],
+              "type": "charge",
+              "chargeDir": "2",
+              "releaseDir": "8",
               "button": "MK"
             }
           ]
         },
         {
           "strength": "H",
-          "notation": "623HK",
+          "notation": "[2]8HK",
           "steps": [
             {
-              "type": "normal",
-              "directions": [
-                "6",
-                "2",
-                "3"
-              ],
+              "type": "charge",
+              "chargeDir": "2",
+              "releaseDir": "8",
               "button": "HK"
             }
           ]
         },
         {
           "strength": "OD",
-          "notation": "OD623HK",
+          "notation": "OD[2]8HK",
           "steps": [
             {
-              "type": "normal",
-              "directions": [
-                "6",
-                "2",
-                "3"
-              ],
-              "button": "HK",
-              "isOD": true
+              "type": "charge",
+              "chargeDir": "2",
+              "releaseDir": "8",
+              "button": "HK"
             }
           ]
         }
@@ -524,65 +494,49 @@
       "name": "ローリングソバット",
       "nameEn": "Rolling Sobat",
       "category": "special",
-      "notation": "236+K",
+      "notation": "214+K",
       "steps": [],
       "variants": [
         {
           "strength": "L",
-          "notation": "236LK",
+          "notation": "214LK",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "1", "4"],
               "button": "LK"
             }
           ]
         },
         {
           "strength": "M",
-          "notation": "236MK",
+          "notation": "214MK",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "1", "4"],
               "button": "MK"
             }
           ]
         },
         {
           "strength": "H",
-          "notation": "236HK",
+          "notation": "214HK",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "1", "4"],
               "button": "HK"
             }
           ]
         },
         {
           "strength": "OD",
-          "notation": "OD236HK",
+          "notation": "OD214HK",
           "steps": [
             {
               "type": "normal",
-              "directions": [
-                "2",
-                "3",
-                "6"
-              ],
+              "directions": ["2", "1", "4"],
               "button": "HK",
               "isOD": true
             }
@@ -592,64 +546,43 @@
     },
     {
       "id": "dee-jay-sa1",
-      "name": "ザ・ファンクメーカー",
-      "nameEn": "The Funkmaker (SA1)",
+      "name": "グレイテストソバット",
+      "nameEn": "Greatest Sobat (SA1)",
       "category": "super",
-      "notation": "236236LK",
+      "notation": "236236K",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
+          "directions": ["2", "3", "6", "2", "3", "6"],
           "button": "LK"
         }
       ]
     },
     {
       "id": "dee-jay-sa2",
-      "name": "マキシマムストリート",
-      "nameEn": "Maximum Street (SA2)",
+      "name": "サンライズフェスティバル",
+      "nameEn": "Sunrise Festival (SA2)",
       "category": "super",
-      "notation": "236236HP",
+      "notation": "236236P",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "HP"
+          "directions": ["2", "3", "6", "2", "3", "6"],
+          "button": "LP"
         }
       ]
     },
     {
       "id": "dee-jay-sa3",
-      "name": "ジョイフルリズム",
-      "nameEn": "Joyful Rhythm (SA3)",
+      "name": "サタデーナイト",
+      "nameEn": "Saturday Night (SA3)",
       "category": "super",
-      "notation": "236236MK",
+      "notation": "214214P",
       "steps": [
         {
           "type": "normal",
-          "directions": [
-            "2",
-            "3",
-            "6",
-            "2",
-            "3",
-            "6"
-          ],
-          "button": "MK"
+          "directions": ["2", "1", "4", "2", "1", "4"],
+          "button": "LP"
         }
       ]
     }
