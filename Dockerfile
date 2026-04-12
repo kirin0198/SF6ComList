@@ -63,8 +63,8 @@ COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 COPY --from=builder /app/node_modules/prisma ./node_modules/prisma
 
 # シード実行に必要な依存をコピー
-COPY --from=builder /app/node_modules/tsx ./node_modules/tsx
-COPY --from=builder /app/node_modules/@esbuild ./node_modules/@esbuild
+COPY --from=builder /app/node_modules/ts-node ./node_modules/ts-node
+COPY --from=builder /app/node_modules/typescript ./node_modules/typescript
 COPY --from=builder /app/package.json ./package.json
 
 # エントリポイントスクリプトをコピー
