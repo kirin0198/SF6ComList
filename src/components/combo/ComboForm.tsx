@@ -3,7 +3,8 @@
 /**
  * ComboForm 統合コンポーネント
  * コンボ登録/編集の共通フォーム
- * ビジュアル入力とテキスト入力の切替に対応する
+ * コマンドリスト入力・ビジュアル入力・テキスト入力の3モード切替に対応する
+ * ISSUE-001 (2026-04-12): コマンドリスト入力モードを追加
  */
 
 import { useState, useCallback } from "react";
@@ -13,11 +14,15 @@ import { z } from "zod";
 import ComboInputUI from "@/components/combo/ComboInputUI";
 import ComboTextInput from "@/components/combo/ComboTextInput";
 import ComboSequencePreview from "@/components/combo/ComboSequencePreview";
+import CommandListPanel from "@/components/input/CommandListPanel";
 import TagSelector from "@/components/tag/TagSelector";
 import Button from "@/components/ui/Button";
 import InputField from "@/components/ui/InputField";
+import { serializeNotation } from "@/lib/combo/notation-converter";
 import type {
   ComboSequence,
+  ComboStep,
+  ConnectorStep,
   TagResponse,
   ComboResponse,
 } from "@/lib/combo/types";
@@ -57,9 +62,18 @@ type ComboFormValues = z.infer<typeof comboFormSchema>;
 // ============================================================
 
 /** 入力モード */
-type InputMode = "visual" | "text";
+type InputMode = "commandList" | "visual" | "text";
+
+/** 入力モードの定義一覧（タブ表示順） */
+const INPUT_MODES: { value: InputMode; label: string }[] = [
+  { value: "commandList", label: "コマンドリスト" },
+  { value: "visual", label: "ビジュアル入力" },
+  { value: "text", label: "テキスト入力" },
+];
 
 interface ComboFormProps {
+  /** キャラクターID（コマンドリストの読み込みに使用） */
+  characterId: string;
   /** フォームモード（新規 or 編集） */
   mode: "create" | "edit";
   /** 利用可能なタグ一覧 */
@@ -84,9 +98,10 @@ interface ComboFormProps {
 
 /**
  * コンボ登録/編集フォーム
- * ビジュアル入力モードとテキスト入力モードを切り替えられる
+ * コマンドリスト・ビジュアル・テキスト入力の3モードを切り替えられる
  */
 export default function ComboForm({
+  characterId,
   mode,
   availableTags,
   initialData,
@@ -95,8 +110,8 @@ export default function ComboForm({
   onTagCreate,
   submitLabel,
 }: ComboFormProps) {
-  // 入力モード: visual or text
-  const [inputMode, setInputMode] = useState<InputMode>("visual");
+  // 入力モード: デフォルトはコマンドリスト（ISSUE-001）
+  const [inputMode, setInputMode] = useState<InputMode>("commandList");
   // コンボシーケンス（ビジュアル/テキスト入力から共有）
   const [sequence, setSequence] = useState<ComboSequence>(
     initialData?.sequence ?? { steps: [], notation: "" },
@@ -132,6 +147,50 @@ export default function ComboForm({
   // シーケンスの変更ハンドラー（ビジュアル/テキスト入力共通）
   const handleSequenceChange = useCallback((newSequence: ComboSequence) => {
     setSequence(newSequence);
+  }, []);
+
+  /** コマンドリストの技選択ハンドラー（コネクター自動挿入済みの steps が渡される） */
+  const handleMoveSelect = useCallback((steps: ComboStep[]) => {
+    setSequence((prev) => {
+      const newSteps = [...prev.steps, ...steps];
+      return {
+        steps: newSteps,
+        notation: serializeNotation({ steps: newSteps, notation: "" }),
+      };
+    });
+  }, []);
+
+  /** コマンドリストパネルのコネクター選択ハンドラー */
+  const handleCommandListConnectorSelect = useCallback(
+    (symbol: ConnectorStep["symbol"]) => {
+      setSequence((prev) => {
+        const newSteps: ComboStep[] = [
+          ...prev.steps,
+          { type: "connector", symbol },
+        ];
+        return {
+          steps: newSteps,
+          notation: serializeNotation({ steps: newSteps, notation: "" }),
+        };
+      });
+    },
+    [],
+  );
+
+  /** コマンドリストパネルの元に戻すハンドラー */
+  const handleCommandListUndo = useCallback(() => {
+    setSequence((prev) => {
+      const newSteps = prev.steps.slice(0, -1);
+      return {
+        steps: newSteps,
+        notation: serializeNotation({ steps: newSteps, notation: "" }),
+      };
+    });
+  }, []);
+
+  /** コマンドリストパネルのリセットハンドラー */
+  const handleCommandListReset = useCallback(() => {
+    setSequence({ steps: [], notation: "" });
   }, []);
 
   // フォーム送信ハンドラー
@@ -181,7 +240,7 @@ export default function ComboForm({
       </div>
 
       {/* ============================================================ */}
-      {/* 入力モード切替タブ */}
+      {/* 入力モード切替タブ（3タブ: コマンドリスト / ビジュアル / テキスト） */}
       {/* ============================================================ */}
       <div>
         <div
@@ -189,35 +248,41 @@ export default function ComboForm({
           role="tablist"
           aria-label="入力モード"
         >
-          <button
-            type="button"
-            role="tab"
-            aria-selected={inputMode === "visual"}
-            onClick={() => setInputMode("visual")}
-            className={[
-              "rounded px-4 py-1.5 text-sm font-medium transition-colors duration-150",
-              inputMode === "visual"
-                ? "bg-gray-600 text-white"
-                : "text-gray-400 hover:text-gray-300",
-            ].join(" ")}
-          >
-            ビジュアル入力
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected={inputMode === "text"}
-            onClick={() => setInputMode("text")}
-            className={[
-              "rounded px-4 py-1.5 text-sm font-medium transition-colors duration-150",
-              inputMode === "text"
-                ? "bg-gray-600 text-white"
-                : "text-gray-400 hover:text-gray-300",
-            ].join(" ")}
-          >
-            テキスト入力
-          </button>
+          {INPUT_MODES.map(({ value, label }) => (
+            <button
+              key={value}
+              type="button"
+              role="tab"
+              aria-selected={inputMode === value}
+              onClick={() => setInputMode(value)}
+              className={[
+                "rounded px-4 py-1.5 text-sm font-medium transition-colors duration-150",
+                inputMode === value
+                  ? "bg-gray-600 text-white"
+                  : "text-gray-400 hover:text-gray-300",
+              ].join(" ")}
+            >
+              {label}
+            </button>
+          ))}
         </div>
+
+        {/* コマンドリスト入力モード */}
+        {inputMode === "commandList" && (
+          <div
+            role="tabpanel"
+            className="rounded-lg border border-gray-700 bg-gray-800 p-4"
+          >
+            <CommandListPanel
+              characterId={characterId}
+              committedSteps={sequence.steps}
+              onMoveSelect={handleMoveSelect}
+              onConnectorSelect={handleCommandListConnectorSelect}
+              onUndo={handleCommandListUndo}
+              onReset={handleCommandListReset}
+            />
+          </div>
+        )}
 
         {/* ビジュアル入力モード */}
         {inputMode === "visual" && (

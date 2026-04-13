@@ -1,0 +1,324 @@
+{
+  "characterId": "sagat",
+  "characterName": "サガット",
+  "moves": [
+    {
+      "id": "sagat-5lp",
+      "name": "立ち弱P",
+      "nameEn": "Standing LP",
+      "category": "normal",
+      "notation": "5LP",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "LP" }]
+    },
+    {
+      "id": "sagat-5mp",
+      "name": "立ち中P",
+      "nameEn": "Standing MP",
+      "category": "normal",
+      "notation": "5MP",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "MP" }]
+    },
+    {
+      "id": "sagat-5hp",
+      "name": "立ち強P",
+      "nameEn": "Standing HP",
+      "category": "normal",
+      "notation": "5HP",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "HP" }]
+    },
+    {
+      "id": "sagat-5lk",
+      "name": "立ち弱K",
+      "nameEn": "Standing LK",
+      "category": "normal",
+      "notation": "5LK",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "LK" }]
+    },
+    {
+      "id": "sagat-5mk",
+      "name": "立ち中K",
+      "nameEn": "Standing MK",
+      "category": "normal",
+      "notation": "5MK",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "MK" }]
+    },
+    {
+      "id": "sagat-5hk",
+      "name": "立ち強K",
+      "nameEn": "Standing HK",
+      "category": "normal",
+      "notation": "5HK",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "HK" }]
+    },
+    {
+      "id": "sagat-2lp",
+      "name": "しゃがみ弱P",
+      "nameEn": "Crouching LP",
+      "category": "normal",
+      "notation": "2LP",
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "LP" }]
+    },
+    {
+      "id": "sagat-2mp",
+      "name": "しゃがみ中P",
+      "nameEn": "Crouching MP",
+      "category": "normal",
+      "notation": "2MP",
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "MP" }]
+    },
+    {
+      "id": "sagat-2hp",
+      "name": "しゃがみ強P",
+      "nameEn": "Crouching HP",
+      "category": "normal",
+      "notation": "2HP",
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "HP" }]
+    },
+    {
+      "id": "sagat-2lk",
+      "name": "しゃがみ弱K",
+      "nameEn": "Crouching LK",
+      "category": "normal",
+      "notation": "2LK",
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "LK" }]
+    },
+    {
+      "id": "sagat-2mk",
+      "name": "しゃがみ中K",
+      "nameEn": "Crouching MK",
+      "category": "normal",
+      "notation": "2MK",
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "MK" }]
+    },
+    {
+      "id": "sagat-2hk",
+      "name": "しゃがみ強K",
+      "nameEn": "Crouching HK",
+      "category": "normal",
+      "notation": "2HK",
+      "steps": [{ "type": "normal", "directions": ["2"], "button": "HK" }]
+    },
+    {
+      "id": "sagat-throw",
+      "name": "投げ",
+      "nameEn": "Throw",
+      "category": "throw",
+      "notation": "Throw",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "Throw" }]
+    },
+    {
+      "id": "sagat-di",
+      "name": "ドライブインパクト",
+      "nameEn": "Drive Impact",
+      "category": "drive",
+      "notation": "DI",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "DI" }]
+    },
+    {
+      "id": "sagat-dr",
+      "name": "ドライブラッシュ",
+      "nameEn": "Drive Rush",
+      "category": "drive",
+      "notation": "DR",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "DR" }]
+    },
+    {
+      "id": "sagat-dp",
+      "name": "ドライブパリィ",
+      "nameEn": "Drive Parry",
+      "category": "drive",
+      "notation": "DP",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "DP" }]
+    },
+    {
+      "id": "sagat-drev",
+      "name": "ドライブリバーサル",
+      "nameEn": "Drive Reversal",
+      "category": "drive",
+      "notation": "DRev",
+      "steps": [{ "type": "normal", "directions": ["6"], "button": "DRev" }]
+    },
+    {
+      "id": "sagat-6mp",
+      "name": "タイガーヘビーエルボー",
+      "nameEn": "Tiger Heavy Elbow",
+      "category": "unique",
+      "notation": "6MP",
+      "steps": [{ "type": "normal", "directions": ["6"], "button": "MP" }]
+    },
+    {
+      "id": "sagat-4hp",
+      "name": "タイガーモノリス",
+      "nameEn": "Tiger Monolith",
+      "category": "unique",
+      "notation": "4HP",
+      "steps": [{ "type": "normal", "directions": ["4"], "button": "HP" }]
+    },
+    {
+      "id": "sagat-6lk",
+      "name": "ステップローキック",
+      "nameEn": "Step Low Kick",
+      "category": "unique",
+      "notation": "6LK",
+      "steps": [{ "type": "normal", "directions": ["6"], "button": "LK" }]
+    },
+    {
+      "id": "sagat-6hk",
+      "name": "ステップハイキック",
+      "nameEn": "Step High Kick",
+      "category": "unique",
+      "notation": "6HK",
+      "steps": [{ "type": "normal", "directions": ["6"], "button": "HK" }]
+    },
+    {
+      "id": "sagat-tiger-shot",
+      "name": "タイガーショット",
+      "nameEn": "Tiger Shot",
+      "category": "special",
+      "notation": "236+P",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "236LP",
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "LP" }]
+        },
+        {
+          "strength": "M",
+          "notation": "236MP",
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "MP" }]
+        },
+        {
+          "strength": "H",
+          "notation": "236HP",
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "HP" }]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD236HP",
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "HP", "isOD": true }]
+        }
+      ]
+    },
+    {
+      "id": "sagat-tiger-uppercut",
+      "name": "タイガーアッパーカット",
+      "nameEn": "Tiger Uppercut",
+      "category": "special",
+      "notation": "623+P",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "623LP",
+          "steps": [{ "type": "normal", "directions": ["6", "2", "3"], "button": "LP" }]
+        },
+        {
+          "strength": "M",
+          "notation": "623MP",
+          "steps": [{ "type": "normal", "directions": ["6", "2", "3"], "button": "MP" }]
+        },
+        {
+          "strength": "H",
+          "notation": "623HP",
+          "steps": [{ "type": "normal", "directions": ["6", "2", "3"], "button": "HP" }]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD623HP",
+          "steps": [{ "type": "normal", "directions": ["6", "2", "3"], "button": "HP", "isOD": true }]
+        }
+      ]
+    },
+    {
+      "id": "sagat-tiger-knee-crush",
+      "name": "タイガーニークラッシュ",
+      "nameEn": "Tiger Knee Crush",
+      "category": "special",
+      "notation": "236+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "236LK",
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "LK" }]
+        },
+        {
+          "strength": "M",
+          "notation": "236MK",
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "MK" }]
+        },
+        {
+          "strength": "H",
+          "notation": "236HK",
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "HK" }]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD236HK",
+          "steps": [{ "type": "normal", "directions": ["2", "3", "6"], "button": "HK", "isOD": true }]
+        }
+      ]
+    },
+    {
+      "id": "sagat-tiger-nexus",
+      "name": "タイガーネクサス",
+      "nameEn": "Tiger Nexus",
+      "category": "special",
+      "notation": "214+K",
+      "steps": [],
+      "variants": [
+        {
+          "strength": "L",
+          "notation": "214LK",
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "LK" }]
+        },
+        {
+          "strength": "M",
+          "notation": "214MK",
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "MK" }]
+        },
+        {
+          "strength": "H",
+          "notation": "214HK",
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "HK" }]
+        },
+        {
+          "strength": "OD",
+          "notation": "OD214HK",
+          "steps": [{ "type": "normal", "directions": ["2", "1", "4"], "button": "HK", "isOD": true }]
+        }
+      ]
+    },
+    {
+      "id": "sagat-sa1",
+      "name": "タイガーキャノン",
+      "nameEn": "Tiger Cannon (SA1)",
+      "category": "super",
+      "notation": "236236P",
+      "steps": [
+        { "type": "normal", "directions": ["2", "3", "6", "2", "3", "6"], "button": "LP" }
+      ]
+    },
+    {
+      "id": "sagat-sa2",
+      "name": "サベージタイガー",
+      "nameEn": "Savage Tiger (SA2)",
+      "category": "super",
+      "notation": "214214K",
+      "steps": [
+        { "type": "normal", "directions": ["2", "1", "4", "2", "1", "4"], "button": "LK" }
+      ]
+    },
+    {
+      "id": "sagat-sa3",
+      "name": "タイガーバニッシャー",
+      "nameEn": "Tiger Vanquisher (SA3)",
+      "category": "super",
+      "notation": "236236K",
+      "steps": [
+        { "type": "normal", "directions": ["2", "3", "6", "2", "3", "6"], "button": "LK" }
+      ]
+    }
+  ]
+}

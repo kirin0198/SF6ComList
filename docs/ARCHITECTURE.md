@@ -1,10 +1,11 @@
 # アーキテクチャ設計書: SF6 コンボ帳
 
-> 参照元: SPEC.md (2026-04-08), UI_SPEC.md (2026-04-08), DISCOVERY_RESULT.md (2026-04-08), POC_RESULT.md (2026-04-08)
+> 参照元: SPEC.md (2026-04-12), UI_SPEC.md (2026-04-12), DISCOVERY_RESULT.md (2026-04-08), POC_RESULT.md (2026-04-08)
 > 作成日: 2026-04-08
 > 更新履歴:
 >
 > - 2026-04-08: 初版作成
+> - 2026-04-12: コマンドリスト入力モード追加 (ISSUE-001 / UC-013)
 
 ---
 
@@ -24,6 +25,7 @@
 |  |   - コンボ一覧        - タグフィルタ       |  |
 |  |   - コンボ詳細        - フォーム           |  |
 |  |   - レイアウト        - プレビュー         |  |
+|  |                       - コマンドリスト入力   |  |
 |  +--------------------------------------------+  |
 |               |                                  |
 |               v                                  |
@@ -65,6 +67,8 @@
 |  |   - 全30キャラクターのマスタデータ           |  |
 |  |  src/data/preset-tags.json                 |  |
 |  |   - プリセットタグ12種の定義                |  |
+|  |  src/data/command-lists/{characterId}.json  |  |
+|  |   - キャラクター別コマンドリストデータ       |  |
 |  +--------------------------------------------+  |
 +--------------------------------------------------+
 ```
@@ -183,6 +187,7 @@ SF6ComList/
 │   │   ├── combo/
 │   │   │   ├── types.ts          # コンボ関連の型定義（PoCから移植）
 │   │   │   ├── notation-converter.ts  # テンキー表記変換ロジック（PoCから移植）
+│   │   │   ├── command-list-types.ts  # コマンドリスト型定義（ISSUE-001 追加）
 │   │   │   └── validation.ts     # コンボデータのバリデーションスキーマ（Zod）
 │   │   └── validators/
 │   │       ├── auth.ts           # 認証関連バリデーション（Zod）
@@ -201,7 +206,8 @@ SF6ComList/
 │   │   ├── input/
 │   │   │   ├── DirectionPad.tsx          # 方向キーパッド（Client Component）
 │   │   │   ├── ButtonPalette.tsx         # ボタンパレット（Client Component）
-│   │   │   └── ConnectorSelector.tsx     # コネクターセレクター（Client Component）
+│   │   │   ├── ConnectorSelector.tsx     # コネクターセレクター（Client Component）
+│   │   │   └── CommandListPanel.tsx      # コマンドリスト入力パネル（Client Component）（ISSUE-001 追加）
 │   │   ├── tag/
 │   │   │   ├── TagSelector.tsx           # タグ選択（Client Component）
 │   │   │   └── TagFilterBar.tsx          # タグフィルタバー（Client Component）
@@ -217,7 +223,9 @@ SF6ComList/
 │   │       └── ButtonIcon.tsx            # ボタンアイコン SVG コンポーネント
 │   ├── data/                     # 静的マスタデータ
 │   │   ├── characters.json       # 全30キャラクターデータ
-│   │   └── preset-tags.ts        # プリセットタグ12種の定義（型付き）
+│   │   ├── preset-tags.ts        # プリセットタグ12種の定義（型付き）
+│   │   └── command-lists/        # キャラクター別コマンドリストデータ（ISSUE-001 追加）
+│   │       └── ryu.json          # リュウのコマンドリスト（初期データ）
 │   └── types/                    # グローバル型定義
 │       └── next-auth.d.ts        # Auth.js のセッション型拡張
 └── poc/                          # PoC コード（参照用として保持）
@@ -285,6 +293,20 @@ SF6ComList/
 - **依存関係:** React, Tailwind CSS, Lucide React, react-hook-form, Zod
 - **公開インターフェース:**
   - 各コンポーネントの Props インターフェース（UI_SPEC.md に準拠）
+
+### 3.6 コマンドリストモジュール (`src/lib/combo/command-list-types.ts` + `src/data/command-lists/`)
+
+> ISSUE-001 (2026-04-12) で追加
+
+- **責務:** キャラクター別コマンドリストデータの型定義・読み込み・キャッシュ
+- **依存関係:** `src/lib/combo/types.ts`（ComboStep, NormalInput, Direction, ButtonInput 等）
+- **公開インターフェース:**
+  - `CommandMove` -- 1つの技を表す型（技名・表記・カテゴリ・ステップ）
+  - `CommandCategory` -- 技カテゴリの型
+  - `CharacterCommandList` -- 1キャラクター分のコマンドリスト型
+  - `loadCommandList(characterId: string): Promise<CharacterCommandList | null>` -- 遅延読み込み関数
+
+詳細設計はセクション 15 を参照。
 
 ---
 
@@ -411,6 +433,7 @@ model ComboTag {
 - **characterId:** キャラクターデータは JSON マスタファイルで管理するため、外部キー制約は設けない。文字列型（"ryu", "ken" 等）でアプリケーションレベルの整合性を担保する。
 - **Tag のユニーク制約:** `[name, userId]` の複合ユニーク。プリセットタグ（userId = null）と各ユーザーのタグが同名でも衝突しない。
 - **Auth.js テーブル:** Account, Session, VerificationToken は Auth.js の Prisma Adapter が要求するテーブル。将来の OAuth 対応で Account テーブルを使用する。
+- **コマンドリストデータ:** DB には格納しない。静的 JSON ファイルとしてリポジトリに含める。理由は ADR-006 に記載。
 
 ### インデックス
 
@@ -808,6 +831,7 @@ if (!combo || combo.userId !== session.user.id) {
 | コンボ登録/編集ページ                          | Server (外枠) + Client (フォーム) | 外枠は Server Component。フォーム全体は Client Component                |
 | ComboInputUI                                   | Client                            | 複雑なインタラクティブ状態（ドラフト・ステップ管理）                    |
 | ComboTextInput                                 | Client                            | リアルタイムパース・プレビュー連携                                      |
+| CommandListPanel                               | Client                            | コマンドリスト読み込み・技選択インタラクション（ISSUE-001 追加）        |
 | ComboSequencePreview                           | Client                            | ドラフト状態のリアルタイム反映                                          |
 | ComboForm                                      | Client                            | react-hook-form によるフォーム管理                                      |
 | DirectionPad, ButtonPalette, ConnectorSelector | Client                            | クリックイベントハンドリング                                            |
@@ -823,12 +847,15 @@ if (!combo || combo.userId !== session.user.id) {
 ComboForm (状態の所有者)
   ├── state: committedSteps: ComboStep[]     -- 確定済みステップ
   ├── state: draft: DraftStep                 -- 方向選択中のドラフト
-  ├── state: inputMode: "visual" | "text"     -- 入力モード
+  ├── state: inputMode: "commandList" | "visual" | "text"  -- 入力モード（デフォルト: "commandList"）
   ├── state: textInput: string                -- テキスト入力内容
   ├── state: isOD: boolean                    -- ODトグル状態
   │
   ├── ComboSequencePreview (props: steps, draft)
   ├── InputModeSwitcher (props: inputMode, onSwitch)
+  │
+  ├── [コマンドリスト入力モード]（デフォルト）
+  │   └── CommandListPanel (props: characterId, onMoveSelect, onConnectorSelect, onUndo, onReset)
   │
   ├── [ビジュアル入力モード]
   │   ├── DirectionPad (props: onDirectionClick)
@@ -979,12 +1006,13 @@ declare module "next-auth" {
 
 ### クライアントサイド
 
-| エラー種別                   | 処理方法                           | UI表現                                 |
-| ---------------------------- | ---------------------------------- | -------------------------------------- |
-| バリデーションエラー         | react-hook-form + Zod で即時検出   | フィールド下の赤文字エラーメッセージ   |
-| API レスポンスエラー (4xx)   | fetch のレスポンスステータスで判定 | フォーム上部のエラーバナー             |
-| ネットワークエラー           | try-catch で捕捉                   | トーストで「通信エラーが発生しました」 |
-| パースエラー（テンキー表記） | parseNotation の結果チェック       | テキスト入力下の黄色警告メッセージ     |
+| エラー種別                   | 処理方法                           | UI表現                                         |
+| ---------------------------- | ---------------------------------- | ---------------------------------------------- |
+| バリデーションエラー         | react-hook-form + Zod で即時検出   | フィールド下の赤文字エラーメッセージ           |
+| API レスポンスエラー (4xx)   | fetch のレスポンスステータスで判定 | フォーム上部のエラーバナー                     |
+| ネットワークエラー           | try-catch で捕捉                   | トーストで「通信エラーが発生しました」         |
+| パースエラー（テンキー表記） | parseNotation の結果チェック       | テキスト入力下の黄色警告メッセージ             |
+| コマンドリスト読み込み失敗   | dynamic import の catch で捕捉     | パネル内に「読み込みに失敗しました」メッセージ |
 
 ### サーバーサイド
 
@@ -1074,6 +1102,12 @@ declare module "next-auth" {
   └─ TASK-033: コンポーネントテスト（ComboInputUI, TagFilterBar）（TASK-024, TASK-019 完了後）
   └─ TASK-034: Tailwind カスタムアニメーション + トースト統合（TASK-007 完了後）
   └─ TASK-035: アクセシビリティ対応（aria-label, キーボード操作, フォーカス管理）（全画面実装完了後）
+
+実装フェーズ 9: コマンドリスト入力モード（ISSUE-001）
+  └─ TASK-036: コマンドリスト型定義 + リュウのデータ作成（TASK-012 完了後）
+  └─ TASK-037: CommandListPanel コンポーネント（TASK-036, TASK-022 完了後）
+  └─ TASK-038: ComboForm 3タブ化 + CommandListPanel 統合（TASK-037, TASK-027 完了後）
+  └─ TASK-039: コマンドリスト入力のテスト（TASK-037, TASK-038 完了後）
 ```
 
 ### タスク依存関係図（簡略版）
@@ -1087,29 +1121,36 @@ TASK-001 (初期化)
   ├── TASK-009 (アイコン)  │
   └── TASK-012 (型定義)   │
        ├── TASK-013 (変換) │
-       └── TASK-014 (Zod) │
-                          │
-  TASK-003 (Auth.js) ─────┤
-  TASK-004 (ミドルウェア) ─┤
-                          │
-  TASK-006 (レイアウト) ──┐│
-                          ││
-  TASK-010/011 (認証画面) ←┘│
-                            │
-  TASK-015 (コンボAPI) ←────┘
-  TASK-016 (タグAPI)
-  TASK-017 (キャラAPI)
+       ├── TASK-014 (Zod) │
+       └── TASK-036 (コマンドリスト型) ──┐
+                          │              │
+  TASK-003 (Auth.js) ─────┤              │
+  TASK-004 (ミドルウェア) ─┤              │
+                          │              │
+  TASK-006 (レイアウト) ──┐│              │
+                          ││              │
+  TASK-010/011 (認証画面) ←┘│              │
+                            │              │
+  TASK-015 (コンボAPI) ←────┘              │
+  TASK-016 (タグAPI)                       │
+  TASK-017 (キャラAPI)                     │
+       │                                  │
+       v                                  │
+  TASK-018〜019 (一覧画面)                 │
+       │                                  │
+  TASK-020〜026 (入力コンポーネント)       │
+       │                                  │
+  TASK-027 (ComboForm)                    │
+       │                                  │
+  TASK-028〜030 (登録/詳細/編集)           │
+       │                                  │
+  TASK-031〜035 (テスト/仕上げ)            │
+                                          │
+  TASK-037 (CommandListPanel) ←────────────┘
        │
-       v
-  TASK-018〜019 (一覧画面)
+  TASK-038 (ComboForm 3タブ化)
        │
-  TASK-020〜026 (入力コンポーネント)
-       │
-  TASK-027 (ComboForm)
-       │
-  TASK-028〜030 (登録/詳細/編集)
-       │
-  TASK-031〜035 (テスト/仕上げ)
+  TASK-039 (コマンドリストテスト)
 ```
 
 ---
@@ -1207,6 +1248,7 @@ CMD ["sh", "-c", "npx prisma migrate deploy && npx prisma db seed && node server
 | コンボ入力UIの複雑な状態管理                  | 中     | PoC で操作フローが検証済み。状態を ComboForm に集約し、子コンポーネントは純粋な表示/イベント発火に限定する                                                |
 | SVGアイコンの制作                             | 低     | MVPでは Unicode 矢印文字をフォールバックとして使用。SVG アイコンは後から差し替え可能な設計（DirectionIcon / ButtonIcon コンポーネントの中身を変えるだけ） |
 | キャラクターデータの手動更新                  | 低     | JSON マスタファイルの手動編集で対応。active/upcoming ステータスフラグで新キャラのリリースタイミングを管理                                                 |
+| コマンドリストデータの整備コスト              | 中     | 初期は リュウ のみ作成。他キャラクターはコマンドリスト未登録状態を許容するUI設計。段階的に追加可能（ISSUE-001）                                           |
 
 ---
 
@@ -1275,6 +1317,37 @@ CMD ["sh", "-c", "npx prisma migrate deploy && npx prisma db seed && node server
   - **React の useState:** Server Component でのデータフェッチ時にフィルタを適用できない。クライアント側でフィルタするとデータ量が増えた場合に非効率
   - **Zustand 等のクライアントストア:** SSR との統合が複雑になる
 
+### ADR-006: コマンドリストデータの静的 JSON ファイル管理
+
+> ISSUE-001 (2026-04-12) で追加
+
+- **状況:** キャラクター別のコマンドリスト（必殺技・特殊技・SA等の技一覧）データをどこにどう格納するかを決定する必要がある
+- **決定:** `src/data/command-lists/{characterId}.json` として静的 JSON ファイルで管理し、Next.js の dynamic import で遅延読み込みする
+- **理由:**
+  1. コマンドリストはゲームのバージョン更新時にのみ変更される参照データであり、ユーザーが CRUD するデータではない。DB に格納する必然性がない
+  2. JSON ファイルなら Git で差分管理でき、レビュー・修正が容易
+  3. キャラクター別に分割することで、選択中のキャラクターのデータのみを読み込む遅延ロードが可能（30キャラクター分の全データをバンドルに含めない）
+  4. 既存の `characters.json` や `preset-tags.ts` と同様の静的データ管理パターンに合致する
+  5. 将来 API 化が必要になった場合でも、JSON ファイルの内容をそのまま API レスポンスとして返せる
+- **却下した代替案:**
+  - **DB テーブルで管理:** 管理画面が必要になる。ゲームデータのメンテナンスは JSON 編集の方が効率的
+  - **1つの大きな JSON ファイルに全キャラクター分を格納:** バンドルサイズが増大する。遅延ロードの粒度が荒くなる
+  - **TypeScript ファイル（.ts）で定義:** 型安全になるがファイルごとのビルドが必要。JSON の方がデータ追加時の手軽さが上
+
+### ADR-007: コマンドリストのステップ事前定義
+
+> ISSUE-001 (2026-04-12) で追加
+
+- **状況:** コマンドリストの各技（CommandMove）にはテンキー表記（notation）と、それに対応する ComboStep[] が必要。ランタイムで notation から parseNotation で変換するか、事前に steps を JSON に含めるかを決定する必要がある
+- **決定:** 各技の `steps` フィールドに `ComboStep[]` を事前定義して JSON に含める
+- **理由:**
+  1. `parseNotation()` は汎用パーサーであり、コマンドリスト固有の技名略称（例: SA1, DI）を含む表記を正しくパースできることは保証されているが、ランタイムパースのコストが技クリックのたびに発生する
+  2. 事前定義なら技クリック時に即座に steps を追加でき、50ms 以内のレスポンス要件（SPEC 非機能要件）を容易に満たせる
+  3. JSON データ作成時に手作業で steps を定義することで、パースの曖昧さ（例: 4HP が「後ろ入れ強P」か「4方向+HP」か）を排除できる
+  4. データ量はキャラクターあたり数十技であり、事前定義のオーバーヘッドは軽微
+- **却下した代替案:**
+  - **ランタイムパース:** notation フィールドのみ持ち、クリック時に parseNotation で変換。シンプルだがパフォーマンスと正確性で劣る
+
 ---
 
 ## 14. Tailwind CSS カスタム設定
@@ -1313,3 +1386,437 @@ UI_SPEC.md で定義されたカスタムアニメーションとフォント設
   },
 }
 ```
+
+---
+
+## 15. コマンドリスト入力モード設計（ISSUE-001 / UC-013）
+
+> 追加: 2026-04-12
+> 参照: SPEC.md UC-013, UI_SPEC.md セクション 9.6
+
+### 15.1 データ構造設計
+
+#### 型定義 (`src/lib/combo/command-list-types.ts`)
+
+```typescript
+import type { ComboStep, Direction, ButtonInput } from "./types";
+
+/**
+ * 技のカテゴリ分類
+ * UI_SPEC.md のカテゴリ見出し順に定義
+ */
+export type CommandCategory =
+  | "normal" // 通常技（立ち/しゃがみ）
+  | "unique" // 特殊技（固有技）
+  | "special" // 必殺技
+  | "super" // スーパーアーツ
+  | "throw" // 投げ
+  | "drive" // ドライブ系システム技
+  | "target-combo"; // ターゲットコンボ
+
+/**
+ * カテゴリの表示名マッピング
+ */
+export const CATEGORY_LABELS: Record<CommandCategory, string> = {
+  normal: "通常技",
+  unique: "特殊技",
+  special: "必殺技",
+  super: "スーパーアーツ",
+  throw: "投げ",
+  drive: "ドライブ系",
+  "target-combo": "ターゲットコンボ",
+};
+
+/**
+ * カテゴリの表示順序
+ * UI_SPEC.md セクション 9.6 のレイアウトに準拠
+ */
+export const CATEGORY_ORDER: CommandCategory[] = [
+  "normal",
+  "unique",
+  "special",
+  "super",
+  "throw",
+  "drive",
+  "target-combo",
+];
+
+/**
+ * コマンドリスト上の1つの技を表す型
+ */
+export interface CommandMove {
+  /** 一意ID（キャラクター内でユニーク。例: "ryu-hadoken"） */
+  id: string;
+  /** 技名（日本語） */
+  name: string;
+  /** 技名（英語） */
+  nameEn: string;
+  /** カテゴリ */
+  category: CommandCategory;
+  /** テンキー表記（表示用。例: "236P", "5MP"） */
+  notation: string;
+  /** パース済み ComboStep 配列（技クリック時にそのまま追加される） */
+  steps: ComboStep[];
+}
+
+/**
+ * 1キャラクター分のコマンドリスト
+ */
+export interface CharacterCommandList {
+  /** キャラクターID（characters.json の id と一致） */
+  characterId: string;
+  /** キャラクター表示名 */
+  characterName: string;
+  /** 技リスト */
+  moves: CommandMove[];
+}
+```
+
+#### JSON スキーマ (`src/data/command-lists/{characterId}.json`)
+
+```json
+{
+  "characterId": "ryu",
+  "characterName": "リュウ",
+  "moves": [
+    {
+      "id": "ryu-5lp",
+      "name": "立ち弱P",
+      "nameEn": "Standing LP",
+      "category": "normal",
+      "notation": "5LP",
+      "steps": [{ "type": "normal", "directions": ["5"], "button": "LP" }]
+    },
+    {
+      "id": "ryu-hadoken",
+      "name": "波動拳",
+      "nameEn": "Hadoken",
+      "category": "special",
+      "notation": "236P",
+      "steps": [
+        { "type": "normal", "directions": ["2", "3", "6"], "button": "HP" }
+      ]
+    }
+  ]
+}
+```
+
+**JSON 設計の方針:**
+
+- `steps` フィールドは `ComboStep[]` 型に準拠する。ボタン強度が複数ある技（例: 波動拳の LP/MP/HP 版）は代表的なボタン（HP）をデフォルトとして格納する。ユーザーがボタン強度を選びたい場合はビジュアル入力モードに切り替える
+- `id` は `{characterId}-{技の英語略称}` 形式で命名する。キャラクター内でユニークであれば良い
+- ドライブ系技（DI, DR, DP, DRev）は全キャラクター共通だが、キャラクターごとの JSON に含める（キャラクター切り替え時に別データとして読み込まれるため、共通化の複雑さを避ける）
+
+### 15.2 リュウのコマンドリスト初期データ
+
+リファレンス実装として `src/data/command-lists/ryu.json` を作成する。含める技の一覧:
+
+| カテゴリ | 技                                                                                             |
+| -------- | ---------------------------------------------------------------------------------------------- |
+| normal   | 5LP, 5MP, 5HP, 5LK, 5MK, 5HK, 2LP, 2MP, 2HP, 2LK, 2MK, 2HK                                     |
+| unique   | 6HP (鎖骨割り), 4HP (鳩尾砕き), 6MK (旋風キック)                                               |
+| special  | 236P (波動拳), 623P (昇龍拳), 214K (竜巻旋風脚), 236K (足刀蹴り), 214P (波掌撃)                |
+| super    | 236236K (SA1 真空波動拳), 236236P (SA2 真・昇龍拳), 236236K (SA3 真・波動拳)                   |
+| throw    | Throw (投げ)                                                                                   |
+| drive    | DI (ドライブインパクト), DR (ドライブラッシュ), DP (ドライブパリィ), DRev (ドライブリバーサル) |
+
+注: ターゲットコンボはリュウには存在しないため空。
+
+### 15.3 遅延読み込み設計
+
+コマンドリストの JSON データは Next.js の `dynamic import` を使用して遅延読み込みする。
+
+```typescript
+/**
+ * キャラクター別コマンドリストを遅延読み込みする
+ * JSON ファイルが存在しない場合は null を返す
+ */
+export async function loadCommandList(
+  characterId: string,
+): Promise<CharacterCommandList | null> {
+  try {
+    const data = await import(`@/data/command-lists/${characterId}.json`);
+    return data.default as CharacterCommandList;
+  } catch {
+    // JSON ファイルが存在しない場合（コマンドリスト未登録キャラクター）
+    return null;
+  }
+}
+```
+
+**読み込み戦略:**
+
+1. `CommandListPanel` のマウント時（または `characterId` の変更時）に `loadCommandList()` を呼び出す
+2. 読み込み中は軽量なローディングインジケーター（スピナー）を表示
+3. `null` が返された場合は未登録メッセージを表示（UI_SPEC.md セクション 9.6 の「コマンドリストデータ未登録時」レイアウト）
+4. 読み込み済みデータは React の `useState` でキャッシュする（同一キャラクターの再読み込みを防止）
+5. Next.js のウェブパック設定により、`import()` のパスパターンに一致する JSON がチャンクとして自動分割される
+
+**バンドルサイズへの影響:**
+
+- 各キャラクターの JSON は約 5-10KB（推定）
+- dynamic import により初期バンドルには含まれない
+- コマンドリストモードを選択し、キャラクターのデータが初めて必要になった時点でネットワーク取得される
+
+### 15.4 CommandListPanel コンポーネント設計
+
+**ファイル:** `src/components/input/CommandListPanel.tsx`
+
+```typescript
+interface CommandListPanelProps {
+  /** キャラクターID（コマンドリストの読み込みに使用） */
+  characterId: string;
+  /** 現在の確定済みステップ（コネクター自動挿入判定に使用） */
+  committedSteps: ComboStep[];
+  /** 技選択時のコールバック（ステップ配列を渡す） */
+  onMoveSelect: (steps: ComboStep[]) => void;
+  /** コネクター選択時のコールバック */
+  onConnectorSelect: (symbol: ConnectorStep["symbol"]) => void;
+  /** 元に戻す */
+  onUndo: () => void;
+  /** リセット */
+  onReset: () => void;
+  className?: string;
+}
+```
+
+**内部状態:**
+
+- `commandList: CharacterCommandList | null` -- 読み込み済みコマンドリスト
+- `isLoading: boolean` -- 読み込み中フラグ
+- `loadError: boolean` -- 読み込みエラーフラグ
+
+**コネクター自動挿入ロジック:**
+
+```typescript
+/**
+ * 技がクリックされたときのハンドラー
+ * UI_SPEC.md セクション 9.6「コネクター自動挿入ロジック」に準拠
+ */
+function handleMoveClick(move: CommandMove) {
+  const lastStep = committedSteps[committedSteps.length - 1];
+
+  if (committedSteps.length === 0) {
+    // シーケンスが空の場合: コネクターなしで技のステップを追加
+    onMoveSelect(move.steps);
+  } else if (lastStep && lastStep.type === "connector") {
+    // 最後のステップがコネクターの場合: コネクターを挿入せずに技のステップのみ追加
+    onMoveSelect(move.steps);
+  } else {
+    // 最後のステップが NormalInput または ChargeInput の場合: > コネクターを自動挿入
+    onMoveSelect([{ type: "connector", symbol: ">" }, ...move.steps]);
+  }
+}
+```
+
+**コンポーネント構造:**
+
+```
+CommandListPanel
+  ├── [isLoading] ローディングスピナー
+  ├── [loadError] エラーメッセージ
+  ├── [commandList === null] 未登録メッセージ + ビジュアル入力切替ボタン
+  └── [commandList !== null]
+      ├── ヘッダー: "コマンドリスト: {characterName}"
+      ├── CATEGORY_ORDER.map(category =>
+      │   ├── カテゴリ見出し（text-xs text-gray-400 font-semibold）
+      │   └── 技ボタングリッド（flex flex-wrap gap-2）
+      │       └── CommandMoveButton.map(move =>
+      │           └── [notation + name] クリック → handleMoveClick
+      │       )
+      │   )
+      ├── コネクターセレクター（接続: > xx ~ ,）
+      └── アクションボタン（元に戻す / リセット）
+```
+
+**スタイリング（UI_SPEC.md 準拠）:**
+
+- 技ボタン: `bg-gray-700 hover:bg-gray-600 border border-gray-600 rounded px-3 py-1.5 text-sm`
+- テンキー表記: `font-mono text-xs text-gray-400`（左側）
+- 技名: `text-sm text-white`（右側）
+- クリックフィードバック: `border-cyan-500 bg-gray-600`（短時間のハイライト）
+- カテゴリ見出し: `text-xs text-gray-400 font-semibold uppercase tracking-wide border-b border-gray-700 pb-1 mb-2`
+
+### 15.5 ComboForm 統合設計
+
+**変更対象:** `src/components/combo/ComboForm.tsx`
+
+#### InputMode 型の拡張
+
+```typescript
+// 変更前
+type InputMode = "visual" | "text";
+
+// 変更後
+type InputMode = "commandList" | "visual" | "text";
+```
+
+#### デフォルトモードの変更
+
+```typescript
+// 変更前
+const [inputMode, setInputMode] = useState<InputMode>("visual");
+
+// 変更後
+const [inputMode, setInputMode] = useState<InputMode>("commandList");
+```
+
+#### characterId プロパティの追加
+
+```typescript
+// ComboFormProps に characterId を追加
+interface ComboFormProps {
+  /** キャラクターID（コマンドリストの読み込みに使用） */
+  characterId: string;
+  mode: "create" | "edit";
+  availableTags: TagResponse[];
+  initialData?: ComboResponse;
+  onSubmit: (data: { ... }) => Promise<void>;
+  onCancel: () => void;
+  onTagCreate?: (tagName: string) => Promise<TagResponse | null>;
+  submitLabel?: string;
+}
+```
+
+`characterId` は SCR-005 (new/page.tsx) と SCR-007 (edit/page.tsx) の両方から URL パラメータ経由で取得済み。ComboForm に prop として渡す。
+
+#### タブ UI の3タブ化
+
+タブの順序: コマンドリスト / ビジュアル入力 / テキスト入力
+
+```typescript
+const INPUT_MODES: { value: InputMode; label: string }[] = [
+  { value: "commandList", label: "コマンドリスト" },
+  { value: "visual", label: "ビジュアル入力" },
+  { value: "text", label: "テキスト入力" },
+];
+```
+
+#### CommandListPanel の技選択ハンドラー
+
+ComboForm 内で、CommandListPanel からの技選択を処理するハンドラーを追加する。
+
+```typescript
+/** コマンドリストの技選択ハンドラー */
+const handleMoveSelect = useCallback((steps: ComboStep[]) => {
+  setSequence((prev) => {
+    const newSteps = [...prev.steps, ...steps];
+    return {
+      steps: newSteps,
+      notation: serializeNotation({ steps: newSteps, notation: "" }),
+    };
+  });
+}, []);
+```
+
+注: コネクター自動挿入は CommandListPanel 側で行い、ComboForm には挿入済みの steps が渡される。ComboForm はそれを sequence に追加するだけ。
+
+#### 3モード間のデータ相互変換
+
+既存の実装で `ComboInputUI` と `ComboTextInput` はどちらも `ComboSequence` を中間表現として共有している。`CommandListPanel` も同じ `ComboSequence` を操作するため、3モード間のデータ相互変換は自動的に成立する。
+
+- コマンドリスト → ビジュアル: `sequence.steps` がそのまま `ComboInputUI` の `initialSequence` として渡される
+- コマンドリスト → テキスト: `sequence.notation` がそのまま `ComboTextInput` の初期テキストとして使われる
+- ビジュアル/テキスト → コマンドリスト: 共有の `sequence` 状態が更新されているため、コマンドリストパネルは参照しない（追加のみの操作のため）
+
+### 15.6 ページコンポーネントの変更
+
+**変更対象:**
+
+- `src/app/(authenticated)/characters/[characterId]/combos/new/page.tsx` (SCR-005)
+- `src/app/(authenticated)/characters/[characterId]/combos/[comboId]/edit/page.tsx` (SCR-007)
+
+両ページとも既に `characterId` を URL パラメータから取得しているため、`ComboForm` に `characterId` prop を追加するだけで対応可能。
+
+```typescript
+// new/page.tsx の変更箇所
+<ComboForm
+  characterId={characterId}  // 追加
+  mode="create"
+  availableTags={availableTags}
+  onSubmit={handleSubmit}
+  onCancel={handleCancel}
+  onTagCreate={handleTagCreate}
+  submitLabel="このコンボを保存"
+/>
+```
+
+---
+
+## 16. ISSUE-001 実装フェーズ詳細
+
+### TASK-036: コマンドリスト型定義 + リュウのデータ作成
+
+**対象ファイル:**
+
+- `src/lib/combo/command-list-types.ts` (新規)
+- `src/data/command-lists/ryu.json` (新規)
+
+**作業内容:**
+
+1. `CommandMove`, `CommandCategory`, `CharacterCommandList` 型の定義
+2. `CATEGORY_LABELS`, `CATEGORY_ORDER` 定数の定義
+3. `loadCommandList()` 遅延読み込み関数の実装
+4. リュウのコマンドリスト JSON データ作成（通常技12種 + 特殊技3種 + 必殺技5種 + SA3種 + 投げ1種 + ドライブ系4種 = 計28技）
+5. `steps` フィールドは既存の `ComboStep` 型に厳密に準拠させる
+
+**依存:** TASK-012（コンボ型定義）完了後
+
+### TASK-037: CommandListPanel コンポーネント
+
+**対象ファイル:**
+
+- `src/components/input/CommandListPanel.tsx` (新規)
+
+**作業内容:**
+
+1. CommandListPanel コンポーネントの実装（Props インターフェースはセクション 15.4 参照）
+2. `loadCommandList()` による遅延読み込みと状態管理（ローディング / エラー / 未登録 / 表示）
+3. カテゴリ別セクション表示（CATEGORY_ORDER 順）
+4. 技ボタンクリック時のコネクター自動挿入ロジック
+5. ConnectorSelector（既存コンポーネント）の再利用
+6. 元に戻す / リセットボタン
+7. UI_SPEC.md セクション 9.6 に準拠したスタイリング
+
+**依存:** TASK-036（型定義+データ）, TASK-022（ConnectorSelector）完了後
+
+### TASK-038: ComboForm 3タブ化 + CommandListPanel 統合
+
+**対象ファイル:**
+
+- `src/components/combo/ComboForm.tsx` (変更)
+- `src/app/(authenticated)/characters/[characterId]/combos/new/page.tsx` (変更)
+- `src/app/(authenticated)/characters/[characterId]/combos/[comboId]/edit/page.tsx` (変更)
+
+**作業内容:**
+
+1. `InputMode` 型に `"commandList"` を追加
+2. デフォルト入力モードを `"commandList"` に変更
+3. タブ UI を3タブ構成に変更（コマンドリスト / ビジュアル入力 / テキスト入力）
+4. `characterId` prop を ComboFormProps に追加
+5. コマンドリスト入力モードの tab panel に CommandListPanel をマウント
+6. 技選択ハンドラー `handleMoveSelect` の実装
+7. SCR-005, SCR-007 のページコンポーネントから ComboForm に characterId を渡す
+8. 3モード間のデータ相互変換が正しく動作することを確認
+
+**依存:** TASK-037（CommandListPanel）, TASK-027（ComboForm 既存実装）完了後
+
+### TASK-039: コマンドリスト入力のテスト
+
+**対象ファイル:**
+
+- `src/components/input/__tests__/CommandListPanel.test.tsx` (新規)
+- `src/lib/combo/__tests__/command-list-types.test.ts` (新規)
+
+**作業内容:**
+
+1. `loadCommandList()` のユニットテスト（正常読み込み / 未登録キャラクター / エラーハンドリング）
+2. CommandListPanel のコンポーネントテスト:
+   - 技リストのカテゴリ別表示
+   - 技クリック時の onMoveSelect コールバック呼び出し
+   - コネクター自動挿入ロジック（空シーケンス / ステップ後 / コネクター後）
+   - 未登録キャラクターの空状態メッセージ表示
+   - ローディング状態の表示
+3. ComboForm の3タブ切替テスト（既存テストがあれば拡張）
+
+**依存:** TASK-037, TASK-038 完了後
