@@ -456,6 +456,50 @@
             }
           ]
         }
+      ],
+      "followUps": [
+        {
+          "id": "kimberly-shikkuke-stop",
+          "name": "急停止",
+          "nameEn": "Shikkuke Stop",
+          "category": "special",
+          "notation": "K (停止)",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["5"],
+              "button": "LK"
+            }
+          ]
+        },
+        {
+          "id": "kimberly-shikkuke-kage-sukui",
+          "name": "影すくい",
+          "nameEn": "Kage Sukui",
+          "category": "special",
+          "notation": "MK派生",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["5"],
+              "button": "MK"
+            }
+          ]
+        },
+        {
+          "id": "kimberly-shikkuke-bushin-shoha",
+          "name": "武神翔霸",
+          "nameEn": "Bushin Shoha",
+          "category": "special",
+          "notation": "P派生",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["5"],
+              "button": "HP"
+            }
+          ]
+        }
       ]
     },
     {
