@@ -14,10 +14,13 @@
  *   - variants または followUps を持つ技は展開可能（カテゴリに依存しない）
  *   - 派生技クリック直前に親技を選択していた場合は "~" コネクターを自動挿入する
  *
- * 注意（2 段以上の派生拡張時）:
- *   expandedMoveId は単一 ID のため、多階層の展開状態を同時に保持できない。
- *   将来的に 2 段以上の派生（派生の派生）が実データで必要になった場合は、
- *   expandedPath: string[] のようなパスベースの状態管理へ変更すること。
+ * 展開状態管理（ISSUE-009 更新）:
+ *   expandedPath: string[] でパスベースの展開状態を管理する。
+ *   - expandedPath = [] → 全て折りたたみ
+ *   - expandedPath = ["parentId"] → 親技を展開
+ *   - expandedPath = ["parentId", "followUpId"] → 親技 + 派生技を展開
+ *   ISSUE-009 スコープでは 1 段階の派生のみ実データがあるが、
+ *   将来 2 段以上の派生（派生の派生）が必要な場合もこの構造で対応可能。
  */
 
 import { useState, useEffect, useCallback } from "react";
@@ -83,9 +86,11 @@ export default function CommandListPanel({
   const [loadState, setLoadState] = useState<LoadState>({ status: "loading" });
   // クリックフィードバック中の技ID
   const [activeMoveId, setActiveMoveId] = useState<string | null>(null);
-  // 展開中の技ID（variants または followUps を持つ技のトグル）
-  // 注意: 単一 ID のため、多階層の展開は対象外。将来は expandedPath に移行すること。
-  const [expandedMoveId, setExpandedMoveId] = useState<string | null>(null);
+  // 展開パス（パスベースの展開状態管理）
+  // - [] = 全て折りたたみ
+  // - ["parentId"] = 親技を展開
+  // - ["parentId", "followUpId"] = 親技 + 派生技を展開
+  const [expandedPath, setExpandedPath] = useState<string[]>([]);
   // 直近に選択された親技 ID（派生コネクター "~" 挿入判定用）
   // ISSUE-009 追加: 親技選択直後に派生をクリックした場合 "~" を自動挿入する
   const [lastSelectedMoveId, setLastSelectedMoveId] = useState<string | null>(
@@ -101,7 +106,7 @@ export default function CommandListPanel({
       // 読み込み開始: ローディング状態に遷移
       if (!cancelled) {
         setLoadState({ status: "loading" });
-        setExpandedMoveId(null);
+        setExpandedPath([]);
         setLastSelectedMoveId(null);
       }
 
@@ -179,8 +184,13 @@ export default function CommandListPanel({
       const hasFollowUps = move.followUps && move.followUps.length > 0;
 
       if (hasVariants || hasFollowUps) {
-        // 展開可能技: 展開トグル（展開はするがコンボには追加しない）
-        setExpandedMoveId((prev) => (prev === move.id ? null : move.id));
+        // 展開可能技: 展開トグル（既に展開中なら折りたたむ）
+        setExpandedPath((prev) => {
+          if (prev[0] === move.id) {
+            return []; // 折りたたみ
+          }
+          return [move.id]; // 展開
+        });
         return;
       }
 
@@ -208,7 +218,7 @@ export default function CommandListPanel({
       // 親技 ID を記録（バリアント選択直後の派生クリックで "~" を挿入するため）
       setLastSelectedMoveId(move.id);
       // 展開を閉じてフィードバック表示
-      setExpandedMoveId(null);
+      setExpandedPath([]);
       setActiveMoveId(move.id);
       setTimeout(() => setActiveMoveId(null), 200);
     },
@@ -225,10 +235,15 @@ export default function CommandListPanel({
       const hasFollowUps = followUp.followUps && followUp.followUps.length > 0;
 
       if (hasVariants || hasFollowUps) {
-        // 派生技自身が展開可能: 展開トグル
-        setExpandedMoveId((prev) =>
-          prev === followUp.id ? null : followUp.id,
-        );
+        // 派生技自身が展開可能: 展開パスに追加（親技 + 派生技のパス）
+        setExpandedPath((prev) => {
+          const parentId = parentMove.id;
+          // 既に同じパスで展開中なら折りたたむ
+          if (prev[0] === parentId && prev[1] === followUp.id) {
+            return [parentId]; // 派生技のみ折りたたみ（親技は展開を維持）
+          }
+          return [parentId, followUp.id]; // 親技 + 派生技を展開
+        });
         return;
       }
 
@@ -266,7 +281,7 @@ export default function CommandListPanel({
 
       // 派生技 ID を記録（さらに次の派生に備える）
       setLastSelectedMoveId(followUp.id);
-      setExpandedMoveId(null);
+      setExpandedPath([]);
       setActiveMoveId(followUp.id);
       setTimeout(() => setActiveMoveId(null), 200);
     },
@@ -368,7 +383,7 @@ export default function CommandListPanel({
                   const hasFollowUps =
                     move.followUps && move.followUps.length > 0;
                   const isExpandable = hasVariants || hasFollowUps;
-                  const isExpanded = expandedMoveId === move.id;
+                  const isExpanded = expandedPath[0] === move.id;
 
                   return (
                     <div key={move.id} className="flex flex-col gap-1">
@@ -459,8 +474,10 @@ export default function CommandListPanel({
                                   followUp.followUps.length > 0;
                                 const followUpIsExpandable =
                                   followUpHasVariants || followUpHasFollowUps;
+                                // 派生技の展開状態: expandedPath[1] で判定
                                 const followUpIsExpanded =
-                                  expandedMoveId === followUp.id;
+                                  expandedPath[0] === move.id &&
+                                  expandedPath[1] === followUp.id;
 
                                 return (
                                   <div
