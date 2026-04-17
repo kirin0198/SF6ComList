@@ -78,15 +78,34 @@ export interface StrengthVariant {
  * 強度バリアントがない技（通常技・SA等）:
  *   - variants は undefined
  *   - steps をそのまま使用
+ *
+ * 派生技（follow-up）を持つ技（ISSUE-009, 2026-04-18 追加）:
+ *   - followUps に子 CommandMove 配列を格納
+ *   - 派生技自身もさらに variants / followUps を持てる（再帰構造）
+ *
+ * カテゴリ非依存:
+ *   followUps は CommandMove のベースフィールドに付くため、
+ *   親の category が special / unique / command-normal / normal いずれでも同じ構造で派生を保持できる。
+ *
+ * ID 命名規則:
+ *   - トップレベル技: "{characterId}-{技の英略}" (例: "kimberly-shikkuke")
+ *   - 派生技: "{characterId}-{parent}-{derivation}"
+ *            (例: "kimberly-shikkuke-bushin-shoha", "kimberly-4hk-followup")
  */
 export interface CommandMove {
-  /** 一意ID（キャラクター内でユニーク。例: "ryu-hadoken"） */
+  /** 一意ID（キャラクター内でユニーク。例: "ryu-hadoken"）
+   *
+   * 命名規則:
+   *   - トップレベル技: "{characterId}-{技の英略}"（例: "kimberly-shikkuke"）
+   *   - 派生技: "{characterId}-{parent}-{derivation}"
+   *            （例: "kimberly-shikkuke-bushin-shoha", "kimberly-4hk-followup"）
+   */
   id: string;
   /** 技名（日本語） */
   name: string;
   /** 技名（英語） */
   nameEn: string;
-  /** カテゴリ */
+  /** カテゴリ（派生技は親と独立した値を持てる） */
   category: CommandCategory;
   /** テンキー表記（表示用。例: "236+P", "5MP"） */
   notation: string;
@@ -94,6 +113,18 @@ export interface CommandMove {
   steps: ComboStep[];
   /** 強度バリアント（弱/中/強がある技のみ） */
   variants?: StrengthVariant[];
+  /**
+   * 派生技（follow-up moves）
+   * ISSUE-009 (2026-04-18) で追加
+   *
+   * 親技から発生する派生技の配列。要素も CommandMove 型であり、
+   * 派生技自身がさらに variants / followUps を持つ再帰構造を許容する。
+   * カテゴリに依存せず、親が special / unique / command-normal / normal の
+   * いずれでも使用できる汎用フィールド。
+   *
+   * 循環参照禁止: JSON データ上で派生 ID の循環参照を作成してはならない。
+   */
+  followUps?: CommandMove[];
 }
 
 /**
