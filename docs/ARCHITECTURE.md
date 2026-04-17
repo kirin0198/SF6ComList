@@ -6,6 +6,7 @@
 >
 > - 2026-04-08: 初版作成
 > - 2026-04-12: コマンドリスト入力モード追加 (ISSUE-001 / UC-013)
+> - 2026-04-18: ISSUE-009 に基づく派生技（follow-up moves）設計の追加（セクション 15.1 / 15.4 / 15.5 新項目 / 17 ISSUE-009 実装フェーズ詳細）
 
 ---
 
@@ -301,7 +302,7 @@ SF6ComList/
 - **責務:** キャラクター別コマンドリストデータの型定義・読み込み・キャッシュ
 - **依存関係:** `src/lib/combo/types.ts`（ComboStep, NormalInput, Direction, ButtonInput 等）
 - **公開インターフェース:**
-  - `CommandMove` -- 1つの技を表す型（技名・表記・カテゴリ・ステップ）
+  - `CommandMove` -- 1つの技を表す型（技名・表記・カテゴリ・ステップ・強度バリアント・派生技）
   - `CommandCategory` -- 技カテゴリの型
   - `CharacterCommandList` -- 1キャラクター分のコマンドリスト型
   - `loadCommandList(characterId: string): Promise<CharacterCommandList | null>` -- 遅延読み込み関数
@@ -1108,6 +1109,18 @@ declare module "next-auth" {
   └─ TASK-037: CommandListPanel コンポーネント（TASK-036, TASK-022 完了後）
   └─ TASK-038: ComboForm 3タブ化 + CommandListPanel 統合（TASK-037, TASK-027 完了後）
   └─ TASK-039: コマンドリスト入力のテスト（TASK-037, TASK-038 完了後）
+
+実装フェーズ 10: 派生技（follow-up moves）対応（ISSUE-009）
+  └─ TASK-A: CommandMove 型に followUps フィールドを追加 + 単体テスト
+           （TASK-036 完了後 / ISSUE-001 実装完了が前提）
+  └─ TASK-B: CommandListPanel の展開 UI 拡張 + 派生コネクター（~）自動挿入ロジック
+           （TASK-A 完了後）
+  └─ TASK-C: キンバリー JSON に疾駆け派生 3 件を追加（special 配下）
+           （TASK-A 完了後。TASK-B と並行可）
+  └─ TASK-D: キンバリー JSON の風車（kimberly-4hk, unique）に派生 2 段目を追加
+           （TASK-A 完了後。TASK-B と並行可）
+  └─ TASK-E: CommandListPanel のコンポーネントテスト拡張（special / unique 両カテゴリの派生表示・コネクター挿入）
+           （TASK-B, TASK-C, TASK-D 完了後）
 ```
 
 ### タスク依存関係図（簡略版）
@@ -1151,6 +1164,15 @@ TASK-001 (初期化)
   TASK-038 (ComboForm 3タブ化)
        │
   TASK-039 (コマンドリストテスト)
+       │
+  TASK-A (followUps 型追加) ←─ ISSUE-009 実装フェーズ 10 開始
+       │
+       ├── TASK-B (CommandListPanel 派生 UI 拡張)
+       ├── TASK-C (キンバリー疾駆け派生データ)
+       └── TASK-D (キンバリー風車派生データ)
+             │
+             v
+       TASK-E (コンポーネントテスト拡張) ←─ TASK-B / TASK-C / TASK-D 完了後
 ```
 
 ---
@@ -1249,6 +1271,7 @@ CMD ["sh", "-c", "npx prisma migrate deploy && npx prisma db seed && node server
 | SVGアイコンの制作                             | 低     | MVPでは Unicode 矢印文字をフォールバックとして使用。SVG アイコンは後から差し替え可能な設計（DirectionIcon / ButtonIcon コンポーネントの中身を変えるだけ） |
 | キャラクターデータの手動更新                  | 低     | JSON マスタファイルの手動編集で対応。active/upcoming ステータスフラグで新キャラのリリースタイミングを管理                                                 |
 | コマンドリストデータの整備コスト              | 中     | 初期は リュウ のみ作成。他キャラクターはコマンドリスト未登録状態を許容するUI設計。段階的に追加可能（ISSUE-001）                                           |
+| 派生技（followUps）の再帰構造による無限ループ | 低     | 再帰レンダリング時は `expandedMoveId` を「親直下 / 派生直下」で名前空間を分けて保持する（例: `expandedPath: string[]`）。データ側でも循環参照は JSON 構造上作らない運用で担保（ADR 参照） |
 
 ---
 
@@ -1348,6 +1371,23 @@ CMD ["sh", "-c", "npx prisma migrate deploy && npx prisma db seed && node server
 - **却下した代替案:**
   - **ランタイムパース:** notation フィールドのみ持ち、クリック時に parseNotation で変換。シンプルだがパフォーマンスと正確性で劣る
 
+### ADR-008: 派生技（follow-up moves）の再帰型による表現
+
+> ISSUE-009 (2026-04-18) で追加
+
+- **状況:** 特定の技から派生して発生する技（キンバリー疾駆け派生、キャミィ フーリガン派生、ジェイミー酔拳中技、ケン奔雷脚 2 段目、ターゲットコンボ等）を、コマンドリストのデータモデルと UI で表現する必要がある。派生は `special` だけでなく `unique` / `command-normal` / `normal` など全カテゴリで発生しうる。
+- **決定:** `CommandMove` 型に再帰的なオプショナルフィールド `followUps?: CommandMove[]` を追加する。`followUps` の要素も `CommandMove` 型とし、強度バリアント（`variants`）やさらなる派生（`followUps`）を入れ子に表現できるようにする。
+- **理由:**
+  1. **カテゴリ非依存**: `followUps` を `CommandMove` のベース型に追加するため、親のカテゴリを問わず同一の構造で派生を表現できる。
+  2. **再帰で将来拡張に対応**: 派生の派生（ジェイミー酔拳 → 構え中技）や、派生側が弱/中/強を持つケース（変拳系）にも自然に対応できる。
+  3. **既存データに破壊的変更なし**: オプショナルフィールドのため、既存の 29 キャラクター分 JSON を変更せずに済む。
+  4. **UI 実装の一元化**: `variants` の展開と同じ「親ボタン → 展開エリア」パターンで派生を描画でき、レンダリングロジックを再利用できる。
+  5. **バックエンドへの影響ゼロ**: 派生を選択した結果は `ComboStep[]` にフラット化されて `ComboSequence` に統合されるため、Prisma スキーマも `parseNotation` / `serializeNotation` も変更不要。
+- **却下した代替案:**
+  - **別型 `FollowUpMove` を新設**: 再帰・強度バリアントの二重実装が必要になる。UI の分岐も増える。
+  - **トップレベルに独立 `CommandMove` として配置し `parentId` で紐付け**: フラット検索は容易だが、UI 上で親配下に展開する実装が煩雑。JSON の可読性も低下する。
+  - **カテゴリに `"followup"` を追加**: カテゴリは技の分類軸。親子関係を混ぜると責務が重くなる。
+
 ---
 
 ## 14. Tailwind CSS カスタム設定
@@ -1392,6 +1432,7 @@ UI_SPEC.md で定義されたカスタムアニメーションとフォント設
 ## 15. コマンドリスト入力モード設計（ISSUE-001 / UC-013）
 
 > 追加: 2026-04-12
+> 2026-04-18 更新: ISSUE-009 に基づき、派生技（follow-up moves）の型・UI・ルールを追加
 > 参照: SPEC.md UC-013, UI_SPEC.md セクション 9.6
 
 ### 15.1 データ構造設計
@@ -1441,33 +1482,67 @@ export const CATEGORY_ORDER: CommandCategory[] = [
   "target-combo",
 ];
 
+/** 強度ラベル（弱/中/強/OD） */
+export type StrengthLevel = "L" | "M" | "H" | "OD";
+
+/** 強度バリアント（弱/中/強で異なるボタンの技に使用） */
+export interface StrengthVariant {
+  strength: StrengthLevel;
+  notation: string;
+  steps: ComboStep[];
+}
+
 /**
  * コマンドリスト上の1つの技を表す型
+ *
+ * - 強度バリアントがある技: variants に弱/中/強を定義。steps は未使用
+ * - 強度バリアントがない技: variants は undefined。steps をそのまま使用
+ * - 派生技（follow-up）を持つ技: followUps に子 CommandMove 配列を格納
+ *   派生技自身もさらに variants / followUps を持てる（再帰構造）
+ *
+ * カテゴリ非依存:
+ *   followUps は CommandMove のベースフィールドに付くため、
+ *   親の category が special / unique / command-normal / normal いずれでも同じ構造で派生を保持できる。
  */
 export interface CommandMove {
-  /** 一意ID（キャラクター内でユニーク。例: "ryu-hadoken"） */
+  /** 一意ID（キャラクター内でユニーク）
+   *
+   * 命名規則:
+   *   - トップレベル技: "{characterId}-{技の英略}"（例: "kimberly-shikkuke"）
+   *   - 派生技: "{characterId}-{parent}-{derivation}"
+   *            （例: "kimberly-shikkuke-bushin-shoha", "kimberly-4hk-followup"）
+   */
   id: string;
   /** 技名（日本語） */
   name: string;
   /** 技名（英語） */
   nameEn: string;
-  /** カテゴリ */
+  /** カテゴリ（派生技は親と独立した値を持てる） */
   category: CommandCategory;
-  /** テンキー表記（表示用。例: "236P", "5MP"） */
+  /** テンキー表記（表示用。例: "236+P", "5MP"） */
   notation: string;
-  /** パース済み ComboStep 配列（技クリック時にそのまま追加される） */
+  /** パース済み ComboStep 配列（バリアントなしの技で使用） */
   steps: ComboStep[];
+  /** 強度バリアント（弱/中/強がある技のみ） */
+  variants?: StrengthVariant[];
+  /**
+   * 派生技（follow-up moves）
+   * ISSUE-009 (2026-04-18) で追加
+   *
+   * 親技から発生する派生技の配列。要素も CommandMove 型であり、
+   * 派生技自身がさらに variants / followUps を持つ再帰構造を許容する。
+   * カテゴリに依存せず、親が special / unique / command-normal / normal の
+   * いずれでも使用できる汎用フィールド。
+   */
+  followUps?: CommandMove[];
 }
 
 /**
  * 1キャラクター分のコマンドリスト
  */
 export interface CharacterCommandList {
-  /** キャラクターID（characters.json の id と一致） */
   characterId: string;
-  /** キャラクター表示名 */
   characterName: string;
-  /** 技リスト */
   moves: CommandMove[];
 }
 ```
@@ -1476,25 +1551,47 @@ export interface CharacterCommandList {
 
 ```json
 {
-  "characterId": "ryu",
-  "characterName": "リュウ",
+  "characterId": "kimberly",
+  "characterName": "キンバリー",
   "moves": [
     {
-      "id": "ryu-5lp",
-      "name": "立ち弱P",
-      "nameEn": "Standing LP",
-      "category": "normal",
-      "notation": "5LP",
-      "steps": [{ "type": "normal", "directions": ["5"], "button": "LP" }]
-    },
-    {
-      "id": "ryu-hadoken",
-      "name": "波動拳",
-      "nameEn": "Hadoken",
+      "id": "kimberly-shikkuke",
+      "name": "疾駆け",
+      "nameEn": "Shikkuke",
       "category": "special",
-      "notation": "236P",
-      "steps": [
-        { "type": "normal", "directions": ["2", "3", "6"], "button": "HP" }
+      "notation": "236+K",
+      "steps": [],
+      "variants": [
+        { "strength": "L", "notation": "236LK", "steps": [ /* ... */ ] },
+        { "strength": "M", "notation": "236MK", "steps": [ /* ... */ ] },
+        { "strength": "H", "notation": "236HK", "steps": [ /* ... */ ] },
+        { "strength": "OD", "notation": "OD236HK", "steps": [ /* ... */ ] }
+      ],
+      "followUps": [
+        {
+          "id": "kimberly-shikkuke-stop",
+          "name": "急停止",
+          "nameEn": "Shikkuke Stop",
+          "category": "special",
+          "notation": "K (停止)",
+          "steps": [ /* ... */ ]
+        },
+        {
+          "id": "kimberly-shikkuke-kage-sukui",
+          "name": "影すくい",
+          "nameEn": "Kage Sukui",
+          "category": "special",
+          "notation": "中K派生",
+          "steps": [ /* ... */ ]
+        },
+        {
+          "id": "kimberly-shikkuke-bushin-shoha",
+          "name": "武神翔霸",
+          "nameEn": "Bushin Shoha",
+          "category": "special",
+          "notation": "P派生",
+          "steps": [ /* ... */ ]
+        }
       ]
     }
   ]
@@ -1503,9 +1600,10 @@ export interface CharacterCommandList {
 
 **JSON 設計の方針:**
 
-- `steps` フィールドは `ComboStep[]` 型に準拠する。ボタン強度が複数ある技（例: 波動拳の LP/MP/HP 版）は代表的なボタン（HP）をデフォルトとして格納する。ユーザーがボタン強度を選びたい場合はビジュアル入力モードに切り替える
-- `id` は `{characterId}-{技の英語略称}` 形式で命名する。キャラクター内でユニークであれば良い
-- ドライブ系技（DI, DR, DP, DRev）は全キャラクター共通だが、キャラクターごとの JSON に含める（キャラクター切り替え時に別データとして読み込まれるため、共通化の複雑さを避ける）
+- `steps` フィールドは `ComboStep[]` 型に準拠する。ボタン強度が複数ある技（例: 波動拳の LP/MP/HP 版）は `variants` で保持する。
+- `id` は `{characterId}-{技の英語略称}` 形式、派生技は `{characterId}-{parent}-{derivation}` 形式で命名する。キャラクター内でユニークであること（派生技も含めて）。
+- ドライブ系技（DI, DR, DP, DRev）は全キャラクター共通だが、キャラクターごとの JSON に含める（キャラクター切り替え時に別データとして読み込まれるため、共通化の複雑さを避ける）。
+- `followUps` はオプショナルフィールドであり、省略時は空（= 派生なし）として扱う。既存の 29 キャラ分 JSON には影響しない。
 
 ### 15.2 リュウのコマンドリスト初期データ
 
@@ -1554,7 +1652,7 @@ export async function loadCommandList(
 
 **バンドルサイズへの影響:**
 
-- 各キャラクターの JSON は約 5-10KB（推定）
+- 各キャラクターの JSON は約 5-10KB（推定、派生技含みでも微増）
 - dynamic import により初期バンドルには含まれない
 - コマンドリストモードを選択し、キャラクターのデータが初めて必要になった時点でネットワーク取得される
 
@@ -1585,27 +1683,57 @@ interface CommandListPanelProps {
 - `commandList: CharacterCommandList | null` -- 読み込み済みコマンドリスト
 - `isLoading: boolean` -- 読み込み中フラグ
 - `loadError: boolean` -- 読み込みエラーフラグ
+- `expandedMoveId: string | null` -- 展開中の技 ID（variants / followUps のどちらを持っていてもトリガーとなる）
+- `lastSelectedMoveId: string | null` -- 直近に選択された親技の ID（派生コネクター判定用、ISSUE-009 追加）
 
-**コネクター自動挿入ロジック:**
+**展開条件（ISSUE-009 更新）:**
+
+- `move.variants` が 1 件以上、**または** `move.followUps` が 1 件以上存在するとき、親ボタンは展開可能となる。
+- 展開条件は**親のカテゴリに依存しない**。`followUps` を持つ技であれば `special` / `unique` / `command-normal` / `normal` のどのカテゴリでも同じ展開 UI を適用する。
+- 例1（special 配下）: 疾駆け（236+K, special）→ 強度バリアント行 + 派生行 [ 急停止 / 影すくい / 武神翔霸 ]
+- 例2（unique 配下）: 風車（4+HK, unique）→ 強度バリアントなし / 派生行 [ 風車派生 2 段目 ]
+
+**展開エリアの構造:**
+
+```
+[ 親技ボタン（▼） ]
+ ├ 強度バリアント行: [ 弱 ] [ 中 ] [ 強 ] [ OD ]  （variants がある場合のみ）
+ └ 派生セクション: "派生:" [ 派生技1 ] [ 派生技2 ] ... （followUps がある場合のみ）
+```
+
+- 派生技ボタンは親技と同じ `CommandMoveButton` スタイルを再利用し、紫系（`bg-purple-900/40 hover:bg-purple-800/60 border border-purple-700`）で視覚的に区別する。UI_SPEC.md セクション 9.6 を参照。
+- 派生技自身が `variants` / `followUps` を持つ場合、クリックでさらに展開されるネスト UI を許容する（再帰レンダリング）。ネスト展開状態は `expandedMoveId` 単一では衝突するため、必要に応じて展開パス（例: `expandedPath: string[]`）で管理する。実装判断は developer に委ねる。
+
+**コネクター自動挿入ロジック（ISSUE-009 拡張）:**
 
 ```typescript
 /**
  * 技がクリックされたときのハンドラー
- * UI_SPEC.md セクション 9.6「コネクター自動挿入ロジック」に準拠
+ *
+ * 通常技（親技またはバリアント）: シーケンス末尾がステップなら ">" を挿入、
+ *                                 コネクターなら何も挿入せず technique ステップを追加
+ * 派生技（followUp）: 「親技が直前に選択されたか」に応じてコネクターを決定する
+ *   - 親技の直後（lastSelectedMoveId === 親ID）: コネクター "~" を挿入
+ *   - それ以外: 通常ルール（">"）を適用
  */
-function handleMoveClick(move: CommandMove) {
+function handleMoveClick(move: CommandMove, opts?: { isFollowUp?: boolean; parentId?: string }) {
   const lastStep = committedSteps[committedSteps.length - 1];
+  const isFollowUpAfterParent =
+    opts?.isFollowUp === true && lastSelectedMoveId === opts.parentId;
 
   if (committedSteps.length === 0) {
-    // シーケンスが空の場合: コネクターなしで技のステップを追加
     onMoveSelect(move.steps);
   } else if (lastStep && lastStep.type === "connector") {
-    // 最後のステップがコネクターの場合: コネクターを挿入せずに技のステップのみ追加
     onMoveSelect(move.steps);
+  } else if (isFollowUpAfterParent) {
+    // 派生コネクター ~ を挿入
+    onMoveSelect([{ type: "connector", symbol: "~" }, ...move.steps]);
   } else {
-    // 最後のステップが NormalInput または ChargeInput の場合: > コネクターを自動挿入
+    // 通常の > コネクターを挿入
     onMoveSelect([{ type: "connector", symbol: ">" }, ...move.steps]);
   }
+
+  setLastSelectedMoveId(move.id);
 }
 ```
 
@@ -1622,7 +1750,9 @@ CommandListPanel
       │   ├── カテゴリ見出し（text-xs text-gray-400 font-semibold）
       │   └── 技ボタングリッド（flex flex-wrap gap-2）
       │       └── CommandMoveButton.map(move =>
-      │           └── [notation + name] クリック → handleMoveClick
+      │           ├── 親技ボタン: クリックで展開トグル（variants or followUps がある場合）
+      │           ├── 強度バリアント行（variants がある場合）
+      │           └── 派生セクション（followUps がある場合、再帰的にレンダリング）
       │       )
       │   )
       ├── コネクターセレクター（接続: > xx ~ ,）
@@ -1636,8 +1766,65 @@ CommandListPanel
 - 技名: `text-sm text-white`（右側）
 - クリックフィードバック: `border-cyan-500 bg-gray-600`（短時間のハイライト）
 - カテゴリ見出し: `text-xs text-gray-400 font-semibold uppercase tracking-wide border-b border-gray-700 pb-1 mb-2`
+- 派生技ボタン（ISSUE-009 追加）: `bg-purple-900/40 hover:bg-purple-800/60 border border-purple-700 rounded`
+- 派生ラベル "派生:" : `text-xs text-purple-300 font-semibold`
 
-### 15.5 ComboForm 統合設計
+### 15.5 派生技（follow-up moves）の扱い
+
+> 追加: 2026-04-18 / ISSUE-009
+
+コマンドリスト上の「派生技」は、親技から発生する追加入力技（キンバリー疾駆け派生、キャミィ フーリガン派生、ジェイミー酔拳中技、ケン奔雷脚 2 段目等）を指す。本項ではデータモデル・UI・コネクター挿入・バリアントとの共存ルールをまとめる。
+
+#### 15.5.1 データモデル上の再帰構造
+
+- `CommandMove.followUps?: CommandMove[]` として表現する。要素は通常の `CommandMove` と同一型。
+- 再帰構造を許容する:
+  - 派生技自身が `variants` を持つ（弱/中/強の派生）
+  - 派生技自身が `followUps` を持つ（派生の派生 / 構え系）
+- **カテゴリ非依存**: `followUps` は `CommandMove` のベース型フィールドのため、親の `category` が何であっても利用可能。
+- **循環参照の禁止**: JSON データ上で派生 ID の循環参照を作成してはならない。ビルド時のテストで検出する（TASK-A 単体テストで確認）。
+
+#### 15.5.2 ID 命名規則
+
+- トップレベル技: `{characterId}-{技の英略}`（例: `kimberly-shikkuke`, `kimberly-4hk`）
+- 派生技: `{characterId}-{parent}-{derivation}`（例: `kimberly-shikkuke-bushin-shoha`, `kimberly-4hk-followup`）
+- 派生技の ID もキャラクター内で一意であること。重複は禁止し、単体テストで検出する。
+
+#### 15.5.3 コネクター自動挿入ルール
+
+派生技を選択したときに親技とどのコネクターで繋ぐかを以下のルールで決定する。
+
+| 状況                                                       | 挿入されるコネクター |
+| ---------------------------------------------------------- | -------------------- |
+| `committedSteps` が空                                      | なし                 |
+| 末尾が `ConnectorStep`                                     | なし（重複回避）     |
+| 派生技クリック **かつ** 直前に選択された技が親技である場合 | `~`                  |
+| 派生技クリックだが直前の技が親技でない                     | `>`（通常ルール）    |
+| 通常技・バリアントクリック                                 | `>`                  |
+
+- 「直前に選択された技が親技か」の判定は `lastSelectedMoveId` というローカル状態で追跡する。
+- 親技の選択直後 → 派生技クリック で `~` が挿入され、`236HK ~ HP` のようなシーケンスになる。
+- 親技 + 別の技 + 派生技、というように間に別の技を挟んだ場合は、派生コネクターを強制せず `>` を挿入する（UI の自由度を優先）。
+
+#### 15.5.4 強度バリアント（variants）との共存
+
+- `variants` と `followUps` は独立したフィールドで、**両方共存可能**。
+- 疾駆け（`kimberly-shikkuke`）のように、親技がバリアントを持ちつつ派生も持つケースでは、展開時に強度バリアント行 **および** 派生行の両方を表示する。
+- 強度バリアントクリック後に派生技をクリックした場合の扱い:
+  - 直近選択された親技 ID は「バリアントクリック時の親技 ID」として記録する。これにより、バリアント選択直後の派生クリックでも `~` が挿入される。
+  - 実装詳細: `handleVariantClick` 内で `setLastSelectedMoveId(move.id)` を実行する（親の ID）。
+
+#### 15.5.5 派生技自身が variants / followUps を持つ場合の再帰展開
+
+- 派生技自身に `variants` がある場合: 派生行の派生ボタンをクリックで更に強度バリアント行を展開する。
+- 派生技自身に `followUps` がある場合: 派生行の派生ボタンをクリックで更に 2 段目の派生行を展開する（派生の派生）。
+- 展開状態管理:
+  - 単純な `expandedMoveId: string | null` では同時に複数階層の展開状態を保持できない。
+  - 推奨実装: `expandedPath: string[]` のようなパス配列で、階層ごとの展開中 ID を保持する。
+  - developer は要件（現状 1 段階のみ）を満たす最小実装で開始し、将来の再帰拡張に耐える形にすること。
+- ISSUE-009 のスコープでは 1 段階の派生のみを実データで検証する。2 段以上の派生は将来追加時に再帰ロジックが活きる前提で設計する（データは現状なし）。
+
+### 15.6 ComboForm 統合設計
 
 **変更対象:** `src/components/combo/ComboForm.tsx`
 
@@ -1719,7 +1906,7 @@ const handleMoveSelect = useCallback((steps: ComboStep[]) => {
 - コマンドリスト → テキスト: `sequence.notation` がそのまま `ComboTextInput` の初期テキストとして使われる
 - ビジュアル/テキスト → コマンドリスト: 共有の `sequence` 状態が更新されているため、コマンドリストパネルは参照しない（追加のみの操作のため）
 
-### 15.6 ページコンポーネントの変更
+### 15.7 ページコンポーネントの変更
 
 **変更対象:**
 
@@ -1820,3 +2007,160 @@ const handleMoveSelect = useCallback((steps: ComboStep[]) => {
 3. ComboForm の3タブ切替テスト（既存テストがあれば拡張）
 
 **依存:** TASK-037, TASK-038 完了後
+
+---
+
+## 17. ISSUE-009 実装フェーズ詳細（派生技 follow-up moves 対応）
+
+> 追加: 2026-04-18 / 参照: ISSUE-009, SPEC.md UC-013 AC9/AC10, UI_SPEC.md セクション 9.6
+
+### キンバリー JSON 調査結果（TASK-D 前提）
+
+`src/data/command-lists/kimberly.json` を調査した結果（2026-04-18 時点）:
+
+- `kimberly-4hk`（風車, unique, `4HK`）は **既に登録済み**（steps: `[{ type: "normal", directions: ["4"], button: "HK" }]`）。
+- ただし `followUps` フィールドは未定義（現行型では該当フィールドがないため）。
+- したがって TASK-D は「風車技そのものの新規追加」ではなく、既存 `kimberly-4hk` オブジェクトに `followUps` 配列を追加する形で実装する。
+
+`kimberly-shikkuke`（疾駆け, special, `236+K`）も既に登録済みで、`variants`（L/M/H/OD）あり、`followUps` 未定義。TASK-C は既存 `kimberly-shikkuke` オブジェクトに `followUps` 配列を追加する形で実装する。
+
+### TASK-A: CommandMove 型に `followUps` フィールドを追加 + 単体テスト
+
+**対象ファイル:**
+
+- `src/lib/combo/command-list-types.ts`（変更）
+- `src/lib/combo/__tests__/command-list-types.test.ts`（拡張）
+
+**作業内容:**
+
+1. `CommandMove` インターフェースに再帰型のオプショナルフィールド `followUps?: CommandMove[]` を追加する。
+2. JSDoc コメントで「カテゴリ非依存」「再帰構造を許容」「ID 命名規則」を記述する（セクション 15.1 参照）。
+3. 単体テスト:
+   - `followUps` を持つ `CommandMove` が型エラーなくパースできること
+   - `followUps` を持たない既存の `CommandMove` が引き続き正しく扱えること（後方互換性）
+   - ネストした `followUps`（派生の派生）が型上許容されること
+   - ID の一意性: キャラクター内で `moves` ツリー全体（派生含む）の ID に重複がないことを検証するヘルパー（例: `collectAllMoveIds`）を追加し、テストで使用する。
+   - 循環参照の検出: `followUps` が自身または祖先を参照するデータは不正として扱う（簡易 DFS チェック）。
+
+**依存:** TASK-036（既存のコマンドリスト型）完了後。ISSUE-001 の実装完了が前提。
+
+### TASK-B: CommandListPanel の展開 UI 拡張 + コネクター自動挿入ロジック
+
+**対象ファイル:**
+
+- `src/components/input/CommandListPanel.tsx`（変更）
+
+**作業内容:**
+
+1. `hasVariants || hasFollowUps` のいずれかで親ボタンを展開可能にするロジックへ拡張（セクション 15.4 参照）。親カテゴリには依存しない。
+2. 展開時に「強度バリアント行」と「派生セクション」の両方、もしくはどちらかをレンダリングする。`followUps` セクションには `派生:` ラベルを付ける。
+3. 派生技ボタンのスタイリング: `bg-purple-900/40 hover:bg-purple-800/60 border border-purple-700 rounded`（UI_SPEC.md 9.6 準拠）。
+4. `lastSelectedMoveId: string | null` 状態を追加し、親技・バリアント選択時に親の ID を記録する。
+5. コネクター自動挿入ロジックを拡張:
+   - 通常のクリック: 既存ルール（末尾がステップなら `>` 挿入）
+   - 派生技クリック: `lastSelectedMoveId === 親ID` なら `~` を挿入、それ以外は `>` 挿入
+   - 空シーケンス / 末尾コネクター時はコネクター挿入なし（既存ルール）
+6. 派生技自身の `variants` / `followUps` に対応する再帰レンダリングを実装。展開状態管理は `expandedPath: string[]` でパスベースに拡張することを推奨（単一 `expandedMoveId` では多階層で衝突する）。
+7. アクセシビリティ: 派生技ボタンに `aria-label="{親技名} 派生: {派生技名}（{notation}）"` を付与。展開ボタンは `aria-expanded` を維持。
+
+**依存:** TASK-A 完了後。
+
+### TASK-C: キンバリー JSON に疾駆け派生（special 配下 3 件）を追加
+
+**対象ファイル:**
+
+- `src/data/command-lists/kimberly.json`（変更）
+
+**作業内容:**
+
+1. 既存の `kimberly-shikkuke` オブジェクトに `followUps` 配列を追加する（既存の `variants` は維持）。
+2. 追加する 3 派生技:
+   - `kimberly-shikkuke-stop`（急停止 / Shikkuke Stop）
+   - `kimberly-shikkuke-kage-sukui`（影すくい / Kage Sukui）
+   - `kimberly-shikkuke-bushin-shoha`（武神翔霸 / Bushin Shoha）
+3. 各派生技の `category` は `special`（親と同じ）、`steps` は SF6 公式コマンド表を参照して確定する。
+4. `notation` は派生入力を表す簡潔な表記（例: `K (停止)`, `中K派生`, `P派生`）とする。表示の一貫性は UI_SPEC.md レビュー後に微調整可。
+5. データ整合性の確認: TASK-A の ID 重複チェック・循環参照チェックに通ること。
+
+**依存:** TASK-A 完了後（型が利用可能になっていること）。TASK-B と並行可。
+
+### TASK-D: キンバリー JSON の風車（4+HK, unique）に派生 2 段目を追加
+
+**対象ファイル:**
+
+- `src/data/command-lists/kimberly.json`（変更）
+
+**作業内容:**
+
+1. 既存の `kimberly-4hk`（風車, unique, `4HK`）オブジェクトに `followUps` 配列を追加する（既存の `steps` は維持）。
+2. 追加する派生技:
+   - `kimberly-4hk-followup`（風車派生 2 段目 / Kazaguruma Followup）
+3. `category` は `unique`（親と同じ）、`steps` は SF6 公式コマンド表を参照して確定する。
+4. `notation` は 2 段目を表す簡潔な表記（例: `HK派生`）。
+5. データ整合性の確認: TASK-A の ID 重複チェックに通ること。
+
+**依存:** TASK-A 完了後。TASK-B / TASK-C と並行可。
+
+### TASK-E: コンポーネントテスト拡張（special / unique 両カテゴリの派生表示・コネクター挿入）
+
+**対象ファイル:**
+
+- `src/components/input/__tests__/CommandListPanel.test.tsx`（拡張）
+- 必要に応じて `src/lib/combo/__tests__/command-list-types.test.ts`（拡張）
+
+**作業内容:**
+
+1. `special` 配下のテスト: 疾駆け（`kimberly-shikkuke`）を展開すると、強度バリアント行と派生セクション（急停止 / 影すくい / 武神翔霸）が両方表示されること。
+2. `unique` 配下のテスト: 風車（`kimberly-4hk`）を展開すると、派生セクション（風車派生 2 段目）が表示されること。強度バリアントは表示されないこと。
+3. 派生技クリックで `onMoveSelect` が呼ばれ、先頭にコネクター `~` が付与されたステップ配列が渡されること（親技選択直後の場合）。
+4. 親技以外を経由した後に派生技をクリックした場合、コネクターが `>` になること。
+5. 親技が `variants` と `followUps` を両方持つ場合の展開挙動（両セクションが同時にレンダリングされる）。
+6. 派生技自身が variants を持つ場合の再帰展開（現状はテストデータがないため mock データで検証）。
+7. 未登録・ローディング・エラー状態は既存テスト（TASK-039）を踏襲。
+
+**依存:** TASK-B, TASK-C, TASK-D 完了後。
+
+### 依存関係サマリー
+
+```
+TASK-A (型拡張 + テスト)
+  ├── TASK-B (UI 拡張 + コネクター挿入)
+  ├── TASK-C (疾駆け派生 JSON)
+  └── TASK-D (風車派生 JSON)
+       │
+       v
+  TASK-E (コンポーネントテスト拡張) ← TASK-B / TASK-C / TASK-D 全て完了後
+```
+
+- TASK-A は他すべてのブロッカー。最優先で着手する。
+- TASK-B / TASK-C / TASK-D は TASK-A 完了後に並行着手可能。レビューの単位を分けるためタスク単位で PR を分割することを推奨する。
+- TASK-E は動作検証のため、B/C/D 完了後に実施する。
+
+### developer への引き継ぎ内容
+
+実装者（developer エージェントまたは人間開発者）へ。以下の設計上の制約を遵守して実装すること。
+
+1. **型定義（TASK-A）の後方互換性を守る**:
+   - `followUps?` はオプショナル。既存の 29 キャラ分 JSON は一切変更しないこと（`kimberly.json` だけが変更対象）。
+2. **カテゴリ非依存の原則**:
+   - CommandListPanel の展開判定・派生レンダリングロジックは `move.category` で分岐してはならない。常に `move.followUps` の有無だけで判定する。
+3. **コネクター `~` 挿入は派生コンテキスト限定**:
+   - `~` は派生技クリック、かつ直前選択が親技の場合のみ。それ以外（ランダムな技間で `~` を付ける）は禁止。
+4. **lastSelectedMoveId の扱い**:
+   - 親技クリック時・親技のバリアントクリック時に `setLastSelectedMoveId(親技の id)` を呼ぶ。
+   - 派生技クリック時にも `setLastSelectedMoveId(派生技の id)` を呼び、次の派生の派生（もしあれば）に備える。
+5. **再帰レンダリング / 展開状態**:
+   - 単純な単一 `expandedMoveId` のままで実装しても、ISSUE-009 スコープ（1 段階の派生のみ）では動作する。ただしコメントで「2 段以上の派生に拡張する際は `expandedPath` 等への変更が必要」と明記すること。
+6. **テストデータとしての Kimberly**:
+   - TASK-C / TASK-D で追加した疾駆け派生・風車派生は、TASK-E の E2E 相当のコンポーネントテストで実際に使用する。手動確認時のテスト手順を TASK.md に残すこと（例: `/characters/kimberly/combos/new` でコマンドリストから疾駆け → 武神翔霸 を選択し `236HK ~ HP` と notation が組み立てられることを確認）。
+7. **派生技の実際の notation / steps**:
+   - SF6 公式コマンド表を参照し、不明点があれば `blocked` ステータスで architect に相談すること（キンバリー派生の正確な入力については攻略サイトや公式動作表を参考にする）。
+8. **PR 粒度**:
+   - TASK-A と TASK-B は別 PR を推奨（型 + ロジック変更は影響範囲が異なる）。
+   - TASK-C / TASK-D はデータのみなので 1 PR にまとめても可。
+9. **コミットメッセージ**:
+   - 例: `feat: add followUps field to CommandMove type (TASK-A)` / `feat: extend CommandListPanel for follow-up moves (TASK-B)` / `feat: add Kimberly shikkuke follow-ups (TASK-C)` 等。
+10. **Docker ビルド再確認**:
+    - 画面変更を含む TASK-B / TASK-E 完了後は `docker compose up --build` で動作確認する（ユーザー MEMORY に基づく）。
+11. **セキュリティ観点**:
+    - 本タスクは純粋な静的 JSON データとクライアント UI の変更であり、新しい入力処理・DB 書き込み・認証経路の変更は発生しない。ただし追加する JSON に外部起因のデータが混ざらないこと（手入力のみ）を確認する。
