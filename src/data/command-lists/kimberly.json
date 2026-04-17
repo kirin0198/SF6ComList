@@ -314,6 +314,22 @@
           "directions": ["4"],
           "button": "HK"
         }
+      ],
+      "followUps": [
+        {
+          "id": "kimberly-4hk-followup",
+          "name": "風車2段目",
+          "nameEn": "Kazaguruma Followup",
+          "category": "unique",
+          "notation": "HK派生",
+          "steps": [
+            {
+              "type": "normal",
+              "directions": ["5"],
+              "button": "HK"
+            }
+          ]
+        }
       ]
     },
     {
