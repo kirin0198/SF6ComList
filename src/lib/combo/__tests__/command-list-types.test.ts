@@ -1,4 +1,5 @@
 /// <reference types="vitest/globals" />
+/// <reference types="vite/client" />
 /**
  * command-list-types.ts のユニットテスト
  * CommandMove 型の followUps フィールドの動作を検証する
@@ -7,6 +8,7 @@
 
 import { describe, it, expect } from "vitest";
 import type { CommandMove, CharacterCommandList } from "../command-list-types";
+import kimberlyData from "@/data/command-lists/kimberly.json";
 
 // ============================================================
 // テストヘルパー: ID ユニーク性チェック
@@ -408,4 +410,69 @@ describe("unique カテゴリの followUps", () => {
     const duplicates = findDuplicateIds([uniqueMoveWithFollowUp]);
     expect(duplicates).toHaveLength(0);
   });
+});
+
+// ============================================================
+// テスト: 実キャラクター JSON データの検証
+// ============================================================
+
+describe("kimberly.json 実データ検証", () => {
+  // kimberly は followUps が実装済みの唯一のキャラクター (ISSUE-009)
+  const kimberlyMoves = kimberlyData.moves as CommandMove[];
+
+  it("kimberly.json の moves ツリー全体で ID 重複がないこと", () => {
+    const duplicates = findDuplicateIds(kimberlyMoves);
+    expect(duplicates).toHaveLength(0);
+  });
+
+  it("kimberly.json の moves ツリーに循環参照がないこと", () => {
+    expect(hasCircularReference(kimberlyMoves)).toBe(false);
+  });
+
+  it("kimberly.json に followUps を持つ技が存在すること（データ完整性確認）", () => {
+    const movesWithFollowUps = kimberlyMoves.filter(
+      (m) => m.followUps && m.followUps.length > 0,
+    );
+    expect(movesWithFollowUps.length).toBeGreaterThan(0);
+  });
+
+  it("kimberly.json の followUps 内の全 ID が一意であること（派生技含む）", () => {
+    const allIds = collectAllMoveIds(kimberlyMoves);
+    const uniqueIds = new Set(allIds);
+    expect(allIds.length).toBe(uniqueIds.size);
+  });
+});
+
+describe("全キャラクター JSON データ検証", () => {
+  // import.meta.glob で全キャラ JSON を動的取得
+  // Vite/Vitest のグロブインポートを使用（静的解析のため文字列リテラルが必要）
+  const allJsonModules = import.meta.glob<{ default: CharacterCommandList }>(
+    "/src/data/command-lists/*.json",
+    { eager: true },
+  );
+
+  const characterEntries = Object.entries(allJsonModules);
+
+  it("全キャラクター JSON ファイルが読み込めること", () => {
+    // 29 キャラ分のファイルが存在すること
+    expect(characterEntries.length).toBeGreaterThan(0);
+  });
+
+  // 各キャラクターごとに ID 重複・循環参照テストを生成
+  for (const [filePath, module] of characterEntries) {
+    const characterId = filePath
+      .replace("/src/data/command-lists/", "")
+      .replace(".json", "");
+
+    it(`${characterId}: moves ツリー全体で ID 重複がないこと`, () => {
+      const moves = module.default.moves as CommandMove[];
+      const duplicates = findDuplicateIds(moves);
+      expect(duplicates).toHaveLength(0);
+    });
+
+    it(`${characterId}: moves ツリーに循環参照がないこと`, () => {
+      const moves = module.default.moves as CommandMove[];
+      expect(hasCircularReference(moves)).toBe(false);
+    });
+  }
 });
